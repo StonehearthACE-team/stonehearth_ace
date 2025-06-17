@@ -1,0 +1,35 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(topiary_poyo.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "render_info": {
+         "scale": 0.14
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.decoration.firstbloom.topiary_poyo.display_name)",
+         "description": "i18n(stonehearth_ace:entities.decoration.firstbloom.topiary_poyo.description)",
+         "icon": "file(topiary_poyo.png)",
+         "category": "decoration",
+         "material_tags": [
+            "festival",
+            "firstbloom",
+            "plant",
+            "crafted",
+            "decoration",
+            "stockpile_plant"
+         ]
+      }
+   }
+}

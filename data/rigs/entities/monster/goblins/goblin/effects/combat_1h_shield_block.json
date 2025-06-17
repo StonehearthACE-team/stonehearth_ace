@@ -4,16 +4,17 @@
       "animation": {
          "type": "animation_effect",
          "start_time": 0,
+         "speed": 1.1,
          "animation": "combat_1h_shield_block.json",
          "loop": false
       },
       "sound": {
          "type": "sound_effect",
          "duration": 1000,
-         "start_time": 200,
+         "start_time": 170,
+         "falloff" : 3.8,
+         "volume": 32,
          "min_distance": 30,
-         "falloff" : 3.6,
-         "volume": 30,
          "track" : {
             "type": "one_of",
             "items": [
@@ -25,9 +26,9 @@
       },
       "hit_spark": {
          "type": "cubemitter",
-         "start_time" : 333,
+         "start_time" : 290,
          "end_time" : 500,
-         "cubemitter": "particles/combat/block.cubemitter.json",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/combat/block_light.cubemitter.json",
          "transforms": {
             "x":0,
             "y":0,

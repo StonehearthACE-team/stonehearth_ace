@@ -1,5 +1,8 @@
 {
-   "mixins": "stonehearth:mixins:item_properties",
+   "mixins": [
+      "stonehearth_ace:mixins:tree:stunt_growth:early",
+      "stonehearth:mixins:item_properties"
+   ],
    "type": "entity",
    "components": {
       "model_variants": {

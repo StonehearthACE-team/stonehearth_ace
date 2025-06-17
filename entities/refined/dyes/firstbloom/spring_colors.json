@@ -1,0 +1,45 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "render_info": {
+         "scale": 0.08
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(spring_colors.qb)",
+                     "file(spring_colors_2.qb)"
+                  ]
+               }
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 2,
+         "rarity": "uncommon",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.refined.dyes.firstbloom_spring_colors.display_name)",
+         "description": "i18n(stonehearth_ace:entities.refined.dyes.firstbloom_spring_colors.description)",
+         "icon": "file(spring_colors.png)",
+         "is_item": true,
+         "category": "refined",
+         "material_tags": [
+            "spring_colors",
+            "dye",
+            "refined",
+            "stockpile_refined_weaver"
+         ]
+      }
+   }
+}

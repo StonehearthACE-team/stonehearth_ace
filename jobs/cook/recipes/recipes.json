@@ -341,6 +341,27 @@
             }
          }
       },
+      "firstbloom": {
+         "ordinal": 2,
+         "name": "i18n(stonehearth_ace:jobs.common.recipes.firstbloom_name)",
+         "recipes": {
+            "firstbloom_baklava": {
+               "recipe": "file(firstbloom/baklava_recipe.json)"
+            },
+            "firstbloom_deviled_eggs": {
+               "recipe": "file(firstbloom/deviled_eggs_recipe.json)"
+            },
+            "firstbloom_deviled_eggs_whipped": {
+               "recipe": "file(firstbloom/deviled_eggs_whipped_recipe.json)"
+            },
+            "firstbloom_lamb_stew": {
+               "recipe": "file(firstbloom/lamb_stew_recipe.json)"
+            },
+            "firstbloom_sweet_loaf": {
+               "recipe": "file(firstbloom/sweet_loaf_recipe.json)"
+            }
+         }
+      },
       "candledark": {
          "ordinal": 998,
          "name": "i18n(stonehearth_ace:jobs.common.recipes.candledark_name)",

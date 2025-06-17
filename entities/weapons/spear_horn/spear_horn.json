@@ -19,6 +19,29 @@
             "active_frame": 16,
             "cooldown": 0,
             "priority": 2
+         },
+         {
+            "name": "sweep_off_1",
+            "effect": "combat_1h_forehand_spin",
+            "active_frame": 21,
+            "cooldown": 21000,
+            "priority": 2,
+            "inflictable_debuffs": {
+               "swept_off": {
+                  "uri": "stonehearth_ace:buffs:swept_off",
+                  "chance": 1
+               }
+            },
+            "aoe_effect": {
+               "aoe_range": 4,
+               "damage_multiplier": 0.3,
+               "inflictable_debuffs": {
+                  "swept_off": {
+                     "uri": "stonehearth_ace:buffs:swept_off",
+                     "chance": 0.4
+                  }
+               }
+            }
          }
       ],
       "stonehearth:catalog": {

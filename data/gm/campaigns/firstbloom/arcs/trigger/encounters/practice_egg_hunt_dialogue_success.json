@@ -1,0 +1,41 @@
+{
+   "type": "encounter",
+   "encounter_type": "donation_dialog",
+   "rarity": "common",
+   "in_edge": "practice_egg_hunt_dialogue_success",
+   "out_edge": "firstbloom_event_generator",
+   "donation_dialog_info": {
+      "start_node": "msg1",
+      "nodes": {
+         "simple_message": {
+            "bulletin": {
+               "title": "i18n(stonehearth_ace:data.gm.campaigns.firstbloom.practice_egg_hunt_dialogue_success.dialog_tree_info.dialog_nodes.msg1.bulletin_title)",
+               "dialog_title": "i18n(stonehearth_ace:data.gm.campaigns.firstbloom.practice_egg_hunt_dialogue_success.dialog_tree_info.dialog_nodes.msg1.dialog_title)",
+               "portrait": "file(images/haru_poyo.png)",
+               "portrait_offset": 0,
+               "message": "i18n(stonehearth_ace:data.gm.campaigns.firstbloom.practice_egg_hunt_dialogue_success.dialog_tree_info.dialog_nodes.msg1.bulletin_message.00)",
+               "choices": {
+                  "i18n(stonehearth_ace:data.gm.campaigns.firstbloom.practice_egg_hunt_dialogue_success.dialog_tree_info.dialog_nodes.msg1.choice_000)": {
+                     "result": "accept"
+                  }
+               }
+            }
+         }
+      },
+      "loot_table": {
+         "entries": {
+            "default": {
+               "num_rolls": {
+                  "min": 2,
+                  "max": 2
+               },
+               "items": {
+                  "recipe": {
+                     "uri": "stonehearth_ace:consumables:firstbloom:recipe"
+                  }
+               }
+            }
+         }
+      }
+   }
+}

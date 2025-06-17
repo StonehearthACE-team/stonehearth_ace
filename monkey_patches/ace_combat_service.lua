@@ -36,7 +36,7 @@ function AceCombatService:battery(context)
 
    if stonehearth.player:is_npc(target) and self:has_leash(target) and not stonehearth.player:is_npc(enemy) and self:get_main_weapon(target) then
       if health_percent < 0.5 then
-         if self:is_leash_unbreakable(target) then
+         if self:is_leash_unbreakable(target) and self:is_entity_outside_leash(target) then
             radiant.entities.add_buff(target, SOFT_RETREATING_BUFF) -- Don't just stand there! Go back to your place!
          else
             self:clear_leash(target) -- This is probably a legit fight, let it roll...
@@ -215,6 +215,36 @@ function AceCombatService:calculate_exp_reward(target)
    end
 
    return exp
+end
+
+function AceCombatService:get_offhand_equipment(entity)
+   return radiant.entities.get_equipped_item(entity, 'leftArm')
+end
+
+function AceCombatService:get_weapon_idle_data(entity)
+   local weapon = stonehearth.combat:get_main_weapon(entity)
+   local offhand = stonehearth.combat:get_offhand_equipment(entity)
+   local idle_name
+
+   -- Check for offhand (weapon, shield, etc.) idle stances first;
+   if offhand ~= nil and offhand:is_valid() then
+      local idle_data = radiant.entities.get_entity_data(offhand, 'stonehearth:combat:idle:ready')
+      if idle_data then
+         idle_name = idle_data.name
+      end
+   end
+
+   -- Mainhand weapons that have a unique stance (like bows) should always override it since the regular mainhand stance is the default anyway
+   if weapon ~= nil and weapon:is_valid() then
+      local idle_data = radiant.entities.get_entity_data(weapon, 'stonehearth:combat:idle:ready')
+      if idle_data then
+         idle_name = idle_data.name
+      end
+   end
+
+   if idle_name then
+      return idle_name
+   end
 end
 
 -- ACE: also get allies of the attacker

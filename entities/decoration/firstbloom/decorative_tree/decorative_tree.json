@@ -1,0 +1,39 @@
+{
+   "type": "entity",
+   "mixins": "file(decorative_tree_ghost.json)",
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(decorative_tree_iconic.json)",
+         "ghost_form": "file(decorative_tree_ghost.json)",
+         "placeable_on_ground": true
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -0.1, "y": 0, "z": -0.1 },
+               "max": { "x": 1.1, "y": 2.5, "z": 1.1 }
+            },
+            {
+               "min": { "x": -1.5, "y": 2.5, "z": -1.5 },
+               "max": { "x": 2.5, "y": 4.5, "z": 2.5 }
+            }
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 61,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 70
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

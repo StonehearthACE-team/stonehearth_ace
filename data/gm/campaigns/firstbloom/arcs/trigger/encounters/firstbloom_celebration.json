@@ -1,0 +1,42 @@
+{
+   "type": "encounter",
+   "encounter_type": "town_upgrade",
+   "in_edge": "firstbloom_celebration",
+   "out_edge": "delay_before_campaign_end",
+   "town_upgrade_info": {
+      "custom_music": "firstbloom_celebration",
+      "conversation_subjects": [
+         "stonehearth_ace:subjects:weather:windy_springtime",
+         "stonehearth_ace:decoration:firstbloom:decorative_egg",
+         "stonehearth_ace:decoration:firstbloom:decorative_egg:large",
+         "stonehearth_ace:decoration:firstbloom:decorative_egg:small",
+         "stonehearth_ace:decoration:firstbloom:feather_pot:tall",
+         "stonehearth_ace:decoration:firstbloom:feather_pot:short"
+      ],
+      "thought": "stonehearth:thoughts:firstbloom:celebration",
+      "celebration_duration": "3h",
+      "has_fireworks": true,
+      "npcs": [
+         {
+            "faction": "human_npcs",
+            "role": "party_goblin",
+            "gender": "male"
+         },
+         {
+            "faction": "human_npcs",
+            "role": "firstbloom_determined_poyo",
+            "gender": "female"
+         },
+         {
+            "faction": "human_npcs",
+            "role": "firstbloom_haru_sprouts",
+            "gender": "male"
+         },
+         {
+            "faction": "human_npcs",
+            "role": "amberstone_sasha",
+            "gender": "male"
+         }
+      ]
+   }
+}

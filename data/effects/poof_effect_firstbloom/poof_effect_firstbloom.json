@@ -1,0 +1,62 @@
+{
+   "type": "effect",
+   "tracks": {
+      "emoticon": {
+         "type": "cubemitter",
+         "start_time": 0,
+         "cubemitter": "/stonehearth/data/horde/particles/emote/emoticons/confetti.cubemitter.json",
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "glitter": {
+         "type": "cubemitter",
+         "start_time": 0,
+         "cubemitter": "/stonehearth/data/horde/particles/emote/emoticons/confetti_small.cubemitter.json",
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "emoticon2": {
+         "type": "cubemitter",
+         "start_time": 100,
+         "cubemitter": "/stonehearth/data/horde/particles/emote/emoticons/confetti.cubemitter.json",
+         "transforms": { "x": 0, "y": -2.2, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "glitter2": {
+         "type": "cubemitter",
+         "start_time": 100,
+         "cubemitter": "/stonehearth/data/horde/particles/emote/emoticons/confetti_small.cubemitter.json",
+         "transforms": { "x": 0, "y": -2.2, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "sound_2": {
+         "type": "sound_effect",
+         "duration": 1000,
+         "start_time": 0,
+         "min_distance": 20,
+         "max_instances": 2,
+         "falloff": 2.5,
+         "volume": 25,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth:sounds:confetti_01",
+               "stonehearth:sounds:confetti_02",
+               "stonehearth:sounds:confetti_03"
+            ]
+         }
+      }
+   }
+}

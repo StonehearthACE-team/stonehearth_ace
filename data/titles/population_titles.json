@@ -3471,21 +3471,55 @@
             "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.divine_flavors.1_display_name)",
             "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.divine_flavors.1_description)",
             "required_value": 1,
-            "renown": 80
+            "renown": 60
          },
          {
             "rank": 2,
             "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.divine_flavors.2_display_name)",
             "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.divine_flavors.2_description)",
             "required_value": 7,
-            "renown": 300
+            "renown": 240
          },
          {
             "rank": 3,
             "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.divine_flavors.3_display_name)",
             "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.divine_flavors.3_description)",
             "required_value": 21,
-            "renown": 900
+            "renown": 750
+         }
+      ]
+   },
+   "magical_flavors": {
+      "ordinal": 32.1,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.magical_flavors.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.magical_flavors.description)",
+      "requirement": {
+         "statistics": {
+            "category": "buffs_gained",
+            "name": "magical_flavors"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.magical_flavors.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.magical_flavors.1_description)",
+            "required_value": 1,
+            "renown": 50
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.magical_flavors.2_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.magical_flavors.2_description)",
+            "required_value": 7,
+            "renown": 220
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.magical_flavors.3_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.magical_flavors.3_description)",
+            "required_value": 21,
+            "renown": 700
          }
       ]
    },
@@ -3861,6 +3895,54 @@
             "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.lightning_struck.4_description)",
             "required_value": 4,
             "renown": 1600
+         }
+      ]
+   },
+   "firstbloom_eggs_collected": {
+      "ordinal": 401,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.firstbloom_eggs_collected.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.firstbloom_eggs_collected.description)",
+      "requirement": {
+         "statistics": {
+            "category": "totals",
+            "name": "firstbloom_eggs_collected"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.firstbloom_eggs_collected.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.firstbloom_eggs_collected.1_description)",
+            "required_value": 1,
+            "renown": 15
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.firstbloom_eggs_collected.2_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.firstbloom_eggs_collected.2_description)",
+            "required_value": 3,
+            "renown": 45
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.firstbloom_eggs_collected.3_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.firstbloom_eggs_collected.3_description)",
+            "required_value": 6,
+            "renown": 110
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.firstbloom_eggs_collected.4_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.firstbloom_eggs_collected.4_description)",
+            "required_value": 12,
+            "renown": 250
+         },
+         {
+            "rank": 5,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.firstbloom_eggs_collected.5_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.firstbloom_eggs_collected.5_description)",
+            "required_value": 25,
+            "renown": 600
          }
       ]
    },

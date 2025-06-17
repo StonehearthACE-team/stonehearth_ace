@@ -1,0 +1,39 @@
+{
+   "type": "recipe",
+   "effort": 55,
+   "work_units": 10,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.firstbloom.lamb_stew_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.firstbloom.lamb_stew_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.firstbloom.lamb_stew_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/firstbloom/lamb_stew/lamb_stew.png",
+   "workshop": "stonehearth_ace:cook:workbench_advanced",
+   "manual_unlock": true,
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "uri": "stonehearth:food:mutton",
+         "count": 2
+      },
+      {
+         "material": "butter cooking_ingredient",
+         "count": 1
+      },
+      {
+         "material": "food_container raw_food vegetable hearty",
+         "count": 2
+      },
+      {
+         "material": "raw_food fungi",
+         "count": 2
+      },
+      {
+         "material": "food_container raw_food vegetable savory",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:firstbloom:lamb_stew"
+      }
+   ]
+}

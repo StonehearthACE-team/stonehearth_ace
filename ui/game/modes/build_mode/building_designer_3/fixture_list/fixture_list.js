@@ -14,7 +14,8 @@ App.StonehearthBuildingFixtureListView = App.View.extend({
       furniture: true,
       workshops: true,
       storage: true,
-      window: true
+      window: true,
+      quest: true
    },
 
    init: function() {

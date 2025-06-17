@@ -85,8 +85,11 @@ end
 
 function HerbalistPlanterComponent:post_activate()
    if self._is_create then
-      self:set_harvest_enabled(self._json.harvest_enabled ~= false)
-      self:set_tend_enabled(self._json.tend_enabled ~= false)
+      local type = self._json.type or 'herb_planter'
+      local defaults = stonehearth.client_state:get_client_gameplay_setting(self._entity:get_player_id(), 'stonehearth_ace', 'default_behavior_' .. type)
+
+      self:set_harvest_enabled(self._json.harvest_enabled == true or defaults == 'harvest|no_tending' or defaults == 'harvest|tending')
+      self:set_tend_enabled(self._json.tend_enabled == true or defaults == 'no_harvest|tending' or defaults == 'harvest|tending')
    end
    
    --local render_info = self._entity:get_component('render_info')

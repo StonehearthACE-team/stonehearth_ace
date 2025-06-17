@@ -82,8 +82,13 @@
                "resistable": true
             },
             "fire": {
-               "uri": "stonehearth:buffs:archer:fire_arrow",
-               "chance": 0.25,
+               "uri": "stonehearth_ace:buffs:fire:on_fire",
+               "chance": 0.15,
+               "resistable": true
+            },
+            "fire_minor": {
+               "uri": "stonehearth_ace:buffs:fire:on_fire:minor",
+               "chance": 0.1,
                "resistable": true
             }
          }

@@ -1,0 +1,34 @@
+{
+   "type": "encounter",
+   "encounter_type": "wait",
+   "in_edge": "quest_entry",
+   "out_edge": "ongoing_quest_counter_add",
+   "can_start": {
+      "all_tests": {
+         "no_quests_active": {
+            "type": "deny_if_greater_than",
+            "item": "number_active",
+            "start_node": "quest_entry",
+            "end_node": "quest_cleanup",
+            "value": 1
+         },
+         "ongoing_quest": {
+            "type": "deny_if_greater_than",
+            "item": "counter",
+            "key": "ongoing_quest",
+            "value": 0
+         },
+         "recipe_check": {
+            "item": "script",
+            "type": "deny_if",
+            "value": true,
+            "script": "stonehearth_ace:game_master:script:recipes_unlocked_can_start"
+         }
+      }
+   },
+   "wait_info": {
+      "duration": "5m+5m",
+      "type": "all",
+      "recipe_list": "stonehearth_ace:data:recipe_list:firstbloom"
+   }
+}

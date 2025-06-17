@@ -1,0 +1,57 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(syrup_date.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      },
+      "stonehearth:stacks": {
+         "max_stacks": 2
+      }
+   },
+   "entity_data": {
+      "stonehearth:food_container": {
+         "effect": "fiddle",
+         "food": "stonehearth_ace:food:syrup_date:syrup_date_serving",
+         "stacks_per_serving": 1
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 9,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 1,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.syrup_date.syrup_date.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.syrup_date.syrup_date.description)",
+         "icon": "file(syrup_date.png)",
+         "is_item": true,
+         "category": "cooking_ingredient",
+         "material_tags": [
+            "food_container",
+            "stockpile_cooking_ingredient",
+            "cooking_ingredient",
+            "date",
+            "syrup",
+            "sweetener",
+            "other_ingredient",
+            "other_fluid",
+            "breakfast_time"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 4
+      }
+   }
+}

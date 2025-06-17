@@ -1,0 +1,15 @@
+{
+   "type": "command",
+   "name": "stunt_growth_cancel",
+   "group": "stunt_growth",
+   "display_name": "i18n(stonehearth_ace:data.commands.transform.stunt_growth_cancel.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.transform.stunt_growth_cancel.description)",
+   "default_enabled": true,
+   "ordinal": 90,
+   "icon": "file(cancel.png)",
+   "action": "call",
+   "function": "stonehearth_ace:transform_command",
+   "args": [
+      "stunt_growth_cancel"
+   ]
+}

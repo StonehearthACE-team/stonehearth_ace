@@ -564,6 +564,17 @@
             }
          }
       },
+      "firstbloom": {
+         "values": {
+            "celebration": {
+               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.firstbloom.values.celebration.display_name)",
+               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.firstbloom.values.celebration.tooltip)",
+               "duration": "1d",
+               "happiness_delta": 15,
+               "stackable": false
+            }
+         }
+      },
       "frostfeast": {
          "values": {
             "celebration": {
@@ -841,9 +852,9 @@
                "duration": "12h",
                "stackable": false
             },
-            "merry_time_frostfeast": {
-               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.eating.merry_time_frostfeast.display_name)",
-               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.eating.merry_time_frostfeast.tooltip)",
+            "merry_time_firstbloom": {
+               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.eating.merry_time_firstbloom.display_name)",
+               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.eating.merry_time_firstbloom.tooltip)",
                "happiness_delta": 25,
                "duration": "8h",
                "stackable": false
@@ -851,6 +862,13 @@
             "merry_time_candledark": {
                "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.eating.merry_time_candledark.display_name)",
                "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.eating.merry_time_candledark.tooltip)",
+               "happiness_delta": 25,
+               "duration": "8h",
+               "stackable": false
+            },
+            "merry_time_frostfeast": {
+               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.eating.merry_time_frostfeast.display_name)",
+               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.eating.merry_time_frostfeast.tooltip)",
                "happiness_delta": 25,
                "duration": "8h",
                "stackable": false

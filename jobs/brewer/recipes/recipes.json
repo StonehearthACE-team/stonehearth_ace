@@ -70,6 +70,9 @@
             "coffee_ground": {
                "recipe": "file(coffee_ground_recipe.json)"
             },
+            "syrup_date": {
+               "recipe": "file(syrup_date_recipe.json)"
+            },
             "unfermented_vinegar_juice_recipe": {
                "recipe": "file(unfermented_vinegar_juice_recipe.json)"
             },
@@ -220,6 +223,9 @@
             "liquor": {
                "recipe": "file(liquor_recipe.json)"
             },
+            "brandy_fruit": {
+               "recipe": "file(brandy_fruit_recipe.json)"
+            },
             "spirit_hearth": {
                "recipe": "file(spirit_hearth_recipe.json)"
             },
@@ -322,6 +328,9 @@
             "liquor_serving_keg": {
                "recipe": "file(liquor_serving_keg_recipe.json)"
             },
+            "brandy_fruit_serving_keg": {
+               "recipe": "file(brandy_fruit_serving_keg_recipe.json)"
+            },
             "mead_serving_pitcher": {
                "recipe": "file(mead_serving_pitcher_recipe.json)"
             },
@@ -366,6 +375,18 @@
          "recipes": {
             "wooden_sign_brewer": {
                "recipe": "file(wooden_sign_brewer_recipe.json)"
+            }
+         }
+      },
+      "firstbloom": {
+         "ordinal": 2,
+         "name": "i18n(stonehearth_ace:jobs.common.recipes.firstbloom_name)",
+         "recipes": {
+            "firstbloom_spring_tea": {
+               "recipe": "file(firstbloom/spring_tea_recipe.json)"
+            },
+            "firstbloom_fruit_punch": {
+               "recipe": "file(firstbloom/fruit_punch_recipe.json)"
             }
          }
       },

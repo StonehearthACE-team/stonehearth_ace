@@ -8,17 +8,20 @@
             "stonehearth_ace:armor:offhand_placeholder": true
          },
          "injected_buffs": [
-            "stonehearth_ace:buffs:weapons:offhand"
+            "stonehearth_ace:buffs:using_offhand"
          ],
          "equipment_types": [
             "offhand"
          ]
       },
       "mob": {
-         "model_origin": { "x": 0, "y": 0.4, "z": 0 }
+         "model_origin": { "x": -0.05, "y": 0.4, "z": 0 }
       }
    },
    "entity_data": {
+      "stonehearth:combat:idle:ready": {
+         "name": "combat_dw_idle"
+      },
       "stonehearth:combat:weapon_data": {
          "muscle_multiplier": 0.6
       },

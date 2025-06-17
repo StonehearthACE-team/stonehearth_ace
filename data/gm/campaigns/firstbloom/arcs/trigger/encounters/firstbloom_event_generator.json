@@ -1,0 +1,15 @@
+{
+   "type": "encounter",
+   "encounter_type": "generator",
+   "in_edge": "firstbloom_event_generator",
+   "generator_info": {
+      "delay": "4h+6h",
+      "spawn_edge": {
+         "type": "trigger_many",
+         "out_edges": [
+            "quest_entry",
+            "final_egg_hunt_dialogue"
+         ]
+      }
+   }
+}

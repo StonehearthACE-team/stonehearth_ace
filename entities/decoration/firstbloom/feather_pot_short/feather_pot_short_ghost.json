@@ -1,0 +1,93 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(feather_pot_short_base_1.qb)",
+                     "file(feather_pot_short_base_2.qb)",
+                     "file(feather_pot_short_base_3.qb)",
+                     "file(feather_pot_short_base_4.qb)",
+                     "file(feather_pot_short_base_5.qb)",
+                     "file(feather_pot_short_base_6.qb)",
+                     "file(feather_pot_short_base_7.qb)"
+                  ]
+               },
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(feathers_a_1.qb)",
+                     "file(feathers_a_2.qb)",
+                     "file(feathers_a_3.qb)",
+                     "file(feathers_a_4.qb)",
+                     "file(feathers_a_5.qb)",
+                     "file(feathers_a_6.qb)",
+                     "file(feathers_a_7.qb)"
+                  ]
+               },
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(feathers_b_1.qb)",
+                     "file(feathers_b_2.qb)",
+                     "file(feathers_b_3.qb)",
+                     "file(feathers_b_4.qb)",
+                     "file(feathers_b_5.qb)",
+                     "file(feathers_b_6.qb)",
+                     "file(feathers_b_7.qb)"
+                  ]
+               },
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(feathers_c_1.qb)",
+                     "file(feathers_c_2.qb)",
+                     "file(feathers_c_3.qb)",
+                     "file(feathers_c_4.qb)",
+                     "file(feathers_c_5.qb)",
+                     "file(feathers_c_6.qb)",
+                     "file(feathers_c_7.qb)"
+                  ]
+               },
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(feathers_d_1.qb)",
+                     "file(feathers_d_2.qb)",
+                     "file(feathers_d_3.qb)",
+                     "file(feathers_d_4.qb)",
+                     "file(feathers_d_5.qb)",
+                     "file(feathers_d_6.qb)",
+                     "file(feathers_d_7.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.1
+      },
+      "mob": {
+         "model_origin": { "x": 0.45, "y": 0, "z": 0.45 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.decoration.firstbloom.feather_pot_short.display_name)",
+         "description": "i18n(stonehearth_ace:entities.decoration.firstbloom.feather_pot_short.description)",
+         "icon": "file(feather_pot_short.png)",
+         "category": "decoration",
+         "material_tags": [
+            "decoration",
+            "fancy",
+            "stockpile_decoration",
+            "festival",
+            "firstbloom"
+         ]
+      }
+   }
+}

@@ -1,0 +1,44 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(syrup_date_serving.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "food",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth:food": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 55,
+            "drink_satisfaction": 25
+         },
+         "default": {
+            "satisfaction": 45,
+            "drink_satisfaction": 15
+         },
+         "applied_buffs": [
+            "stonehearth_ace:buffs:consumption:sweet_energy"
+         ],
+         "quality": 3
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.syrup_date.syrup_date_serving.display_name)",
+         "description": "",
+         "material_tags": [
+            "food",
+            "syrup_date_serving",
+            "vegetarian",
+            "breakfast_time"
+         ],
+         "subject_override": "stonehearth_ace:food:syrup_date"
+      }
+   }
+}

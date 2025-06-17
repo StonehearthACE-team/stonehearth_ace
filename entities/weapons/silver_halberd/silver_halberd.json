@@ -39,7 +39,7 @@
             "effect": "combat_2h_attack",
             "active_frame": 21,
             "cooldown": 0,
-            "priority": 2,
+            "priority": 1,
             "aggro_multiplier": 3.0,
             "aoe_effect": {
                "aoe_range": 27,
@@ -54,7 +54,7 @@
             "effect": "combat_1h_thrust",
             "active_frame": 16,
             "cooldown": 0,
-            "priority": 0,
+            "priority": 1,
             "aggro_multiplier": 3.0,
             "aoe_effect": {
                "aoe_range": 27,
@@ -62,6 +62,29 @@
                "minimum_damage": 0,
                "aggro_addition": 100,
                "aoe_target_limit": 16
+            }
+         },
+         {
+            "name": "sweep_off_3",
+            "effect": "combat_1h_forehand_spin",
+            "active_frame": 21,
+            "cooldown": 12000,
+            "priority": 2,
+            "inflictable_debuffs": {
+               "swept_off": {
+                  "uri": "stonehearth_ace:buffs:swept_off",
+                  "chance": 1
+               }
+            },
+            "aoe_effect": {
+               "aoe_range": 6,
+               "damage_multiplier": 0.75,
+               "inflictable_debuffs": {
+                  "swept_off": {
+                     "uri": "stonehearth_ace:buffs:swept_off",
+                     "chance": 0.8
+                  }
+               }
             }
          }
       ],

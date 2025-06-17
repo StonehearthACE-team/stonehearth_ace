@@ -2,6 +2,7 @@
 
 -- Service that ticks once per hour to decay food.
 local rng = _radiant.math.get_default_rng()
+local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_lib'
 
 FoodDecayService = class()
 
@@ -201,6 +202,7 @@ function FoodDecayService:_convert_to_rotten_form(entity, rotten_alias)
          inventory = stonehearth.inventory:get_inventory(player_id)
          location = radiant.entities.get_world_grid_location(entity)
          rotten_entity = radiant.entities.create_entity(rotten_alias, { owner = player_id })
+         item_quality_lib.copy_quality(entity, rotten_entity)
          if not location then
             -- if no location, is it in storage?
             local storage = inventory and inventory:container_for(entity)

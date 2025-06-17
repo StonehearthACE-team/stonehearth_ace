@@ -35,11 +35,11 @@
       },
       "stonehearth:combat:melee_attacks": [
          {
-            "name": "combat_1h_forehand",
-            "effect": "combat_1h_forehand",
-            "active_frame": 16,
-            "cooldown": 0,
-            "priority": 0
+            "name": "combat_1h_riposte_slash",
+            "effect": "combat_1h_riposte_slash",
+            "active_frame": 37,
+            "cooldown": 6000,
+            "priority": 2
          }
       ],
       "stonehearth:combat:melee_defenses": [
@@ -47,9 +47,9 @@
             "name": "combat_dw_parry",
             "effect": "combat_dw_parry",
             "active_frame": 5,
-            "cooldown": 4000,
-            "priority": 0,
-            "chance_of_success": 0.15
+            "cooldown": 1000,
+            "priority": 1,
+            "chance_of_success": 0.1
          }
       ],
       "stonehearth:net_worth": {

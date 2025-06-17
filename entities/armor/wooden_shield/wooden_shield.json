@@ -3,6 +3,7 @@
       "stonehearth:equipment_piece": {
          "slot": "leftArm",
          "render_type": "attach_to_bone",
+         "ilevel": 1.3,
          "postures": [
             "stonehearth:guarding"
          ],
@@ -29,6 +30,19 @@
       }
    },
    "entity_data": {
+      "mixintypes": {
+         "stonehearth:combat:melee_defenses": "override"
+      },
+      "stonehearth:combat:melee_defenses": [
+         {
+            "name": "ace_simple_shield_block",
+            "effect": "combat_1h_shield_block",
+            "active_frame": 4,
+            "cooldown": 4000,
+            "priority": 0,
+            "chance_of_success": 0.3
+         }
+      ],
       "stonehearth:catalog": {
          "material_tags": [
             "wood",

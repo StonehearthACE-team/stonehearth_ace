@@ -1,0 +1,48 @@
+{
+   "type": "effect",
+   "tracks": {
+      "cubemitter": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/fire/on_fire/fire.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0, "y": 0.8, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "embers": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/fire/on_fire/fire_embers.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0, "y": 1, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "ignite_sound": {
+         "type": "sound_effect",
+         "start_time": 0,
+         "min_distance": 25,
+         "falloff": 3,
+         "volume": 60,
+         "track": "stonehearth:sounds:firearrow_hit"
+      },
+      "crackle_sound": {
+         "type": "sound_effect",
+         "loop": true,
+         "start_time": 300,
+         "min_distance": 40,
+         "falloff": 2.5,
+         "volume": 30,
+         "track": "stonehearth:sounds:firearrow_burn"
+      },
+      "light": {
+         "type": "light",
+         "light": "/stonehearth/data/horde/animatedlights/fire/fire.animatedlight.json",
+         "transforms": { "x": 0, "y": 1.0, "z": 0 },
+         "shadows": false
+      }
+   }
+}

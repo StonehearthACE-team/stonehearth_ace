@@ -1,0 +1,51 @@
+{
+   "type": "entity",
+   "mixins": "file(daffodil_plant_ghost.json)",
+   "components": {
+      "stonehearth:resource_node": {
+         "resource": "stonehearth_ace:resources:herb:daffodil:yellow",
+         "category": "plucking",
+         "harvest_overlay_effect": "stonehearth:effects:harvest_plant_overlay_effect",
+         "resource_spawn_effect": "stonehearth:effects:harvest_plants_effect",
+         "description": "harvest_plant",
+         "resource_loot_table": {
+            "entries": {
+               "optional": {
+                  "items": {
+                     "none": {
+                        "uri": "",
+                        "weight": 1
+                     },
+                     "white_herb": {
+                        "uri": "stonehearth_ace:resources:herb:daffodil:white",
+                        "weight": 1
+                     },
+                     "orange_herb": {
+                        "uri": "stonehearth_ace:resources:herb:daffodil:orange",
+                        "weight": 3
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(daffodil_plant_iconic.json)",
+         "ghost_form": "file(daffodil_plant_ghost.json)",
+         "placeable_on_ground": true
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 5,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 5
+      }
+   }
+}

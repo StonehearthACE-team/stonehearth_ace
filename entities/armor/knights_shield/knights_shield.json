@@ -1,7 +1,4 @@
 {
-   "mixins": [
-      "stonehearth_ace:mixins:armor:heavy_shield"
-   ],
 	"type": "entity",
    "components": {
       "model_variants": {
@@ -14,9 +11,42 @@
             ]
          }
       },
-      "stonehearth:equipment_piece": {}
+      "stonehearth:equipment_piece": {
+         "slot": "leftArm",
+         "render_type": "attach_to_bone",
+         "ilevel": 4.8,
+         "postures": [
+            "stonehearth:guarding"
+         ],
+         "additional_equipment": {
+            "stonehearth_ace:armor:offhand_placeholder": true
+         },
+         "injected_buffs": [
+            "stonehearth_ace:buffs:shield_heavy"
+         ],
+         "equipment_types": [
+            "shield",
+            "heavy_shield"
+         ]
+      },
+      "mob": {
+         "model_origin": { "x": -0.02, "y": 0, "z": 0.02 }
+      }
 	},
    "entity_data": {
+      "mixintypes": {
+         "stonehearth:combat:melee_defenses": "override"
+      },
+      "stonehearth:combat:melee_defenses": [
+         {
+            "name": "knight_shield_block",
+            "effect": "combat_1h_shield_heavy_block",
+            "active_frame": 4,
+            "cooldown": 6000,
+            "priority": 2,
+            "chance_of_success": 0.8
+         }
+      ],
       "stonehearth:catalog": {
          "material_tags":["iron", "shield", "heavy_shield", "heavy_armor", "knights_shield"],
          "icon": "file(knights_shield.png)"

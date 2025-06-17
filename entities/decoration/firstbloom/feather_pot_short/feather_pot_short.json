@@ -1,0 +1,41 @@
+{
+   "type": "entity",
+   "mixins": "file(feather_pot_short_ghost.json)",
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(feather_pot_short_iconic.json)",
+         "ghost_form": "file(feather_pot_short_ghost.json)",
+         "placeable_on_ground": true
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 3, "z": 1 }
+            }
+         ]
+      },
+      "stonehearth_ace:transform": {}
+   },
+   "entity_data": {
+      "stonehearth_ace:transform_data": {
+         "transform_uri": "stonehearth_ace:decoration:firstbloom:feather_pot:short",
+         "command": "stonehearth_ace:commands:transform:swap_model_variant_transform",
+         "auto_request": false
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 20,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 23
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

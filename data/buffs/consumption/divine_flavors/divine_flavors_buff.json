@@ -7,23 +7,15 @@
    "duration": "4h",
    "repeat_add_action": "renew_duration",
    "modifiers": {
-      "muscle": {
-         "add": 10
+      "mind": {
+         "add": 1
       },
-      "stamina": {
-         "add": 10
+      "body": {
+         "add": 1
       },
-      "additive_guts_subtraction_modifier": {
-         "add": -6
+      "multiplicative_work_rate_modifier": {
+         "multiply": 2
       }
-   },
-   "script": "stonehearth:buff_scripts:periodic_health_modification",
-   "script_info": {
-      "health_change": 0.1,
-      "pulse": "30m",
-      "pulse_immediately": true,
-      "pulse_on_destroy": true,
-      "is_percentage": true
    },
    "gained_statistics_key": "divine_flavors"
 }

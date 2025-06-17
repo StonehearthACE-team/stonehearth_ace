@@ -1,0 +1,39 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.swept_off.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.swept_off.description)",
+   "icon": "file(swept_off.png)",
+   "duration": "3m+5m",
+   "cant_affect_siege": true,
+   "repeat_add_action": "renew_duration",
+   "can_only_affect": [
+      "goblin",
+      "skeleton",
+      "zombie",
+      "mummy",
+      "ogre",
+      "kobold",
+      "orc",
+      "vampire",
+      "hearthling",
+      "dwarf",
+      "rabbit_biped",
+      "elf"
+   ],
+   "modifiers": {
+      "speed": {
+         "max": 0
+      },
+      "multiplicative_armor_modifier": {
+         "max": 0
+      }
+   },
+   "buff_added_on_expire": "stonehearth_ace:buffs:swept_off:cooldown",
+   "effect": "stonehearth_ace:effects:hit_sparks:swept_off",
+   "injected_ai": {
+      "actions": [
+         "stonehearth_ace:actions:compelled_behaviors:swept_off"
+      ]
+   }
+}

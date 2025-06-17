@@ -1,0 +1,28 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "category": "consumption_merry_time",
+   "unique_in_category": true,
+   "rank": 4,
+   "display_name": "i18n(stonehearth_ace:data.buffs.firstbloom.merry_time.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.firstbloom.merry_time.description)",
+   "icon": "file(merry_time_firstbloom_buff.png)",
+   "duration": "8h",
+   "repeat_add_action": "renew_duration",
+   "thought": "stonehearth_ace:thoughts:eating:merry_time_firstbloom",
+   "modifiers": {
+      "xp_multiplier": {
+         "add": 0.1
+      },
+      "diligence": {
+         "add": 15
+      },
+      "speed": {
+         "add": 8
+      },
+      "additive_heal_received_modifier": {
+         "add": 0.5
+      }
+   },
+   "disallowed_buffs": []
+}

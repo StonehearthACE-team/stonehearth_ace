@@ -1,0 +1,21 @@
+{
+   "type": "encounter",
+   "encounter_type": "set_counters",
+   "in_edge": "ongoing_quest_counter_add",
+   "out_edge": {
+      "type": "trigger_one",
+      "out_edges": [
+         "preparation_quest",
+         "preparation_quest_2",
+         "preparation_quest_3",
+         "preparation_quest_4",
+         "preparation_quest_5",
+         "preparation_quest_6"
+      ]
+   },
+   "set_counters_info": {
+      "counters": {
+         "ongoing_quest": 1
+      }
+   }
+}

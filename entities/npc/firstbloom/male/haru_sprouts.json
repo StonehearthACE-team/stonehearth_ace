@@ -1,0 +1,35 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth_ace:mixins:base_rabbit_biped_npc",
+   "components": {
+      "render_info": {
+         "animation_table": "stonehearth:skeletons:rabbit_biped"
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(haru_sprouts.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.npc.firstbloom.male.haru_sprouts.display_name)",
+         "description": "i18n(stonehearth_ace:entities.npc.firstbloom.male.haru_sprouts.description)",
+         "icon": "file(haru_sprouts.png)"
+      },
+      "stonehearth:ai_packs": {
+         "packs": [
+            "stonehearth:ai_pack:human",
+            "stonehearth:ai_pack:harvesting",
+            "stonehearth:ai_pack:restocking",
+            "stonehearth:ai_pack:sitting",
+            "stonehearth:ai_pack:free_time"
+         ],
+         "actions": [
+            "stonehearth:actions:celebrate:carouse_goblin"
+         ]
+      }
+   }
+}

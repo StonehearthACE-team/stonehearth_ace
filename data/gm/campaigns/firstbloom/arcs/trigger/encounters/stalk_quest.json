@@ -1,0 +1,20 @@
+{
+   "type": "encounter",
+   "encounter_type": "delivery_quest",
+   "in_edge": "stalk_quest",
+   "out_edge": "stalk_quest_dialogue",
+   "delivery_quest_info": {
+      "quest_storage_uri": "stonehearth_ace:containers:quest:firstbloom",
+      "title": "i18n(stonehearth_ace:data.gm.campaigns.firstbloom.stalk_quest.title)",
+      "dialog_title": "i18n(stonehearth_ace:data.gm.campaigns.firstbloom.stalk_quest.dialog_title)",
+      "text": "i18n(stonehearth_ace:data.gm.campaigns.firstbloom.stalk_quest.text)",
+      "requirements": [
+         {
+            "type": "give_item",
+            "uri": "stonehearth:resources:fiber:heirbloom_bundle",
+            "count": 8
+         }
+      ],
+      "abandon_out_edge": "abandon_confirmation_dialogue"
+   }
+}

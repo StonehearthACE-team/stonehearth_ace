@@ -1,0 +1,43 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(basket_decorative_eggs.qb)"
+                  ]
+               }
+            ]
+         },
+         "model1": {
+            "models": [
+               "file(basket_decorative_eggs.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.decoration.firstbloom.basket_decorative_eggs.display_name)",
+         "description": "i18n(stonehearth_ace:entities.decoration.firstbloom.basket_decorative_eggs.description)",
+         "icon": "file(basket_decorative_eggs.png)",
+         "category": "decoration",
+         "material_tags": [
+            "decoration",
+            "festival",
+            "firstbloom",
+            "crafted",
+            "fancy",
+            "woven",
+            "stockpile_decoration"
+         ]
+      }
+   }
+}

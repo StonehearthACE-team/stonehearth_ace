@@ -1,0 +1,57 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "category": "on_fire",
+   "unique_in_category": true,
+   "rank": 2,
+   "display_name": "i18n(stonehearth_ace:data.buffs.on_fire_buff.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.on_fire_buff.description)",
+   "icon": "file(on_fire_buff.png)",
+   "duration": "20m",
+   "effect": "stonehearth_ace:effects:debuff_added:fire_debuff",
+   "repeat_add_action": "stack_and_refresh",
+   "evolve_chance": 0.85,
+   "buff_evolve": "stonehearth_ace:buffs:fire:on_fire:major",
+   "max_stacks": 3,
+   "remove_stacks_on_expire": 1,
+   "leftover_buffs": {
+      "stonehearth_ace:buffs:wounds:light_burn": 1,
+      "stonehearth_ace:buffs:wounds:bad_burn": 0.4
+   },
+   "script": "stonehearth:buff_scripts:periodic_health_modification",
+   "script_info": {
+      "health_change": -16,
+      "pulse": "5m",
+      "pulse_immediately": false,
+      "pulse_on_destroy": true,
+      "buff_modifiers": {
+         "stonehearth_ace:buffs:weather:soaked": {
+            "health_change": {
+               "multiply": 0.6
+            }
+         },
+         "stonehearth_ace:buffs:weather:soaked:animal": {
+            "health_change": {
+               "multiply": 0.6
+            }
+         }
+      }
+   },
+   "modifiers": {
+      "courage": {
+         "multiply": 0.75
+      },
+      "menace": {
+         "multiply": 1.1
+      },
+      "willpower": {
+         "max": 0
+      }
+   },
+   "disallowed_categories": [
+      "weather_cold"
+   ],
+   "disallowed_buffs": [
+      "stonehearth_ace:buffs:weather:whiteout"
+   ]
+}

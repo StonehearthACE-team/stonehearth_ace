@@ -1,0 +1,38 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(planter_basket_window.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0.5, "y": -0.55, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "allow_vertical_adjacent": false
+      },
+      "render_info": {
+         "scale": 0.105
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.herbalist_planters.firstbloom.planter_basket_window.display_name)",
+         "description": "i18n(stonehearth_ace:entities.herbalist_planters.firstbloom.planter_basket_window.description)",
+         "icon": "file(planter_basket_window.png)",
+         "category": "herbalist_planter",
+         "material_tags": [
+            "crafted",
+            "firstbloom",
+            "festival",
+            "woven",
+            "comfy",
+            "herbalist_planter",
+            "tool",
+            "stockpile_tool"
+         ]
+      }
+   }
+}

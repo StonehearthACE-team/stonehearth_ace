@@ -1,0 +1,47 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(brandy_fruit_serving.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "drink",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth_ace:drink": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 110
+         },
+         "default": {
+            "satisfaction": 90
+         },
+         "applied_buffs": [
+            "stonehearth_ace:buffs:consumption:jolly_time",
+            "stonehearth_ace:buffs:consumption:serenity",
+            "stonehearth_ace:buffs:consumption:light_headed",
+            "stonehearth_ace:buffs:consumption:light_headed"
+         ],
+         "quality": 6,
+         "effect_loops": 3
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.drink.brandy_fruit.brandy_fruit_serving.display_name)",
+         "description": "i18n(stonehearth_ace:entities.drink.brandy_fruit.brandy_fruit_serving.description)",
+         "material_tags": [
+            "drink",
+            "brandy_fruit_serving",
+            "brandy_fruit",
+            "alcoholic",
+            "night_time"
+         ],
+         "subject_override": "stonehearth_ace:drink:brandy_fruit"
+      }
+   }
+}

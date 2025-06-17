@@ -1,0 +1,107 @@
+{
+   "mixins": [
+      "stonehearth:mixins:item_properties"
+   ],
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "layer": "hat",
+            "transparent": "false",
+            "models": [
+               "file(firstbloom_rabbit_hat_field_work_outfit.qb)"
+            ]
+         },
+         "female": {
+            "layer": "hat",
+            "transparent": "false",
+            "models": [
+               "file(firstbloom_rabbit_hat_field_work_outfit_female.qb)"
+            ]
+         },
+         "rabbit_male": {
+            "layer": "hat",
+            "transparent": "false",
+            "models": [
+               "file(firstbloom_rabbit_hat_field_work_outfit_rabbit_male.qb)"
+            ]
+         },
+         "rabbit_female": {
+            "layer": "hat",
+            "transparent": "false",
+            "models": [
+               "file(firstbloom_rabbit_hat_field_work_outfit_rabbit_female.qb)"
+            ]
+         },
+         "orc_male": {
+            "layer": "hat",
+            "transparent": "false",
+            "models": [
+               "file(firstbloom_rabbit_hat_field_work_outfit_orc_male.qb)"
+            ]
+         },
+         "orc_female": {
+            "layer": "hat",
+            "transparent": "false",
+            "models": [
+               "file(firstbloom_rabbit_hat_field_work_outfit_orc_female.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(firstbloom_rabbit_hat_field_work_outfit_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "slot": "helmet",
+         "render_type": "merge_with_model",
+         "ilevel": 3,
+         "conditional_values": {
+            "season": {
+               "winter": -3,
+               "autumn": -1,
+               "spring": 3,
+               "summer": 0
+            }
+         },
+         "roles": [
+            "field_work",
+            "worker_job"
+         ],
+         "injected_buffs": [
+            "stonehearth_ace:buffs:firstbloom_cheer",
+            "stonehearth_ace:buffs:weather:chilly_resist",
+            "stonehearth_ace:buffs:weather:sunstroke_resist"
+         ],
+         "equip_effect": "stonehearth:effects:weapon_level_up",
+         "customization_changes": {
+            "head_hair": "[none]"
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 20,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:jobs.field_work.firstbloom.rabbit_hat.display_name)",
+         "description": "i18n(stonehearth_ace:jobs.field_work.firstbloom.rabbit_hat.description)",
+         "icon": "file(firstbloom_rabbit_hat_field_work_outfit.png)",
+         "category": "civillian_equipment",
+         "material_tags": [
+            "cloth",
+            "hat",
+            "field_work_outfit",
+            "worker_outfit",
+            "festival",
+            "firstbloom",
+            "civillian_equipment",
+            "stockpile_equipment"
+         ]
+      }
+   }
+}

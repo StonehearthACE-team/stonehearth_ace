@@ -1,0 +1,35 @@
+{
+   "type": "recipe",
+   "effort": 65,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.firstbloom.baklava_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.firstbloom.baklava_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.firstbloom.baklava_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/firstbloom/baklava/baklava.png",
+   "workshop": "stonehearth:cook:oven",
+   "work_effect": "work_wait",
+	"manual_unlock": true,
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:food:dough_flat",
+         "count": 2
+      },
+	   {
+         "material": "butter cooking_ingredient",
+         "count": 1
+      },
+      {
+         "material": "nut_basket cooking_ingredient",
+         "count": 2
+      },
+	   {
+         "material": "sweetener other_fluid cooking_ingredient",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:firstbloom:baklava"
+      }
+   ]
+}

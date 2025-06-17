@@ -1,5 +1,12 @@
 {
 	"mixins": [
 		"stonehearth_ace:mixins:inflicted_wounds:impact:very_easy"
-	]
+	],
+	"components": {
+		"stonehearth:buffs": {
+         "buffs": {
+            "stonehearth_ace:buffs:fire:resistance": true
+         	}
+      	}
+	}
 }

@@ -46,6 +46,8 @@ function AceLampComponent:_load_json()
       self._sv.light_origin = Point3.zero
    end
 
+   self._has_lamp_on_model = self._entity:get_component('model_variants'):get_variant('lamp_on') and true
+
    self._sv.light_radius = json.light_radius or stonehearth.constants.darkness.DEFAULT_LIGHT_RADIUS
 end
 
@@ -232,7 +234,9 @@ end
 function AceLampComponent:light_on()
    self._sv.is_lit = true
 
-   self._render_info:set_model_variant('lamp_on')
+   if self._has_lamp_on_model then
+      self._render_info:set_model_variant('lamp_on')
+   end
 
    if self._sv.light_effect and not self._running_effect then
       self._running_effect = radiant.effects.run_effect(self._entity, self._sv.light_effect);
@@ -250,7 +254,9 @@ end
 function AceLampComponent:light_off()
    self._sv.is_lit = false
 
-   self._render_info:set_model_variant('')
+   if self._has_lamp_on_model and self._render_info:get_model_variant() == 'lamp_on' then
+      self._render_info:set_model_variant('')
+   end
 
    if self._running_effect then
       self._running_effect:stop()

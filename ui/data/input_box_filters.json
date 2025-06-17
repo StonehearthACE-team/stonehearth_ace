@@ -466,6 +466,12 @@
                "icon": "/stonehearth_ace/entities/resources/herb/camellia_rare/camellia_rare.png",
                "filter": "resource herb camellia_rare"
             },
+            "daffodil": {
+               "ordinal": 2.812,
+               "display_name": "i18n(stonehearth_ace:entities.resources.herb.daffodil.display_name)",
+               "icon": "/stonehearth_ace/entities/resources/herb/daffodil_yellow/daffodil_yellow.png",
+               "filter": "resource herb daffodil"
+            },
             "foxlily": {
                "ordinal": 2.815,
                "display_name": "i18n(stonehearth_ace:entities.resources.herb.foxlily.display_name)",
@@ -642,52 +648,58 @@
          "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_dyes)",
          "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/dyes.png",
          "ordinal": 5.1,
-         "filter": "stockpile_plant dye",
+         "filter": "dye",
          "categories": {
-            "white_herbs": {
+            "firstbloom_spring_colors": {
                "ordinal": 1,
+               "display_name": "i18n(stonehearth_ace:entities.refined.dyes.firstbloom_spring_colors.display_name)",
+               "icon": "/stonehearth_ace/entities/refined/dyes/firstbloom/spring_colors.png",
+               "filter": "refined dye spring_colors"
+            },
+            "white_herbs": {
+               "ordinal": 2,
                "display_name": "i18n(stonehearth_ace:ui.data.constants.herb_white_resource_name)",
                "icon": "/stonehearth_ace/entities/resources/herb/herb_white_icon.png",
                "filter": "resource herb white"
             },
             "pink_herbs": {
-               "ordinal": 2,
+               "ordinal": 3,
                "display_name": "i18n(stonehearth_ace:ui.data.constants.herb_pink_resource_name)",
                "icon": "/stonehearth_ace/entities/resources/herb/herb_pink_icon.png",
                "filter": "resource herb pink"
             },
             "red_herbs": {
-               "ordinal": 3,
+               "ordinal": 4,
                "display_name": "i18n(stonehearth_ace:ui.data.constants.herb_red_resource_name)",
                "icon": "/stonehearth_ace/entities/resources/herb/herb_red_icon.png",
                "filter": "resource herb red"
             },
             "orange_herbs": {
-               "ordinal": 4,
+               "ordinal": 5,
                "display_name": "i18n(stonehearth_ace:ui.data.constants.herb_orange_resource_name)",
                "icon": "/stonehearth_ace/entities/resources/herb/herb_orange_icon.png",
                "filter": "resource herb orange"
             },
             "yellow_herbs": {
-               "ordinal": 5,
+               "ordinal": 6,
                "display_name": "i18n(stonehearth_ace:ui.data.constants.herb_yellow_resource_name)",
                "icon": "/stonehearth_ace/entities/resources/herb/herb_yellow_icon.png",
                "filter": "resource herb yellow"
             },
             "green_herbs": {
-               "ordinal": 6,
+               "ordinal": 7,
                "display_name": "i18n(stonehearth_ace:ui.data.constants.herb_green_resource_name)",
                "icon": "/stonehearth_ace/entities/resources/herb/herb_green_icon.png",
                "filter": "resource herb green"
             },
             "blue_herbs": {
-               "ordinal": 7,
+               "ordinal": 8,
                "display_name": "i18n(stonehearth_ace:ui.data.constants.herb_blue_resource_name)",
                "icon": "/stonehearth_ace/entities/resources/herb/herb_blue_icon.png",
                "filter": "resource herb blue"
             },
             "purple_herbs": {
-               "ordinal": 8,
+               "ordinal": 9,
                "display_name": "i18n(stonehearth_ace:ui.data.constants.herb_purple_resource_name)",
                "icon": "/stonehearth_ace/entities/resources/herb/herb_purple_icon.png",
                "filter": "resource herb purple"
@@ -1388,6 +1400,12 @@
                "display_name": "i18n(stonehearth_ace:entities.food.honey.honey.display_name)",
                "icon": "/stonehearth_ace/entities/food/honey/honey/honey.png",
                "filter": "cooking_ingredient honey standard"
+            },
+            "syrup_date": {
+               "ordinal": 2.3,
+               "display_name": "i18n(stonehearth_ace:entities.food.syrup_date.syrup_date.display_name)",
+               "icon": "/stonehearth_ace/entities/food/syrup_date/syrup_date/syrup_date.png",
+               "filter": "cooking_ingredient syrup date"
             },
             "egg": {
                "ordinal": 2.4,

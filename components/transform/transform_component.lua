@@ -312,6 +312,7 @@ function TransformComponent:transform(transformer)
       auto_harvest = transform_data.auto_harvest,
       auto_harvest_key = transform_data.auto_harvest_key,
       transform_script = transform_data.transform_script,
+      script_options = transform_data.script_options,
       kill_entity = transform_data.kill_entity,
       undeploy_entity = transform_data.undeploy_entity,
 		model_variant = transform_data.model_variant,
@@ -517,6 +518,58 @@ function TransformComponent:_meets_commmand_requirements(requirements)
 
       if not meets_requirement then
          return false
+      end
+   end
+
+   if requirements.upcoming_evolve_stage then
+      local meets_requirement = false
+      local evolve_data = radiant.entities.get_entity_data(self._entity, 'stonehearth:evolve_data')
+      local upcoming_stages = {}
+      local check_upcoming_stages
+
+      check_upcoming_stages = function(evolve_data) 
+                                       if evolve_data and evolve_data.next_stage then
+                                          local next_stages = {}
+                                          if type(evolve_data.next_stage) == 'string' then
+                                             table.insert(next_stages, evolve_data.next_stage)
+                                          else
+                                             for _, stage in ipairs(evolve_data.next_stage) do
+                                                table.insert(next_stages, stage)
+                                             end
+                                          end
+                                          for _, next_stage in ipairs(next_stages) do
+                                             local next_stage_evolve_data = radiant.entities.get_entity_data(next_stage, 'stonehearth:evolve_data')
+                                             if next_stage_evolve_data and next_stage_evolve_data.next_stage then
+                                                if next_stage_evolve_data.current_stage then
+                                                   table.insert(upcoming_stages, next_stage_evolve_data.current_stage)
+                                                end
+                                                check_upcoming_stages(next_stage_evolve_data)
+                                             end
+                                          end
+                                       end
+                                    end
+
+      check_upcoming_stages(evolve_data)
+      for _, stage_name in ipairs(upcoming_stages) do
+         if requirements.upcoming_evolve_stage == stage_name then
+            meets_requirement = true
+            break
+         end
+      end
+
+      if not meets_requirement then
+         return false
+      end
+   end
+
+   if requirements.transform_component_data then
+      for component, data_present in pairs(requirements.transform_component_data) do
+         local data = self:get_component_data(component)
+         local has_data = data and next(data) ~= nil or false
+
+         if has_data ~= data_present then
+            return false
+         end
       end
    end
 

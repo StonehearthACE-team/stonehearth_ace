@@ -1,0 +1,55 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(sweet_loaf_serving.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "color_map": "stonehearth_ace:color_map:ace",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "food",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth:food": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 100,
+            "drink_satisfaction": 10
+         },
+         "default": {
+            "satisfaction": 85,
+            "drink_satisfaction": 5
+         },
+         "applied_buffs": [
+            "stonehearth_ace:buffs:consumption:merry_time:firstbloom",
+            "stonehearth_ace:buffs:consumption:fruity_flavors",
+            "stonehearth_ace:buffs:consumption:baked_goodness"
+         ],
+         "quality": 6
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.firstbloom.sweet_loaf.serving.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.firstbloom.sweet_loaf.serving.description)",
+         "material_tags": [
+            "food",
+            "baked",
+            "sweet_loaf_serving",
+            "prepared_dessert",
+            "sweet_loaf",
+            "vegetarian",
+            "breakfast_time"
+         ],
+         "subject_override": "stonehearth_ace:food:firstbloom:sweet_loaf"
+      }
+   }
+}

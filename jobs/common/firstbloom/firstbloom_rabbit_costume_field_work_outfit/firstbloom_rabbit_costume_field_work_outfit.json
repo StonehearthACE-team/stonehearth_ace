@@ -1,0 +1,103 @@
+{
+   "mixins": [
+      "stonehearth:mixins:item_properties"
+   ],
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "layer": "clothing",
+            "transparent": "false",
+            "models": [
+               "file(firstbloom_rabbit_costume_field_work_outfit.qb)"
+            ]
+         },
+         "female": {
+            "layer": "clothing",
+            "transparent": "false",
+            "models": [
+               "file(firstbloom_rabbit_costume_field_work_outfit_female.qb)"
+            ]
+         },
+         "rabbit_male": {
+            "layer": "clothing",
+            "transparent": "false",
+            "models": [
+               "file(firstbloom_rabbit_costume_field_work_outfit_rabbit_male.qb)"
+            ]
+         },
+         "rabbit_female": {
+            "layer": "clothing",
+            "transparent": "false",
+            "models": [
+               "file(firstbloom_rabbit_costume_field_work_outfit_rabbit_female.qb)"
+            ]
+         },
+         "orc_male": {
+            "layer": "clothing",
+            "transparent": "false",
+            "models": [
+               "file(firstbloom_rabbit_costume_field_work_outfit_orc_male.qb)"
+            ]
+         },
+         "orc_female": {
+            "layer": "clothing",
+            "transparent": "false",
+            "models": [
+               "file(firstbloom_rabbit_costume_field_work_outfit_orc_female.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(firstbloom_rabbit_costume_field_work_outfit_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "slot": "torso",
+         "render_type": "merge_with_model",
+         "ilevel": 2,
+         "conditional_values": {
+            "season": {
+               "winter": -3,
+               "autumn": -1,
+               "spring": 3,
+               "summer": 0
+            }
+         },
+         "roles": [
+            "field_work",
+            "worker_job"
+         ],
+         "injected_buffs": [
+            "stonehearth_ace:buffs:firstbloom_cheer",
+            "stonehearth_ace:buffs:weather:cold_resist"
+         ],
+         "equip_effect": "stonehearth:effects:weapon_level_up"
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 39,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:jobs.field_work.firstbloom.rabbit_costume.display_name)",
+         "description": "i18n(stonehearth_ace:jobs.field_work.firstbloom.rabbit_costume.description)",
+         "icon": "file(firstbloom_rabbit_costume_field_work_outfit.png)",
+         "category": "civillian_equipment",
+         "material_tags": [
+            "cloth",
+            "torso",
+            "field_work_outfit",
+            "worker_outfit",
+            "festival",
+            "firstbloom",
+            "civillian_equipment",
+            "stockpile_equipment"
+         ]
+      }
+   }
+}

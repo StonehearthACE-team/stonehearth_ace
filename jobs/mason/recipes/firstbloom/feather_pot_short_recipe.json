@@ -1,0 +1,39 @@
+{
+   "type": "recipe",
+   "effort": 20,
+   "work_units": 20,
+   "recipe_name": "i18n(stonehearth_ace:jobs.mason.recipes.firstbloom.feather_pot_short_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.mason.recipes.firstbloom.feather_pot_short_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.mason.recipes.firstbloom.feather_pot_short_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/firstbloom/feather_pot_short/feather_pot_short.png",
+   "workshop": "stonehearth:mason:pedestal",
+   "level_requirement": 3,
+   "manual_unlock": true,
+   "ingredients": [
+      {
+         "material": "stone resource",
+         "count": 2
+      },
+            {
+         "material": "wood resource",
+         "count": 1
+      },
+                  {
+         "material": "thread resource",
+         "count": 1
+      },
+      {
+         "material": "feather resource",
+         "count": 2
+      },
+      {
+         "uri": "stonehearth_ace:refined:dyes:firstbloom:spring_colors",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:firstbloom:feather_pot:short"
+      }
+   ]
+}

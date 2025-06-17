@@ -1,0 +1,15 @@
+{
+   "type": "command",
+   "name": "stunt_growth_3",
+   "group": "stunt_growth",
+   "display_name": "i18n(stonehearth_ace:data.commands.transform.stunt_growth_3.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.transform.stunt_growth_3.description)",
+   "default_enabled": true,
+   "ordinal": 93,
+   "icon": "file(stunt_growth_3.png)",
+   "action": "call",
+   "function": "stonehearth_ace:transform_command",
+   "args": [
+      "stunt_3"
+   ]
+}

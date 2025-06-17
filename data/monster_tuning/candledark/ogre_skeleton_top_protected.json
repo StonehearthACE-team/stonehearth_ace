@@ -1,0 +1,20 @@
+{
+   "type": "monster_tuning",
+   "mixins": [
+      "stonehearth_ace:monster_tuning:candledark:ogre_skeleton:protected"
+   ],
+   "loot_drops": {
+      "entries": {
+         "items": {
+            "num_rolls": {
+               "max": 2
+            },
+            "items": {
+               "stone": {
+                  "uri": "stonehearth_ace:loot_bag:candledark:top"
+               }
+            }
+         }
+      }
+   }
+}

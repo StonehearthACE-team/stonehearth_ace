@@ -16,7 +16,7 @@
             "type": "deny_if_less_than",
             "item": "counter",
             "key": "invasions_defeated",
-            "value": 18
+            "value": 20
          }
       }
    },
@@ -39,13 +39,8 @@
                "from_population": {
                   "min": 1,
                   "max": 2
-               }
-            },
-            "ghosts": {
-               "from_population": {
-                  "min": 0,
-                  "max": 0
-               }
+               },
+               "tuning": "stonehearth_ace:monster_tuning:candledark:skeleton:top:protected"
             },
             "mummies": {
                "from_population": {
@@ -57,13 +52,15 @@
                "from_population": {
                   "min": 1,
                   "max": 1
-               }
+               },
+               "tuning": "stonehearth_ace:monster_tuning:candledark:vampire:top"
             },
             "protected_vampires": {
                "from_population": {
                   "min": 1,
                   "max": 1
-               }
+               },
+               "tuning": "stonehearth_ace:monster_tuning:candledark:vampire:top:protected"
             },
             "vampire_thralls": {
                "from_population": {
@@ -75,48 +72,27 @@
                "from_population": {
                   "min": 0,
                   "max": 1
-               }
+               },
+               "tuning": "stonehearth_ace:monster_tuning:candledark:necromancer:top"
             },
             "protected_necromancers": {
                "from_population": {
                   "min": 1,
                   "max": 1
-               }
-            },
-            "wolf_skeletons": {
-               "from_population": {
-                  "min": 0,
-                  "max": 0
-               }
-            },
-            "ogre_skeletons": {
-               "from_population": {
-                  "min": 0,
-                  "max": 0
-               }
+               },
+               "tuning": "stonehearth_ace:monster_tuning:candledark:necromancer:top:protected"
             },
             "protected_ogre_skeletons": {
                "from_population": {
                   "min": 0,
                   "max": 2
-               }
+               },
+               "tuning": "stonehearth_ace:monster_tuning:candledark:ogre_skeleton:top:protected"
             },
             "zombie_goblins": {
                "from_population": {
                   "min": 0,
                   "max": 4
-               }
-            },
-            "pumplings": {
-               "from_population": {
-                  "min": 0,
-                  "max": 0
-               }
-            },
-            "bats": {
-               "from_population": {
-                  "min": 0,
-                  "max": 0
                }
             },
             "spiders": {
@@ -129,13 +105,15 @@
                "from_population": {
                   "min": 1,
                   "max": 2
-               }
+               },
+               "tuning": "stonehearth_ace:monster_tuning:candledark:spider:top:protected"
             },
             "witches": {
                "from_population": {
                   "min": 1,
                   "max": 1
-               }
+               },
+               "tuning": "stonehearth_ace:monster_tuning:candledark:witch:top"
             }
          }
       }

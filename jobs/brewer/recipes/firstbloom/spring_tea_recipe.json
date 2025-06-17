@@ -1,0 +1,40 @@
+{
+   "type": "recipe",
+   "effort": 42,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.brewer.recipes.firstbloom.spring_tea_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.brewer.recipes.firstbloom.spring_tea_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.brewer.recipes.firstbloom.spring_tea_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/drink/firstbloom/spring_tea/spring_tea.png",
+   "level_requirement": 3,
+	"manual_unlock": true,
+   "workshop": "stonehearth_ace:brewer:kettle",
+	"work_effect": "brewer_stirring",
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:drink:tea_leaves:fresh",
+         "count": 4
+      },
+      {
+         "material": "herb soothing resource",
+         "count": 2
+      },
+      {
+         "material": "herb peculiar resource",
+         "count": 2
+      },
+      {
+         "uri": "stonehearth_ace:landmark:terrain:water_bucket",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth:decoration:amberstone_teapot",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:drink:firstbloom:spring_tea"
+      }
+   ]
+}

@@ -1,0 +1,40 @@
+{
+   "type": "encounter",
+   "encounter_type": "delivery_quest",
+   "in_edge": "initial_preparation_quest",
+   "out_edge": "initial_preparation_quest_dialogue",
+   "delivery_quest_info": {
+      "quest_storage_uri": "stonehearth_ace:containers:quest:firstbloom",
+      "title": "i18n(stonehearth_ace:data.gm.campaigns.firstbloom.initial_preparation_quest.title)",
+      "dialog_title": "i18n(stonehearth_ace:data.gm.campaigns.firstbloom.initial_preparation_quest.dialog_title)",
+      "text": "i18n(stonehearth_ace:data.gm.campaigns.firstbloom.initial_preparation_quest.text)",
+      "requirements": [
+         {
+            "type": "give_material",
+            "material": "cloth common resource",
+            "count": 1
+         },
+         {
+            "type": "give_material",
+            "material": "herb pink resource",
+            "count": 2
+         },
+         {
+            "type": "give_material",
+            "material": "herb blue resource",
+            "count": 2
+         },
+         {
+            "type": "give_material",
+            "material": "herb yellow resource",
+            "count": 2
+         },
+         {
+            "type": "give_material",
+            "material": "herb white resource",
+            "count": 2
+         }
+      ],
+      "abandon_out_edge": "stalk_quest_dialogue"
+   }
+}

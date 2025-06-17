@@ -1,0 +1,40 @@
+{
+   "type": "recipe",
+   "effort": 70,
+   "work_units": 10,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.firstbloom.sweet_loaf_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.firstbloom.sweet_loaf_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.firstbloom.sweet_loaf_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/firstbloom/sweet_loaf/sweet_loaf.png",
+   "workshop": "stonehearth_ace:cook:oven_advanced",
+   "work_effect": "work_wait",
+   "manual_unlock": true,
+   "level_requirement": 6,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:food:dough_sweet",
+         "count": 3
+      },
+      {
+         "material": "food_container raw_food fruit",
+         "count": 2
+      },
+      {
+         "uri": "stonehearth:food:sugar",
+         "count": 1
+      },
+      {
+         "material": "seasoning",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth_ace:decoration:firstbloom:decorative_egg:small",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:firstbloom:sweet_loaf"
+      }
+   ]
+}

@@ -320,6 +320,9 @@
 				},
 				"coffee_bush_seeds_recipe": {
 					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/coffee_bush_seeds_recipe.json"
+				},
+				"daffodil_seeds_recipe": {
+					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/daffodil_seeds_recipe.json"
 				}
 			}
 		},
@@ -550,6 +553,33 @@
 				},
 				"potion_last_stand": {
 					"recipe": "/stonehearth_ace/jobs/common/recipes/removed_recipe.json"
+				}
+			}
+		},
+		"firstbloom": {
+			"ordinal": 2,
+			"name": "i18n(stonehearth_ace:jobs.common.recipes.firstbloom_name)",
+			"recipes": {
+				"firstbloom_spring_colors": {
+					"recipe": "file(firstbloom/spring_colors_recipe.json)"
+				},
+				"firstbloom_decorative_egg_small": {
+					"recipe": "file(firstbloom/decorative_egg_small_recipe.json)"
+				},
+				"firstbloom_decorative_egg": {
+					"recipe": "file(firstbloom/decorative_egg_recipe.json)"
+				},
+				"firstbloom_decorative_egg_large": {
+					"recipe": "file(firstbloom/decorative_egg_large_recipe.json)"
+				},
+				"firstbloom_topiary_poyo_small": {
+					"recipe": "file(firstbloom/topiary_poyo_small_recipe.json)"
+				},
+				"firstbloom_topiary_poyo": {
+					"recipe": "file(firstbloom/topiary_poyo_recipe.json)"
+				},
+				"firstbloom_topiary_rabbit_folk": {
+					"recipe": "file(firstbloom/topiary_rabbit_folk_recipe.json)"
 				}
 			}
 		},

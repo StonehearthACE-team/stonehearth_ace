@@ -1,7 +1,4 @@
 {  
-   "mixins": [
-      "stonehearth_ace:mixins:armor:heavy_shield"
-   ],
 	"type": "entity",
    "components": {
       "model_variants": {
@@ -15,48 +12,76 @@
          }
       },
       "stonehearth:equipment_piece": {
+         "slot": "leftArm",
+         "render_type": "attach_to_bone",
+         "postures": [
+            "stonehearth:guarding"
+         ],
+         "additional_equipment": {
+            "stonehearth_ace:armor:offhand_placeholder": true
+         },
+         "injected_buffs": [
+            "stonehearth_ace:buffs:shield_heavy"
+         ],
+         "equipment_types": [
+            "shield",
+            "heavy_shield",
+            "legendary"
+         ],
          "required_job_level": 6,
-         "ilevel": 12
+         "ilevel": 15
+      },
+      "mob": {
+         "model_origin": { "x": -0.02, "y": 0, "z": 0.02 }
       }
    },
    "entity_data": {
       "stonehearth:buffs": {
          "inflictable_debuffs": {
             "fracture": {
-               "uri": "stonehearth_ace:buffs:major_shaken",
-               "chance": 1
+               "uri": "stonehearth_ace:buffs:shocked",
+               "chance": 0
             }
          }
       },
-	  "stonehearth:combat:weapon_data": {
+      "stonehearth:combat:armor_data": {
+         "base_damage_reduction": 14
+      },
+	   "stonehearth:combat:weapon_data": {
          "base_damage": 8,
          "reach": 1.5
       },
-	  "mixintypes": {
+	   "mixintypes": {
 		 "stonehearth:combat:melee_defenses": "override"
-	  },
+	   },
       "stonehearth:combat:melee_defenses": [
          {
             "name": "legendary_shield_block",
-            "effect": "combat_1h_shield_block",
+            "effect": "combat_1h_shield_heavy_block",
             "active_frame": 4,
-            "cooldown": 800,
-            "priority": 0,
-            "chance_of_success": 0.9
+            "cooldown": 6000,
+            "priority": 2,
+            "chance_of_success": 1
          }
       ],
-	  "stonehearth:combat:melee_attacks": [
+	   "stonehearth:combat:melee_attacks": [
          {
-            "name": "combat_1h_forehand",
-            "effect": "combat_1h_forehand",
-            "active_frame": 16,
-            "cooldown": 0,
-            "priority": 0
+            "name": "legendary_shield_bash",
+            "effect": "combat_shield_bash",
+            "active_frame": 21,
+            "cooldown": 25000,
+            "priority": 3,
+            "inflictable_debuffs": {
+               "shocked": {
+                  "uri": "stonehearth_ace:buffs:shocked",
+                  "chance": 0.6
+               }
+            }
          }
       ],
       "stonehearth:catalog": {
          "icon": "file(legendary_shield.png)",
-         "material_tags":["legendary", "shield", "heavy_armor", "ascendancy_made", "crafted", "stockpile_equipment"]
+         "material_tags": ["legendary", "shield", "heavy_armor", "ascendancy_made", "crafted", "stockpile_equipment"]
       }
    }
 }

@@ -1,0 +1,41 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "category": "on_fire",
+   "unique_in_category": true,
+   "rank": 4,
+   "display_name": "i18n(stonehearth_ace:data.buffs.chromatic_fire_buff.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.chromatic_fire_buff.description)",
+   "icon": "file(chromatic_fire_buff.png)",
+   "duration": "2h",
+   "effect": "stonehearth_ace:effects:debuff_added:chromatic_fire_debuff",
+   "repeat_add_action": "stack_and_refresh",
+   "max_stacks": 3,
+   "leftover_buffs": {
+      "stonehearth_ace:buffs:wounds:bad_burn": 1
+   },
+   "script": "stonehearth:buff_scripts:periodic_health_modification",
+   "script_info": {
+      "health_change": -35,
+      "pulse": "6m",
+      "pulse_immediately": true,
+      "pulse_on_destroy": true
+   },
+   "modifiers": {
+      "courage": {
+         "multiply": 0.2
+      },
+      "menace": {
+         "multiply": 1.2
+      },
+      "willpower": {
+         "multiply": 0.1
+      }
+   },
+   "disallowed_categories": [
+      "weather_cold"
+   ],
+   "disallowed_buffs": [
+      "stonehearth_ace:buffs:weather:whiteout"
+   ]
+}

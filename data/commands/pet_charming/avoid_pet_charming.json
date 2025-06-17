@@ -1,0 +1,13 @@
+{
+   "type": "command",
+   "name": "avoid_pet_charming",
+   "display_name": "i18n(stonehearth_ace:data.commands.avoid_pet_charming.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.avoid_pet_charming.description)",
+   "icon": "file(avoid_pet_charming.png)",
+   "ordinal": -50,
+   "action": "call",
+   "function": "stonehearth_ace:allow_pet_charming_for_entity",
+   "args": [
+      false
+   ]
+}
