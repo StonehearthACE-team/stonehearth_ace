@@ -4,9 +4,6 @@
    "talisman_uris": {
       "stonehearth:cleric:talisman": true
    },
-   "task_groups": [
-      "stonehearth_ace:task_groups:training"
-   ],
 	"equipment_preferences": {
       "roles": {
          "healing_cleric": {
@@ -56,6 +53,17 @@
                "id": "cleric_training_1",
                "buff_name": "stonehearth_ace:buffs:0_cleric:training_1",
                "demote_fn": "remove_buff"
+            },
+                        {
+               "type": "add_equipment_role_buffs",
+               "id": "cleric_role_training",
+					"equipment_role_buffs": {
+                  "healing_cleric": [
+                     "stonehearth_ace:buffs:training_allowed"
+                  ],
+                  "support_cleric": []
+               },	
+               "demote_fn": "remove_equipment_role_buffs"
             }
          ]
       },
@@ -73,7 +81,8 @@
                "level": 2,
 					"equipment_role_buffs": {
                   "healing_cleric": [
-                     "stonehearth:buffs:cleric:minor_muscle_aura"
+                     "stonehearth:buffs:cleric:minor_muscle_aura",
+                     "stonehearth_ace:buffs:training_allowed"
                   ],
                   "support_cleric": [
                      "stonehearth_ace:buffs:cleric:minor_debuff_aura"

@@ -16,4 +16,8 @@ function AceShepherdedAnimalComponent:set_following(should_follow, shepherd)
    self:_ace_old_set_following(should_follow, shepherd)
 end
 
+function AceShepherdedAnimalComponent:_on_growth_event(e)
+   -- do nothing
+end
+
 return AceShepherdedAnimalComponent

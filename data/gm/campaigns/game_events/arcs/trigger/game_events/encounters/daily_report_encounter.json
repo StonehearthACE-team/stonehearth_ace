@@ -11,6 +11,11 @@
             "item": "counter",
             "key": "lock",
             "value": 1
+         },
+         "city_tier": {
+            "type": "deny_if_less_than",
+            "item": "city_tier",
+            "value": 1
          }
       }
    }
