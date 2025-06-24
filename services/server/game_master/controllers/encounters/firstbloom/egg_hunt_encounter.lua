@@ -115,7 +115,7 @@ function EggHunt:_create_egg(uri, hidden_uris)
             local random_citizen = citizens[rng:get_int(1, #citizens)]
             location = radiant.entities.get_world_grid_location(random_citizen)
          end
-         adjusted_location = radiant.terrain.find_placement_point(location, 1, 70)
+         adjusted_location = location and radiant.terrain.find_placement_point(location, 1, 70)
       elseif placement < 6 then
          if hidden_uris.town then
             egg = radiant.entities.create_entity(hidden_uris.town[rng:get_int(1, #hidden_uris.town)])
@@ -124,7 +124,7 @@ function EggHunt:_create_egg(uri, hidden_uris)
          end
          local town = stonehearth.town:get_town(self._sv.ctx.player_id)
          location = town:get_landing_location()
-         adjusted_location = radiant.terrain.find_placement_point(location, 15, 120)
+         adjusted_location = location and radiant.terrain.find_placement_point(location, 15, 120)
       else
          if hidden_uris.wild then
             egg = radiant.entities.create_entity(hidden_uris.wild[rng:get_int(1, #hidden_uris.wild)])
@@ -136,6 +136,8 @@ function EggHunt:_create_egg(uri, hidden_uris)
          local z = rng:get_int(bounds.min.y, bounds.max.y)
          adjusted_location = radiant.terrain.get_point_on_terrain(Point3(x, 0, z))       
       end
+
+      adjusted_location = radiant.terrain.find_closest_standable_point_to(adjusted_location, 10, egg, true)
 
       local search_cube = Cube3(adjusted_location - Point3(1, 2, 1), adjusted_location + Point3(1, 2, 1))
       local is_in_water = next(radiant.terrain.get_entities_in_cube(search_cube, function(e)
@@ -155,7 +157,7 @@ function EggHunt:_create_egg(uri, hidden_uris)
       end
    end
 
-   radiant.terrain.place_entity_at_exact_location(egg, adjusted_location)
+   radiant.terrain.place_entity(egg, adjusted_location)
    return egg
 end
 

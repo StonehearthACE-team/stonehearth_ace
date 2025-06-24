@@ -53,6 +53,15 @@ function transform_lib.transform(entity, transform_source, into_uri, options)
       parent = radiant.entities.get_parent(entity) or radiant.entities.get_root_entity()
    end
 
+   local pasture
+   local equipment_comp = entity:get_component('stonehearth:equipment')
+   local pasture_tag = equipment_comp and equipment_comp:has_item_type('stonehearth:pasture_equipment:tag')
+   local shepherded_animal = pasture_tag and pasture_tag:get_component('stonehearth:shepherded_animal')
+   if shepherded_animal then
+      local animal_pasture = shepherded_animal:get_pasture()
+      pasture = animal_pasture:get_component('stonehearth:shepherd_pasture')
+   end
+
    local location = radiant.entities.get_world_grid_location(entity)
    local local_location = radiant.entities.get_location_aligned(entity)
    local facing = radiant.entities.get_facing(entity)
@@ -340,6 +349,10 @@ function transform_lib.transform(entity, transform_source, into_uri, options)
       if transform_comp then
          transform_comp:reconsider_commands()
       end
+   end
+
+   if transformed_form and pasture then
+      pasture:convert_to_pasture_animal(transformed_form)
    end
 	
 	if transformed_form and options.model_variant then
