@@ -238,6 +238,35 @@
             }
          }
       },
+      "sleeping": {
+         "values": {
+            "slept_in_shared_bed_military": {
+               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.sleeping.slept_in_shared_bed_military.display_name)",
+               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.sleeping.slept_in_shared_bed_military.tooltip)",
+               "happiness_delta": -2,
+               "duration": "12h",
+               "stackable": false
+            },
+            "slept_on_ground": {
+               "happiness_delta": -6
+            },
+            "slept_in_shared_bed": {
+               "happiness_delta": -4
+            },
+            "slept_in_shared_room": {
+               "happiness_delta": -2
+            },
+            "well_rested": {
+               "happiness_delta": 3
+            },
+            "slept_outside": {
+               "happiness_delta": -8
+            },
+            "slept_in_comfy_bed": {
+               "happiness_delta": 6
+            }
+         }
+      },
       "special": {
          "values": {
             "everlasting_summer": {
