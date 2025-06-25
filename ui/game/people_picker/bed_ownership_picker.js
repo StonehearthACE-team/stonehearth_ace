@@ -15,13 +15,13 @@ $(document).ready(function(){
 
    var medicPatientAssignmentCallback = function(object) {
       if (object) {
-         radiant.call('stonehearth_ace:assign_ownership_proxy', object.__self, 'medic_patient');
+         radiant.call('stonehearth_ace:assign_ownership_proxy', object.__self, App.constants.healing.PRIORITY_CARE_OWNERSHIP_TYPE);
       }
    };
 
    var militaryAssignmentCallback = function(object) {
       if (object) {
-         radiant.call('stonehearth_ace:assign_ownership_proxy', object.__self, 'citizen_military');
+         radiant.call('stonehearth_ace:assign_ownership_proxy', object.__self, App.constants.combat.MILITARY_OWNERSHIP_TYPE);
       }
    };
 
