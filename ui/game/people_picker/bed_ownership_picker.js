@@ -19,6 +19,12 @@ $(document).ready(function(){
       }
    };
 
+   var militaryAssignmentCallback = function(object) {
+      if (object) {
+         radiant.call('stonehearth_ace:assign_ownership_proxy', object.__self, 'citizen_military');
+      }
+   };
+
    var noOwnerAssignmentCallback = function(object) {
       if (object) {
          radiant.call('stonehearth_ace:remove_owner_command', object.__self);
@@ -101,6 +107,15 @@ $(document).ready(function(){
       return null;
    };
 
+   var militaryReserved = function(object) {
+      var ownerType = object.get('stonehearth:ownable_object.reservation_type');
+      if (ownerType === App.constants.combat.MILITARY_OWNERSHIP_TYPE) {
+         return "stonehearth_ace:ui.game.people_picker.already_reserved_for_military";
+      }
+
+      return null;
+   };
+
    var noReservation = function(object) {
       var owner = object.get('stonehearth:ownable_object.owner');
       if (!owner) {
@@ -128,6 +143,12 @@ $(document).ready(function(){
       return currentOwner && ownerType === App.constants.healing.PRIORITY_CARE_OWNERSHIP_TYPE;
    };
 
+   var bedHasMilitaryOwner = function(object) {
+      var currentOwner = object.get('stonehearth:ownable_object.owner');
+      var ownerType = object.get('stonehearth:ownable_object.reservation_type');
+      return currentOwner && ownerType === App.constants.combat.MILITARY_OWNERSHIP_TYPE;
+   };
+
    $(top).on("radiant_assign_owner_to_entity", function (_, e) {
       var itemUri = e.entity;
 
@@ -143,11 +164,14 @@ $(document).ready(function(){
                                                   travelerTooltip: travelerReserved,
                                                   medicPatientCallback: medicPatientAssignmentCallback,
                                                   medicPatientTooltip: medicPatientReserved,
+                                                  militaryCallback: militaryAssignmentCallback,
+                                                  militaryTooltip: militaryReserved,
                                                   noOwnerCallback: noOwnerAssignmentCallback,
                                                   noOwnerTooltip: noReservation,
                                                   hasCitizenOwner: bedHasCitizenOwner,
                                                   hasTravelerOwner: bedHasTravelerOwner,
-                                                  hasMedicPatientOwner: bedHasMedicPatientOwner });
+                                                  hasMedicPatientOwner: bedHasMedicPatientOwner,
+                                                  hasMilitaryOwner: bedHasMilitaryOwner });
       } else {
          _peoplePicker.destroy();
          radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:start_menu:jobs_close' });

@@ -69,10 +69,20 @@ function TransformItemAdjacent:run(ai, entity, args)
       local duration = data.transforming_effect_duration
       local use_timed_progress = (times or 1) < 2
       local ingredient = data.transform_ingredient_uri or data.transform_ingredient_material
-      local ing_item
+      local ing_item, ing_quality
+      local ing_options = {}
       
       if ingredient then
          ing_item = radiant.entities.get_carrying(entity)
+         if ing_item and ing_item:is_valid() then
+            -- Save the ingredient's quality so that it can be applied onto the transformed form after the ingredient itself is gone
+            local iq = ing_item:get_component('stonehearth:item_quality')
+            if iq and iq:get_quality() > 1 then
+               ing_quality = iq:get_quality()
+               ing_options.author = iq:get_author_name()
+               ing_options.author_type = iq:get_author_type()
+            end
+         end
          ai:execute('stonehearth:drop_carrying_into_entity_adjacent', { entity = args.item })
       end
 
@@ -122,13 +132,13 @@ function TransformItemAdjacent:run(ai, entity, args)
          transformed_form = transform_comp:perform_transform(true, entity)
       end
 
-      if ing_item and ing_item:is_valid() then
-         -- apply item quality here if relevant, rather than in the transform component
-         -- because it would be a mess in there passing it around or having to store it
-         if data.apply_ingredient_quality and transformed_form then
-            item_quality_lib.copy_quality(ing_item, transformed_form)
-         end
+      -- Apply the copied quality of the ingredient (if there was one) to the transformed form
+      if ing_quality and ing_options then
+         item_quality_lib.apply_quality(transformed_form, ing_quality, ing_options)
+      end
 
+      -- If, for whatever reason, the ingredient still exists - destroy it
+      if ing_item and ing_item:is_valid() then
          ai:unprotect_argument(ing_item)
          radiant.entities.destroy_entity(ing_item)
       end

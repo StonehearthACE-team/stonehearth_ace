@@ -54,33 +54,58 @@
                            </td>
                         </tr>
                      {{else}}
-                        {{#if citizen.isTraveler}}
-                           {{#if view.shouldShowTravelerReserve}}
-                              <tr class="row">
-                                 <td class="selectable_citizen_row">
-                                    <div class="banner">
-                                       <img class="jobIcon" src="/stonehearth/data/images/backpack.png">
+                        {{#if citizen.isMilitary}}
+                           <tr class="row">
+                              <td class="selectable_citizen_row">
+                                 <div class="banner">
+                                    <img class="jobIcon" src="/stonehearth_ace/ui/images/military.png">
+                                 </div>
+                              </td>
+                              <td class="selectable_citizen_row">
+                                 <div class="name">
+                                    {{i18n stonehearth_ace:ui.game.people_picker.reserve_for_military}}
+                                    <div class="additionalText">
+                                       {{i18n_key view.militaryReservedText view.model}}
                                     </div>
-                                 </td>
-                                 <td class="selectable_citizen_row">
-                                    <div class="name">
-                                       {{i18n stonehearth:ui.game.people_picker.reserve_for_travelers}}
-                                       <div class="additionalText">
-                                          {{i18n_key view.travelerReservedText view.model}}
-                                       </div>
-                                    </div>
-                                 </td>
-                                 <td>
-                                    <a {{bind-attr id=command.name}} href="#" {{action "selectTraveler" view.model target="view"}} class='uisounds'>
-                                       <button class="brown" {{bind-attr class="buttonEnabled" }}>
-                                          {{i18n stonehearth:ui.game.people_picker.select_person}}
-                                       </button>
-                                    </a>
-                                 </td>
-                              </tr>
-                           {{/if}}
+                                 </div>
+                              </td>
+                              <td>
+                                 <a {{bind-attr id=command.name}} href="#" {{action "selectMilitary" view.model target="view"}} class='uisounds'>
+                                    <button class="brown" {{bind-attr class="buttonEnabled" }}>
+                                       {{i18n stonehearth:ui.game.people_picker.select_person}}
+                                    </button>
+                                 </a>
+                              </td>
+                           </tr>
                         {{else}}
-                           {{ view "stonehearthPeoplePickerRow" pickerView=view uriBinding="citizen" }}
+                           {{#if citizen.isTraveler}}
+                              {{#if view.shouldShowTravelerReserve}}
+                                 <tr class="row">
+                                    <td class="selectable_citizen_row">
+                                       <div class="banner">
+                                          <img class="jobIcon" src="/stonehearth/data/images/backpack.png">
+                                       </div>
+                                    </td>
+                                    <td class="selectable_citizen_row">
+                                       <div class="name">
+                                          {{i18n stonehearth:ui.game.people_picker.reserve_for_travelers}}
+                                          <div class="additionalText">
+                                             {{i18n_key view.travelerReservedText view.model}}
+                                          </div>
+                                       </div>
+                                    </td>
+                                    <td>
+                                       <a {{bind-attr id=command.name}} href="#" {{action "selectTraveler" view.model target="view"}} class='uisounds'>
+                                          <button class="brown" {{bind-attr class="buttonEnabled" }}>
+                                             {{i18n stonehearth:ui.game.people_picker.select_person}}
+                                          </button>
+                                       </a>
+                                    </td>
+                                 </tr>
+                              {{/if}}
+                           {{else}}
+                              {{ view "stonehearthPeoplePickerRow" pickerView=view uriBinding="citizen" }}
+                           {{/if}}
                         {{/if}}
                      {{/if}}
                   {{/if}}

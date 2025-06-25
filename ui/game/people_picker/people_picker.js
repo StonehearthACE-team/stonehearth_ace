@@ -19,6 +19,8 @@ App.StonehearthPeoplePickerView = App.View.extend({
    hasCitizenOwner: null,
    medicPatientCallback: null,
    medicPatientTooltip: null,
+   militaryCallback: null,
+   militaryTooltip: null,
    noOwnerCallback: null,
    noOwnerTooltip: null,
 
@@ -163,6 +165,15 @@ App.StonehearthPeoplePickerView = App.View.extend({
          this.destroy();
       },
 
+      selectMilitary: function() {
+         if (this.militaryCallback) {
+            this.militaryCallback(this.get('model'));
+            this.militaryCallback = null;
+            this.set('militaryChanged', true); // used to ensure property is recalculated
+         }
+         this.destroy();
+      },
+
       selectNone: function() {
          if (this.noOwnerCallback) {
             this.noOwnerCallback(this.get('model'));
@@ -206,6 +217,13 @@ App.StonehearthPeoplePickerView = App.View.extend({
       return null;
    }.property('model.stonehearth:ownable_object'),
 
+   militaryReservedText: function() {
+      if (this.militaryTooltip && this.get('model')) {
+         return this.militaryTooltip(this.get('model'));
+      }
+      return null;
+   }.property('model.stonehearth:ownable_object'),
+
    _hasCitizenOwner: function() {
       if (this.hasCitizenOwner && this.get('model')) {
          return this.hasCitizenOwner(this.get('model'));
@@ -227,11 +245,18 @@ App.StonehearthPeoplePickerView = App.View.extend({
       return false
    },
 
+   _hasMilitaryOwner: function() {
+      if (this.hasMilitaryOwner && this.get('model')) {
+         return this.hasMilitaryOwner(this.get('model'));
+      }
+      return false
+   },
+
    // Returns an array of all rows for the people picker.
    // Citizens will have a string, such as "object://game/6017",
    // while the row for traveler reservation has an object
    // containing the field isTraveler.
-   // ACE: handle medic patient and no owner options
+   // ACE: handle medic patient, military and no owner options
    pickerRows: function() {
       var citizens = this.get('citizensArray');
       if (citizens) {
@@ -252,6 +277,12 @@ App.StonehearthPeoplePickerView = App.View.extend({
             else {
                nonCitizenRows.push({ isMedicPatient: true });
             }
+            if (this._hasMilitaryOwner()) {
+               nonCitizenRows.unshift({ isMilitary: true });
+            }
+            else {
+               nonCitizenRows.push({ isMilitary: true });
+            }
             
             if (this._hasCitizenOwner()) {
                rows.splice(1, 0, ...nonCitizenRows);
@@ -262,6 +293,7 @@ App.StonehearthPeoplePickerView = App.View.extend({
 
             this.set('travelerChanged', false);
             this.set('medicPatientChanged', false);
+            this.set('militaryChanged', false);
          }
          else if (this.showNoOwner != false) {
             if (this._hasCitizenOwner()) {
@@ -274,7 +306,7 @@ App.StonehearthPeoplePickerView = App.View.extend({
          this.set('noOwnerChanged', false);
          return rows;
       }
-   }.property('model', 'citizensArray', 'travelerChanged', 'medicPatientChanged', 'noOwnerChanged')
+   }.property('model', 'citizensArray', 'travelerChanged', 'medicPatientChanged', 'militaryChanged', 'noOwnerChanged')
 });
 
 App.StonehearthPeoplePickerRowView = App.View.extend({
