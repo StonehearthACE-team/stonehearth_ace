@@ -8697,7 +8697,7 @@
       },
       "archer": {
          "archer_description": {
-            "description": "A rearguard combatant capable of using ranged weaponry like bows, crossbows and a variety of hindering types of arrows or bolts to attack their foes.",
+            "description": "A rearguard fighter capable of using ranged weaponry like bows, crossbows and a variety of hindering types of arrows or bolts to attack their foes.",
             "level_1_data": {
                "training_perk_name": "Archery Training",
                "training_perk_description": "The Archer can use Archery Targets to train their precision and earn experience up to Job Level 3",
@@ -14075,9 +14075,9 @@
                "flavor": "This item can only be equipped by main civillian crafters that work inside, like Carpenters, Blacksmiths or Cooks"
             },
             "freezing_combat_outfit_recipe": {
-               "recipe_name": "Combatant Fur Cloak",
-               "na_recipe_name": "Combatant Fur Mantle",
-               "rc_recipe_name": "Combatant Fur Wrap",
+               "recipe_name": "Fighter Fur Cloak",
+               "na_recipe_name": "Fighter Fur Mantle",
+               "rc_recipe_name": "Fighter Fur Wrap",
                "description": "A thick cape made of multiple furs. Protects from freezing weather.",
                "rc_description": "A short cape made of fur. Protects from cold weather.",
                "flavor": "This item can only be equipped by combat units, like Footmen, Archers or Clerics"
@@ -14897,9 +14897,9 @@
       "combat": {
          "freezing_combat_outfit": {
             "description": "Heavy cover of pelts. Can only be worn by fighters. Protects from freezing weather.",
-            "display_name": "Combatant Fur Cape",
-            "na_display_name": "Combatant Fur Mantle",
-            "rc_display_name": "Combatant Fur Wrap",
+            "display_name": "Fighter Fur Cape",
+            "na_display_name": "Fighter Fur Mantle",
+            "rc_display_name": "Fighter Fur Wrap",
             "rc_description": "Heavy cover of pelts. Can only be worn by fighters. Protects from cold weather."
          }
       },
@@ -14999,47 +14999,47 @@
             },
             "potion_healing_small_recipe": {
                "recipe_name": "Small Healing Potion",
-               "description": "This small vial of potion will be carried by combatants and used when they're hurt, restoring some health.",
+               "description": "This small vial of potion will be carried by fighters and used when they're hurt, restoring some health.",
                "flavor": "A hearthling can only carry one potion"
             },
             "potion_healing_large_recipe": {
                "recipe_name": "Large Healing Potion",
-               "description": "This large vial of potion will be carried by combatants and used when they're hurt, restoring a bunch of health.",
+               "description": "This large vial of potion will be carried by fighters and used when they're hurt, restoring a bunch of health.",
                "flavor": "A hearthling can only carry one potion"
             },
             "potion_healing_hearth_recipe": {
                "recipe_name": "Hearth Healing Potion",
-               "description": "This magical vial of potion will be carried by combatants and used when they're hurt, restoring a lot of health.",
+               "description": "This magical vial of potion will be carried by fighters and used when they're hurt, restoring a lot of health.",
                "flavor": "A hearthling can only carry one potion"
             },
             "potion_anti_toxin_small_recipe": {
                "recipe_name": "Weak Cleansing Potion",
-               "description": "This small draught will be carried by combatants and used when they are affected by a toxin, protecting them from weak toxins for a while and restoring some health.",
+               "description": "This small draught will be carried by fighters and used when they are affected by a toxin, protecting them from weak toxins for a while and restoring some health.",
                "flavor": "A hearthling can only carry one potion"
             },
             "potion_anti_toxin_large_recipe": {
                "recipe_name": "Cleansing Potion",
-               "description": "This draught will be carried by combatants and used when they are affected by a toxin, protecting them from weak and moderate toxins for a while and restoring a bunch of health.",
+               "description": "This draught will be carried by fighters and used when they are affected by a toxin, protecting them from weak and moderate toxins for a while and restoring a bunch of health.",
                "flavor": "A hearthling can only carry one potion"
             },
             "potion_anti_toxin_strong_recipe": {
                "recipe_name": "Strong Cleansing Potion",
-               "description": "This large draught will be carried by combatants and used when they are affected by a toxin, protecting them from all toxins for a while but restore only a bit of health.",
+               "description": "This large draught will be carried by fighters and used when they are affected by a toxin, protecting them from all toxins for a while but restore only a bit of health.",
                "flavor": "A hearthling can only carry one potion"
             },
             "potion_antidote_small_recipe": {
                "recipe_name": "Weak Anti-Poison Potion",
-               "description": "This bit of antidote will be carried by combatants and used when fighting against venomous foes, protecting them from weak poisons for a while.",
+               "description": "This bit of antidote will be carried by fighters and used when fighting against venomous foes, protecting them from weak poisons for a while.",
                "flavor": "A hearthling can only carry one potion"
             },
             "potion_antidote_large_recipe": {
                "recipe_name": "Anti-Poison Potion",
-               "description": "This vial of antidote will be carried by combatants and used when fighting against venomous foes, protecting them from weak and medium poisons for a while.",
+               "description": "This vial of antidote will be carried by fighters and used when fighting against venomous foes, protecting them from weak and medium poisons for a while.",
                "flavor": "A hearthling can only carry one potion"
             },
             "potion_antidote_strong_recipe": {
                "recipe_name": "Strong Anti-Poison Potion",
-               "description": "This draught of antidote will be carried by combatants and used when fighting against venomous foes, protecting them from all poisons for a while.",
+               "description": "This draught of antidote will be carried by fighters and used when fighting against venomous foes, protecting them from all poisons for a while.",
                "flavor": "A hearthling can only carry one potion"
             },
             "potion_last_stand_recipe": {
@@ -28678,7 +28678,7 @@
                "trophy_junk": "Trophies (Loot)",
                "quest": "Quest Items",
                "fuel": "Fuels",
-               "military_equipment": "Combatant Equipment",
+               "military_equipment": "Fighter Equipment",
                "landscaping": "Landscaping"
             },
             "missing_catalog_data": "[MISSING CATALOG DATA]",
@@ -28968,6 +28968,8 @@
          "people_picker": {
             "reserve_for_medic_patients": "Reserve for a Medic Patient",
             "already_reserved_for_medic_patients": "Reserved",
+            "reserve_for_military": "Reserve for Fighters",
+            "already_reserved_for_military": "Reserved",
             "no_owner": "Remove Owner/Reservation",
             "already_no_owner": "Unowned"
          },
@@ -29469,7 +29471,7 @@
                   "description": "Civillian jobs that are able to create items out of raw materials and resources. Carpenter or Blacksmith, for example."
                },
                "combat": {
-                  "display_name": "Any Combatant",
+                  "display_name": "Any Fighter",
                   "description": "Military jobs that are able to follow orders and engage in combat to defend the town! Footmen or Archers, for example."
                },
                "field_work": {

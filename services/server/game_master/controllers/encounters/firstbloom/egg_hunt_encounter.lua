@@ -52,6 +52,8 @@ end
 function EggHunt:start_hunt(eggs, duration)
    local amount = eggs.amount
 
+   self._sv.duration = stonehearth.calendar:set_persistent_timer('egg hunt duration', duration, radiant.bind(self, '_end_hunt'))
+
    while amount > 0 do
       local egg = self:_create_egg(eggs.uri, eggs.hidden_uris or nil)
       table.insert(self._sv.eggs, amount, egg)
@@ -60,8 +62,6 @@ function EggHunt:start_hunt(eggs, duration)
    end
 
    self._listener = radiant.events.listen(stonehearth.game_master, 'firstbloom:egg_hunt', self, self._resolve_interaction)
-
-   self._sv.duration = stonehearth.calendar:set_persistent_timer('egg hunt duration', duration, radiant.bind(self, '_end_hunt'))
 
    if self._sv._info.bulletins and self._sv._info.bulletins.start then
       self:create_bulletin(self._sv._info.bulletins.start)
@@ -249,6 +249,11 @@ function EggHunt:destroy()
    if self._sv.already_finished then
       self._sv.already_finished = nil
    end
+end
+
+function EggHunt:force_complete(session, response)
+   self:_end_hunt()
+   return true
 end
 
 return EggHunt

@@ -1,0 +1,266 @@
+<script type="text/x-handlebars" data-template-name="objectBrowserIcon">
+   <div id="objectBrowserIcon" title="{{i18n debugtools:tooltip_icon_object_browser}}"></div>
+</script>
+
+<script type="text/x-handlebars" data-template-name="_toolbar">
+</script>
+
+<script type="text/x-handlebars" data-template-name="objectBrowser">
+   <div id="objectBrowser">
+      <div id="toolbar">
+         <a id="trackSelected" href="#" {{action "toggleTrackSelected" target="view"}} class="button" title="Track Selected">
+            <i class="fa fa-crosshairs fa-fw fa-lg"></i>
+         </a>
+         <a href="#" {{action "goBack" target="view"}} class="button" title="Back">
+            <i class="fa fa-arrow-left fa-fw fa-lg"></i>
+         </a>
+         <a href="#" {{action "goForward" target="view"}} class="button" title="Forward">
+            <i class="fa fa-arrow-right fa-fw fa-lg"></i>
+         </a>
+         <a id="showAllEntities" href="#" {{action "showAllEntities" target="view"}} class="button" title="Show All Entities">
+            <i class="fa fa-bars fa-fw fa-lg"></i>
+         </a>
+
+         <!-- Input for typing in your own uri -->
+         <input type="text" id="uriInput" {{bind-attr value="view.uri"}}>       
+
+         <a id="collapse" href="#" {{action "toggleCollapsed" target="view"}} class="button">
+            <i id="collapse_image" class="fa fa-chevron-up fa-fw fa-lg"></i>
+         </a>
+         <a id="close" href="#" {{action "close" target="view"}} class="button">
+            <i class="fa fa-times fa-fw fa-lg"></i>
+         </a>
+
+         <br><br>
+
+         <a id="toggleRawView" href="#" {{action "toggleRawView" target="view"}} class="button" title="Toggle Raw View">
+            <i class="fa fa-cogs fa-fw fa-lg"></i>
+         </a>
+         <a id="togglePrivateVariables" href="#" {{action "togglePrivateVariables" target="view"}} class="button" title="Toggle Private Variables View">
+            <i class="fa fa-user-secret fa-fw fa-lg"></i>
+         </a>
+         {{#if view.model.mob }}
+            <a id="selectEntity" href="#" {{action "selectEntity" target="view"}} class="button" title="Select Entity">
+               <i class="fa fa-search-plus fa-fw fa-lg"></i>
+            </a>
+         {{/if}}
+         <br>
+      </div>
+      <div id="body">
+         {{#if view.showRawView }}
+            {{ view stonehearthObjectBrowserRaw uriBinding="view.uri" }}
+         {{ else }}
+            {{ view stonehearthObjectBrowserContent viewName="contentView" uriBinding="view.uri" }}
+         {{/if}}
+
+         {{#if view.privateData}}
+            {{ view stonehearthObjectBrowserRawPrivate privateData=view.privateData }}
+         {{/if}}
+      </div>
+   </div>
+</script>
+
+<script type="text/x-handlebars" data-template-name="objectBrowserContent">
+   {{ view view.subViewClass uriBinding="view.uri" templateNameBinding="view.subViewClass" }}
+</script>
+
+<script type="text/x-handlebars" data-template-name="stonehearthObjectBrowserRaw">
+   {{{view.raw_view}}}
+</script>
+
+<script type="text/x-handlebars" data-template-name="stonehearthObjectBrowserRawPrivate">
+   {{{view.raw_view}}}
+</script>
+
+<script type="text/x-handlebars" data-template-name="stonehearthObjectBrowserEncounter">
+   <div class='title'>
+      {{ view.encounter_name }}
+   </div>
+</script>
+
+<script type="text/x-handlebars" data-template-name="stonehearthObjectBrowserRawEncounter">
+   {{ view "stonehearthObjectBrowserRaw" model=view.model }}
+</script>
+
+<script type="text/x-handlebars" data-template-name="stonehearthObjectBrowserWaitForNetWorthEncounter">
+   <div class='title'>
+      {{ view.encounter_name }}
+   </div>
+   <div class='subtitle'> Wait For Net Worth </div>  
+   <table>
+      <tr><td>Current</td><td>{{ view.progress.current }}</td></tr>
+      <tr><td>Threshold</td><td>{{ view.progress.threshold }}</td></tr>
+   </table>
+
+   <ul class="menu">
+      <li><i class="fa fa-bolt fa-fw fa-lg"></i><a href="#" {{action "triggerNow" target="view"}}> Trigger Now </a></li>
+   </ul>
+</script>
+
+<script type="text/x-handlebars" data-template-name="stonehearthObjectBrowserWaitForRequirementsMetEncounter">
+   <div class='title'>
+      {{ view.encounter_name }}
+   </div>
+   <div class='subtitle'> Wait For Requirements Met </div>  
+   <table>
+      <tr><td>Requirements Met</td></tr>
+      {{#each requirement in view.requirements }}
+         <tr><td>{{ requirement }}</td></tr>
+      {{/each}}
+      <tr><td>Recheck Time</td><td>{{ view.progress.recheck_time }}</td></tr>
+   </table>
+
+   <ul class="menu">
+      <li><i class="fa fa-bolt fa-fw fa-lg"></i><a href="#" {{action "triggerNow" target="view"}}> Trigger Now </a></li>
+   </ul>
+</script>
+
+<script type="text/x-handlebars" data-template-name="stonehearthObjectBrowserWaitForTimeOfDayEncounter">
+   <div class='title'>
+      {{ view.encounter_name }}
+   </div>
+   <div class='subtitle'> Wait For Time Of Day </div>  
+   <table>
+      <tr><td>Alarm Time</td><td>{{ view.progress.alarm_time }}</td></tr>
+      <tr><td>Current Time</td><td>{{ view.progress.current_time }}</td></tr>
+      {{#if view.progress.time_left }}
+         <tr><td>Time Remaining</td><td>{{ view.progress.time_left }}</td></tr>
+      {{/if}}
+   </table>
+
+   {{#if view.progress.time_left}}
+      <ul class="menu">
+         <li><i class="fa fa-bolt fa-fw fa-lg"></i><a href="#" {{action "triggerNow" target=view}}> Trigger Now </a></li>
+      </ul>
+   {{/if}}
+</script>
+
+<script type="text/x-handlebars" data-template-name="stonehearthObjectBrowserWaitEncounter">
+   <div class='title'>
+      {{ view.encounter_name }}
+   </div>
+   <div class='subtitle'> Wait </div>
+   <table>
+      {{#if view.progress.time_left }}
+         <tr><td>Time left: </td><td>{{ view.progress.time_left }}</td></tr>
+      {{/if}}
+   </table>
+
+   <ul class="menu">
+      {{#if view.progress.time_left }}
+         <li><i class="fa fa-bolt fa-fw fa-lg"></i><a href="#" {{action "triggerNow" target="view"}}> Trigger Now </a></li>
+      {{/if}}
+
+      <br>
+      {{#if view.out_edges }}
+         {{#each edge in view.out_edges}}
+             <li><a href="#" {{action "triggerEdge" edge target="view"}}> Trigger {{edge}} </a></li>
+         {{/each}}
+      {{/if}}
+   </ul>
+</script>
+
+<script type="text/x-handlebars" data-template-name="stonehearthObjectBrowserGeneratorEncounter">
+   <div class='title'>
+      {{ view.encounter_name }}
+   </div>
+   <div class='subtitle'> Generator </div>  
+   <table>
+      {{#if view.progress.next_spawn_time }}
+         <tr><td>Next Spawn: </td><td>{{ view.progress.next_spawn_time }}</td></tr>
+      {{/if}}
+   </table>
+
+   <ul class="menu">
+      <li><i class="fa fa-bolt fa-fw fa-lg"></i><a href="#" {{action "triggerNow" target="view"}}> Trigger Now </a></li>
+      <br>
+      {{#if view.out_edges }}
+         {{#each edge in view.out_edges}}
+             <li><a href="#" {{action "triggerEdge" edge target="view"}}> Trigger {{edge}} </a></li>
+         {{/each}}
+      {{/if}}
+
+   </ul>
+
+</script>
+
+<script type="text/x-handlebars" data-template-name="stonehearthObjectBrowserCollectionQuestEncounter">
+   <div class='title'>
+      {{ view.encounter_name }}
+   </div>
+   <div class='subtitle'> Collection Quest </div>  
+   <table>
+      {{#if view.progress.time_left }}
+         <tr><td>Time Left: </td><td>{{ view.progress.time_left }}</td></tr>
+      {{/if}}
+   </table>
+
+   <ul class="menu">
+      {{#if view.progress.time_left }}
+         <li><i class="fa fa-bolt fa-fw fa-lg"></i><a href="#" {{action "forceReturnNow" target="view"}}> Force Return Now </a></li>
+      {{/if}}
+      <br>
+      {{#if view.out_edges }}
+         {{#each edge in view.out_edges}}
+             <li><a href="#" {{action "triggerEdge" edge target="view"}}> Trigger {{edge}} </a></li>
+         {{/each}}
+      {{/if}}
+   </ul>
+</script>
+
+<script type="text/x-handlebars" data-template-name="stonehearthObjectBrowserDeliveryQuestEncounter">
+   <div class='title'>
+      {{ view.encounter_name }}
+   </div>
+   <div class='subtitle'> Delivery Quest </div>  
+
+   <ul class="menu">
+    <li><a href="#" {{action "forceComplete" target="view"}}> Force Complete </a></li>
+   </ul>
+</script>
+
+<script type="text/x-handlebars" data-template-name="stonehearthObjectBrowserEggHuntEncounter">
+   <div class='title'>
+      {{ view.encounter_name }}
+   </div>
+   <div class='subtitle'> Egg Hunt Quest </div>  
+
+   <ul class="menu">
+    <li><a href="#" {{action "forceComplete" target="view"}}> Force Complete </a></li>
+   </ul>
+</script>
+
+<script type="text/x-handlebars" data-template-name="stonehearthObjectBrowserDispatchQuestEncounter">
+   <div class='title'>
+      {{ view.encounter_name }}
+   </div>
+   <div class='subtitle'> Dispatch Quest </div>
+   <table>
+      {{#if view.progress.time_left }}
+         <tr><td>Time left: </td><td>{{ view.progress.time_left }}</td></tr>
+      {{/if}}
+   </table>
+
+   <ul class="menu">
+      {{#if view.progress.time_left }}
+         <li><i class="fa fa-bolt fa-fw fa-lg"></i><a href="#" {{action "triggerNow" target="view"}}> Trigger Now </a></li>
+      {{/if}}
+   </ul>
+</script>
+
+
+
+<script type="text/x-handlebars" data-template-name="stonehearthObjectBrowserDebugCommands">
+   <div id="objectBrowser">
+      <div id="toolbar">
+         <a id="close" href="#" {{action "close" target="view"}} class="button">
+            <i class="fa fa-times fa-fw fa-lg"></i>
+         </a>
+      </div>
+      <ul class="menu">
+         {{#each view.consoleCommands}}
+            <li><a href="#" {{action "doConsoleCommand" this.command target="view"}}> {{this.displayName}} </a></li>
+         {{/each}}
+      </ul>
+   </div>
+</script>

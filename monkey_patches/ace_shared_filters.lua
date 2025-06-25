@@ -4,11 +4,17 @@ local ace_shared_filters = {}
 -- we already have a separate priority care filter/action that covers those beds, so we don't need to include unownable beds here
 function ace_shared_filters.make_is_unowned_available_bed_filter(entity)
    local player_id = entity:get_player_id()
+   local ownership_type = stonehearth.constants.combat.MILITARY_OWNERSHIP_TYPE
+   local job_component = entity:get_component('stonehearth:job')
+   local is_military = false
+   if job_component then
+      is_military = job_component:has_role('combat')
+   end
 
    return stonehearth.ai:filter_from_key('stonehearth:sleep:sleep_in_unowned_bed', player_id, function(target)
          if target:get_player_id() ~= player_id then
             return false
-         end
+         end   
 
          if radiant.entities.get_entity_data(target, 'stonehearth:bed') then
             -- make sure it's not currently being targeted for a task
@@ -19,6 +25,11 @@ function ace_shared_filters.make_is_unowned_available_bed_filter(entity)
 
             local ownable_component = target:get_component('stonehearth:ownable_object')
             -- ACE: added check for ownable component not being there
+
+            if ownable_component and ownable_component:get_reservation_type() == ownership_type then
+               return is_military
+            end
+
          	if ownable_component and ownable_component:get_owner() == nil and not target:add_component('stonehearth:mount'):is_in_use() then
                return true
             end
