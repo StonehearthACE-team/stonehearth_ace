@@ -5,16 +5,11 @@ local ace_shared_filters = {}
 function ace_shared_filters.make_is_unowned_available_bed_filter(entity)
    local player_id = entity:get_player_id()
    local ownership_type = stonehearth.constants.combat.MILITARY_OWNERSHIP_TYPE
-   local job_component = entity:get_component('stonehearth:job')
-   local is_military = false
-   if job_component then
-      is_military = job_component:has_role('combat')
-   end
 
    return stonehearth.ai:filter_from_key('stonehearth:sleep:sleep_in_unowned_bed', player_id, function(target)
          if target:get_player_id() ~= player_id then
             return false
-         end   
+         end
 
          if radiant.entities.get_entity_data(target, 'stonehearth:bed') then
             -- make sure it's not currently being targeted for a task
@@ -26,11 +21,37 @@ function ace_shared_filters.make_is_unowned_available_bed_filter(entity)
             local ownable_component = target:get_component('stonehearth:ownable_object')
             -- ACE: added check for ownable component not being there
 
-            if ownable_component and ownable_component:get_reservation_type() == ownership_type then
-               return is_military
+            -- if the bed has a reservation type, then it is not available for unowned use
+            if ownable_component and ownable_component:get_reservation_type() then
+               return false
             end
 
          	if ownable_component and ownable_component:get_owner() == nil and not target:add_component('stonehearth:mount'):is_in_use() then
+               return true
+            end
+         end
+         return false
+      end)
+end
+
+function ace_shared_filters.make_is_military_available_bed_filter(entity)
+   local player_id = entity:get_player_id()
+   local ownership_type = stonehearth.constants.combat.MILITARY_OWNERSHIP_TYPE
+
+   return stonehearth.ai:filter_from_key('stonehearth:sleep:sleep_in_military_bed', player_id, function(target)
+         if target:get_player_id() ~= player_id then
+            return false
+         end
+
+         if radiant.entities.get_entity_data(target, 'stonehearth:bed') then
+            -- make sure it's not currently being targeted for a task
+            local task_tracker = target:get_component('stonehearth:task_tracker')
+            if task_tracker and task_tracker:get_task_player_id() == player_id then
+               return false
+            end
+
+            local ownable_component = target:get_component('stonehearth:ownable_object')
+            if ownable_component and ownable_component:get_reservation_type() == ownership_type then
                return true
             end
          end
@@ -54,7 +75,7 @@ function ace_shared_filters.make_is_priority_care_available_bed_filter(entity)
             if task_tracker and task_tracker:get_task_player_id() == player_id then
                return false
             end
-            
+
             local ownable_component = target:get_component('stonehearth:ownable_object')
             if bed_data.priority_care and not ownable_component and
                   not target:add_component('stonehearth:mount'):is_in_use() then
