@@ -3,6 +3,10 @@
       "stonehearth:mixins:destructable_siege_object"
    ],
    "components": {
+      "stonehearth_ace:auto_replace": {
+         "on_kill": true,
+         "on_destroy": false
+      },
       "stonehearth:attributes": {
          "max_health": {
             "type": "basic",

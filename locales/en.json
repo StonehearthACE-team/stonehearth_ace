@@ -2557,7 +2557,25 @@
                }
             },
             "hunting": {
-               "hungry_woodchuck_raid": "A family of Woodchucks is coming for the tree farms, orchards and bushes!"
+               "hungry_woodchuck_raid": "A family of woodchucks is coming for the tree farms, orchards and bushes!",
+               "hungry_caribou_raid": "A herd of stags is headed for your farms!",
+               "hungry_deer_raid": "A parcel of deer is headed for your farms!",
+               "hungry_racoon_raid": "A gaze of raccoons is headed for your farms!",
+               "hungry_rabbit_raid": "A colony of rabbits is headed for your farms!",
+               "desert": {
+                  "hungry_caribou_raid": "A herd of gazelles is headed for your farms!",
+                  "hungry_deer_raid": "A parcel of gazelle cows is headed for your farms!",
+                  "hungry_rabbit_raid": "A colony of hares is headed for your farms!"
+               },
+               "arctic": {
+                  "hungry_caribou_raid": "A herd of caribou is headed for your farms!",
+                  "hungry_rabbit_raid": "A colony of hares is headed for your farms!"
+               },
+               "highlands": {
+                  "hungry_caribou_raid": "A herd of moose is headed for your farms!",
+                  "hungry_deer_raid": "A parcel of moose cows is headed for your farms!",
+                  "hungry_racoon_raid": "A surfeit of skunks is headed for your farms!"
+               }
             },
             "frostfeast_ace": {
                "tomtee_arrival": {
@@ -4207,7 +4225,7 @@
                            "bulletin_title": "🐰 Haru and the Determined Poyo are prepared! 🐰",
                            "dialog_title": "They look very eager...",
                            "bulletin_message": {
-                              "00": "\"Oh, this one is going to be good! Thank you for all the support, by the way. The children of Monkey do not cease to amaze me!\" They can't contain their excitement. \"This will be a hard, there are <span class='minor'>sixteen eggs</span> and only <span class='major'>ten sun-hours</span>! Think you can do it?\""
+                              "00": "\"Oh, this one is going to be difficult! Thank you for all the support, by the way. The children of Monkey do not cease to amaze me!\" They can't contain their excitement. \"This will be a hard one, there are <span class='minor'>sixteen eggs</span> and only <span class='major'>ten sun-hours</span>! Think you can do it?\""
                            }
                         }
                      }
@@ -5276,7 +5294,11 @@
                   "display_name": "⛰️ Ogre Boss Killer",
                   "description": "Gained by killing the ogre boss.",
                   "1_display_name": ", Mountain-breaker",
-                  "1_description": "They've killed the most fearsome ogre!"
+                  "1_description": "They've killed the most fearsome ogre!",
+                  "2_description": "They've killed the most fearsome ogre... Again!",
+                  "3_description": "They've killed the most fearsome ogre three times! What?!",
+                  "2_display_name": ", Summit Avenger",
+                  "3_display_name": ", Lullaby Hater"
                },
                "mountain_killer_item": {
                   "display_name": "⛰️ Ogre Boss Killer",
@@ -5368,7 +5390,11 @@
                   "display_name": "🔥 Lizard Boss Killer",
                   "description": "Gained by killing the lizard boss.",
                   "1_display_name": ", Got-Zilla",
-                  "1_description": "They've killed the most fearsome lizard!"
+                  "1_description": "They've killed the most fearsome lizard!",
+                  "2_display_name": " the Firefighter",
+                  "2_description": "They've killed the most fearsome lizard... Again! Nice way to put down their fire!",
+                  "3_display_name": ", Extinction Event Organizer",
+                  "3_description": "They've killed the most fearsome lizard three times! No king of the tyrannical lizards allowed on this turf!"
                },
                "zilla_killer_item": {
                   "display_name": "🔥 Lizard Boss Killer",
@@ -5404,7 +5430,11 @@
                   "display_name": "💀 Goblin Boss Killer",
                   "description": "Gained by killing the goblin boss.",
                   "1_display_name": " the Unbonked",
-                  "1_description": "They've killed the most fearsome goblin!"
+                  "1_description": "They've killed the most fearsome goblin!",
+                  "2_description": "They've killed the most fearsome goblin... Again! How is this even possible?",
+                  "3_description": "They've killed the most fearsome goblin three times! Are we sure he's gone? Is time repeating itself? Are we in some sort of loop?!",
+                  "3_display_name": " the Cycle Breaker",
+                  "2_display_name": ", Shush-sayer"
                },
                "ogo_killer_item": {
                   "display_name": "💀 Goblin Boss Killer",
@@ -5416,7 +5446,11 @@
                   "display_name": "👑 Orc Boss Challenger",
                   "description": "Gained by defeating the orc boss.",
                   "1_display_name": " the Khan's Duelist",
-                  "1_description": "They've bested the most fearsome orc in combat!"
+                  "1_description": "They've bested the most fearsome orc in combat!",
+                  "2_description": "They've bested the most fearsome orc in combat... Again!",
+                  "3_description": "They've bested the most fearsome orc in combat three times! Maybe it's about time they stop trying?",
+                  "2_display_name": ", Point Taker",
+                  "3_display_name": " the True Khan"
                },
                "warchief_killer_item": {
                   "display_name": "👑 Orc Boss Challenger",
@@ -9989,7 +10023,7 @@
                   "flavor": "Daffodils are very special and provide Mild, Robust and Peculiar herbs!"
                },
                "spring_colors_recipe": {
-                  "recipe_name": "Dyes (Firstbloom Spring Colors)",
+                  "recipe_name": "Dyes (Firstbloom Spring Colors) (x3)",
                   "description": "Mix up some herbs to create a collection of soft and sweet spring colors.",
                   "flavor": "Used in many different Firstbloom recipes"
                },
@@ -29337,7 +29371,8 @@
                   "tooltip_mobility": "Mobility",
                   "tooltip_fireplaces": "Fireplaces",
                   "tooltip_bows": "Bows",
-                  "tooltip_xbows": "Crossbows"
+                  "tooltip_xbows": "Crossbows",
+                  "tooltip_thatching": "Thatching"
                },
                "fuel_level": {
                   "label": "Fuel Level:",
@@ -30239,7 +30274,9 @@
             "prepared_drink_kept_resource_name": "Barreled & Bottled Drinks",
             "serving_vessel_drinks_resource_name": "Serving Vessel Drinks",
             "bone_resource_edible_name": "Any Animal Bone",
-            "sweetener_other_fluid_resource_name": "Any Honey or Syrup"
+            "sweetener_other_fluid_resource_name": "Any Honey or Syrup",
+            "teapots_resource_name": "Any Teapot",
+            "coffee_pots_resource_name": "Any Coffee Pot"
          }
       }
    },

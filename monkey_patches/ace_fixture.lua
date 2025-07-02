@@ -15,6 +15,10 @@ function AceFixture:set_entity_placed(entity, skip_event)
       end
    end
 
+   if entity:get_component('stonehearth_ace:auto_replace') then
+      entity:remove_component('stonehearth_ace:auto_replace')
+   end
+
    self._sv._fixture_entity = entity
    self._sv._waiting_ghost_id = nil
    self._sv._waiting_for_ghost_entity = nil

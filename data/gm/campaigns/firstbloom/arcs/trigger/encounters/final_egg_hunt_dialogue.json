@@ -17,7 +17,7 @@
             "type": "deny_if_greater_than",
             "value": 0,
             "start_node": "final_egg_hunt_dialogue",
-            "end_node": "campaign_end_dialogue"
+            "end_node": "wait_for_end"
          },
          "is_return_test": {
             "type": "deny_if_greater_than",

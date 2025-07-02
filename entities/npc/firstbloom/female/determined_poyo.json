@@ -1,6 +1,7 @@
 {
    "type": "entity",
    "mixins": "stonehearth:mixins:critter",
+   "player_id": "human_npcs",
    "components": {
       "render_info": {
          "animation_table": "/stonehearth/data/rigs/entities/critters/poyo",
@@ -26,6 +27,7 @@
    },
    "entity_data": {
       "stonehearth:catalog": {
+         "player_id": "human_npcs",
          "display_name": "i18n(stonehearth_ace:entities.npc.firstbloom.female.determined_poyo.display_name)",
          "description": "i18n(stonehearth_ace:entities.npc.firstbloom.female.determined_poyo.description)",
          "icon": "file(determined_poyo.png)"
