@@ -1550,62 +1550,86 @@
          "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/fluids.png",
          "ordinal": 8.1,
          "categories": {
-            "malted_grains": {
+            "serving_kegs": {
                "ordinal": 1,
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.refined_serving_keg_resource_name)",
+               "icon": "/stonehearth_ace/entities/refined/serving_keg.png",
+               "filter": "serving_keg empty"
+            },
+            "serving_pitchers": {
+               "ordinal": 1.1,
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.refined_serving_pitcher_resource_name)",
+               "icon": "/stonehearth_ace/entities/refined/serving_pitcher.png",
+               "filter": "serving_pitcher empty"
+            },
+            "tea_pots": {
+               "ordinal": 1.2,
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.teapots_resource_name)",
+               "icon": "/stonehearth_ace/entities/refined/teapot.png",
+               "filter": "teapot empty"
+            },
+            "coffee_pots": {
+               "ordinal": 1.3,
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.coffee_pots_resource_name)",
+               "icon": "/stonehearth_ace/entities/refined/coffee_pot.png",
+               "filter": "coffee_pot empty"
+            },
+            "malted_grains": {
+               "ordinal": 2,
                "display_name": "i18n(stonehearth_ace:entities.drink.malted_grains.display_name)",
                "icon": "/stonehearth_ace/entities/drink/malted_grains/malted_grains.png",
                "filter": "brewing_ingredient malt standard"
             },
             "malted_wheat": {
-               "ordinal": 1.1,
+               "ordinal": 2.1,
                "display_name": "i18n(stonehearth_ace:entities.drink.malted_wheat.display_name)",
                "icon": "/stonehearth_ace/entities/drink/malted_wheat/malted_wheat.png",
                "filter": "brewing_ingredient malt wheat"
             },
             "malted_millet": {
-               "ordinal": 1.2,
+               "ordinal": 2.2,
                "display_name": "i18n(stonehearth_ace:entities.drink.malted_millet.display_name)",
                "icon": "/stonehearth_ace/entities/drink/malted_millet/malted_millet.png",
                "filter": "brewing_ingredient malt millet"
             },
             "malted_barley": {
-               "ordinal": 1.3,
+               "ordinal": 2.3,
                "display_name": "i18n(stonehearth_ace:entities.drink.malted_barley.display_name)",
                "icon": "/stonehearth_ace/entities/drink/malted_barley/malted_barley.png",
                "filter": "brewing_ingredient malt barley"
             },
             "malted_rye": {
-               "ordinal": 1.4,
+               "ordinal": 2.4,
                "display_name": "i18n(stonehearth_ace:entities.drink.malted_rye.display_name)",
                "icon": "/stonehearth_ace/entities/drink/malted_rye/malted_rye.png",
                "filter": "brewing_ingredient malt rye"
             },
             "juniper_berries": {
-               "ordinal": 2,
+               "ordinal": 3,
                "display_name": "i18n(stonehearth_ace:ui.data.constants.seed_juniper_resource_name)",
                "icon": "/stonehearth/entities/trees/juniper_tree/seed/tree_juniper_seed.png",
                "filter": "seed juniper"
             },
             "wax_plant_purple_leaves": {
-               "ordinal": 2.1,
+               "ordinal": 3.1,
                "display_name": "i18n(stonehearth_ace:entities.resources.herb.wax_plant_purple.display_name)",
                "icon": "/stonehearth_ace/entities/resources/herb/wax_plant_purple/wax_plant_purple.png",
                "filter": "resource herb wax_plant_purple"
             },
             "pine_cones": {
-               "ordinal": 2.2,
+               "ordinal": 3.2,
                "display_name": "i18n(stonehearth_ace:ui.data.constants.seed_pine_resource_name)",
                "icon": "/stonehearth/entities/trees/pine_tree/seed/tree_pine_seed.png",
                "filter": "seed pine"
             },
             "birch_seed": {
-               "ordinal": 2.3,
+               "ordinal": 3.3,
                "display_name": "i18n(stonehearth_ace:entities.trees.birch_tree.seed.tree_birch_seed_ghost.display_name)",
                "icon": "/stonehearth_ace/entities/trees/birch_tree/seed/tree_birch_seed.png",
                "filter": "seed birch"
             },
             "gruit": {
-               "ordinal": 3,
+               "ordinal": 3.5,
                "display_name": "i18n(stonehearth_ace:entities.drink.gruit.display_name)",
                "icon": "/stonehearth_ace/entities/drink/gruit/gruit.png",
                "filter": "brewing_ingredient gruit"

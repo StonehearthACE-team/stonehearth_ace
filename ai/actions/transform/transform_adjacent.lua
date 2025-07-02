@@ -133,7 +133,7 @@ function TransformItemAdjacent:run(ai, entity, args)
       end
 
       -- Apply the copied quality of the ingredient (if there was one) to the transformed form
-      if ing_quality and ing_options then
+      if transformed_form and ing_quality and ing_options then
          item_quality_lib.apply_quality(transformed_form, ing_quality, ing_options)
       end
 

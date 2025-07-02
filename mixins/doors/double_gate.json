@@ -3,6 +3,10 @@
       "type": "remove"
    },
    "components": {
+      "stonehearth_ace:auto_replace": {
+         "on_kill": true,
+         "on_destroy": false
+      },
       "stonehearth_ace:connection": {
          "stonehearth_ace:fence:simple": {
             "connectors": {

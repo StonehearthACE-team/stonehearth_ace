@@ -491,6 +491,8 @@ App.StonehearthCitizenRosterEntryView = App.View.extend({
             .fail(function(e) {
                console.error('regenerate citizen appearance failed:', e)
             });
+
+         this.notifyPropertyChange('hiddenCustomizations');
       },
 
       setGender: function(targetGender) {
@@ -514,6 +516,8 @@ App.StonehearthCitizenRosterEntryView = App.View.extend({
             .fail(function(e) {
                console.error('change genders command failed:', e)
             });
+
+         this.notifyPropertyChange('hiddenCustomizations');
       },
 
       changeIndex: function(operator, customizeType) {
