@@ -9,6 +9,18 @@ function AceItemQualityComponent:initialize_quality(quality, author, author_type
    assert(self._sv.quality == NO_QUALITY, 'quality can only be set once on item creation')
    
    local item_quality_data = radiant.entities.get_entity_data(self._entity, 'stonehearth:item_quality', false)
+   local item_catalog_data = stonehearth.catalog:get_catalog_data(self._entity:get_uri()) or {}
+   local crop_component = self._entity:get_component('stonehearth:crop')
+
+   if crop_component then
+      author_type = 'farmer'
+   end
+
+   if item_catalog_data then
+      if item_catalog_data.category == 'plants' then
+         author_type = 'cultivator'
+      end
+   end
 
    if item_quality_data then
       if item_quality_data.minimum_quality and quality < item_quality_data.minimum_quality then

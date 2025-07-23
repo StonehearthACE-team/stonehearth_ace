@@ -1164,6 +1164,10 @@ App.StonehearthUnitFrameView = App.View.extend({
             craftedKey = 'stonehearth_ace:ui.game.unit_frame.prepared_by';
          } else if (self.get('model.stonehearth:item_quality.author_type') == 'patron') {
             craftedKey = 'stonehearth_ace:ui.game.unit_frame.patronized_by';
+         } else if (self.get('model.stonehearth:item_quality.author_type') == 'farmer') {
+            craftedKey = 'stonehearth_ace:ui.game.unit_frame.farmed_by';
+         } else if (self.get('model.stonehearth:item_quality.author_type') == 'cultivator') {
+            craftedKey = 'stonehearth_ace:ui.game.unit_frame.cultivated_by';
          }
 
          var authorName = self._getItemAuthor();

@@ -27,7 +27,7 @@
          ]
       },
       "stonehearth:siege_weapon": {
-         "max_uses": 1
+         "max_uses": 20
       },
       "stonehearth:equipment": {
          "items": [
@@ -62,7 +62,14 @@
          },
          "menace": {
             "type": "basic",
-            "value": 250
+            "value": 350
+         }
+      },
+      "sensor_list": {
+         "sensors": {
+            "sight": {
+               "radius": 8
+            }
          }
       }
    },
