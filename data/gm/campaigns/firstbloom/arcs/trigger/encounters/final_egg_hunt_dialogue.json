@@ -25,6 +25,12 @@
             "key": "is_return",
             "value": 0
          },
+         "end_started_test": {
+            "type": "deny_if_greater_than",
+            "item": "counter",
+            "key": "end_started",
+            "value": 0
+         },
          "recipe_check": {
             "item": "script",
             "type": "deny_if",
@@ -48,7 +54,8 @@
                      "out_edge": {
                         "type": "trigger_many",
                         "out_edges": [
-                           "delay_before_sasha_arrival"
+                           "delay_before_sasha_arrival",
+                           "end_started_counter_add"
                         ]
                      }
                   }

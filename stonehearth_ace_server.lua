@@ -127,7 +127,6 @@ local monkey_patches = {
    ace_health_observer = 'stonehearth.ai.observers.health_observer',
    ace_height_map_renderer = 'stonehearth.services.server.world_generation.height_map_renderer',
    ace_herbalist = 'stonehearth.jobs.herbalist.herbalist',
-   ace_herding_task_group = 'stonehearth.ai.task_groups.herding_task_group',
    ace_hydrology_service = 'stonehearth.services.server.hydrology.hydrology_service',
    ace_incapacitation_component = 'stonehearth.components.incapacitation.incapacitation_component',
    ace_inventory = 'stonehearth.services.server.inventory.inventory',
@@ -264,6 +263,7 @@ local monkey_patches = {
    ace_waterfall_component = 'stonehearth.components.waterfall.waterfall_component',
    ace_weather_service = 'stonehearth.services.server.weather.weather_service',
    ace_weather_state = 'stonehearth.services.server.weather.weather_state',
+   ace_work_order_component = 'stonehearth.components.work_order.work_order_component',
    ace_workshop_component = 'stonehearth.components.workshop.workshop_component',
    ace_world_generation_service = 'stonehearth.services.server.world_generation.world_generation_service',
 }

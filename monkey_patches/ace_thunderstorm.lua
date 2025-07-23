@@ -43,7 +43,7 @@ function AceThunderstormWeather:_spawn_lightning()
                                 Point3(x + TREE_SEARCH_RADIUS, terrain_bounds.max.y, z + TREE_SEARCH_RADIUS))
       for _, item in pairs(radiant.terrain.get_entities_in_cube(search_cube)) do
          local catalog_data = stonehearth.catalog:get_catalog_data(item:get_uri()) or {}
-         if item:get_component('stonehearth:resource_node') and catalog_data.category == 'plants' then
+         if item:get_component('stonehearth:resource_node') and catalog_data.category == 'plants' and item:get_player_id() == '' then
             tree = item
             break
          end

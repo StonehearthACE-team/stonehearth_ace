@@ -1,0 +1,28 @@
+.bulletinDialog {
+
+   .perk {
+      display: flex;
+      align-items: center; // aligns icon and text to the top
+      margin-bottom: 0px;
+      gap: 15px; // optional: space between icon and text
+
+      .icon {
+      width: 80px;
+      display: flex;              // make it a flex container
+      justify-content: center;    // center the image horizontally
+      align-items: center;        // center the image vertically
+      flex-shrink: 0;             // prevent shrinking if needed
+
+         img {
+            max-width: 100%;          // optional: scale icon if needed
+            max-height: 100%;         // optional: prevent overflow
+         }
+      }
+
+      .text {
+         flex: 1; // takes up remaining space
+         word-break: break-word; // allows wrapping within container
+      }
+   }
+
+}

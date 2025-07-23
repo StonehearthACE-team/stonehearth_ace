@@ -281,12 +281,16 @@ function AceBuff:on_repeat_add(options)
 end
 
 function AceBuff:_try_evolve()
+   local options = {}
+   options.source = self._sv._source or nil
+   options.source_player = self._sv._source_player or nil
+
    if self._json.evolve_chance then
       if rng:get_real(0, 1) < self._json.evolve_chance then
-         radiant.entities.add_buff(self._sv._entity, self._json.buff_evolve)
+         radiant.entities.add_buff(self._sv._entity, self._json.buff_evolve, options)
       end
    else
-      radiant.entities.add_buff(self._sv._entity, self._json.buff_evolve)
+      radiant.entities.add_buff(self._sv._entity, self._json.buff_evolve, options)
    end
 end
 
