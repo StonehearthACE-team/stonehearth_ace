@@ -154,7 +154,7 @@
       ]
    },
    "slayer": {
-      "ordinal": 0.8,
+      "ordinal": 0.7,
       "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.slayer.display_name)",
       "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.slayer.description)",
       "requirement": {
@@ -195,7 +195,7 @@
       ]
    },
    "defender": {
-      "ordinal": 0.9,
+      "ordinal": 0.8,
       "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.defender.display_name)",
       "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.defender.description)",
       "requirement": {
@@ -239,6 +239,61 @@
             "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.defender.1000_description)",
             "required_value": 1000,
             "renown": 1000
+         }
+      ]
+   },
+   "healer": {
+      "ordinal": 0.9,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.healer.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.healer.description)",
+      "requirement": {
+         "statistics": {
+            "category": "totals",
+            "name": "heals"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.healer.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.healer.1_description)",
+            "required_value": 50,
+            "renown": 60
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.healer.2_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.healer.2_description)",
+            "required_value": 160,
+            "renown": 200
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.healer.3_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.healer.3_description)",
+            "required_value": 500,
+            "renown": 620
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.healer.4_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.healer.4_description)",
+            "required_value": 1200,
+            "renown": 1400
+         },
+         {
+            "rank": 5,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.healer.5_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.healer.5_description)",
+            "required_value": 3000,
+            "renown": 3500
+         },
+         {
+            "rank": 6,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.healer.6_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.healer.6_description)",
+            "required_value": 7500,
+            "renown": 9000
          }
       ]
    },

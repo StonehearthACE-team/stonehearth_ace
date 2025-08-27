@@ -83,6 +83,23 @@ function AceCombatService:battery(context)
    radiant.events.trigger_async(target, 'stonehearth:combat:battery', context)
 end
 
+AceCombatService._ace_old_heal = CombatService.heal
+function AceCombatService:heal(context)
+   if self:_ace_old_heal(context) then
+      local healer = context.healer
+      local target = context.target
+      local stats_comp = healer:get_component('stonehearth_ace:statistics')
+
+      if stats_comp and healer ~= target then
+         stats_comp:increment_stat('totals', 'heals')
+      end
+
+      return true
+   else
+      return false
+   end
+end
+
 function AceCombatService:_calculate_damage(attacker, target, attack_info, base_damage_name)
    local weapon = stonehearth.combat:get_main_weapon(attacker)
 

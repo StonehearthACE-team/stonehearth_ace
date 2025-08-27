@@ -67,7 +67,7 @@ function AceDonationDialogEncounter:start(ctx, info)
                                        :set_ui_view('StonehearthDialogTreeBulletinDialog')
                                        :set_callback_instance(self)
                                        :set_type('quest')
-                                       :set_sticky(false)
+                                       :set_sticky(true)
                                        :set_keep_open(false)
                                        :set_close_on_handle(true)
 

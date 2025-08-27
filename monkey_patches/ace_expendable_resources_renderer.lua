@@ -81,6 +81,8 @@ function AceExpendableResourcesRenderer:_update()
                local effect_definitions_to_use = effect_definitions.default
                if is_current_player and effect_definitions.current_player then
                   effect_definitions_to_use = effect_definitions.current_player
+               elseif effect_definitions.other_player and stonehearth.presence_client:is_non_npc(radiant.entities.get_player_id(self._entity)) then
+                  effect_definitions_to_use = effect_definitions.other_player
                end
 
                local uri_table = nil

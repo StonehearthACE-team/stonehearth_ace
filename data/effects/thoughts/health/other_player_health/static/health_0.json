@@ -1,0 +1,18 @@
+{
+   "type" : "effect",
+   "mixins": "/stonehearth/data/effects/thoughts/health/health_effect_base.json",
+   "tracks": {
+      "unit_status_effect": {
+         "type": "unit_status_effect",
+         "material": {
+            "name": "materials/billboard.material.json",
+            "samplers" : [
+               {
+                  "name" : "albedoMap",
+                  "map" : "/stonehearth_ace/data/horde/materials/thoughts/health/hearts/yellow_heart_0_8.png"
+               }
+            ]
+         }
+      }
+   }
+}
