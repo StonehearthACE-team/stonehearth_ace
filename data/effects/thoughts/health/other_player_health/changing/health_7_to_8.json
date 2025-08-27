@@ -1,0 +1,29 @@
+{
+   "type" : "effect",
+   "mixins": "/stonehearth/data/effects/thoughts/health/health_effect_base.json",
+   "tracks": {
+      "unit_status_effect": {
+         "type": "unit_status_effect",
+         "material": {
+            "samplers" : [
+               {
+                  "name" : "albedoMap",
+                  "map" : "",
+                  "animation_frames": [
+                     "/stonehearth_ace/data/horde/materials/thoughts/health/hearts/yellow_heart_7_8.png",
+                     "/stonehearth_ace/data/horde/materials/thoughts/health/hearts/yellow_heart_7_8.png",
+                     "/stonehearth_ace/data/horde/materials/thoughts/health/hearts/yellow_heart_8_8.png",
+                     "/stonehearth_ace/data/horde/materials/thoughts/health/hearts/yellow_heart_7_8.png",
+                     "/stonehearth_ace/data/horde/materials/thoughts/health/hearts/yellow_heart_8_8.png",
+                     "/stonehearth_ace/data/horde/materials/thoughts/health/hearts/yellow_heart_7_8.png",
+                     "/stonehearth_ace/data/horde/materials/thoughts/health/hearts/yellow_heart_8_8.png"
+                  ],
+                  "numAnimationFrames" : 7,
+                  "frameRate" : 8,
+                  "numLoops" : 1
+               }
+            ]
+         }
+      }
+   }
+}
