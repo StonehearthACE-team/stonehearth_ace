@@ -365,15 +365,16 @@ function AceGameCreationService:_apply_reembark_settings_to_citizen(session, kin
    -- Set traits.
    local traits = citizen:add_component('stonehearth:traits')
    -- traits could be either an array or a table with extra args
-   if not next(citizen_spec.traits) == nil then
-      if type(next(citizen_spec.traits)) == 'number' then
+   if citizen_spec.traits and next(citizen_spec.traits) ~= nil then
+      if #citizen_spec.traits > 0 then
+         -- array style (just uris)
          for _, trait_uri in ipairs(citizen_spec.traits) do
             traits:add_trait(trait_uri)
          end
       else
+         -- map style (uri -> args)
          for trait_uri, args in pairs(citizen_spec.traits) do
             local args_copy = radiant.shallow_copy(args)
-            -- this is a bit of a hack; it would be nice to have more general data access
             args_copy.pet_id_map = pet_id_map
             traits:add_trait(trait_uri, args_copy)
          end
