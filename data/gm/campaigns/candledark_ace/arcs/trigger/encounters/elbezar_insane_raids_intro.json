@@ -4,6 +4,7 @@
    "rarity": "common",
    "in_edge": "elbezar_insane_raids_intro",
    "dialog_tree_info": {
+      "bulletin_type": "candledark",
       "start_node": "msg1",
       "nodes": {
          "msg1": {
@@ -14,7 +15,9 @@
                "portrait_offset": 0,
                "message": "i18n(stonehearth_ace:data.gm.campaigns.candledark_ace.elbezar_insane_raids_intro.dialog_tree_info.dialog_nodes.msg1.bulletin_message.00)",
                "choices": {
-                  "i18n(stonehearth_ace:data.gm.campaigns.candledark_ace.elbezar_insane_raids_intro.dialog_tree_info.dialog_nodes.msg1.choice_000)": {}
+                  "i18n(stonehearth_ace:data.gm.campaigns.candledark_ace.elbezar_insane_raids_intro.dialog_tree_info.dialog_nodes.msg1.choice_000)": {
+                     "out_edge": "wait_for_boss_intro"
+                  }
                }
             }
          }

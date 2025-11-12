@@ -26,10 +26,33 @@ function AceReturningTrader:get_out_edge()
    return self._sv.resolved_out_edge
 end
 
-AceReturningTrader._ace_old__on_accepted = ReturningTrader._on_accepted
 function AceReturningTrader:_on_accepted()
-   self:_ace_old__on_accepted()
+   self._sv._bulletin = nil
+   self:_stop_timer()
 
+   --make a timer to express how long to wait before the caravan returns
+   self._sv._wait_time = self._sv._trade_data.num_days
+   self:_create_timer(self._sv._wait_time .. 'd')
+
+   --Put up a non-dismissable notification to keep track of the time remaining
+   --Send the notice to the bulletin service
+   self._sv._bulletin = stonehearth.bulletin_board:post_bulletin(self._sv._player_id)
+      :set_ui_view('StonehearthGenericBulletinDialog')
+      :set_callback_instance(self)
+      :set_close_on_handle(false)
+      :set_type(self._sv._trade_data.bulletin_type or 'quest_timed')
+      :set_data({
+         title = self._sv._trade_info.waiting_title,
+         message = self._sv._trade_info.waiting_text
+      })
+   self:_add_i18n_data(self._sv._bulletin)
+   --register a callback every hour so we can
+   self._sv._waiting_for_return = true
+   if not self._sv.hourly_timer then
+      self._sv.hourly_timer = stonehearth.calendar:set_persistent_interval("ReturningTrader on_hourly", '1h', radiant.bind(self, '_on_hourly'))
+   end
+
+   -- ACE Addition:
    local use_quest_storage = self._sv._trade_info.use_quest_storage ~= false
    if stonehearth.client_state:get_client_gameplay_setting(self._sv._player_id, 'stonehearth_ace', 'use_quest_storage', true) and use_quest_storage then
       local item_requirements = {{

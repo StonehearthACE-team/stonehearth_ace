@@ -209,7 +209,7 @@ function AcePopulationFaction:show_notification_for_citizen(citizen, title, opti
    end
 
    local town_name = stonehearth.town:get_town(self._sv.player_id):get_town_name()
-   local notification_type = options and options.type or 'info'
+   local notification_type = options and options.type or 'new_citizen'
    local message = options and options.message or ''
 
    self._sv.bulletins[citizen_id][title] = stonehearth.bulletin_board:post_bulletin(self._sv.player_id)

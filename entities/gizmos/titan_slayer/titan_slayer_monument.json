@@ -1,5 +1,16 @@
 {
+   "mixintypes": {
+      "mixins": "override"
+   },
+   "mixins": [
+      "file(titan_slayer_monument_ghost.json)"
+   ],
 	"components": {
+      "stonehearth:entity_forms": {
+         "ghost_form": "file(titan_slayer_monument_ghost.json)",
+         "iconic_form": "file(titan_slayer_monument_iconic.json)",
+         "placeable_on_ground": true
+      },
       "mob": {
          "model_origin": { "x": 0, "y": 0, "z": 0 },
 			"region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
@@ -22,14 +33,9 @@
          "value_in_gold": 80
       },
       "stonehearth:catalog": {
-         "description": "i18n(stonehearth_ace:entities.gizmos.titan_slayer.titan_slayer_monument.description)"
-      },
-      "stonehearth:reembarkation": {
-         "reembark_version": "stonehearth:gizmos:corrupt:titanstorm:slayer:monument",
-         "category": "decoration",
-         "material_tags": [
-            "stockpile_decoration"
-         ]
+         "description": "i18n(stonehearth_ace:entities.gizmos.titan_slayer.titan_slayer_monument.description)",
+         "category": "quest",
+         "material_tags": ["light", "light_source", "stockpile_decoration", "stockpile_quest_items"]
       }
    }
 }

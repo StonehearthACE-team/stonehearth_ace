@@ -1,0 +1,15 @@
+{
+   "type": "encounter",
+   "encounter_type": "wait",
+   "in_edge": "delay_before_elbezar_return",
+   "out_edge": {
+      "type": "trigger_many",
+      "out_edges": [
+         "elbezar_return",
+         "return_quest_toggle"
+      ]
+   },
+   "wait_info": {
+      "duration": "6h+12h"
+   }
+}

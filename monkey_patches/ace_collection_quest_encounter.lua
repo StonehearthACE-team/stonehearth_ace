@@ -36,10 +36,30 @@ function AceCollectionQuest:_create_quest_storage_listener()
 end
 
 -- called by the ui if the player accepts the terms of the shakedown.
---
-AceCollectionQuest._ace_old__on_shakedown_accepted = CollectionQuest._on_shakedown_accepted
 function AceCollectionQuest:_on_shakedown_accepted()
-   self:_ace_old__on_shakedown_accepted()
+   self:_destroy_bulletin()
+
+   self._sv.script:on_transition('shakedown_accepted')
+
+   -- update the bulletin to start tracking the collection progress
+   local bulletin_data = self._sv._info.nodes.collection_progress.bulletin
+   local items = self._sv.demand
+   bulletin_data.demands = {
+      items = self._sv.demand
+   }
+
+   bulletin_data.ok_callback = '_nop' -- we don't do anything when they push ok, but the UI will close the view
+   bulletin_data.collection_cancel_callback = '_on_collection_cancelled'
+
+   self:_update_bulletin(bulletin_data, {
+         keep_open = false,
+         view = 'StonehearthCollectionQuestBulletinDialog',
+         type = 'quest_timed'
+      })
+   self:_start_tracking_items()
+
+   -- start a timer for when to check up on the quest
+   self:_start_collection_timer()
 
    -- try to create a quest storage if gameplay setting allows
    local ctx = self._sv.ctx
@@ -175,6 +195,53 @@ function AceCollectionQuest:_update_progress()
    self.__saved_variables:mark_changed()
 
    bulletin:mark_data_changed()
+end
+
+function AceCollectionQuest:_update_bulletin(new_bulletin_data, opt)
+   local ctx = self._sv.ctx
+   local player_id = ctx.player_id
+   local opt_view = (opt and opt.view) or 'StonehearthGenericBulletinDialog'
+   local opt_keep_open = true
+   local info = self._sv._info
+
+   if (opt and opt.keep_open ~= nil) then
+      opt_keep_open = opt.keep_open
+   end
+
+   if (opt and opt.type) then
+      info.bulletin_type = opt.type
+   end
+
+   local bulletin = self._sv.bulletin
+   if not bulletin then
+      -- set all constant data for all bulletins in the encounter
+      bulletin = stonehearth.bulletin_board:post_bulletin(ctx.player_id)
+                                    :set_callback_instance(self)
+                                    :set_type(info.bulletin_type or 'quest')
+                                    :set_sticky(true)
+                                    :set_close_on_handle(false)
+      if self._sv._i18n_data then
+         for i18n_var_name, i18n_var_result in pairs(self._sv._i18n_data) do
+            -- Set i18n var data to value from ctx path or literal value specified in json
+            local i18n_var = ctx:get(i18n_var_result) or i18n_var_result
+            if i18n_var then
+               bulletin:add_i18n_data(i18n_var_name, i18n_var)
+            end
+         end
+      end
+
+      self._sv.bulletin = bulletin
+   end
+
+   -- set data that might change when the bulltin is recycled
+   bulletin:set_keep_open(opt_keep_open)
+
+   self._sv.bulletin_data = radiant.shallow_copy(new_bulletin_data)
+   self.__saved_variables:mark_changed()
+
+   bulletin:set_data(self._sv.bulletin_data)
+           :set_ui_view(opt_view)
+
 end
 
 return AceCollectionQuest

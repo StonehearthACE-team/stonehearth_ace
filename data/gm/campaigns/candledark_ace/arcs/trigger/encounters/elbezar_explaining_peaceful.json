@@ -2,17 +2,24 @@
    "type": "encounter",
    "encounter_type": "dialog_tree",
    "rarity": "common",
-   "in_edge": "elbezar_explaining",
+   "in_edge": "elbezar_explaining_peaceful",
    "can_start": {
       "test_1": {
          "game_mode_check": {
             "type": "deny_if_not",
             "item": "game_mode",
             "value": "stonehearth:game_mode:peaceful"
+         },
+         "is_return_test": {
+            "type": "deny_if_greater_than",
+            "item": "counter",
+            "key": "is_return",
+            "value": 0
          }
       }
    },
    "dialog_tree_info": {
+      "bulletin_type": "candledark",
       "start_node": "msg1",
       "nodes": {
          "msg1": {

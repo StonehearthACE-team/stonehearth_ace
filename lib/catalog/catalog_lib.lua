@@ -384,6 +384,8 @@ function catalog_lib._add_catalog_description(catalog, full_alias, json, base_da
       if reembarkation and reembarkation.reembark_version then
          catalog_data.reembark_version = reembarkation.reembark_version
          catalog_data.reembark_max_count = reembarkation.reembark_max_count
+         catalog_data.remove = reembarkation.remove
+         catalog_data.remove_uri = reembarkation.remove_uri
       end
 
       local workshop = entity_data['stonehearth:workshop']

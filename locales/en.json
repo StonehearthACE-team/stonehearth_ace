@@ -34,6 +34,7 @@
             "pottage": "contributing to the pottage",
             "pottage_start": "starting the pottage",
             "striking_gong": "striking the gong",
+            "summoning": "Summoning against [name(data.target)]",
             "periodic_interaction": {
                "default": "interacting with [name(data.target)]",
                "cheese": "cheesin' it",
@@ -385,6 +386,50 @@
                                        }
                                     }
                                  }
+                              }
+                           },
+                           "11_shook_down": {
+                              "11_shook_down_intro": {
+                                 "dialog_tree_info": {
+                                    "dialog_nodes": {
+                                       "msg1": {
+                                          "bulletin_message": {
+                                             "00": "\"Some goblins somehow found an entrance to our hovel and are asking for... a bunch of wooden doors? We have neither wood nor carpenter on paw, so could you perhaps craft some for us?<br><br>Alternatively, we're not afraid to fight them off but we could use some help, or at least the means to heal our injured afterwards.\""
+                                          },
+                                          "choice_003": "We'll fight beside you!"
+                                       },
+                                       "msg2_d": {
+                                          "bulletin_title": "Shook Down",
+                                          "bulletin_message": {
+                                             "00": "\"Excellent, we'll give them a fight! It will be the greatest honor to do so beside our friends!\"<br><br>\"Two somewhat experienced fighters will definitely be enough...\" he says, pensive."
+                                          },
+                                          "choice_000": "We'll send our best!"
+                                       }
+                                    }
+                                 }
+                              },
+                              "11_shook_down_quest_c": {
+                                 "title": "Send two Fighters",
+                                 "dialog_title": "Send two Fighters",
+                                 "text": "Select two Fighters (Level 3+) to help Clan Amberstone."
+                              },
+                              "11_shook_down_outro_c": {
+                                 "donation_dialog_info": {
+                                    "dialog_nodes": {
+                                       "simple_message": {
+                                          "bulletin_title": "Shook Down",
+                                          "bulletin_message": {
+                                             "00": "\"Here are your brave defenders! Be proud, they fought like rabbits, and our friendship grows ever strong as paw and hand share the battlefield!\" He gives you some glittering bags as compensation.<br><br><font size=-1><i>[Rabbit reputation increased]</i></font>"
+                                          },
+                                          "choice_000": "Victory!"
+                                       }
+                                    }
+                                 }
+                              }
+                           },
+                           "14_chase_scene_spawn_a": {
+                              "tracking_bulletin": {
+                                 "title": "Defeat the party that was chasing the Clan Amberstone rabbit"
                               }
                            },
                            "30_geomancy": {
@@ -6642,6 +6687,24 @@
             "knight": {
                "description": "An orcish knight at service to their Khan"
             }
+         },
+         "candledark": {
+            "pumpling_boss": {
+               "display_name": "The Pumpking",
+               "description": "King of the Pumpkins, a plumpy face of terror!"
+            },
+            "skeleton_boss": {
+               "display_name": "King Oleric",
+               "description": "The Skeleton King!"
+            },
+            "vampire_boss": {
+               "display_name": "Count Vermillion",
+               "description": "The most fearsome vampire lord!"
+            },
+            "witch_boss": {
+               "display_name": "Queen Salemba",
+               "description": "The wicked queen of the witches!"
+            }
          }
       },
       "commands": {
@@ -7698,15 +7761,15 @@
          "poison": {
             "minor_poison": {
                "display_name": "Weak Poison",
-               "description": "A weak, non-lethal poison. Will last some hours. Muscle and Willpower are fairly reduced.<ul><li>💬 Type & Severity: Poison (Low)</li><li>💊 This poison can be treated with Leeches or Weak Antidote; it is removed if the hearthling is incapacitated</li><li>💢 Losing 5% of their health points every 30 minutes</li><li>❗ This poison will only damage them down to 75% of their total health</li><li>🖤 This poison slightly reduces the time a hearthling has to be rescued if knocked unconscious</li></ul>"
+               "description": "A weak, non-lethal poison. Will last some hours. Muscle and Willpower are fairly reduced.<ul><li>💬 Type & Severity: Poison (Low)</li><li>💊 This poison can be treated with Leeches or Weak Antidote</li><li>💢 Losing 5% of their health points every 30 minutes</li><li>❗ This poison will only damage them down to 75% of their total health</li><li>🖤 This poison slightly reduces the time a hearthling has to be rescued if knocked unconscious</li></ul>"
             },
             "poison": {
                "display_name": "Poison",
-               "description": "A non-lethal but dangerous poison. Might last a day or so. Muscle and Willpower are reduced.<ul><li>💬 Type & Severity: Poison (Medium)</li><li>💊 This poison needs to be treated with at least an Antidote to be completely removed with a single treatment; it is removed if the hearthling is incapacitated</li><li>💢 Losing 5% of their health points every 20 minutes</li><li>❗ This poison will damage them down to only 30% of their total health</li><li>🖤 This poison reduces the time a hearthling has to be rescued if knocked unconscious</li></ul>"
+               "description": "A non-lethal but dangerous poison. Might last a day or so. Muscle and Willpower are reduced.<ul><li>💬 Type & Severity: Poison (Medium)</li><li>💊 This poison needs to be treated with at least an Antidote to be completely removed with a single treatment</li><li>💢 Losing 5% of their health points every 20 minutes</li><li>❗ This poison will damage them down to only 30% of their total health</li><li>🖤 This poison reduces the time a hearthling has to be rescued if knocked unconscious</li></ul>"
             },
             "major_poison": {
                "display_name": "Strong Poison",
-               "description": "A tough, lethal poison. Can last a couple of days. Muscle and Willpower are greatly reduced.<ul><li>💬 Type & Severity: Poison (High)</li><li>💊 This poison needs to be treated with at least a Strong Antidote to be completely removed with a single treatment; incapacitation will not remove this poison and it can cause the hearthling to be incapacitated over and over again until they're cured</li><li>💢 Losing 5% of their health points every 15 minutes</li><li>❗ This poison can damage them until they are knocked unconscious and require quick assistance or treatment</li><li>❌ This poison will not be able to knock them unconscious more than one time</li><li>🖤 This poison greatly reduces the time a hearthling has to be rescued if knocked unconscious</li></ul>"
+               "description": "A tough, lethal poison. Can last a couple of days. Muscle and Willpower are greatly reduced.<ul><li>💬 Type & Severity: Poison (High)</li><li>💊 This poison needs to be treated with at least a Strong Antidote to be completely removed with a single treatment</li><li>💢 Losing 5% of their health points every 15 minutes</li><li>❗ This poison can damage them until they are knocked unconscious and require quick assistance or treatment</li><li>❌ This poison will not be able to knock them unconscious more than one time</li><li>🖤 This poison greatly reduces the time a hearthling has to be rescued if knocked unconscious</li></ul>"
             }
          },
          "toxin": {
@@ -10915,28 +10978,28 @@
             },
             "fireplace_clay_small_recipe": {
                "recipe_name": "Small Clay Fireplace",
-               "description": "A very simple hearth. A chimney can be extended from it and, similarly to a portal, it can be placed on walls.",
+               "description": "A very simple hearth. A chimney can be extended from it after it has been placed and, similarly to a door or window, it can be placed on walls.",
                "flavor": "It's like a kiln that doesn't work as a kiln!"
             },
             "fireplace_clay_medium_recipe": {
                "recipe_name": "Clay Fireplace",
                "description": "A larger clay hearth with a nice and decorative frame.",
-               "flavor": "A chimney can be extended from it and, similarly to a portal, it can be placed on walls"
+               "flavor": "A chimney can be extended from it after it has been placed and, similarly to a door or window, it can be placed on walls"
             },
             "fireplace_brick_small_recipe": {
                "recipe_name": "Small Brick Fireplace",
                "description": "A very neat and cozy fireplace made with quality brickwork.",
-               "flavor": "A chimney can be extended from it and, similarly to a portal, it can be placed on walls"
+               "flavor": "A chimney can be extended from it after it has been placed and, similarly to a door or window, it can be placed on walls"
             },
             "fireplace_brick_medium_recipe": {
                "recipe_name": "Brick Fireplace",
                "description": "An elegant decoration on itself, this fireplace is very efficient and can be extended quite high.",
-               "flavor": "A chimney can be extended from it and, similarly to a portal, it can be placed on walls"
+               "flavor": "A chimney can be extended from it after it has been placed and, similarly to a door or window, it can be placed on walls"
             },
             "fireplace_brick_large_recipe": {
                "recipe_name": "Grand Brick Fireplace",
                "description": "Efficient, appealing and large enough to warm an entire home, this fireplace is an example of craftsmanship.",
-               "flavor": "A chimney can be extended from it and, similarly to a portal, it can be placed on walls"
+               "flavor": "A chimney can be extended from it after it has been placed and, similarly to a door or window, it can be placed on walls"
             },
             "frostfeast": {
                "present_small_recipe": {
@@ -11759,18 +11822,18 @@
             },
             "fireplace_stone_small_recipe": {
                "recipe_name": "Small Stone Fireplace",
-               "description": "A small and cozy fireplace. A chimney can be extended from it and, similarly to a portal, it can be placed on walls.",
+               "description": "A small and cozy fireplace. A chimney can be extended from it after it has been placed and, similarly to a door or window, it can be placed on walls.",
                "flavor": "'The fireplace is the best place for a fire' -Homeowner's Safety Guide, 1st Edition"
             },
             "fireplace_stone_medium_recipe": {
                "recipe_name": "Stone Fireplace",
                "description": "A good-sized fireplace made of stone, the perfect hearth for warming your living room!",
-               "flavor": "A chimney can be extended from it and, similarly to a portal, it can be placed on walls"
+               "flavor": "A chimney can be extended from it after it has been placed and, similarly to a door or window, it can be placed on walls"
             },
             "fireplace_stone_large_recipe": {
                "recipe_name": "Grand Stone Fireplace",
                "description": "A very fancy and large fireplace with an engraved stone face, cast-iron grating and an elevated holder for the firewood.",
-               "flavor": "A chimney can be extended from it and, similarly to a portal, it can be placed on walls"
+               "flavor": "A chimney can be extended from it after it has been placed and, similarly to a door or window, it can be placed on walls"
             },
             "statue_knight_female_recipe": {
                "recipe_name": "Knight Statue (Female)",
@@ -12524,7 +12587,7 @@
             },
             "fireplace_iron_small_recipe": {
                "recipe_name": "Small Iron Stove",
-               "description": "A compact but very efficient fireplace. A chimney can be extended from it.",
+               "description": "A compact but very efficient fireplace. A chimney can be extended from it after it has been placed.",
                "flavor": "Made in cast iron, you won't even notice the soot!"
             },
             "frostfeast": {
@@ -17833,7 +17896,7 @@
                },
                "003": {
                   "name": "Ripe Rye",
-                  "description": "Ready for harvest!"
+                  "description": "Or should we say... 'Ryepe'?"
                }
             }
          },
@@ -22527,6 +22590,9 @@
                "display_name": "Magic Frog",
                "description": "Oh no, it's raining frogs! Witchcraft!"
             }
+         },
+         "summon": {
+            "species": "summoned creature"
          }
       },
       "food": {
@@ -24562,7 +24628,7 @@
             },
             "vampire_thrall_female": {
                "display_name": "Candledark Thrall",
-               "description": "They have no more control of their own minds anymore..."
+               "description": "They have no control of their own minds anymore..."
             },
             "witch": {
                "display_name": "Evil Candledark Witch",
@@ -25741,6 +25807,11 @@
                   "display_name": "Suspicious Upturned Mug",
                   "description": "Huh? Did someone leave their mug like that?"
                }
+            }
+         },
+         "traps": {
+            "spider_cocoon": {
+               "display_name": "Spider Cocoon with "
             }
          }
       },
@@ -29422,7 +29493,7 @@
             "choose_crop_type": "Choose Resource",
             "queued_crop": "Queued for Planting: ",
             "harvest_crop": "Enable Harvesting",
-            "harvest_crop_description": "If enabled, whenever the resource is fully grown, the Herbalist or Grower will harvest it. Disabling this can be useful when a plus sign (+) is displayed next to the amount harvested - it means this planter will also provide resources over time without having to harvest and wait for it to grow again.",
+            "harvest_crop_description": "If enabled, whenever the resource is fully grown, the Herbalist or Grower will harvest it.<p>Disabling it allows your planter to function in a more resource-conscious way. A short while after fully grown, a plus sign (+) will appear next to the 'Produces per Harvest' number - it means that this planter will now provide resources over time and on-demand, without having to cut it and wait for it to completely grow in size and quality again.",
             "tend_crop": "Enable Tending",
             "tend_crop_description": "If enabled, the Herbalist or Grower will occasionally tend to this planter, gradually increasing the quality of the crop and providing its surroundings with a temporary bonus to mood. Disabling Tending can be helpful when a lot of planters are utilized for decorative purposes, reducing the workload of those responsible for them.",
             "harvest_plant": "Uproot on Harvest",

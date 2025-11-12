@@ -1,0 +1,90 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth_ace:mixins:summon"
+   ],
+   "components": {
+      "render_info": {
+         "animation_table": "/stonehearth/data/rigs/entities/critters/red_fox_wolf",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ],
+         "scale": 0.09,
+         "color_map": "stonehearth_ace:color_map:candledark"
+      },
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(skeleton_fox.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "stonehearth:attributes": {
+         "max_health": {
+            "type": "basic",
+            "value": 140
+         },
+         "muscle": {
+            "type": "basic",
+            "value": 4
+         },
+         "menace": {
+            "type": "basic",
+            "value": 25
+         },
+         "courage": {
+            "type": "basic",
+            "value": 250
+         },
+         "speed": {
+            "type": "basic",
+            "value": 80
+         }
+      },
+      "stonehearth:equipment": {
+         "items": [
+            "stonehearth_ace:weapons:candledark:summon"
+         ]
+      },
+      "stonehearth_ace:summon": {
+         "despawn_effect": "stonehearth:effects:gib_effect"
+      }
+   },
+   "entity_data": {
+      "stonehearth:species": {
+         "id": "candledark"
+      },
+      "stonehearth:catalog": {
+         "display_name": "Candledark Spider",
+         "description": "Stirred to do the bidding of uneasy, vengeful spirits."
+      },
+      "stonehearth:entity_radius": 0.8,
+      "stonehearth:portrait": {
+         "portrait_types": {
+            "headshot": {
+               "camera": {
+                  "pos": [
+                     17,
+                     0.8,
+                     -27
+                  ],
+                  "look_at": [
+                     0,
+                     0.6,
+                     0
+                  ],
+                  "fov": 60
+               }
+            }
+         }
+      }
+   }
+}

@@ -154,6 +154,7 @@ App.StonehearthReembarkationBulletinDialog = App.StonehearthBaseBulletinDialog.e
             srcItems[key] = radiant.shallow_copy(uriEntry);
             srcItems[key].count = item.count;
             srcItems[key].item_quality = itemQualityKey;
+            srcItems[key].remove = true;
          });
       });
 
@@ -186,6 +187,9 @@ App.StonehearthReembarkationBulletinDialog = App.StonehearthBaseBulletinDialog.e
                   // ACE changed this line:
                   srcItems[key].count = catalogData.reembark_max_count ? Math.min(item.count, catalogData.reembark_max_count) : 1;
                   srcItems[key].item_quality = itemQualityKey;
+                  // ACE added these lines:
+                  srcItems[key].remove = catalogData.remove === false ? false : true;
+                  srcItems[key].remove_uri = uriEntry.uri
                });
             }
          }
@@ -256,7 +260,7 @@ App.StonehearthReembarkationBulletinDialog = App.StonehearthBaseBulletinDialog.e
       var choices = {
          citizens: this.get('dstCitizens'),
          items: radiant.map_to_array(this.get('dstItems'), function (k, v) {
-            return { uri: v.uri, count: v.count, item_quality: parseInt(v.item_quality) };
+            return { uri: v.uri, count: v.count, item_quality: parseInt(v.item_quality), remove: v.remove, remove_uri: v.remove_uri };
          })
       };
       radiant.call_obj(instance, method, choices)

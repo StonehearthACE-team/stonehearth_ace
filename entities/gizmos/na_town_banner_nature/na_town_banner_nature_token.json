@@ -1,0 +1,39 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(na_town_banner_nature_iconic.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      },
+      "stonehearth:town_bonus_granter": {
+         "town_bonus_uri": "stonehearth:town_bonus:vitality"
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "clearable": false
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 100,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(northern_alliance:entities.gizmos.na_town_banner_nature.na_town_banner_nature_token.display_name)",
+         "description": "i18n(northern_alliance:entities.gizmos.na_town_banner_nature.na_town_banner_nature_token.description)",
+         "icon": "file(na_town_banner_nature.png)",
+         "category": "trophy",
+         "material_tags":["wood", "cloth", "decoration", "stockpile_decoration"]
+      }
+   }
+}

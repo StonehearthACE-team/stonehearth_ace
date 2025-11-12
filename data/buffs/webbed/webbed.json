@@ -1,0 +1,36 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "category": "trap_webbed",
+   "unique_in_category": true,
+   "rank": 1,
+   "display_name": "i18n(stonehearth_ace:data.buffs.webbed.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.webbed.description)",
+   "icon": "file(webbed.png)",
+   "duration": "2h",
+   "repeat_add_action": "stack_and_refresh",
+   "thought": "stonehearth_ace:thoughts:violence:webbed",
+   "repeat_effect_on_stacking": true,
+   "effect": "stonehearth_ace:effects:webbed",
+   "max_stacks": 4,
+   "remove_stacks_on_expire": 1,
+   "evolve_chance": 0.7,
+   "buff_evolve": "stonehearth_ace:buffs:webbed:trapped",
+   "modifiers": {
+      "speed": {
+         "multiply": 0.9
+      },
+      "courage": {
+         "multiply": 0.9
+      },
+      "menace": {
+         "multiply": 0.9
+      },
+      "muscle": {
+         "multiply": 0.9
+      },
+      "stamina": {
+         "multiply": 0.9
+      }
+   }
+}

@@ -5,8 +5,33 @@
 
 local Entity = _radiant.om.Entity
 
+local GOLD_URI = 'stonehearth:loot:gold'
+
+local log = radiant.log.create_logger('reembarkation_encounter')
+
 local ReembarkationEncounter = require 'stonehearth.services.server.game_master.controllers.encounters.reembarkation_encounter'
 local AceReembarkationEncounter = class()
+
+function AceReembarkationEncounter:start(ctx, info)
+   self._sv.ctx = ctx
+   self._sv._info = info
+
+   local opt_view = 'StonehearthReembarkationBulletinDialog'
+   self._sv.bulletin_data = {}
+   self._sv.bulletin_data.title = 'i18n(stonehearth:ui.game.bulletin.reembarkation.title)'
+   self._sv.bulletin_data.on_confirm = '_on_confirm'
+   self._sv.bulletin_data.on_reject = '_on_reject'
+
+   self._sv.bulletin = stonehearth.bulletin_board:post_bulletin(ctx.player_id)
+                                    :set_callback_instance(self)
+                                    :set_sticky(true)
+                                    :set_close_on_handle(false)
+                                    :set_type(info.bulletin_type or 'reembark')
+
+   self._sv.bulletin:set_data(self._sv.bulletin_data)
+                    :set_ui_view(opt_view)
+   self.__saved_variables:mark_changed()
+end
 
 -- ACE override to add pets to departees and lock them to their owners
 function AceReembarkationEncounter:_on_confirm(session, request, reembark_choices)
@@ -72,9 +97,29 @@ function AceReembarkationEncounter:_lock_pets_to_owner(citizen)
    end
 end
 
+function AceReembarkationEncounter:_kick_out_departees()
+   for _, citizen in pairs(self._sv.departees) do
+      if radiant.entities.exists(citizen) then
+         stonehearth.ai:inject_ai(citizen, { ai_packs = { 'stonehearth_ace:ai_pack:departing' } })
+         citizen:get_component('stonehearth:ai')
+                :get_task_group('stonehearth:task_groups:solo:unit_control')
+                :create_task('stonehearth:depart_visible_area', { give_up_after = '3h' })
+                :start()
+      end
+   end
+   
+   stonehearth.calendar:set_timer('continue after departees departed', '2h', function()
+         self._sv.departees = nil
+         self._sv.resolved_out_edge = self._sv.ctx.encounter:get_info().out_edge
+         self._sv.ctx.arc:trigger_next_encounter(self._sv.ctx)
+         self.__saved_variables:mark_changed()
+      end)
+end
+
 function AceReembarkationEncounter:_construct_reembark_record(reembark_choices)
    radiant.validator.expect.table.only_fields({'citizens', 'items'}, reembark_choices)
    radiant.validator.expect.table.types({citizens = 'table', items = 'table'}, reembark_choices)
+   log:debug('Reembark choices from reembarkation_dialog.js: %s', radiant.util.table_tostring(reembark_choices))
    
    local town = stonehearth.town:get_town(self._sv.ctx.player_id)
    local town_name = town:get_town_name()
@@ -128,6 +173,20 @@ function AceReembarkationEncounter:_construct_reembark_record(reembark_choices)
    end
 
    return reembark_record
+end
+
+function AceReembarkationEncounter:_remove_items()
+   local inventory = stonehearth.inventory:get_inventory(self._sv.ctx.player_id)
+   for _, item in pairs(self._sv.items_to_take) do
+      if item.uri == GOLD_URI then
+         inventory:subtract_gold(stonehearth.constants.reembarkation.gold_per_bag * item.count)
+      elseif item.remove then
+         local success = inventory:try_remove_items(item.remove_uri or item.uri, item.count, nil, item.item_quality)
+         if not success then
+            inventory:try_remove_items(item.remove_uri or item.uri, item.count, 'stonehearth:basic_inventory_tracker', item.item_quality)
+         end
+      end
+   end
 end
 
 function AceReembarkationEncounter:_get_citizen_record(citizen)

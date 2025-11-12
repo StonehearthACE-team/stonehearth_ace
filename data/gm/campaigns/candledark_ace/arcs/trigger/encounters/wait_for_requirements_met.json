@@ -2,22 +2,20 @@
    "type": "encounter",
    "encounter_type": "wait_for_requirements_met",
    "in_edge": "start",
-   "out_edge": "delay_before_elbezar_arrival",
+   "out_edge": {
+      "type": "trigger_many",
+      "out_edges": [
+         "crossroads_check_none",
+         "crossroads_check_some"
+      ]
+   },
    "wait_for_requirements_met_info": {
       "requirements": {
-         "recipe_check": {
-            "item": "script",
-            "type": "deny_if",
-            "value": true,
-            "script": "stonehearth_ace:game_master:script:recipes_unlocked_can_start"
-         },
          "city_tier": {
             "type": "deny_if_less_than",
             "item": "city_tier",
             "value": 2
          }
-      },
-      "type": "all",
-      "recipe_list": "stonehearth_ace:data:recipe_list:candledark"
+      }
    }
 }

@@ -1,0 +1,213 @@
+{
+   "type" : "effect",
+   "tracks": {
+      "animation": {
+         "type": "animation_effect",
+         "start_time": 0,
+         "speed": 0.4,
+         "animation": "necromancer_cast.json",
+         "loop": false
+      },
+      "hide_carrying" : {
+         "type": "hide_bone",
+         "start_time": 0,
+         "end_time": 0,
+         "bone": "carry"
+      },
+      "grab_tool" : {
+         "type": "attach_item_effect",
+         "start_time": 0,
+         "end_time": 0,
+         "item_in_slot": "mainhand",
+         "bone": "mainHand"
+      },
+      "Trail": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/necromancer/necromancer.cast.cubemitter.json",
+         "loop": true,
+         "start_time": 0,
+         "transforms": {
+            "x":0,
+            "y":0,
+            "z":0,
+            "rx":0,
+            "ry":0,
+            "rz":0
+         },
+         "bone": "mainHand"
+      },
+      "Glow": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/necromancer/necromancer.cast.glow.cubemitter.json",
+         "loop": true,
+         "start_time": 0,
+         "transforms": {
+            "x":0,
+            "y":0,
+            "z":0,
+            "rx":0,
+            "ry":0,
+            "rz":0
+         },
+         "bone": "mainHand"
+      },
+      "Trail2": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/necromancer/necromancer.cast.cubemitter.json",
+         "loop": true,
+         "start_time": 0,
+         "transforms": {
+            "x":0,
+            "y":0,
+            "z":0,
+            "rx":0,
+            "ry":0,
+            "rz":0
+         },
+         "bone": "offHand"
+      },
+      "Glow2": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/necromancer/necromancer.cast.glow.cubemitter.json",
+         "loop": true,
+         "start_time": 0,
+         "transforms": {
+            "x":0,
+            "y":0,
+            "z":0,
+            "rx":0,
+            "ry":0,
+            "rz":0
+         },
+         "bone": "offHand"
+      },
+      "Burst": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/necromancer/necromancer.cast.burst.cubemitter.json",
+         "loop": true,
+         "start_time": 0,
+         "transforms": {
+            "x":0,
+            "y":0,
+            "z":0,
+            "rx":0,
+            "ry":0,
+            "rz":0
+         },
+         "bone": "mainHand"
+      },
+      "Burst_Glow": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/necromancer/necromancer.cast.burst_glow.cubemitter.json",
+         "loop": true,
+         "start_time": 0,
+         "transforms": {
+            "x":0,
+            "y":0,
+            "z":0,
+            "rx":0,
+            "ry":0,
+            "rz":0
+         },
+         "bone": "mainHand"
+      },
+      "Burst_Glow2": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/necromancer/necromancer.cast.burst_glow.cubemitter.json",
+         "loop": true,
+         "start_time": 0,
+         "transforms": {
+            "x":0,
+            "y":0,
+            "z":0,
+            "rx":0,
+            "ry":0,
+            "rz":0
+         },
+         "bone": "offHand"
+      },
+      "offhand_burst": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/necromancer/necromancer.cast.offhand_burst.cubemitter.json",
+         "loop": true,
+         "start_time": 0,
+         "transforms": {
+            "x":0,
+            "y":0,
+            "z":0,
+            "rx":-90,
+            "ry":0,
+            "rz":0
+         },
+        "bone": "offHand"
+      },
+      "BaseBurst": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/necromancer/necromancer.cast.base_burst.cubemitter.json",
+         "loop": true,
+         "start_time": 1000,
+         "transforms": {
+            "x":0,
+            "y":0,
+            "z":0,
+            "rx":0,
+            "ry":0,
+            "rz":0
+         }
+      },
+      "BaseTrail": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/necromancer/necromancer.cast.base_trail.cubemitter.json",
+         "loop": true,
+         "start_time": 1000,
+         "transforms": {
+            "x":0,
+            "y":0,
+            "z":0,
+            "rx":0,
+            "ry":0,
+            "rz":0
+         }
+      },
+      "sound": {
+         "type": "sound_effect",
+         "start_time": 0,
+         "min_distance": 35,
+         "falloff" : 4,
+         "volume": 50,
+         "track" : {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:necromancer_cast"
+            ]
+         }
+      },
+      "sound2": {
+         "type": "sound_effect",
+         "start_time": 1200,
+         "min_distance": 37,
+         "falloff" : 4,
+         "volume": 60,
+         "track" : {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:necromancer_cast"
+            ]
+         }
+      },
+      "sound3": {
+         "type": "sound_effect",
+         "start_time": 2000,
+         "min_distance": 39,
+         "falloff" : 4,
+         "volume": 70,
+         "track" : {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:necromancer_cast"
+            ]
+         }
+      }            
+   }
+}      
+

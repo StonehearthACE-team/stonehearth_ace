@@ -1,0 +1,47 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "category": "trap_webbed",
+   "unique_in_category": true,
+   "rank": 4,
+   "display_name": "i18n(stonehearth_ace:data.buffs.webbed.trapped.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.webbed.trapped.description)",
+   "icon": "file(webbed_trapped.png)",
+   "duration": "6h",
+   "persistent": true,
+   "thought": "stonehearth_ace:thoughts:violence:webbed",
+   "effect": "stonehearth_ace:effects:webbed",
+   "script": "stonehearth_ace:buff_scripts:trap",
+   "script_info": {
+      "trap_uri": "stonehearth_ace:gizmos:traps:spider_cocoon",
+      "kill_on_expire": true,
+      "trap_owner": "undergrowth",
+      "scale_multiplier": 2.2,
+      "inherit_target_name": true
+   },
+   "injected_ai": {
+      "actions": [
+         "stonehearth:actions:compelled_behaviors:struggle"
+      ]
+   },
+   "properties": [
+      "untargetable"
+   ],
+   "modifiers": {
+      "speed": {
+         "max": 0
+      },
+      "courage": {
+         "max": 1
+      },
+      "menace": {
+         "max": 1
+      },
+      "muscle": {
+         "max": 0
+      },
+      "stamina": {
+         "max": 0
+      }
+   }
+}

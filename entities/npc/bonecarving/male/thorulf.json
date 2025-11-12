@@ -25,8 +25,7 @@
             "social_satisfaction": {
                "initial_value": {
                   "type": "random_between",
-                  "min": 20,
-                  "max": 50
+                  "min": 20
                }
             }
          }
@@ -35,6 +34,10 @@
          "social_loss_amount": {
             "type": "derived",
             "equation": "0.75"
+         },
+         "max_social_satisfaction": {
+            "type": "basic",
+            "value": 100
          }
       }
    },

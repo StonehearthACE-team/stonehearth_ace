@@ -1,0 +1,42 @@
+{
+   "type": "monster_tuning",
+   "estimated_difficulty": 6,
+   "job": "stonehearth:jobs:npc:knight",
+   "scale": 0.16,
+   "unit_info": {
+      "display_name": "i18n(stonehearth_ace:data.monster_tuning.candledark.skeleton_boss.display_name)",
+      "description": "i18n(stonehearth_ace:data.monster_tuning.candledark.skeleton_boss.description)"
+   },
+   "attributes": {
+      "max_health": 3800,
+      "muscle": 25,
+      "menace": 90,
+      "courage": 1200,
+      "speed": 60,
+      "additive_armor_modifier": 10,
+      "multiplicative_target_armor_modifier": 0.8
+   },
+   "equipment": {
+      "weapon": "stonehearth_ace:weapons:candledark:skeleton_boss_sword",
+      "basic_siege": "stonehearth_ace:abilities:basic_door_breaker_abilities",
+      "protection": "stonehearth_ace:abilities:candledark:otherworldly_protection",
+      "outfit": "stonehearth_ace:monsters:candledark:outfits:skeleton_boss"
+   },
+   "loot_drops": {
+      "entries": {
+         "items": {
+            "num_rolls": {
+               "min": 1,
+               "max": 1
+            },
+            "items": {
+               "stone": {
+                  "uri": "stonehearth_ace:loot_bag:candledark:top",
+                  "type": "bag",
+                  "weight": 1
+               }
+            }
+         }
+      }
+   }
+}

@@ -1,0 +1,29 @@
+{
+   "type" : "effect",
+   "tracks": {
+      "animation": {
+            "type": "animation_effect",
+            "start_time": 0,
+            "animation": "eat.json",
+            "speed": 4.5,
+            "loop": false
+      },
+       "sound": {
+         "type": "sound_effect",
+         "duration": 1000,
+         "start_time": 800,
+         "min_distance": 30,
+         "max_instances": 2,
+         "falloff" : 12,
+         "volume": 40,
+         "track" : {
+            "type": "one_of",
+            "items": [
+               "stonehearth:sounds:fox_bite_01",
+               "stonehearth:sounds:fox_bite_02",
+               "stonehearth:sounds:fox_bite_03"
+            ]
+         }
+      }          
+   }
+}

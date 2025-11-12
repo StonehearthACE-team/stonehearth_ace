@@ -1,0 +1,25 @@
+{
+   "type": "encounter",
+   "encounter_type": "dispatch_quest",
+   "in_edge": "11_shook_down_quest_c",
+   "out_edge": "11_shook_down_outro_c",
+   "dispatch_quest_info": {
+      "title": "i18n(stonehearth_ace:data.gm.campaigns.amberstone.arcs.trigger.discovery.encounters.11_shook_down.11_shook_down_quest_c.title)",
+      "dialog_title": "i18n(stonehearth_ace:data.gm.campaigns.amberstone.arcs.trigger.discovery.encounters.11_shook_down.11_shook_down_quest_c.dialog_title)",
+      "text": "i18n(stonehearth_ace:data.gm.campaigns.amberstone.arcs.trigger.discovery.encounters.11_shook_down.11_shook_down_quest_c.text)",
+      "requirements": [
+         {
+            "role": "combat",
+            "job_level": 3
+         },
+         {
+            "role": "combat",
+            "job_level": 3
+         }
+      ],
+      "return_delay": "4d",
+      "buff_on_return": "stonehearth:amberstone:visit_buff",
+      "xp_gained": 650,
+      "thought_on_return": "stonehearth:thoughts:amberstone:borrow_crafter:helped_out"
+   }
+}

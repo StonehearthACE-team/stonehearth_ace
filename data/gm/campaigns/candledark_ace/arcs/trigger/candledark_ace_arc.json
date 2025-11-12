@@ -4,6 +4,11 @@
    "encounters": {
 		"wait_for_end": "file(encounters/wait_for_end.json)",
 		"wait_for_requirements_met": "file(encounters/wait_for_requirements_met.json)",
+		"crossroads_check_none": "file(encounters/crossroads_check_none.json)",
+		"crossroads_check_some": "file(encounters/crossroads_check_some.json)",
+		"crossroads_check_all": "file(encounters/crossroads_check_all.json)",
+		"crossroads_check_not_all": "file(encounters/crossroads_check_not_all.json)",
+		"repeat_event_dialog": "file(encounters/repeat_event_dialog.json)",
 		"delay_before_elbezar_arrival": "file(encounters/delay_before_elbezar_arrival.json)",
 		"elbezar_arrival": "file(encounters/elbezar_arrival.json)",
 		"elbezar_giving_up": "file(encounters/elbezar_giving_up.json)",
@@ -34,6 +39,8 @@
 		"elbezar_hard_raids_intro": "file(encounters/elbezar_hard_raids_intro.json)",
 		"wait_for_insane_raids_intro": "file(encounters/wait_for_insane_raids_intro.json)",
 		"elbezar_insane_raids_intro": "file(encounters/elbezar_insane_raids_intro.json)",
+		"wait_for_boss_intro": "file(encounters/wait_for_boss_intro.json)",
+		"elbezar_boss_intro": "file(encounters/elbezar_boss_intro.json)",
 		"small_event_generator": "file(encounters/small_event_generator.json)",
 		"wait_for_visitors_to_start": "file(encounters/wait_for_visitors_to_start.json)",
 		"visitor_generator": "file(encounters/visitor_generator.json)",
@@ -42,7 +49,6 @@
 		"ongoing_invasion_counter_remove": "file(encounters/ongoing_invasion_counter_remove.json)",
 		"ongoing_invasion_counter_add": "file(encounters/ongoing_invasion_counter_add.json)",
 		"invasion_fulfill_counter": "file(encounters/invasion_fulfill_counter.json)",
-		"invasion_counter_fix": "file(encounters/invasion_counter_fix.json)",
 		"wait_to_destroy_invasion_party": "file(encounters/wait_to_destroy_invasion_party.json)",
 		"wait_for_invasion_clearance": "file(encounters/wait_for_invasion_clearance.json)",
 		"wait_for_quest_completion": "file(encounters/wait_for_quest_completion.json)",
@@ -68,6 +74,7 @@
 		"insane_invasion_2": "file(encounters/invasions/insane_invasion_2.json)",
 		"insane_invasion_3": "file(encounters/invasions/insane_invasion_3.json)",
 		"insane_invasion_4": "file(encounters/invasions/insane_invasion_4.json)",
+		"boss_invasion": "file(encounters/invasions/boss_invasion.json)",
 
 		"clear_visitors": "file(encounters/visitors/clear_visitors.json)",
 		"visitor_witch_arrival": "file(encounters/visitors/visitor_witch_arrival.json)",
@@ -101,6 +108,14 @@
 		"visitor_scarecrow_arrival": "file(encounters/visitors/visitor_scarecrow_arrival.json)",
 		"visitor_scarecrow_trick": "file(encounters/visitors/visitor_scarecrow_trick.json)",
 		"visitor_scarecrow_treat": "file(encounters/visitors/visitor_scarecrow_treat.json)",
-		"visitor_scarecrow_reward": "file(encounters/visitors/visitor_scarecrow_reward.json)"
+		"visitor_scarecrow_reward": "file(encounters/visitors/visitor_scarecrow_reward.json)",
+
+		"return_quest_toggle": "file(encounters/return_quest/return_quest_toggle.json)",
+		"delay_before_elbezar_return": "file(encounters/return_quest/delay_before_elbezar_return.json)",
+		"elbezar_return": "file(encounters/return_quest/elbezar_return.json)",
+		"elbezar_return_explaining": "file(encounters/return_quest/elbezar_return_explaining.json)",
+		"elbezar_return_quest_completion": "file(encounters/return_quest/elbezar_return_quest_completion.json)",
+		"story_completed_return_celebration": "file(encounters/return_quest/story_completed_return_celebration.json)",
+		"epilogue_return_dialog": "file(encounters/return_quest/epilogue_return_dialog.json)"
 	}
 }

@@ -18,12 +18,6 @@
             "key": "story_completed",
             "value": 1
          },
-         "item_placed_requirement": {
-            "item": "exists_in_world",
-            "uri": "stonehearth_ace:decoration:candledark:gnarled_soulfire_tree",
-            "type": "deny_if_not",
-            "value": true
-         },
          "bonfires_check": {
             "item": "script",
             "type": "deny_if",
@@ -60,7 +54,8 @@
             "max": 400
          },
          "sighted_bulletin": {
-            "title": "i18n(stonehearth_ace:data.gm.campaigns.candledark_ace.random_raid.mission.sighted_bulletin.title)"
+            "title": "i18n(stonehearth_ace:data.gm.campaigns.candledark_ace.random_raid.mission.sighted_bulletin.title)",
+            "type": "alert_candledark"
          },
          "members": {
             "zombies": {

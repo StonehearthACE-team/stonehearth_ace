@@ -23,7 +23,7 @@ App.StonehearthBulletinList = App.View.extend({
 
          if (bulletin) {
             App.bulletinBoard.zoomToLocation(bulletin);
-            if (bulletin.get('type') === 'alert') {
+            if (/^alert(_.*)?$/.test(bulletin.get('type'))) {
                App.bulletinBoard.markBulletinHandled(bulletin);
             } else {
                App.bulletinBoard.showDialogView(bulletin);

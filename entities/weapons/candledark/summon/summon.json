@@ -1,0 +1,27 @@
+{
+   "type": "entity",
+   "components": {
+      "stonehearth:equipment_piece": {
+         "slot": "mainhand",
+         "render_type": "none"
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:weapon_data": {
+         "base_damage": 12,
+         "reach": 1
+      },
+      "stonehearth:combat:idle:ready": {
+         "name": "idle_look_around"
+      },
+      "stonehearth:combat:melee_attacks": [
+         {
+            "name": "combat_1h_backhand",
+            "effect": "bite",
+            "active_frame": 60,
+            "cooldown": 0,
+            "priority": 0
+         }
+      ]
+   }
+}

@@ -2,7 +2,7 @@
    "type": "encounter",
    "encounter_type": "dialog_tree",
    "rarity": "common",
-   "in_edge": "bonfires_created",
+   "in_edge": "bonfires_created_peaceful",
    "can_start": {
       "test_1": {
          "game_mode_check": {
@@ -13,6 +13,7 @@
       }
    },
    "dialog_tree_info": {
+      "bulletin_type": "candledark",
       "start_node": "msg1",
       "nodes": {
          "msg1": {

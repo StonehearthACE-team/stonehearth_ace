@@ -1,0 +1,53 @@
+{
+   "type": "entity",
+   "components": {
+      "stonehearth:equipment_piece": {
+         "slot": "mainhand",
+         "render_type": "none"
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:weapon_data": {
+         "base_damage": 9,
+         "base_ranged_damage": 5,
+         "muscle_multiplier": 1.5,
+         "range": 25,
+         "reach": 1.5,
+         "projectile_speed": 18,
+         "projectile_uri": "stonehearth_ace:weapons:spider_web_projectile",
+         "projectile_start_offset": { "x": -0.2, "y": 0.7, "z": -1 },
+         "projectile_end_offset": { "x": 0, "y": 1.2, "z": 0 }
+      },
+      "stonehearth:combat:melee_attacks": [
+         {
+            "name": "combat_1h_backhand",
+            "effect": "combat_1h_backhand",
+            "active_frame": 17,
+            "cooldown": 0,
+            "priority": 0
+         },
+         {
+            "name": "combat_1h_forehand",
+            "effect": "combat_1h_forehand",
+            "active_frame": 16,
+            "cooldown": 0,
+            "priority": 0
+         }
+      ],
+      "stonehearth:combat:ranged_attacks": [
+         {
+            "name": "spider_web_attack",
+            "effect": "eat",
+            "active_frame": 7,
+            "cooldown": 15000,
+            "priority": 2,
+            "inflictable_debuffs": {
+               "infection": {
+                  "uri": "stonehearth_ace:buffs:candledark:webbed",
+                  "chance": 1.0
+               }
+            }
+         }
+      ]
+   }
+}

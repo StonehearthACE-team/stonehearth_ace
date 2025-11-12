@@ -1,0 +1,28 @@
+{
+   "type" : "effect",
+   "tracks": {
+      "animation": {
+            "type": "animation_effect",
+            "start_time": 0,
+            "animation": "idle_flap.json",
+            "speed": 3.2,
+            "loop": false
+      },
+      "sound": {
+         "type": "sound_effect",
+         "duration": 1000,
+         "start_time": 200,
+         "min_distance": 20,
+         "falloff" : 7,
+         "volume": 65,
+         "track" : {
+            "type": "one_of",
+            "items": [
+               "stonehearth:sounds:fox_bite_01",
+               "stonehearth:sounds:fox_bite_02",
+               "stonehearth:sounds:fox_bite_03"
+            ]    
+         }
+      }
+   }
+}

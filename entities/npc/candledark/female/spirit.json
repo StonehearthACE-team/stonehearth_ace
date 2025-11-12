@@ -24,6 +24,10 @@
          "speed": {
             "type": "basic",
             "value": 60
+         },
+         "max_social_satisfaction": {
+            "type": "basic",
+            "value": 100
          }
       },
       "effect_list": {
@@ -46,13 +50,9 @@
                "min": {
                   "value": 0
                },
-               "max": {
-                  "value": 100
-               },
                "initial_value": {
                   "type": "random_between",
-                  "min": 0,
-                  "max": 1
+                  "min": 0
                }
             }
          }

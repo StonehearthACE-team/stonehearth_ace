@@ -81,6 +81,28 @@
             "priority": 0
          }
       ],
+      "stonehearth_ace:combat:summon_attacks": [
+         {
+            "name": "summon_undead_animals",
+            "effect": "candledark_cast",
+            "summon_effect": "stonehearth:effects:poof_effect:small",
+            "amount": {
+               "min": 4,
+               "max": 7
+            },
+            "uris": {
+               "stonehearth_ace:monsters:candledark:summons:skeleton_bat": true,
+               "stonehearth_ace:monsters:candledark:summons:skeleton_fox": true,
+               "stonehearth_ace:monsters:candledark:summons:skeleton_racoon": true,
+               "stonehearth_ace:monsters:candledark:summons:zombie_poyo": true,
+               "stonehearth_ace:monsters:candledark:summons:zombie_squirrel": true,
+               "stonehearth_ace:monsters:candledark:summons:zombie_rabbit": true
+            },
+            "active_frame": 110,
+            "cooldown": 90000,
+            "priority": 3
+         }
+      ],
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:entities.weapons.candledark.scepter_pumpkin.display_name)",
          "description": "i18n(stonehearth_ace:entities.weapons.candledark.scepter_pumpkin.description)",
