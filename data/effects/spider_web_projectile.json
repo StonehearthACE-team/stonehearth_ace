@@ -1,0 +1,29 @@
+{
+   "type": "effect",
+   "tracks": {
+      "cubemitter_main": {
+         "type": "cubemitter",
+         "start_time": 0,
+         "_end_time": 100,
+         "loop": true,
+         "cubemitter": "/stonehearth_ace/data/horde/particles/webbed/spider_web_projectile.cubemitter.json",
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 180,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "cubemitter_strings": {
+         "type": "cubemitter",
+         "start_time": 0,
+         "_end_time": 100,
+         "loop": true,
+         "cubemitter": "/stonehearth_ace/data/horde/particles/webbed/spider_web_projectile_strings.cubemitter.json",
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 180,
+            "ry": 0,
+            "rz": 0
+         }
+      }
+   }
+}

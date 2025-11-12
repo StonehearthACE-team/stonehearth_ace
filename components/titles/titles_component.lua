@@ -274,7 +274,7 @@ function TitlesComponent:_show_bulletin(title, rank)
    local bulletin = stonehearth.bulletin_board:post_bulletin(player_id)
       :set_ui_view('StonehearthAceAchievementAcquiredBulletinDialog')
       :set_callback_instance(self)
-      :set_type('achievement')
+      :set_type('info_title')
       :set_data({
          title = 'i18n(stonehearth_ace:ui.game.bulletin.achievement_acquired_bulletin.new_title.title)',
          header = 'i18n(stonehearth_ace:ui.game.bulletin.achievement_acquired_bulletin.new_title.header)',

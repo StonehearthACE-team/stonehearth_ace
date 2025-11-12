@@ -1,7 +1,10 @@
 {
    "type": "effect",
    "mixins": "/stonehearth/data/rigs/entities/humans/effects/happy_run.json",
-   "tracks": {  
+   "tracks": {
+      "animation": {
+         "animation": "happy_run_no_carry.json"
+      },    
       "hide_carrying" : {
          "type": "hide_bone",
          "start_time": 0,

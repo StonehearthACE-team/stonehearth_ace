@@ -1,0 +1,100 @@
+{
+   "mixins": "stonehearth:mixins:mob",
+   "components": {
+      "sensor_list": {
+         "sensors": {
+            "sight": {
+               "radius": 64
+            }
+         }
+      },
+      "stonehearth:combat_state": {
+         "stance": "aggressive"
+      },
+      "stonehearth:attributes": {
+         "muscle": {
+            "type": "basic",
+            "value": 1
+         },
+         "menace": {
+            "type": "basic",
+            "value": 1
+         },
+         "courage": {
+            "type": "basic",
+            "value": 1
+         },
+         "exp_reward": {
+            "type": "basic",
+            "value": 1
+         },
+         "additive_dmg_modifier": {
+            "type": "basic",
+            "value": 0
+         },
+         "multiplicative_dmg_modifier": {
+            "type": "basic",
+            "value": 0
+         },
+         "additive_armor_modifier": {
+            "type": "basic",
+            "value": 0
+         },
+         "multiplicative_armor_modifier": {
+            "type": "basic",
+            "value": 1
+         },
+         "multiplicative_target_armor_modifier": {
+            "type": "basic",
+            "value": 1
+         },
+         "additive_target_armor_modifier": {
+            "type": "basic",
+            "value": 0
+         },
+         "additive_weapon_range_modifier": {
+            "type": "basic",
+            "value": 0
+         }
+      },
+      "stonehearth:posture": {
+         "priorities": {
+            "stonehearth:climb_ladder_up": 1100,
+            "stonehearth:climb_ladder_down": 1100,
+            "stonehearth:sitting_on_chair": 1000,
+            "stonehearth:sitting": 900,
+            "stonehearth:carrying": 800,
+            "stonehearth:panic": 100,
+            "stonehearth:combat": 50,
+            "stonehearth:swimming": 40,
+            "stonehearth:patrol": 30,
+            "stonehearth:injured": 20,
+            "stonehearth:have_shield": 10
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:species": {
+         "display_name": "i18n(stonehearth_ace:entities.critters.summon.species)"
+      },
+      "stonehearth:healable": {
+         "healable_by_anyone": false,
+         "target_type": "summon"
+      },
+      "stonehearth:catalog": {
+         "category": "summon"
+      },
+      "stonehearth:ai_packs": {
+         "packs": [
+            "stonehearth:ai_pack:death",
+            "stonehearth:ai_pack:patrolling",
+            "stonehearth:ai_pack:combat_control",
+            "stonehearth:ai_pack:human",
+            "stonehearth:ai_pack:combat",
+            "stonehearth:ai_pack:idle",
+            "stonehearth:ai_pack:idle:bored:idle_effects",
+            "stonehearth:ai_pack:idle:bored:wander"
+         ]
+      }
+   }
+}

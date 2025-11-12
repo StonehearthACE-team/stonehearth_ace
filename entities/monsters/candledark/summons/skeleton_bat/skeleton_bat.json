@@ -1,0 +1,73 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth_ace:mixins:summon"
+   ],
+   "components": {
+      "render_info": {
+         "animation_table": "/stonehearth_ace/data/rigs/entities/monster/bat/bat.json",
+         "color_map": "stonehearth_ace:color_map:candledark",
+         "scale": 0.11,
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ]
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": -2.5, "z": 0 }
+      },
+      "stonehearth:attributes": {
+         "max_health": {
+            "type": "basic",
+            "value": 80
+         },
+         "muscle": {
+            "type": "basic",
+            "value": 1
+         },
+         "menace": {
+            "type": "basic",
+            "value": 25
+         },
+         "courage": {
+            "type": "basic",
+            "value": 250
+         },
+         "speed": {
+            "type": "basic",
+            "value": 120
+         }
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(skeleton_bat.qb)"
+            ]
+         }
+      },
+      "stonehearth:equipment": {
+         "items": [
+            "stonehearth_ace:weapons:candledark:bat_attacks"
+         ]
+      },
+      "stonehearth_ace:summon": {
+         "despawn_effect": "stonehearth:effects:gib_effect"
+      }
+   },
+   "entity_data": {
+      "stonehearth:species": {
+         "id": "candledark"
+      },
+      "stonehearth:entity_radius": 0.6,
+      "stonehearth:entity_reach": 0.5,
+      "stonehearth:catalog": {
+         "display_name": "Candledark Bat",
+         "description": "Shrouded against the night sky!"
+      },
+      "stonehearth_ace:create_entity": {
+         "vertical_model_offset_range": {
+            "min": 0,
+            "max": 1
+         }
+      }
+   }
+}

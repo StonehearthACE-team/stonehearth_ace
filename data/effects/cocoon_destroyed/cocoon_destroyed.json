@@ -1,0 +1,38 @@
+{
+   "type": "effect",
+   "tracks": {
+      "dust": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/dust_poof/cocoon_destroyed.cubemitter.json",
+         "loop": false,
+         "start_time": 0,
+         "end_time": 1800,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "dirt": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/dust_poof/cocoon_destroyed_strings.cubemitter.json",
+         "loop": false,
+         "start_time": 0,
+         "end_time": 500,
+         "transforms": { "x": 0, "y": 1, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "sound": {
+         "type": "sound_effect",
+         "duration": 2600,
+         "start_time": 0,
+         "min_distance": 20,
+         "falloff": 3.15,
+         "volume": 80,
+         "track": "stonehearth:sounds:fursplosion"
+      }
+   }
+}

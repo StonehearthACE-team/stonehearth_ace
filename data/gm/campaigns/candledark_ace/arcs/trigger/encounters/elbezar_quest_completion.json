@@ -3,7 +3,18 @@
    "encounter_type": "dialog_tree",
    "rarity": "common",
    "in_edge": "elbezar_quest_completion",
+   "can_start": {
+      "test_1": {
+         "is_return_test": {
+            "type": "deny_if_greater_than",
+            "item": "counter",
+            "key": "is_return",
+            "value": 0
+         }
+      }
+   },
    "dialog_tree_info": {
+      "bulletin_type": "candledark",
       "start_node": "msg1",
       "nodes": {
          "msg1": {

@@ -1,0 +1,18 @@
+{
+   "type" : "effect",
+   "mixins": "/stonehearth/data/rigs/entities/rabbit_biped/effects/chop_block.json",
+   "tracks": {
+      "animation": {
+         "speed": 2
+      },
+      "grab_axe" : {
+         "item": "stonehearth_ace:tools:worker_axe_steel"
+      },
+      "sound": {
+         "start_time": 500
+      },
+      "sound2": {
+         "start_time": 1325
+      }
+   }
+}

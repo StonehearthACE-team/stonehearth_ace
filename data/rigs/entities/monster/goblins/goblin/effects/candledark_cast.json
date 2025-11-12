@@ -1,0 +1,169 @@
+{
+   "type" : "effect",
+   "mixins": [
+      "file(necromancer_cast.json)"
+   ],
+   "tracks": {
+      "mixintypes": {
+         "Trail": "override",
+         "Glow": "override",
+         "Trail2": "override",
+         "Glow2": "override",
+         "Burst": "override",
+         "Burst_Glow": "override",
+         "Burst_Glow2": "override",
+         "offhand_burst": "override",
+         "BaseBurst": "override",
+         "BaseTrail": "override"
+      },
+      "Trail": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/candledark/necromancer/necromancer.cast.cubemitter.json",
+         "loop": true,
+         "start_time": 0,
+         "transforms": {
+            "x":0,
+            "y":0,
+            "z":0,
+            "rx":0,
+            "ry":0,
+            "rz":0
+         },
+         "bone": "mainHand"
+      },
+      "Glow": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/candledark/necromancer/necromancer.cast.glow.cubemitter.json",
+         "loop": true,
+         "start_time": 0,
+         "transforms": {
+            "x":0,
+            "y":0,
+            "z":0,
+            "rx":0,
+            "ry":0,
+            "rz":0
+         },
+         "bone": "mainHand"
+      },
+      "Trail2": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/candledark/necromancer/necromancer.cast.cubemitter.json",
+         "loop": true,
+         "start_time": 0,
+         "transforms": {
+            "x":0,
+            "y":0,
+            "z":0,
+            "rx":0,
+            "ry":0,
+            "rz":0
+         },
+         "bone": "offHand"
+      },
+      "Glow2": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/candledark/necromancer/necromancer.cast.glow.cubemitter.json",
+         "loop": true,
+         "start_time": 0,
+         "transforms": {
+            "x":0,
+            "y":0,
+            "z":0,
+            "rx":0,
+            "ry":0,
+            "rz":0
+         },
+         "bone": "offHand"
+      },
+      "Burst": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/candledark/necromancer/necromancer.cast.burst.cubemitter.json",
+         "loop": true,
+         "start_time": 0,
+         "transforms": {
+            "x":0,
+            "y":0,
+            "z":0,
+            "rx":0,
+            "ry":0,
+            "rz":0
+         },
+         "bone": "mainHand"
+      },
+      "Burst_Glow": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/candledark/necromancer/necromancer.cast.burst_glow.cubemitter.json",
+         "loop": true,
+         "start_time": 0,
+         "transforms": {
+            "x":0,
+            "y":0,
+            "z":0,
+            "rx":0,
+            "ry":0,
+            "rz":0
+         },
+         "bone": "mainHand"
+      },
+      "Burst_Glow2": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/candledark/necromancer/necromancer.cast.burst_glow.cubemitter.json",
+         "loop": true,
+         "start_time": 0,
+         "transforms": {
+            "x":0,
+            "y":0,
+            "z":0,
+            "rx":0,
+            "ry":0,
+            "rz":0
+         },
+         "bone": "offHand"
+      },
+      "offhand_burst": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/candledark/necromancer/necromancer.cast.offhand_burst.cubemitter.json",
+         "loop": true,
+         "start_time": 0,
+         "transforms": {
+            "x":0,
+            "y":0,
+            "z":0,
+            "rx":-90,
+            "ry":0,
+            "rz":0
+         },
+        "bone": "offHand"
+      },
+      "BaseBurst": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/candledark/necromancer/necromancer.cast.base_burst.cubemitter.json",
+         "loop": true,
+         "start_time": 1000,
+         "transforms": {
+            "x":0,
+            "y":0,
+            "z":0,
+            "rx":0,
+            "ry":0,
+            "rz":0
+         }
+      },
+      "BaseTrail": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/candledark/necromancer/necromancer.cast.base_trail.cubemitter.json",
+         "loop": true,
+         "start_time": 1000,
+         "transforms": {
+            "x":0,
+            "y":0,
+            "z":0,
+            "rx":0,
+            "ry":0,
+            "rz":0
+         }
+      }
+   }
+}      
+

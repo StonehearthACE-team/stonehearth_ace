@@ -136,4 +136,15 @@ function ace_game_master_lib.get_scaled_attribute(value, ctx, default)
    return new_value
 end
 
+function ace_game_master_lib.create_tracking_bulletin(entity, player_id, bulletin_data)
+   assert(player_id)
+   bulletin_data.zoom_to_entity = entity
+   local bulletin = stonehearth.bulletin_board:post_bulletin(player_id)
+           :set_type(bulletin_data.type or 'quest_target')
+           :set_data(bulletin_data)
+           :set_sticky(true)
+           :set_close_on_handle(false)
+   return bulletin
+end
+
 return ace_game_master_lib

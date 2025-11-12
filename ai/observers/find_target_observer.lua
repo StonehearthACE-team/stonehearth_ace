@@ -643,6 +643,10 @@ function FindTargetObserver:_calculate_target_cost_benefit(entity_location, targ
       return 0
    end
 
+   if radiant.entities.has_property(target, 'untargetable') then
+      return 0
+   end
+
    local target_location = target_mob:get_world_grid_location()
    if not target_location then -- target not in the world, player probably disconnected
       return 0

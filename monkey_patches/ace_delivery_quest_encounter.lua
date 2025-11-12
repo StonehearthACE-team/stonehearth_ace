@@ -32,9 +32,25 @@ function AceDeliveryQuest:_create_quest_storage_listener()
    end
 end
 
-AceDeliveryQuest._ace_old_start = DeliveryQuest.start
 function AceDeliveryQuest:start(ctx, info)
-   self:_ace_old_start(ctx, info)
+   self._sv.ctx = ctx
+   self._sv._info = info
+
+   local opt_view = 'StonehearthDeliveryQuestBulletinDialog'
+   self._sv.bulletin_data = info
+   self._sv.bulletin_data.on_recalculate_requirements = '_on_recalculate_requirements'
+   self._sv.bulletin_data.on_try_complete = '_on_try_complete'
+   self._sv.bulletin_data.on_abandon = '_on_abandon'
+
+   self._sv.bulletin = stonehearth.bulletin_board:post_bulletin(ctx.player_id)
+                                    :set_callback_instance(self)
+                                    :set_sticky(true)
+                                    :set_close_on_handle(false)
+                                    :set_type(info.bulletin_type or 'quest')
+
+   self._sv.bulletin:set_data(self._sv.bulletin_data)
+                    :set_ui_view(opt_view)
+   self.__saved_variables:mark_changed()
 
    local use_quest_storage = info.use_quest_storage ~= false
    if stonehearth.client_state:get_client_gameplay_setting(ctx.player_id, 'stonehearth_ace', 'use_quest_storage', true) and use_quest_storage then

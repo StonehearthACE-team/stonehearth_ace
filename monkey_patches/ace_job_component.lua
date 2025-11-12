@@ -18,6 +18,7 @@ function AceJobComponent:post_activate()
    self:_create_statistic_listeners()
 
    self:_ace_old_post_activate()
+   self:_set_job_roles()
 end
 
 AceJobComponent._ace_old_destroy = JobComponent.__user_destroy
@@ -114,6 +115,11 @@ end
 function AceJobComponent:set_population_override(population_uri)
    self._sv.population_override =  population_uri
    self:_update_job_index()
+end
+
+function AceJobComponent:_set_job_roles()
+   self._sv.curr_job_roles = self:get_roles() or {}
+   self.__saved_variables:mark_changed()
 end
 
 function AceJobComponent:get_population_override()

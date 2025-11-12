@@ -1,0 +1,80 @@
+{
+   "type": "encounter",
+   "mixins": "stonehearth_ace:mixins:encounter:candledark:undead_raid",
+   "encounter_type": "create_mission",
+   "in_edge": "boss_invasion",
+   "out_edge": {
+      "type": "trigger_many",
+      "out_edges": [
+         "wait_to_destroy_invasion_party",
+         "ongoing_invasion_counter_add"
+      ]
+   },
+   "encounter_music": {
+      "combat_music_sound_key": "candledark_boss"
+   },
+   "can_start": {
+      "test_1": {
+         "invasion_total": {
+            "type": "deny_if_less_than",
+            "item": "counter",
+            "key": "invasions_defeated",
+            "value": 17
+         },
+         "invasion_total_2": {
+            "type": "deny_if_greater_than",
+            "item": "counter",
+            "key": "invasions_defeated",
+            "value": 18
+         }
+      }
+   },
+   "create_mission_info": {
+      "mission": {
+         "members": {
+            "boss_vampire": {
+               "from_population": {
+                  "role": "candledark_vampire",
+                  "gender": "male",
+                  "location": { "x": 0, "z": 0 },
+                  "min": 0,
+                  "max": 0,
+                  "range": 10
+               },
+               "tuning": "stonehearth_ace:monster_tuning:candledark:vampire:boss"
+            },
+            "boss_witch": {
+               "from_population": {
+                  "role": "candledark_witch",
+                  "gender": "female",
+                  "location": { "x": 0, "z": 0 },
+                  "min": 0,
+                  "max": 0,
+                  "range": 10
+               },
+               "tuning": "stonehearth_ace:monster_tuning:candledark:witch:boss"
+            },
+            "boss_skeleton": {
+               "from_population": {
+                  "role": "candledark_skeleton",
+                  "location": { "x": 0, "z": 0 },
+                  "min": 0,
+                  "max": 0,
+                  "range": 10
+               },
+               "tuning": "stonehearth_ace:monster_tuning:candledark:skeleton:boss"
+            },
+            "boss_pumpling": {
+               "from_population": {
+                  "role": "candledark_pumpling",
+                  "location": { "x": 0, "z": 0 },
+                  "min": 0,
+                  "max": 0,
+                  "range": 10
+               },
+               "tuning": "stonehearth_ace:monster_tuning:candledark:pumpling:boss"
+            }
+         }
+      }
+   }
+}

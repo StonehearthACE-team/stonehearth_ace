@@ -1,0 +1,21 @@
+{
+   "type": "encounter",
+   "encounter_type": "wait",
+   "in_edge": "crossroads_check_all",
+   "out_edge": "repeat_event_dialog",
+   "can_start": {
+      "all_tests": {
+         "recipe_check": {
+            "item": "script",
+            "type": "deny_if_not",
+            "value": true,
+            "script": "stonehearth_ace:game_master:script:recipes_unlocked_can_start"
+         }
+      }
+   },
+   "wait_info": {
+      "duration": "10m+15m",
+      "type": "all",
+      "recipe_list": "stonehearth_ace:data:recipe_list:candledark"
+   }
+}
