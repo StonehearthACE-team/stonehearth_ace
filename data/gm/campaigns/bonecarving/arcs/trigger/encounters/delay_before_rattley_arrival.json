@@ -3,7 +3,19 @@
    "encounter_type": "wait",
    "in_edge": "delay_before_rattley_arrival",
    "out_edge": "rattley_arrival",
+   "can_start": {
+      "all_tests": {
+         "recipe_check": {
+            "item": "script",
+            "type": "deny_if",
+            "value": true,
+            "script": "stonehearth_ace:game_master:script:recipes_unlocked_can_start"
+         }
+      }
+   },
    "wait_info": {
-      "duration": "1d+36h"
+      "duration": "1d+36h",
+      "type": "all",
+      "recipe_list": "stonehearth_ace:data:recipe_list:bonecarving"
    }
 }

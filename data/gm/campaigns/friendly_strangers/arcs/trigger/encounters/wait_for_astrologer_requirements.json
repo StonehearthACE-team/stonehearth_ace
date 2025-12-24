@@ -19,11 +19,16 @@
                "max": 10
             }
          },
-			"simultaneous_visitors_check": {
+         "simultaneous_visitors_check": {
             "type": "deny_if_greater_than",
             "item": "counter",
             "key": "visitors",
             "value": 0
+         },
+         "days_elapsed_requirement": {
+            "item": "days_elapsed",
+            "type": "deny_if_less_than",
+            "value": 8
          },
          "weather_check": {
             "item": "script",

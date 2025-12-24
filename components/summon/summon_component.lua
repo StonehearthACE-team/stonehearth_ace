@@ -6,6 +6,10 @@ function SummonComponent:initialize()
    self._json = json or {}
 end
 
+function SummonComponent:restore()
+	self._is_restore = true
+end
+
 function SummonComponent:post_activate()
 	local despawn_function = function ()
 		stonehearth.ai:inject_ai(self._entity, {
@@ -15,9 +19,12 @@ function SummonComponent:post_activate()
 		})
 	end
 
+	if self._is_restore and self._sv._summoner and not self._summoner_predestroy_listener then
+		self:_link_to_summoner(self._sv._summoner)
+	end
+
 	if not self._sv._despawn_timer then
-		self._sv._despawn_timer = stonehearth.calendar:set_timer("SummonComponent creating a despawn timer for summon", self._json.despawn_timer or '2h', despawn_function)
-		self.__saved_variables:mark_changed()
+		self._sv._despawn_timer = stonehearth.calendar:set_persistent_timer("SummonComponent creating a despawn timer for summon", self._json.despawn_timer or '2h', despawn_function)
 	end
 	
 	if self._json.can_talk then
@@ -49,15 +56,14 @@ function SummonComponent:_in_combat_changed(context)
 end
 
 function SummonComponent:_link_to_summoner(entity)
-   	self._sv._summoner_predestroy_listener = radiant.events.listen(entity, 'radiant:entity:pre_destroy', function()
-        stonehearth.ai:inject_ai(self._entity, {
-   			actions = {
-      			"stonehearth_ace:actions:combat:despawn_summon"
-   			}
+	self._sv._summoner = entity
+	self._summoner_predestroy_listener = radiant.events.listen(entity, 'radiant:entity:pre_destroy', function()
+		stonehearth.ai:inject_ai(self._entity, {
+			actions = {
+				"stonehearth_ace:actions:combat:despawn_summon"
+			}
 		})
-    end)
-
-	self.__saved_variables:mark_changed()
+	end)
 end
 
 function SummonComponent:get_despawn_effect()
@@ -70,9 +76,9 @@ function SummonComponent:destroy()
 		self._sv._despawn_timer = nil
 	end
 
-	if self._sv._summoner_predestroy_listener then
-		self._sv._summoner_predestroy_listener:destroy()
-		self._sv._summoner_predestroy_listener = nil
+	if self._summoner_predestroy_listener then
+		self._summoner_predestroy_listener:destroy()
+		self._summoner_predestroy_listener = nil
 	end
 
 	if self._combat_battery_listener then

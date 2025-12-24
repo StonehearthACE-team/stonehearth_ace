@@ -23,9 +23,22 @@
                }
             ]
          }
+      },
+      "mixintypes": {
+         "stonehearth:equipment": "override"
+      },
+      "stonehearth:equipment": {
+         "items": [
+            "stonehearth_ace:weapons:candledark:pumpling_attacks"
+         ]
       }
    },
    "entity_data": {
+      "stonehearth:ai_packs": {
+         "packs": [
+            "stonehearth_ace:ai_pack:summon_combat"
+         ]
+      },
       "stonehearth:species": {
          "id": "candledark"
       },

@@ -9,22 +9,6 @@
          "return_quest_toggle"
       ]
    },
-   "can_start": {
-      "all_tests": {
-         "is_return_test": {
-            "type": "deny_if_less_than",
-            "item": "counter",
-            "key": "TBD",
-            "value": 10
-         },
-         "recipe_check": {
-            "item": "script",
-            "type": "deny_if",
-            "value": false,
-            "script": "stonehearth_ace:game_master:script:recipes_unlocked_can_start"
-         }
-      }
-   },
    "wait_info": {
       "duration": "12h+24h",
       "type": "any",

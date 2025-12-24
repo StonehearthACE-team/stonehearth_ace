@@ -1,0 +1,21 @@
+{
+   "type": "encounter",
+   "encounter_type": "wait",
+   "in_edge": "crossroads_check_none",
+   "out_edge": "delay_before_tomtee_arrival",
+   "can_start": {
+      "all_tests": {
+         "recipe_check": {
+            "item": "script",
+            "type": "deny_if",
+            "value": true,
+            "script": "stonehearth_ace:game_master:script:recipes_unlocked_can_start"
+         }
+      }
+   },
+   "wait_info": {
+      "duration": "10m+15m",
+      "type": "any",
+      "recipe_list": "stonehearth_ace:data:recipe_list:frostfeast"
+   }
+}

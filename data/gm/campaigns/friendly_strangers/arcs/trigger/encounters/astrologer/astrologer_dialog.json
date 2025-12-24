@@ -19,10 +19,16 @@
                "message": "i18n(stonehearth_ace:data.gm.campaigns.friendly_strangers.astrologer_arrival.dialog_tree_info.dialog_nodes.msg1.bulletin_message.00)",
                "choices": {
                   "i18n(stonehearth_ace:data.gm.campaigns.friendly_strangers.astrologer_arrival.dialog_tree_info.dialog_nodes.msg1.choice_000)": {
-                     "next_node": "msg2"
+                     "next_node": "msg2",
+                     "ordinal": 1
                   },
-                  "i18n(stonehearth_ace:data.gm.campaigns.friendly_strangers.common.dialog_nodes.msg_met_again.choice_000)": {
-                     "next_node": "msg_cancel"
+                  "i18n(stonehearth_ace:data.gm.campaigns.friendly_strangers.common.dialog_nodes.msg_be_quick.choice_001)": {
+                     "next_node": "msg_be_quick",
+                     "ordinal": 2
+                  },
+                  "i18n(stonehearth_ace:data.gm.campaigns.friendly_strangers.common.dialog_nodes.msg_met_again.choice_002)": {
+                     "next_node": "msg_cancel",
+                     "ordinal": 3
                   }
                }
             }
@@ -112,6 +118,23 @@
                      "next_node": "msg2"
                   },
                   "i18n(stonehearth_ace:data.gm.campaigns.friendly_strangers.common.dialog_nodes.msg_cancel.choice_002)": {}
+               }
+            }
+         },
+         "msg_be_quick": {
+            "bulletin": {
+               "title": "i18n(stonehearth_ace:data.gm.campaigns.friendly_strangers.common.dialog_nodes.bulletin_title_2)",
+               "dialog_title": "i18n(stonehearth_ace:data.gm.campaigns.friendly_strangers.astrologer_arrival.dialog_tree_info.dialog_nodes.dialog_title)",
+               "portrait": "file(../images/astrologer.png)",
+               "portrait_offset": 0,
+               "message": "i18n(stonehearth_ace:data.gm.campaigns.friendly_strangers.astrologer_arrival.dialog_tree_info.dialog_nodes.msg_be_quick.bulletin_message.00)",
+               "choices": {
+                  "i18n(stonehearth_ace:data.gm.campaigns.friendly_strangers.common.dialog_nodes.msg_be_quick.choice_002)": {
+                     "next_node": "msg_farewell"
+                  },
+                  "i18n(stonehearth_ace:data.gm.campaigns.friendly_strangers.common.dialog_nodes.msg_be_quick.choice_003)": {
+                     "next_node": "msg2"
+                  }
                }
             }
          },
