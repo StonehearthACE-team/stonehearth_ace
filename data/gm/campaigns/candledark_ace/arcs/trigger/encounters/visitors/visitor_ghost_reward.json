@@ -3,7 +3,13 @@
    "encounter_type": "donation_dialog",
    "mixins": "stonehearth_ace:mixins:encounter:candledark:visitor_reward",
    "in_edge": "visitor_ghost_reward",
-   "out_edge": "clear_visitors",
+   "out_edge": {
+      "type": "trigger_many",
+      "out_edges": [
+         "invasion_add_counter_peaceful",
+         "clear_visitors"
+      ]
+   },
    "donation_dialog_info": {
       "bulletin_type": "candledark",
       "nodes": {

@@ -1,0 +1,32 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.candledark.pumpkin_roots_trapped.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.candledark.pumpkin_roots_trapped.description)",
+   "icon": "file(pumpkin_roots_trapped.png)",
+   "duration": "3h",
+   "persistent": true,
+   "effect": "stonehearth:effects:poof_effect:small",
+   "script": "stonehearth_ace:buff_scripts:trap",
+   "script_info": {
+      "trap_uri": "stonehearth_ace:gizmos:traps:pumpkin_roots",
+      "trap_owner": "undead",
+      "scale_multiplier": 2.1
+   },
+   "injected_ai": {
+      "actions": [
+         "stonehearth:actions:compelled_behaviors:struggle"
+      ]
+   },
+   "modifiers": {
+      "speed": {
+         "max": 0
+      },
+      "menace": {
+         "max": 1
+      },
+      "muscle": {
+         "max": 0
+      }
+   }
+}

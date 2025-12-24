@@ -9,19 +9,8 @@
          "tomtee_arrival_geomancer"
       ]
    },
-   "can_start": {
-      "all_tests": {
-         "recipe_check": {
-            "item": "script",
-            "type": "deny_if",
-            "value": true,
-            "script": "stonehearth_ace:game_master:script:recipes_unlocked_can_start"
-         }
-      }
-   },
    "wait_info": {
       "duration": "12h+24h",
-      "type": "any",
-      "recipe_list": "stonehearth_ace:data:recipe_list:frostfeast"
+      "type": "any"
    }
 }

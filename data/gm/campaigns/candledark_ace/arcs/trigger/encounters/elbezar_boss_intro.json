@@ -15,7 +15,22 @@
                "portrait_offset": 0,
                "message": "i18n(stonehearth_ace:data.gm.campaigns.candledark_ace.elbezar_boss_intro.dialog_tree_info.dialog_nodes.msg1.bulletin_message.00)",
                "choices": {
-                  "i18n(stonehearth_ace:data.gm.campaigns.candledark_ace.elbezar_boss_intro.dialog_tree_info.dialog_nodes.msg1.choice_000)": {}
+                  "i18n(stonehearth_ace:data.gm.campaigns.candledark_ace.elbezar_boss_intro.dialog_tree_info.dialog_nodes.msg1.choice_000)": {},
+                  "i18n(stonehearth_ace:data.gm.campaigns.candledark_ace.elbezar_boss_intro.dialog_tree_info.dialog_nodes.msg1.choice_001)": {
+                     "next_node": "msg2"
+                  }
+               }
+            }
+         },
+         "msg2": {
+            "bulletin": {
+               "title": "i18n(stonehearth_ace:data.gm.campaigns.candledark_ace.elbezar_boss_intro.dialog_tree_info.dialog_nodes.msg2.bulletin_title)",
+               "dialog_title": "i18n(stonehearth_ace:data.gm.campaigns.candledark_ace.elbezar_boss_intro.dialog_tree_info.dialog_nodes.msg2.dialog_title)",
+               "portrait": "file(images/elbezar.png)",
+               "portrait_offset": 0,
+               "message": "i18n(stonehearth_ace:data.gm.campaigns.candledark_ace.elbezar_boss_intro.dialog_tree_info.dialog_nodes.msg2.bulletin_message.00)",
+               "choices": {
+                  "i18n(stonehearth_ace:data.gm.campaigns.candledark_ace.elbezar_boss_intro.dialog_tree_info.dialog_nodes.msg2.choice_000)": {}
                }
             }
          }

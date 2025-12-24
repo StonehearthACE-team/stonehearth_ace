@@ -77,27 +77,38 @@ function AttackSummon:run(ai, entity, args)
    end
 
    radiant.entities.turn_to_face(entity, target)
+   local location = radiant.entities.get_world_grid_location(target)
 
    -- Start cooldown and unprotect target (they might die)
    stonehearth.combat:start_cooldown(entity, attack_info)
    ai:unprotect_argument(target)
 
+   local summon_script = attack_info.script
    local args = {
       summon_effect = attack_info.summon_effect or 'stonehearth:effects:spawn_entity',
       copy_attributes = attack_info.copy_attributes,
       link_to_summoner = attack_info.link_to_summoner ~= false
    }
 
-   -- Create summons with staggered delays
-   self._summon_timers = {}
-   for i = 1, amount do
-      local uri = uris[rng:get_int(1, #uris)]
-      local offset = (0.1 * i + 1) - (0.1 * amount) / 2
-      local delay_ms = attack_info.active_frame * 33.3 * offset
+   -- Run special summon script or create summons with staggered delays if a regular summoning attack
+   if summon_script then
+      self._script = radiant.mods.load_script(summon_script)()
+      if self._script.start then
+         self._script_timer = stonehearth.combat:set_timer("AttackSummon script delay " .. entity:get_id(), attack_info.active_frame or 1, function()
+            self._script:start(entity, location, attack_info.script_info or {})
+         end)
+      end
+   else
+      self._summon_timers = {}
+      for i = 1, amount do
+         local uri = uris[rng:get_int(1, #uris)]
+         local offset = (0.1 * i + 1) - (0.1 * amount) / 2
+         local delay_ms = attack_info.active_frame * 33.3 * offset
 
-      self._summon_timers[i] = stonehearth.combat:set_timer("AttackSummon summon_delay " .. i, delay_ms, function()
-         self:_create_summon(uri, entity, args)
-      end)
+         self._summon_timers[i] = stonehearth.combat:set_timer("AttackSummon summon_delay " .. i, delay_ms, function()
+            self:_create_summon(uri, entity, args)
+         end)
+      end
    end
 
    -- Play the summoner effect

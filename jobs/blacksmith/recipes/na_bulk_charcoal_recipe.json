@@ -1,0 +1,39 @@
+{
+   "type": "recipe",
+   "effort": 60,
+   "work_units": 12,
+   "recipe_name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.na_bulk_charcoal_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.blacksmith.recipes.na_bulk_charcoal_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.blacksmith.recipes.na_bulk_charcoal_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/resources/coal/piece_of_charcoal/piece_of_charcoal_2x.png",
+   "workshop": "stonehearth_ace:blacksmith:fuel_oven",
+   "work_effect": "work_wait",
+   "level_requirement": 3,
+   "proficiency_gain": 0.8,
+   "ingredients": [
+      {
+         "material": "bone resource",
+         "count": 7
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:resources:coal:piece_of_charcoal"
+      },
+	   {
+         "item": "stonehearth_ace:resources:coal:piece_of_charcoal"
+      },
+	   {
+         "item": "stonehearth_ace:resources:coal:piece_of_charcoal"
+      },
+	   {
+         "item": "stonehearth_ace:resources:coal:piece_of_charcoal"
+      },
+	   {
+         "item": "stonehearth_ace:resources:coal:piece_of_charcoal"
+      },
+	   {
+         "item": "stonehearth_ace:resources:coal:piece_of_charcoal"
+      }
+   ]
+}

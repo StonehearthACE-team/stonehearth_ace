@@ -82,12 +82,12 @@ function AceSound:recommend_combat_music(music)
       music = music_data.combat_playlist
    end
 
-   if self._is_in_combat and self._threat_level > 0 then
+   if self._is_in_combat and self._threat_level > 0.109 then
       self._combat_started = true
       self:recommend_game_music('combat', 'music', music)
       self:recommend_game_music('combat', 'ambient', self._constants.music.combat.ambient)
       return
-   elseif self._combat_started and self._threat_level <= 0.1 then
+   elseif self._combat_started and self._threat_level <= 0.11 then
       self._combat_started = false
 
       -- combat music is going... first fade it out by queueing a track

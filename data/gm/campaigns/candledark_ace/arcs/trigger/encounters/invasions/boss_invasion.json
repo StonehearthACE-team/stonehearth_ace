@@ -31,14 +31,17 @@
    },
    "create_mission_info": {
       "mission": {
+         "sighted_bulletin": {
+            "title": "i18n(stonehearth_ace:data.gm.campaigns.candledark_ace.boss_raid.mission.sighted_bulletin.title)"
+         },
          "members": {
             "boss_vampire": {
                "from_population": {
                   "role": "candledark_vampire",
                   "gender": "male",
                   "location": { "x": 0, "z": 0 },
-                  "min": 0,
-                  "max": 0,
+                  "min": 1,
+                  "max": 1,
                   "range": 10
                },
                "tuning": "stonehearth_ace:monster_tuning:candledark:vampire:boss"
@@ -48,8 +51,8 @@
                   "role": "candledark_witch",
                   "gender": "female",
                   "location": { "x": 0, "z": 0 },
-                  "min": 0,
-                  "max": 0,
+                  "min": 1,
+                  "max": 1,
                   "range": 10
                },
                "tuning": "stonehearth_ace:monster_tuning:candledark:witch:boss"
@@ -57,9 +60,10 @@
             "boss_skeleton": {
                "from_population": {
                   "role": "candledark_skeleton",
+                  "gender": "male",
                   "location": { "x": 0, "z": 0 },
-                  "min": 0,
-                  "max": 0,
+                  "min": 1,
+                  "max": 1,
                   "range": 10
                },
                "tuning": "stonehearth_ace:monster_tuning:candledark:skeleton:boss"
@@ -68,8 +72,8 @@
                "from_population": {
                   "role": "candledark_pumpling",
                   "location": { "x": 0, "z": 0 },
-                  "min": 0,
-                  "max": 0,
+                  "min": 1,
+                  "max": 1,
                   "range": 10
                },
                "tuning": "stonehearth_ace:monster_tuning:candledark:pumpling:boss"

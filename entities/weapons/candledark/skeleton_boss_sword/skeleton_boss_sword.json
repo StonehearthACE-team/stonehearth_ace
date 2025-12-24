@@ -27,18 +27,26 @@
       },
       "stonehearth:combat:melee_attacks": [
          {
-            "name": "combat_1h_forehand",
-            "effect": "combat_1h_forehand",
+            "name": "combat_2h_attack",
+            "effect": "combat_2h_attack",
             "active_frame": 21,
             "cooldown": 0,
-            "priority": 2
-         },
+            "priority": 1,
+            "aoe_effect": {
+               "damage_multiplier": 0.6,
+               "aoe_target_limit": 3
+            }
+         }
+      ],
+      "stonehearth:combat:melee_defenses": [
          {
-            "name": "combat_1h_thrust",
-            "effect": "combat_1h_thrust",
-            "active_frame": 16,
-            "cooldown": 0,
-            "priority": 0
+            "name": "combat_1h_dodge_boss",
+            "effect": "combat_1h_dodge",
+            "active_frame": 8,
+            "cooldown": 12000,
+            "priority": 2,
+            "chance_of_success": 0.25,
+            "defense_attribute": "dodge_chance"
          }
       ],
       "stonehearth:net_worth": {
@@ -49,8 +57,8 @@
          }
       },
       "stonehearth:catalog": {
-         "display_name": "Noble Rapier",
-         "description": "A fancy, almost decorative weapon.",
+         "display_name": "i18n(stonehearth_ace:entities.weapons.candledark.skeleton_boss_sword.display_name)",
+         "description": "i18n(stonehearth_ace:entities.weapons.candledark.skeleton_boss_sword.description)",
          "icon": "file(skeleton_boss_sword.png)",
          "is_item": true,
          "category": "weapons",

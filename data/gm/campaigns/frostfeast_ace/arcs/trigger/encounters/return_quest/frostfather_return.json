@@ -4,6 +4,7 @@
    "in_edge": "frostfather_return",
    "out_edge": "frostfeast_return_celebration",
    "donation_dialog_info": {
+      "bulletin_type": "frostfeast",
       "nodes": {
          "simple_message": {
             "bulletin": {
@@ -12,7 +13,7 @@
                "message": "i18n(stonehearth_ace:data.gm.campaigns.frostfeast_ace.return_quest.frostfather_return.message)",
                "portrait": "file(../images/frostfather.png)",
                "choices": {
-                  "i18n(stonehearth_ace:data.gm.campaigns.frostfeast_ace.quest_reward.choice_000)": {
+                  "i18n(stonehearth_ace:data.gm.campaigns.frostfeast_ace.frostfather_arrival.dialog_tree_info.dialog_nodes.msg8.choice_000)": {
                      "result": "accept"
                   }
                }
@@ -23,12 +24,18 @@
          "entries": {
             "default": {
                "num_rolls": {
-                  "min": 1,
-                  "max": 6
+                  "min": 4,
+                  "max": 8
                },
                "items": {
-                  "recipe": {
-                     "uri": "stonehearth_ace:consumables:frostfeast:recipe"
+                  "present": {
+                     "uri": "stonehearth_ace:decoration:frostfeast:present"
+                  },
+                  "present_small": {
+                     "uri": "stonehearth_ace:decoration:frostfeast:present:large"
+                  },
+                  "present_large": {
+                     "uri": "stonehearth_ace:decoration:frostfeast:present:small"
                   }
                }
             }

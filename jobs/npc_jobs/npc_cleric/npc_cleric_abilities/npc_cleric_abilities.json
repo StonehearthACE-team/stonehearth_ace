@@ -1,0 +1,18 @@
+{
+   "entity_data" : {
+      "mixintypes": {
+         "stonehearth:combat:healing_spells" : "override"
+      },
+      "stonehearth:combat:healing_spells" : [
+         {
+            "name": "combat_heal",
+            "effect": "combat_1h_heal",
+            "active_frame": 67,
+            "cooldown": 6000,
+            "shared_cooldown_name": "combat_heal_shared",
+            "shared_cooldown": 6000,
+            "priority": 0
+         }
+      ]
+   }
+}

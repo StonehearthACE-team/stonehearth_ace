@@ -1,0 +1,47 @@
+{
+   "type": "entity",
+   "components": {
+      "stonehearth:equipment_piece": {
+         "slot": "mainhand",
+         "render_type": "none"
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:weapon_data": {
+         "base_damage": 9,
+         "reach": 2,
+         "range": 8
+      },
+      "stonehearth:combat:melee_attacks": [
+         {
+            "name": "combat_1h_backhand",
+            "effect": "combat_1h_backhand",
+            "active_frame": 17,
+            "cooldown": 0,
+            "priority": 1
+         },
+         {
+            "name": "combat_1h_forehand",
+            "effect": "combat_1h_forehand",
+            "active_frame": 16,
+            "cooldown": 0,
+            "priority": 1
+         }
+      ],
+      "stonehearth_ace:combat:summon_attacks": [
+         {
+            "name": "summon_pumpkin_roots",
+            "effect": "promote",
+            "script": "stonehearth_ace:summon_scripts:roots",
+            "script_info": {
+               "root_buff": "stonehearth_ace:buffs:candledark:pumpkin_roots:trapped",
+               "num_targets": 3,
+               "max_health_based_duration": true
+            },
+            "active_frame": 40,
+            "cooldown": 45000,
+            "priority": 2
+         }
+      ]
+   }
+}

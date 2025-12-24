@@ -78,16 +78,23 @@ App.StonehearthDialogTreeBulletinDialog = App.StonehearthBaseBulletinDialog.exte
    },
    
    _choices: function() {
-   	var buttons = [];
+      var buttons = [];
       var choices = this.get('model.data.choices');
+
       if (choices) {
-      	buttons = radiant.map_to_array(choices, function(k, v) {
+         buttons = radiant.map_to_array(choices, function(k, v) {
             return {
                id: k,
                text: i18n.t(k),
-            }
+               ordinal: v.ordinal || 0
+            };
+         });
+
+         buttons.sort(function(a, b) {
+            return a.ordinal - b.ordinal;
          });
       }
+
       this.set('buttons', buttons);
    }.observes('model.data.choices'),
 

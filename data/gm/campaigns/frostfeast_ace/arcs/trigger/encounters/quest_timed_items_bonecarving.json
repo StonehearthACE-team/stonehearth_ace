@@ -1,0 +1,85 @@
+{
+   "type": "encounter",
+   "encounter_type": "script",
+   "in_edge": "quest_timed_items_bonecarving",
+   "can_start": {
+      "test_1": {
+         "recipe_check": {
+            "item": "script",
+            "type": "deny_if_not",
+            "value": true,
+            "script": "stonehearth_ace:game_master:script:recipes_unlocked_can_start"
+         },
+         "bonecarving_present_test": {
+            "type": "deny_if_greater_than",
+            "item": "counter",
+            "key": "bonecarving_present",
+            "value": 0
+         }
+      }
+   },
+   "script_info": {
+      "type": "any",
+      "recipe_list": "stonehearth_ace:data:recipe_list:bonecarving",
+      "script": "stonehearth:game_master:script_encounter:returning_trader",
+      "data": {
+         "bulletin_type": "frostfeast",
+         "quest_storage_uri": "stonehearth_ace:containers:quest:frostfeast",
+         "abandon_out_edge": "quest_cleanup",
+         "timeout_out_edge": "quest_cleanup",
+         "success_out_edge": "bonecarving_present_counter_add",
+         "expiration_timeout": "6h",
+         "score_threshold": 1000,
+         "title": "i18n(stonehearth_ace:data.gm.campaigns.frostfeast_ace.quest_timed_items.bonecarving.title)",
+         "trade_details": "i18n(stonehearth_ace:data.gm.campaigns.frostfeast_ace.quest_timed_items.bonecarving.trade_details)",
+         "waiting_title": "i18n(stonehearth_ace:data.gm.campaigns.frostfeast_ace.quest_timed_items.waiting_title)",
+         "waiting_text": "i18n(stonehearth_ace:data.gm.campaigns.frostfeast_ace.quest_timed_items.waiting_text)",
+         "return_title": "i18n(stonehearth_ace:data.gm.campaigns.frostfeast_ace.quest_timed_items.return_title)",
+         "return_greetings_positive": "i18n(stonehearth_ace:data.gm.campaigns.frostfeast_ace.quest_timed_items.return_greetings_positive)",
+         "return_greetings_negative": "i18n(stonehearth_ace:data.gm.campaigns.frostfeast_ace.quest_timed_items.return_greetings_negative)",
+         "min_days_before_return": 2,
+         "max_days_before_return": 3,
+         "wants": {
+            "stonehearth_ace:resources:bone:bone_big": {
+               "min": 4,
+               "max": 8
+            },
+            "stonehearth_ace:resources:bone:bone_skull": {
+               "min": 6,
+               "max": 12
+            },
+            "stonehearth_ace:resources:bone:bone_skeleton": {
+               "min": 8,
+               "max": 15
+            },
+            "stonehearth_ace:drink:tea": {
+               "min": 3,
+               "max": 5
+            },
+            "stonehearth_ace:food:roast_fish": {
+               "min": 6,
+               "max": 8
+            },
+            "stonehearth_ace:food:roast_duck": {
+               "min": 6,
+               "max": 8
+            },
+            "stonehearth_ace:food:honey": {
+               "min": 5,
+               "max": 12
+            },
+            "stonehearth:toys:plushie_toy_rabbit": {
+               "min": 4,
+               "max": 6
+            }
+         },
+         "rewards": {
+            "stonehearth_ace:decoration:frostfeast:present:bonecarving": {
+               "type": "object",
+               "min": 1,
+               "max": 1
+            }
+         }
+      }
+   }
+}

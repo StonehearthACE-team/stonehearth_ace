@@ -25,6 +25,12 @@
             "key": "is_return",
             "value": 1
          },
+         "quests_completed_test": {
+            "type": "deny_if_less_than",
+            "item": "counter",
+            "key": "quests_completed",
+            "value": 10
+         },
          "recipe_check": {
             "item": "script",
             "type": "deny_if",
@@ -34,6 +40,7 @@
       }
    },
    "dialog_tree_info": {
+      "bulletin_type": "frostfeast",
       "start_node": "msg1",
       "nodes": {
          "msg1": {

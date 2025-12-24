@@ -23,6 +23,7 @@
    "entity_data": {
       "stonehearth:combat:weapon_data": {
          "base_damage": 34,
+         "range": 32,
          "reach": 1.9
       },
       "stonehearth:combat:melee_attacks": [
@@ -41,6 +42,23 @@
             "priority": 0
          }
       ],
+      "stonehearth_ace:combat:summon_attacks": [
+         {
+            "name": "summon_vampire_bats",
+            "effect": "combat_1h_forehand_spin",
+            "summon_effect": "stonehearth_ace:effects:candledark:nibbles",
+            "amount": {
+               "min": 6,
+               "max": 9
+            },
+            "uris": {
+               "stonehearth_ace:monsters:candledark:summons:vampire_bat": true
+            },
+            "active_frame": 15,
+            "cooldown": 90000,
+            "priority": 3
+         }
+      ],
       "stonehearth:net_worth": {
          "value_in_gold": 0,
          "shop_info": {
@@ -49,8 +67,8 @@
          }
       },
       "stonehearth:catalog": {
-         "display_name": "Noble Rapier",
-         "description": "A fancy, almost decorative weapon.",
+         "display_name": "i18n(stonehearth_ace:entities.weapons.candledark.vampire_boss_rapier.display_name)",
+         "description": "i18n(stonehearth_ace:entities.weapons.candledark.vampire_boss_rapier.description)",
          "icon": "file(vampire_boss_rapier.png)",
          "is_item": true,
          "category": "weapons",
