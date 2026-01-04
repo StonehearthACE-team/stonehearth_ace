@@ -304,7 +304,7 @@ function TransformComponent:add_option_overrides(overrides)
    self:_update_component_info()
 end
 
-function TransformComponent:transform(transformer)
+function TransformComponent:transform(transformer, ingredient)
    local transform_data = self:get_transform_options()
    local options = {
       check_script = transform_data.transform_check_script,
@@ -318,7 +318,9 @@ function TransformComponent:transform(transformer)
 		model_variant = transform_data.model_variant,
       destroy_entity = transform_data.destroy_entity,
       remove_components = transform_data.remove_components,
+      ingredient = ingredient,
       apply_ingredient_quality = transform_data.apply_ingredient_quality,
+      destroy_ingredient = transform_data.destroy_ingredient,
       transformer_entity = transformer,
       transform_event = function(transformed_form)
          radiant.events.trigger(self._entity, 'stonehearth_ace:on_transformed', {entity = self._entity, transformed_form = transformed_form})
@@ -407,7 +409,7 @@ end
 
 -- this function gets called directly by request_transform unless a request_action is specified
 -- if such an action is specified, this function should be called as part of that AI action
-function TransformComponent:perform_transform(use_finish_cb, transformer)
+function TransformComponent:perform_transform(use_finish_cb, transformer, ingredient)
    local data = self:get_transform_options()
    if not data then
       return false
@@ -429,11 +431,11 @@ function TransformComponent:perform_transform(use_finish_cb, transformer)
       local script = radiant.mods.load_script(data.start_transforming_script)
       script.start_transforming(self._entity, data, function()
             if use_finish_cb then
-               self:transform(transformer)
+               self:transform(transformer, ingredient)
             end
          end)
    elseif not data.transforming_worker_effect then
-      self:transform(transformer)
+      self:transform(transformer, ingredient)
    end
 end
 

@@ -67,29 +67,39 @@ function transform_lib.transform(entity, transform_source, into_uri, options)
    local facing = radiant.entities.get_facing(entity)
 
    local root_form, iconic_form = entity_forms_lib.get_forms(entity)
+   local ingredient = options.ingredient
    local transformed_form
 
    if into_uri and into_uri ~= '' then
-      --Create the transformed entity and put it on the ground
-      transformed_form = radiant.entities.create_entity(into_uri, { owner = options.transformer_entity or entity})
-      -- set the facing so that is_standable properly considers a rotated collision region
-      radiant.entities.turn_to(transformed_form, facing)
-      
-      -- Only copy quality if the transformation doesn't specifically get the quality from the ingredient
-      if options.apply_ingredient_quality ~= true then
-         item_quality_lib.copy_quality(entity, transformed_form)
+      -- if the uri specified is the same as the uri of the ingredient,
+      -- don't create a new entity; just use the ingredient
+      if options.destroy_ingredient == false and ingredient and into_uri == ingredient:get_uri() then
+         transformed_form = ingredient
+      else
+         --Create the transformed entity and put it on the ground
+         transformed_form = radiant.entities.create_entity(into_uri, { owner = options.transformer_entity or entity})
+         -- set the facing so that is_standable properly considers a rotated collision region
+         radiant.entities.turn_to(transformed_form, facing)
+
+         -- Only copy quality if the transformation doesn't specifically get the quality from the ingredient
+         if options.apply_ingredient_quality ~= true then
+            item_quality_lib.copy_quality(root_form or entity, transformed_form)
+         end
       end
 
       -- Have to remove entity because it can collide with transformed form
       -- If its parent is a structure, we want to remove it from that structure and place the new one on that structure
       radiant.entities.remove_child(parent, entity)
       radiant.entities.move_to_grid_aligned(entity, Point3.zero)
-		
+
 		local aquatic_object = entity:get_component('stonehearth_ace:aquatic_object')
       if location and not radiant.terrain.is_standable(transformed_form, location) and not aquatic_object then
          -- If cannot transform because the transformed form will not fit in the current location, just return (evolve will try again after a new timer)
          transform_lib.place_entity_at_location(entity, parent, local_location, facing)
-         radiant.entities.destroy_entity(transformed_form)
+         -- if we were just replacing this entity with the ingredient, we don't want to destroy the ingredient in a fail case
+         if transformed_form ~= ingredient then
+            radiant.entities.destroy_entity(transformed_form)
+         end
          return false
       end
 
@@ -129,14 +139,14 @@ function transform_lib.transform(entity, transform_source, into_uri, options)
             end
          end
       end
-		
+
 		-- If the transformed entity is a storage, transfer the contents (regardless of capacity)
 		local storage_component = entity:get_component('stonehearth:storage')
 		if storage_component then 
          if options.dump_storage then
             storage_component:drop_all(location)
          else
-            local transformed_storage_component = transformed_form:get_component('stonehearth:storage')			
+            local transformed_storage_component = transformed_form:get_component('stonehearth:storage')
             if transformed_storage_component then
                -- apply the same storage filter on the transformed entity
                local storage_filter = storage_component:get_filter()
@@ -283,7 +293,7 @@ function transform_lib.transform(entity, transform_source, into_uri, options)
             if options.auto_harvest_key == stage then
                resources_lib.request_auto_harvest(transformed_form, true)
             else
-               local transform_comp = transformed_form:add_component('stonehearth_ace:transform'):add_option_overrides({auto_harvest_key = options.auto_harvest_key})
+               transformed_form:add_component('stonehearth_ace:transform'):add_option_overrides({auto_harvest_key = options.auto_harvest_key})
             end
          else
             resources_lib.request_auto_harvest(transformed_form, options.auto_harvest)
@@ -357,7 +367,7 @@ function transform_lib.transform(entity, transform_source, into_uri, options)
    if transformed_form and pasture then
       pasture:convert_to_pasture_animal(transformed_form)
    end
-	
+
 	if transformed_form and options.model_variant then
       local render_info = transformed_form:add_component('render_info')
 		render_info:set_model_variant(options.model_variant)

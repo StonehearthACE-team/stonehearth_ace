@@ -1,4 +1,5 @@
 local Entity = _radiant.om.Entity
+local entity_forms_lib = require 'stonehearth.lib.entity_forms.entity_forms_lib'
 local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_lib'
 local TransformItemAdjacent = radiant.class()
 
@@ -62,7 +63,8 @@ function TransformItemAdjacent:run(ai, entity, args)
 
    if transform_comp and data then
       -- face the center of the entity instead of the edge
-      radiant.entities.turn_to_face(entity, radiant.entities.get_world_grid_location(item))
+      local location = radiant.entities.get_world_grid_location(item)
+      radiant.entities.turn_to_face(entity, location)
 
       local effect = data.transforming_worker_effect
       local times = data.transforming_worker_effect_times
@@ -70,14 +72,15 @@ function TransformItemAdjacent:run(ai, entity, args)
       local apply_ingredient_quality = data.apply_ingredient_quality
       local use_timed_progress = (times or 1) < 2
       local ingredient = data.transform_ingredient_uri or data.transform_ingredient_material
-      local ing_item, ing_quality
+      local ing_item, ing_root, ing_quality
       local ing_options = {}
-      
+
       if ingredient then
          ing_item = radiant.entities.get_carrying(entity)
          if ing_item and ing_item:is_valid() then
             -- Save the ingredient's quality so that it can be applied onto the transformed form after the ingredient itself is gone
-            local iq = ing_item:get_component('stonehearth:item_quality')
+            ing_root = entity_forms_lib.get_root_entity(ing_item) or ing_item
+            local iq = ing_root:get_component('stonehearth:item_quality')
             if iq and iq:get_quality() > 1 then
                ing_quality = iq:get_quality()
                ing_options.author = iq:get_author_name()
@@ -126,31 +129,38 @@ function TransformItemAdjacent:run(ai, entity, args)
          end
          self._completed_work = true
          ai:unprotect_argument(item)
-         transformed_form = transform_comp:transform(entity)
+         transformed_form = transform_comp:transform(entity, ing_root)
       else
          self._completed_work = true
          ai:unprotect_argument(item)
          transformed_form = transform_comp:perform_transform(true, entity)
       end
 
-      -- Apply the copied quality of the ingredient (if there was one) to the transformed form
-      if apply_ingredient_quality then
-         if transformed_form and ing_quality and ing_options then
-            item_quality_lib.apply_quality(transformed_form, ing_quality, ing_options)
+      -- if transformation failed, pick up the ingredient (if there was one) and cancel
+      if not transformed_form then
+         if ing_root then
+            stonehearth.ai:pickup_item(ai, entity, ing_item)
+            ai:execute('stonehearth:run_pickup_effect', { location = location })
          end
+         return
+      end
+
+      -- Apply the copied quality of the ingredient (if there was one) to the transformed form
+      if apply_ingredient_quality and transformed_form and ing_quality and ing_options then
+         item_quality_lib.apply_quality(transformed_form, ing_quality, ing_options)
       end
 
       -- If, for whatever reason, the ingredient still exists - destroy it
-      if ing_item and ing_item:is_valid() then
-         ai:unprotect_argument(ing_item)
-         radiant.entities.destroy_entity(ing_item)
+      if ing_root and ing_root:is_valid() and data.destroy_ingredient ~= false then
+         ai:unprotect_argument(ing_root)
+         radiant.entities.destroy_entity(ing_root)
       end
 
-		if data.additional_items then
-			local location = radiant.entities.get_world_grid_location(entity)
+      if data.additional_items then
+         local location = radiant.entities.get_world_grid_location(entity)
          transform_comp:spawn_additional_items(entity, location)
-		end
-		
+      end
+
       if data and data.worker_finished_effect then
          ai:execute('stonehearth:run_effect', { effect = data.worker_finished_effect})
       end

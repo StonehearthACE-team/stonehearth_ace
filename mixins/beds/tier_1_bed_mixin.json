@@ -9,6 +9,7 @@
             "comfy_bed": {
                "transform_uri": "stonehearth:furniture:comfy_bed",
                "command": "stonehearth_ace:commands:transform:upgrade_comfy_bed",
+               "destroy_ingredient": false,
                "request_action": "stonehearth_ace:transform",
                "request_action_overlay_effect": "stonehearth_ace:effects:transform_worker_upgrade_overlay_effect",
                "transform_ingredient_uri": "stonehearth:furniture:comfy_bed",
@@ -16,7 +17,6 @@
                "transforming_worker_effect": "work",
                "transform_effect": "stonehearth:effects:poof_effect:small",
                "undeploy_entity": true,
-               "apply_ingredient_quality": true,
                "worker_required_job": {
                   "stonehearth:jobs:worker": true,
                   "stonehearth:jobs:carpenter": true
@@ -25,6 +25,7 @@
             "stone_comfy_bed": {
                "transform_uri": "stonehearth_ace:furniture:stone_comfy_bed",
                "command": "stonehearth_ace:commands:transform:upgrade_stone_comfy_bed",
+               "destroy_ingredient": false,
                "request_action": "stonehearth_ace:transform",
                "request_action_overlay_effect": "stonehearth_ace:effects:transform_worker_upgrade_overlay_effect",
                "transform_ingredient_uri": "stonehearth_ace:furniture:stone_comfy_bed",
@@ -32,7 +33,6 @@
                "transforming_worker_effect": "work",
                "transform_effect": "stonehearth:effects:poof_effect:small",
                "undeploy_entity": true,
-               "apply_ingredient_quality": true,
                "worker_required_job": {
                   "stonehearth:jobs:worker": true,
                   "stonehearth:jobs:mason": true
@@ -41,6 +41,7 @@
             "clay_comfy_bed": {
                "transform_uri": "stonehearth_ace:furniture:clay_comfy_bed",
                "command": "stonehearth_ace:commands:transform:upgrade_clay_comfy_bed",
+               "destroy_ingredient": false,
                "request_action": "stonehearth_ace:transform",
                "request_action_overlay_effect": "stonehearth_ace:effects:transform_worker_upgrade_overlay_effect",
                "transform_ingredient_uri": "stonehearth_ace:furniture:clay_comfy_bed",
@@ -48,7 +49,6 @@
                "transforming_worker_effect": "work",
                "transform_effect": "stonehearth:effects:poof_effect:small",
                "undeploy_entity": true,
-               "apply_ingredient_quality": true,
                "worker_required_job": {
                   "stonehearth:jobs:worker": true,
                   "stonehearth:jobs:potter": true
