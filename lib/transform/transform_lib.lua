@@ -75,7 +75,10 @@ function transform_lib.transform(entity, transform_source, into_uri, options)
       -- set the facing so that is_standable properly considers a rotated collision region
       radiant.entities.turn_to(transformed_form, facing)
       
-      item_quality_lib.copy_quality(entity, transformed_form)
+      -- Only copy quality if the transformation doesn't specifically get the quality from the ingredient
+      if options.apply_ingredient_quality ~= true then
+         item_quality_lib.copy_quality(entity, transformed_form)
+      end
 
       -- Have to remove entity because it can collide with transformed form
       -- If its parent is a structure, we want to remove it from that structure and place the new one on that structure

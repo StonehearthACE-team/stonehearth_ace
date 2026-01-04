@@ -67,6 +67,7 @@ function TransformItemAdjacent:run(ai, entity, args)
       local effect = data.transforming_worker_effect
       local times = data.transforming_worker_effect_times
       local duration = data.transforming_effect_duration
+      local apply_ingredient_quality = data.apply_ingredient_quality
       local use_timed_progress = (times or 1) < 2
       local ingredient = data.transform_ingredient_uri or data.transform_ingredient_material
       local ing_item, ing_quality
@@ -133,8 +134,10 @@ function TransformItemAdjacent:run(ai, entity, args)
       end
 
       -- Apply the copied quality of the ingredient (if there was one) to the transformed form
-      if transformed_form and ing_quality and ing_options then
-         item_quality_lib.apply_quality(transformed_form, ing_quality, ing_options)
+      if apply_ingredient_quality then
+         if transformed_form and ing_quality and ing_options then
+            item_quality_lib.apply_quality(transformed_form, ing_quality, ing_options)
+         end
       end
 
       -- If, for whatever reason, the ingredient still exists - destroy it
