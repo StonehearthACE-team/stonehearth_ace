@@ -318,6 +318,7 @@ function TransformComponent:transform(transformer)
 		model_variant = transform_data.model_variant,
       destroy_entity = transform_data.destroy_entity,
       remove_components = transform_data.remove_components,
+      apply_ingredient_quality = transform_data.apply_ingredient_quality,
       transformer_entity = transformer,
       transform_event = function(transformed_form)
          radiant.events.trigger(self._entity, 'stonehearth_ace:on_transformed', {entity = self._entity, transformed_form = transformed_form})
