@@ -1,4 +1,5 @@
 local Point3 = _radiant.csg.Point3
+local entity_forms_lib = require 'stonehearth.lib.entity_forms.entity_forms_lib'
 
 local crafting_lib = {}
 
@@ -17,7 +18,8 @@ function crafting_lib.get_ingredients_and_quality(workshop)
          entity_container:remove_child(id)
 
          local value = math.max(1, radiant.entities.get_net_worth(child:get_uri()) or 1)
-         quality = quality + radiant.entities.get_item_quality(child) * value
+         local child_root = entity_forms_lib.get_root_entity(child) or child
+         quality = quality + radiant.entities.get_item_quality(child_root) * value
          total_value = total_value + value
       end
    end
