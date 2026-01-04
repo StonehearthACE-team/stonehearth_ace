@@ -11,19 +11,11 @@
    },
    "wait_for_requirements_met_info": {
       "requirements": {
-         "recipe_check": {
-            "item": "script",
-            "type": "deny_if",
-            "value": true,
-            "script": "stonehearth_ace:game_master:script:recipes_unlocked_can_start"
-         },
          "city_tier": {
             "type": "deny_if_less_than",
             "item": "city_tier",
             "value": 99
          }
-      },
-      "type": "all",
-      "recipe_list": "stonehearth_ace:data:recipe_list:frostfeast"
+      }
    }
 }

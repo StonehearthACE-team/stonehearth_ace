@@ -24,13 +24,15 @@ function Mission:initialize()
 end
 
 function Mission:activate()
-   if self._sv.sighted_bulletin_data then
+   if self._sv.sighted_bulletin_data or self._sv.tracking_bulletin_data then
       self:_destroy_bulletins()
+   end
+
+   if self._sv.sighted_bulletin_data then
       self:_listen_for_sighted()
    end
 
    if self._sv.tracking_bulletin_data then
-      self:_destroy_bulletins()
       self:_create_tracking_bulletin()
    end
 end
@@ -66,6 +68,8 @@ function Mission:start(ctx, info)
 end
 
 function Mission:stop()
+   self:_destroy_bulletins()
+
    if self._sighted_listeners then
       self:_destroy_sighted_listeners()
    end
@@ -73,7 +77,6 @@ function Mission:stop()
       self._amenity_trace:destroy()
       self._amenity_trace = nil
    end
-   self:_destroy_bulletins()
 end
 
 -- Note: Party stays in the world on destroy
@@ -163,13 +166,18 @@ end
 function Mission:_create_tracking_bulletin()
    if not self._sv.tracking_bulletin then
       local bulletin_data = self._sv.tracking_bulletin_data
-      local party = self:get_party_component()
-      local members = party:get_members()
-      for i, member in pairs(members) do
-         if member and member.entity then     
-            self._sv.tracking_bulletin = game_master_lib.create_tracking_bulletin(member.entity, self._sv.ctx.player_id, bulletin_data)
-            self.__saved_variables:mark_changed()
-            break
+      if bulletin_data then
+         local party = self:get_party_component()
+         local members = party and party:get_members()
+         if members then
+            for i, member in pairs(members) do
+               if member and member.entity and member.entity:is_valid() then     
+                  self._sv.tracking_bulletin = game_master_lib.create_tracking_bulletin(member.entity, self._sv.ctx.player_id, bulletin_data)
+                  self._sv.tracking_bulletin:_listen_for_target_entity_destruction()
+                  self.__saved_variables:mark_changed()
+                  break
+               end
+            end
          end
       end
    end
@@ -291,14 +299,14 @@ function Mission:_destroy_bulletins()
          stonehearth.bulletin_board:remove_bulletin(bulletin)
       end
       self._sv.sighted_bulletins = nil
-      self.__saved_variables:mark_changed()
    end
 
    if self._sv.tracking_bulletin then
-      self._sv.tracking_bulletin:destroy()
+      stonehearth.bulletin_board:remove_bulletin(self._sv.tracking_bulletin)
       self._sv.tracking_bulletin = nil
-      self.__saved_variables:mark_changed()
    end
+   
+   self.__saved_variables:mark_changed()
 end
 
 function Mission:fixup_post_load(old_save_data)

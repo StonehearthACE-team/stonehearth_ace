@@ -19,18 +19,10 @@
             "value": 15
          },
          "invasion_total_2": {
-            "type": "deny_if_greater_than",
+            "type": "deny_if",
             "item": "counter",
             "key": "invasions_defeated",
             "value": 17
-         }
-      },
-      "test_2": {
-         "invasion_total": {
-            "type": "deny_if_less_than",
-            "item": "counter",
-            "key": "invasions_defeated",
-            "value": 19
          }
       }
    },
