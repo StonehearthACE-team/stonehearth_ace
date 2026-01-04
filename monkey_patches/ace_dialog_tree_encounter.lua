@@ -1,3 +1,4 @@
+local log = radiant.log.create_logger('game_master.encounters.dialog_tree')
 local AceDialogTreeEncounter = class()
 
 function AceDialogTreeEncounter:_transition_to_node(name)

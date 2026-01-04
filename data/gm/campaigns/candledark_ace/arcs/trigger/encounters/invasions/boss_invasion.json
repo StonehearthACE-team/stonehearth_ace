@@ -16,16 +16,10 @@
    "can_start": {
       "test_1": {
          "invasion_total": {
-            "type": "deny_if_less_than",
+            "type": "deny_if_not",
             "item": "counter",
             "key": "invasions_defeated",
             "value": 17
-         },
-         "invasion_total_2": {
-            "type": "deny_if_greater_than",
-            "item": "counter",
-            "key": "invasions_defeated",
-            "value": 18
          }
       }
    },
