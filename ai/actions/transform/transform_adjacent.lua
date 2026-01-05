@@ -51,6 +51,9 @@ function TransformItemAdjacent:stop(ai, entity, args)
 end
 
 function TransformItemAdjacent:run(ai, entity, args)
+   self._ai = ai
+   self._entity = entity
+
    local item = args.item
    local item_id = item:get_id()
    local transform_comp = item:get_component('stonehearth_ace:transform')
@@ -74,6 +77,12 @@ function TransformItemAdjacent:run(ai, entity, args)
       local ingredient = data.transform_ingredient_uri or data.transform_ingredient_material
       local ing_item, ing_root, ing_quality
       local ing_options = {}
+      local finish_data = {
+         transform_comp = transform_comp,
+         ing_options = ing_options,
+         apply_ingredient_quality = apply_ingredient_quality,
+         location = location,
+      }
 
       if ingredient then
          ing_item = radiant.entities.get_carrying(entity)
@@ -86,11 +95,14 @@ function TransformItemAdjacent:run(ai, entity, args)
                ing_options.author = iq:get_author_name()
                ing_options.author_type = iq:get_author_type()
             end
+
+            finish_data.ing_item = ing_item
+            finish_data.ing_root = ing_root
+            finish_data.ing_quality = ing_quality
          end
          ai:execute('stonehearth:drop_carrying_into_entity_adjacent', { entity = args.item })
       end
 
-      local transformed_form
       if effect then
          transform_comp:perform_transform()
          local progress = transform_comp:get_progress()
@@ -129,41 +141,57 @@ function TransformItemAdjacent:run(ai, entity, args)
          end
          self._completed_work = true
          ai:unprotect_argument(item)
-         transformed_form = transform_comp:transform(entity, ing_root)
+         finish_data.transformed_form = transform_comp:transform(entity, ing_root)
+         self:_finish(finish_data)
       else
          self._completed_work = true
          ai:unprotect_argument(item)
-         transformed_form = transform_comp:perform_transform(true, entity)
+         radiant.events.listen(entity, 'stonehearth_ace:transform:perform_transform:complete', function(e)
+               finish_data.transformed_form = e.transformed_form
+               self:_finish(finish_data, true)
+            end)
+         transform_comp:perform_transform(true, entity)
+         ai:suspend('perform_transform')
+      end
+   end
+end
+
+function TransformItemAdjacent:_finish(data, resume_ai)
+   -- if transformation failed, pick up the ingredient (if there was one) and cancel
+   if not data.transformed_form then
+      if data.ing_root then
+         stonehearth.ai:pickup_item(self._ai, self._entity, data.ing_item)
+         self._ai:execute('stonehearth:run_pickup_effect', { location = data.location })
       end
 
-      -- if transformation failed, pick up the ingredient (if there was one) and cancel
-      if not transformed_form then
-         if ing_root then
-            stonehearth.ai:pickup_item(ai, entity, ing_item)
-            ai:execute('stonehearth:run_pickup_effect', { location = location })
-         end
-         return
+      if resume_ai then
+         self._ai:resume('perform_transform')
       end
+      return
+   end
 
-      -- Apply the copied quality of the ingredient (if there was one) to the transformed form
-      if apply_ingredient_quality and transformed_form and ing_quality and ing_options then
-         item_quality_lib.apply_quality(transformed_form, ing_quality, ing_options)
-      end
+   -- Apply the copied quality of the ingredient (if there was one) to the transformed form
+   if data.apply_ingredient_quality and data.transformed_form and data.ing_quality and data.ing_options then
+      item_quality_lib.apply_quality(data.transformed_form, data.ing_quality, data.ing_options)
+   end
 
-      -- If, for whatever reason, the ingredient still exists - destroy it
-      if ing_root and ing_root:is_valid() and data.destroy_ingredient ~= false then
-         ai:unprotect_argument(ing_root)
-         radiant.entities.destroy_entity(ing_root)
-      end
+   -- If, for whatever reason, the ingredient still exists - destroy it
+   if data.ing_root and data.ing_root:is_valid() and data.destroy_ingredient ~= false then
+      self._ai:unprotect_argument(data.ing_root)
+      radiant.entities.destroy_entity(data.ing_root)
+   end
 
-      if data.additional_items then
-         local location = radiant.entities.get_world_grid_location(entity)
-         transform_comp:spawn_additional_items(entity, location)
-      end
+   if data.additional_items then
+      local location = radiant.entities.get_world_grid_location(self._entity)
+      data.transform_comp:spawn_additional_items(self._entity, location)
+   end
 
-      if data and data.worker_finished_effect then
-         ai:execute('stonehearth:run_effect', { effect = data.worker_finished_effect})
-      end
+   if data and data.worker_finished_effect then
+      self._ai:execute('stonehearth:run_effect', { effect = data.worker_finished_effect})
+   end
+
+   if resume_ai then
+      self._ai:resume('perform_transform')
    end
 end
 
