@@ -304,7 +304,7 @@ function TransformComponent:add_option_overrides(overrides)
    self:_update_component_info()
 end
 
-function TransformComponent:transform(transformer, ingredient)
+function TransformComponent:transform(transformer, ingredient, result_event)
    local transform_data = self:get_transform_options()
    local options = {
       check_script = transform_data.transform_check_script,
@@ -315,7 +315,7 @@ function TransformComponent:transform(transformer, ingredient)
       script_options = transform_data.script_options,
       kill_entity = transform_data.kill_entity,
       undeploy_entity = transform_data.undeploy_entity,
-		model_variant = transform_data.model_variant,
+      model_variant = transform_data.model_variant,
       destroy_entity = transform_data.destroy_entity,
       remove_components = transform_data.remove_components,
       ingredient = ingredient,
@@ -344,7 +344,11 @@ function TransformComponent:transform(transformer, ingredient)
       end
    end
 
-   return transformed
+   if transformer and result_event then
+      radiant.events.trigger_async(transformer, 'stonehearth_ace:transform:perform_transform:complete', {transformed_entity = transformed})
+   else
+      return transformed
+   end
 end
 
 function TransformComponent:request_transform(player_id, ignore_duplicate_request)
@@ -375,7 +379,7 @@ function TransformComponent:request_transform(player_id, ignore_duplicate_reques
             is_duplicate = true
          end
       end
-      
+
       if ignore_duplicate_request and is_duplicate then
          return true
       end
@@ -389,7 +393,7 @@ function TransformComponent:request_transform(player_id, ignore_duplicate_reques
          -- If someone had already requested to transform, cancel that request
          self:cancel_craft_order()
          local result = self:_set_transformable(player_id, false)
-         
+
          -- if it was a duplicate request, all we did was cancel; otherwise, let's continue making the new request
          if is_duplicate then
             return result
@@ -414,7 +418,7 @@ function TransformComponent:perform_transform(use_finish_cb, transformer, ingred
    if not data then
       return false
    end
-   
+
    if not self._sv.progress then
       self._sv.progress = radiant.create_controller('stonehearth_ace:progress_tracker', self._entity)
       self._sv.progress_text = data.progress_text
@@ -431,11 +435,11 @@ function TransformComponent:perform_transform(use_finish_cb, transformer, ingred
       local script = radiant.mods.load_script(data.start_transforming_script)
       script.start_transforming(self._entity, data, function()
             if use_finish_cb then
-               self:transform(transformer, ingredient)
+               self:transform(transformer, ingredient, true)
             end
          end)
    elseif not data.transforming_worker_effect then
-      self:transform(transformer, ingredient)
+      self:transform(transformer, ingredient, true)
    end
 end
 
@@ -459,7 +463,7 @@ function TransformComponent:_run_effect(effect, use_finish_cb, transformer)
       if use_finish_cb then
          self._effect:set_finished_cb(function()
                self:_destroy_effect()
-               self:transform(transformer)
+               self:transform(transformer, nil, true)
             end)
       end
    end
@@ -747,7 +751,7 @@ function TransformComponent:_update_component_info()
             past_forms[evolved_form] = true
          end
       end
-      
+
       log:debug('end of evolve/transform chain: %s now %s at stage %s', tostring(last_evolved_form), tostring(evolved_form), tostring(stage_data and stage_data.current_stage))
 
       if evolved_form or (last_evolved_form and not stage_data) then
