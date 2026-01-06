@@ -138,7 +138,7 @@ function TransformItemAdjacent:run(ai, entity, args)
       else
          self._completed_work = true
          ai:unprotect_argument(item)
-         radiant.events.listen(entity, 'stonehearth_ace:transform:perform_transform:complete', function(e)
+         radiant.events.listen_once(entity, 'stonehearth_ace:transform:perform_transform:complete', function(e)
                transformed_form = e.transformed_form
                ai:resume('perform_transform')
             end)
