@@ -48,6 +48,10 @@ function TransformItemAdjacent:stop(ai, entity, args)
       self._destroy_listener:destroy()
       self._destroy_listener = nil
    end
+   if self._perform_transform_complete_listener then
+      self._perform_transform_complete_listener:destroy()
+      self._perform_transform_complete_listener = nil
+   end
 end
 
 function TransformItemAdjacent:run(ai, entity, args)
@@ -138,7 +142,7 @@ function TransformItemAdjacent:run(ai, entity, args)
       else
          self._completed_work = true
          ai:unprotect_argument(item)
-         radiant.events.listen_once(entity, 'stonehearth_ace:transform:perform_transform:complete', function(e)
+         self._perform_transform_complete_listener = radiant.events.listen_once(entity, 'stonehearth_ace:transform:perform_transform:complete', function(e)
                transformed_form = e.transformed_form
                ai:resume('perform_transform')
             end)
