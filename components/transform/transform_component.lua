@@ -345,7 +345,7 @@ function TransformComponent:transform(transformer, ingredient, result_event)
    end
 
    if transformer and result_event then
-      radiant.events.trigger_async(transformer, 'stonehearth_ace:transform:perform_transform:complete', {transformed_entity = transformed})
+      radiant.events.trigger_async(transformer, 'stonehearth_ace:transform:perform_transform:complete', {transformed_form = transformed})
    else
       return transformed
    end

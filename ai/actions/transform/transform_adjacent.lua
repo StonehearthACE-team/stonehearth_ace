@@ -76,7 +76,7 @@ function TransformItemAdjacent:run(ai, entity, args)
       local use_timed_progress = (times or 1) < 2
       local ingredient = data.transform_ingredient_uri or data.transform_ingredient_material
       local ing_item, ing_root, ing_quality
-      local ing_options = {}
+      local ing_options
       local transformed_form
 
       if ingredient then
@@ -87,8 +87,10 @@ function TransformItemAdjacent:run(ai, entity, args)
             local iq = ing_root:get_component('stonehearth:item_quality')
             if iq and iq:get_quality() > 1 then
                ing_quality = iq:get_quality()
-               ing_options.author = iq:get_author_name()
-               ing_options.author_type = iq:get_author_type()
+               ing_options = {
+                  author = iq:get_author_name(),
+                  author_type = iq:get_author_type(),
+               }
             end
          end
          ai:execute('stonehearth:drop_carrying_into_entity_adjacent', { entity = args.item })
