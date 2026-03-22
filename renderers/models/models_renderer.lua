@@ -7,7 +7,8 @@ local log = radiant.log.create_logger('models.renderer')
 function ModelsRenderer:initialize(render_entity, datastore)
    self._entity = render_entity:get_entity()
    self._entity_node = render_entity:get_node()
-   
+   self._model_nodes = {}
+
    if self._entity_node then
       self._node = self._entity_node:add_group_node('model node')
 
@@ -55,7 +56,7 @@ end
 
 function ModelsRenderer:_update()
    self:_destroy_model_nodes()
-   
+
    local data = self._datastore:get_data()
    local models = data.models
 
@@ -78,7 +79,7 @@ function ModelsRenderer:_create_named_node(options)
                table.insert(node.sub_nodes, self:_create_model_nodes(model))
             end
          end
-         
+
          if #node.sub_nodes > 0 then
             return node
          end
