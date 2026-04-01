@@ -1,4 +1,18 @@
 {
+   "can_start": {
+      "test_1": {
+			"na_check": {
+            "type": "deny_if",
+            "item": "kingdom",
+            "value": "northern_alliance:kingdoms:northern_alliance"
+         },
+         "rc_check": {
+            "type": "deny_if",
+            "item": "kingdom",
+            "value": "rayyas_children:kingdoms:rayyas_children"
+         }
+      }
+   },
    "unlock_recipe_info": {
       "mixintypes": {
          "bulletin_title": "remove"

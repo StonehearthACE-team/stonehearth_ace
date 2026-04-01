@@ -1,0 +1,18 @@
+{
+   "mixin": "/stonehearth/jobs/carpenter/recipes/mountains_windchime_recipe.json",
+   "workshop": "stonehearth:potter:kiln",
+   "manual_unlock": true,
+   "mixintypes": {
+      "ingredients": "override"
+   },
+   "ingredients": [
+      {
+         "material": "clay resource",
+         "count": 2
+      },
+      {
+         "uri": "stonehearth:monsters:goblins:broken_flute",
+         "count": 1
+      }
+   ]
+}
