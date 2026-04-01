@@ -1,0 +1,40 @@
+{
+   "type": "recipe",
+   "effort": 66,
+   "work_units": 10,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.firstbloom.carrot_cake_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.firstbloom.carrot_cake_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.firstbloom.carrot_cake_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/firstbloom/carrot_cake/carrot_cake.png",
+   "workshop": "stonehearth_ace:cook:oven_advanced",
+   "work_effect": "work_wait",
+   "manual_unlock": true,
+   "level_requirement": 6,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:food:batter_sweet",
+         "count": 3
+      },
+      {
+         "uri": "stonehearth:food:carrot:carrot_basket",
+         "count": 2
+      },
+      {
+         "uri": "stonehearth_ace:food:dairy:cream",
+         "count": 2
+      },
+      {
+         "uri": "stonehearth:food:sugar",
+         "count": 1
+      },
+      {
+         "material": "herb soothing resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:firstbloom:carrot_cake"
+      }
+   ]
+}
