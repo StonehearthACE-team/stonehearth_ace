@@ -1,0 +1,27 @@
+{
+   "type": "recipe",
+   "effort": 20,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.weaver.recipes.candledark.cocoon_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.weaver.recipes.candledark.cocoon_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.weaver.recipes.candledark.cocoon_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/candledark/cocoon/cocoon.png",
+   "workshop": "stonehearth:weaver:loom",
+   "level_requirement": 4,
+   "manual_unlock": true,
+   "ingredients": [
+      {
+         "material": "fiber resource",
+         "count": 6
+      },
+      {
+         "material": "thread resource",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:candledark:cocoon"
+      }
+   ]
+}

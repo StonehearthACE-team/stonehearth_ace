@@ -1,0 +1,37 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "type": "entity",
+   "components": {
+      "render_info": {
+         "scale": 0.15,
+         "animation_table": "/stonehearth_ace/data/rigs/entities/gizmos/net_thrower/net_thrower.json"
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(net_thrower.qb)"
+            ]
+         }
+      },
+      "effect_list": {
+         "default": "/stonehearth_ace/data/rigs/entities/gizmos/net_thrower/effects/ghost_idle.json"
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.gizmos.net_thrower.display_name)",
+         "description": "i18n(stonehearth_ace:entities.gizmos.net_thrower.description)",
+         "icon": "file(net_thrower.png)",
+         "category": "defense",
+         "material_tags": [
+            "wood",
+            "defense",
+            "stockpile_defense"
+         ]
+      }
+   }
+}

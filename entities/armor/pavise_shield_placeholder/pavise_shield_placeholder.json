@@ -1,0 +1,21 @@
+{
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "layer": "clothing",
+            "transparent": "true",
+            "models": [
+               "file(pavise_shield_placeholder.qb)"
+            ]
+         }
+      },
+      "stonehearth:equipment_piece": {
+         "render_type": "merge_with_model",
+         "slot": "pavise_shield",
+         "ilevel": -1,
+         "destroy_on_drop": true
+      }
+   },
+   "entity_data": {}
+}

@@ -34,6 +34,10 @@ function AceBuff:destroy()
       radiant.entities.remove_thought(self._sv._entity, self._json.thought)
    end
 
+   if self._json.added_commands then
+      self:_remove_commands()
+   end
+
    if self._json.thought_added_on_destroy then
       radiant.entities.add_thought(self._sv._entity, self._json.thought_added_on_destroy)
    end
@@ -80,6 +84,10 @@ function AceBuff:_create_buff()
       radiant.entities.add_thought(self._sv._entity, self._json.thought)
    end
 
+   if self._json.added_commands then
+      self:_add_commands()
+   end
+
    if self._json.queue_crafting_order and self._sv.stacks == 1 then
       local player_id = radiant.entities.get_player_id(self._sv._entity)
       local should_queue = stonehearth.client_state:get_client_gameplay_setting(player_id, 'stonehearth_ace', 'auto_queue_medicine', true)
@@ -100,6 +108,26 @@ function AceBuff:_create_buff()
    if self._json.duration_statistics_key and self._sv._entity:get_component('stonehearth_ace:statistics') then
       self:_create_duration_timer()
       self:_update_duration_stat()
+   end
+end
+
+function AceBuff:_add_commands()
+   local commands = self._json.added_commands
+   if commands then
+      local command_comp = self._sv._entity:add_component('stonehearth:commands')
+      for _, command in ipairs(commands) do
+         command_comp:add_command(command)
+      end
+   end
+end
+
+function AceBuff:_remove_commands()
+   local commands = self._json.added_commands
+   if commands then
+      local command_comp = self._sv._entity:add_component('stonehearth:commands')
+      for _, command in ipairs(commands) do
+         command_comp:remove_command(command)
+      end
    end
 end
 

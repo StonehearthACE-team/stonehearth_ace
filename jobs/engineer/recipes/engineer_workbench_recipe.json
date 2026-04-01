@@ -1,6 +1,13 @@
 {
+   "effort": 35,
    "description": "i18n(stonehearth_ace:jobs.engineer.recipes.engineer_workbench_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.engineer.recipes.engineer_workbench_recipe.flavor)",
    "portrait": "/stonehearth_ace/jobs/engineer/engineer_workbench/engineer_workbench.png",
+   "workshop": "stonehearth_ace:engineer:workbench_basic",
+   "level_requirement": 3,
+   "mixintypes": {
+      "ingredients": "override"
+   },
    "ingredients": [
       {
          "material": "wood resource",
@@ -11,7 +18,15 @@
          "count": 1
       },
       {
-         "uri": "stonehearth_ace:refined:metal_bits:hard",
+         "uri": "stonehearth_ace:refined:component:simple",
+         "count": 1
+      },    
+      {
+         "uri": "stonehearth:refined:bronze_gear",
+         "count": 2
+      }, 
+      {
+         "uri": "stonehearth:refined:iron_ingot",
          "count": 1
       }
    ]

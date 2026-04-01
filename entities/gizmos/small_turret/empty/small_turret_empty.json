@@ -25,6 +25,24 @@
             }
          ]
       },
+      "stonehearth:attributes": {
+         "max_health": {
+            "type": "basic",
+            "value": 320
+         },
+         "menace": {
+            "type": "basic",
+            "value": 45
+         }
+      },
+      "sensor_list": {
+         "sensors": {
+            "sight": {
+               "type": "sensor",
+               "radius": 35
+            }
+         }
+      },
       "stonehearth:loot_drops": {
          "entries": {
             "gears": {
@@ -65,6 +83,7 @@
       "stonehearth_ace:transform": {}
    },
    "entity_data": {
+      "stonehearth:siege_object": {},
       "stonehearth:table": {
          "drop_effect": "carry_putdown_on_table",
          "drop_offset": { "x": 0, "y": 2.2, "z": 0 }
@@ -72,17 +91,52 @@
       "stonehearth_ace:transform_data": {
          "progress_text": "stonehearth_ace:ui.game.unit_frame.transform.progress.reloading",
          "status_key": "stonehearth_ace:ai.actions.status_text.reloading",
-         "transform_uri": "stonehearth:gizmos:small_turret",
-         "command": "stonehearth_ace:commands:transform:reload:ammunition:common",
-         "request_action": "stonehearth_ace:transform",
-         "request_action_overlay_effect": "stonehearth_ace:effects:transform_engineer_overlay_effect",
-         "transform_ingredient_uri": "stonehearth_ace:refined:ammunition:common",
-         "transform_effect": "stonehearth:effects:trap_arm",
-         "transforming_worker_effect": "fiddle",
-         "transforming_worker_effect_times": 2,
-         "auto_request": true,
-         "worker_required_job": {
-            "stonehearth:jobs:engineer": true
+         "transform_options": {
+            "common": {
+               "transform_uri": "stonehearth:gizmos:small_turret",
+               "command": "stonehearth_ace:commands:transform:reload:ammunition:common",
+               "request_action": "stonehearth_ace:transform",
+               "request_action_overlay_effect": "stonehearth_ace:effects:transform_engineer_overlay_effect",
+               "transform_ingredient_uri": "stonehearth_ace:refined:ammunition:common",
+               "transform_effect": "stonehearth:effects:trap_arm",
+               "transform_ingredient_auto_craft": true,
+               "transforming_worker_effect": "fiddle",
+               "transforming_worker_effect_times": 2,
+               "auto_request": true,
+               "worker_required_job": {
+                  "stonehearth:jobs:engineer": true
+               }
+            },
+            "fire": {
+               "transform_uri": "stonehearth_ace:gizmos:small_turret:fire",
+               "command": "stonehearth_ace:commands:transform:reload:ammunition:fire",
+               "request_action": "stonehearth_ace:transform",
+               "request_action_overlay_effect": "stonehearth_ace:effects:transform_engineer_overlay_effect",
+               "transform_ingredient_uri": "stonehearth_ace:refined:ammunition:fire",
+               "transform_effect": "stonehearth:effects:trap_arm",
+               "transform_ingredient_auto_craft": true,
+               "transforming_worker_effect": "fiddle",
+               "transforming_worker_effect_times": 2,
+               "auto_request": true,
+               "worker_required_job": {
+                  "stonehearth:jobs:engineer": true
+               }
+            },
+            "heavy": {
+               "transform_uri": "stonehearth_ace:gizmos:small_turret:heavy",
+               "command": "stonehearth_ace:commands:transform:reload:ammunition:heavy",
+               "request_action": "stonehearth_ace:transform",
+               "request_action_overlay_effect": "stonehearth_ace:effects:transform_engineer_overlay_effect",
+               "transform_ingredient_uri": "stonehearth_ace:refined:ammunition:heavy",
+               "transform_effect": "stonehearth:effects:trap_arm",
+               "transform_ingredient_auto_craft": true,
+               "transforming_worker_effect": "fiddle",
+               "transforming_worker_effect_times": 2,
+               "auto_request": true,
+               "worker_required_job": {
+                  "stonehearth:jobs:engineer": true
+               }
+            }
          }
       },
       "stonehearth:item_placement_limit": {
@@ -96,6 +150,9 @@
             "buyable": false,
             "sellable": false
          }
+      },
+      "sensors": {
+         "visible_to_sensors": true
       },
       "stonehearth:appeal": {
          "appeal": -10

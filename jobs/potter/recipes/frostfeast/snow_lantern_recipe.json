@@ -1,0 +1,31 @@
+{
+   "type": "recipe",
+   "effort": 12,
+   "work_units": 6,
+   "recipe_name": "i18n(stonehearth_ace:jobs.potter.recipes.frostfeast.snow_lantern_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.potter.recipes.frostfeast.snow_lantern_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.potter.recipes.frostfeast.snow_lantern_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/frostfeast/snow_lantern/snow_lantern.png",
+   "workshop": "stonehearth:potter:workbench",
+	"manual_unlock": true,
+   "level_requirement": 1,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:decoration:pewter_candle_holder",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth_ace:landmark:terrain:water_bucket",
+         "count": 1
+      },
+      {
+         "material": "herb soothing resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:frostfeast:snow_lantern"
+      }
+   ]
+}

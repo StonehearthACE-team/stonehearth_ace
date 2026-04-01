@@ -177,10 +177,32 @@
 		"utility": {
 			"ordinal": 60,
 			"name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.utility_name)",
-			"recipes": {}
+			"recipes": {
+				"decorative_elite_gong": {
+					"recipe": "/stonehearth/jobs/blacksmith/recipes/decorative_elite_gong_recipe.json"
+				},
+				"decorative_generals_gong": {
+					"recipe": "/stonehearth/jobs/blacksmith/recipes/decorative_generals_gong_recipe.json"
+				},
+				"decorative_scout_gong": {
+					"recipe": "/stonehearth/jobs/blacksmith/recipes/decorative_scout_gong_recipe.json"
+				},
+				"decorative_master_gong": {
+					"recipe": "/stonehearth/jobs/blacksmith/recipes/decorative_master_gong_recipe.json"
+				}
+			}
 		},
 		"decoration": {
 			"recipes": {
+				"mixintypes": {
+					"decorative_elite_gong": "remove",
+					"decorative_generals_gong": "remove",
+					"decorative_scout_gong": "remove",
+					"decorative_master_gong": "remove"
+				},
+				"decorative_red_kiln_gong": {
+					"recipe": "file(decorative_red_kiln_gong_recipe.json)"
+				},
 				"copper_coffee_pot": {
 					"recipe": "file(copper_coffee_pot_recipe.json)"
 				},

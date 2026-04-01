@@ -41,6 +41,15 @@
             "type": "basic",
             "value": 100
          },
+         "multiplicative_dmg_received_modifier": {
+            "type": "basic",
+            "value": 1,
+            "min": 0
+         },
+         "additive_dmg_received_modifier": {
+            "type": "basic",
+            "value": 0
+         },
          "effective_max_health_percent": {
             "type": "basic",
             "value": 100,
@@ -49,8 +58,7 @@
          },
          "additive_heal_received_modifier": {
             "type": "basic",
-            "value": 0,
-            "min": 0
+            "value": 0
          },
          "multiplicative_heal_received_modifier": {
             "type": "basic",

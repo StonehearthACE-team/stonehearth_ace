@@ -1,0 +1,40 @@
+{
+   "type": "recipe",
+   "effort": 50,
+   "work_units": 10,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.frostfeast.gingerbread_house_rayyas_children_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.frostfeast.gingerbread_house_rayyas_children_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.frostfeast.gingerbread_house_rayyas_children_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/frostfeast/gingerbread_house_rayyas_children/gingerbread_house_rayyas_children.png",
+   "workshop": "stonehearth:cook:oven",
+   "work_effect": "work_wait",
+   "manual_unlock": true,
+   "level_requirement": 6,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:food:dough_sweet",
+         "count": 1
+      },
+	   {
+         "material": "egg small cooking_ingredient",
+         "count": 1
+      },
+	   {
+         "material": "butter cooking_ingredient",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth:food:sugar",
+         "count": 1
+      },
+      {
+         "material": "herb red resource",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:frostfeast:gingerbread_house_rayyas_children"
+      }
+   ]
+}

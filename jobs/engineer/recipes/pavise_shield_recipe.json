@@ -1,0 +1,30 @@
+{
+   "type": "recipe",
+   "effort": 38,
+   "work_units": 20,
+   "recipe_name": "i18n(stonehearth_ace:jobs.engineer.recipes.pavise_shield_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.engineer.recipes.pavise_shield_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.engineer.recipes.pavise_shield_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/armor/pavise_shield/pavise_shield.png",
+   "workshop": "stonehearth:engineer:workbench",
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "material": "wood resource",
+         "count": 2
+      },
+      {
+         "uri": "stonehearth:refined:iron_ingot",
+         "count": 2
+      },
+	  {
+         "uri": "stonehearth:refined:iron_gear",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:armor:pavise_shield"
+      }
+   ]
+}

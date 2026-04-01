@@ -1,5 +1,15 @@
 {
    "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(wooden_sign_mason.qb)"
+            ]
+         }
+      },
       "mob": {
          "model_origin": { "x": -0.05 }
       }

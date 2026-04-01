@@ -1,8 +1,12 @@
 {
    "components": {
       "stonehearth:equipment_piece": {
+         "mixintypes": {
+            "injected_buffs": "override"
+         },
          "injected_buffs": [
-            "stonehearth_ace:buffs:weather:hot_resist"
+            "stonehearth_ace:buffs:weather:hot_resist",
+            "stonehearth_ace:buffs:devoted:gilded"
          ],
          "conditional_values": {
             "season": {

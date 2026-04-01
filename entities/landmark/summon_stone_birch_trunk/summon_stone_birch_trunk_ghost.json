@@ -1,0 +1,50 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "render_info": {
+         "material": "materials/structure.material.json",
+         "scale": 0.1
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(/entities/trees/tree_trunk/birch_trunk/birch_trunk.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0.5, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": -0.5 }
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -2, "y": 0, "z": -1 },
+               "max": { "x": 2, "y": 1, "z": 0 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -2, "y": 0, "z": -1 },
+               "max": { "x": 2, "y": 1, "z": 0 }
+            }
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.landmark.summon_stone_birch_trunk.display_name)",
+         "description": "i18n(stonehearth_ace:entities.landmark.summon_stone_birch_trunk.description)",
+         "icon": "file(summon_stone_birch_trunk.png)",
+         "category": "geomancer",
+         "material_tags": [
+            "crafted",
+            "stone",
+            "summon_stone",
+            "stockpile_geomancer"
+         ]
+      }
+   }
+}

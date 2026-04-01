@@ -1,0 +1,91 @@
+{
+   "mixins": [
+      "stonehearth:mixins:item_properties"
+   ],
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "layer": "clothing",
+            "transparent": "true",
+            "models": [
+               "file(pavise_shield.qb)"
+            ]
+         },
+         "female": {
+            "layer": "clothing",
+            "transparent": "true",
+            "models": [
+               "file(pavise_shield_female.qb)"
+            ]
+         },
+         "rabbit": {
+            "layer": "clothing",
+            "transparent": "true",
+            "models": [
+               "file(pavise_shield_rabbit.qb)"
+            ]
+         },
+         "rabbit_female": {
+            "layer": "clothing",
+            "transparent": "true",
+            "models": [
+               "file(pavise_shield_rabbit.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(pavise_shield_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "render_type": "merge_with_model",
+         "slot": "pavise_shield",
+         "injected_buffs": [
+            "stonehearth_ace:buffs:shield_pavise"
+         ],
+         "additional_equipment": {
+            "stonehearth_ace:armor:quiver_arrows_placeholder": true,
+            "stonehearth_ace:armor:quiver_bolts_placeholder": true
+         },
+         "equipment_types": [
+            "accessory"
+         ],
+         "ilevel": 4,
+         "required_job_level": 4,
+         "roles": [
+            "archer_job"
+         ],
+         "equip_effect": "stonehearth:effects:weapon_level_up"
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:armor_data": {
+         "base_damage_reduction": 2
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 29,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 3,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.armor.pavise_shield.display_name)",
+         "description": "i18n(stonehearth_ace:entities.armor.pavise_shield.description)",
+         "icon": "file(pavise_shield.png)",
+         "category": "armor",
+         "material_tags": [
+            "crafted",
+            "accessory",
+            "pavise_shield",
+            "stockpile_exotic_equipment"
+         ]
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": false
+      }
+   }
+}

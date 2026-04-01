@@ -1,0 +1,31 @@
+{
+   "type": "recipe",
+   "effort": 16,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.frostfeast.garland_tiny_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.frostfeast.garland_tiny_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.frostfeast.garland_tiny_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/frostfeast/garland_tiny/garland_tiny.png",
+   "workshop": "stonehearth:herbalist:workbench",
+   "level_requirement": 3,
+   "manual_unlock": true,
+   "ingredients": [
+		{
+			"uri": "stonehearth_ace:resources:bough_bale:evergreen",
+			"count": 3
+		},
+      {
+         "material": "seed pine",
+         "count": 2
+      },
+		{
+         "material": "cloth resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:frostfeast:garland:tiny"
+      }
+   ]
+}

@@ -731,6 +731,148 @@
                }
             ]
          }
+      },
+      "exclusive_frostfeast": {
+         "category": "exclusive",
+         "population_role": "frostfeast_merchant",
+         "population_gender": "male",
+         "min_city_tier": 1,
+         "required_stall": "stonehearth_ace:furniture:market_stall:frostfeast",
+         "weight": 5,
+         "cooldown": 14,
+         "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/exclusive_shops/frostfeast_shop.json",
+         "shoptions": {
+            "rarity_weights": {
+               "common": 4
+            },
+            "max_wanted_items": 4,
+            "wanted_items": [
+               {
+                  "material": "raw_food fruit",
+                  "price_factor": 3.1,
+                  "max_quantity": 10
+               },
+               {
+                  "uri": "stonehearth_ace:food:nut_flour",
+                  "price_factor": 2,
+                  "max_quantity": 6,
+                  "chance": 0.4
+               },
+               {
+                  "uri": "stonehearth_ace:refined:yarn",
+                  "price_factor": 2.5,
+                  "max_quantity": 8,
+                  "chance": 0.5
+               },
+               {
+                  "uri": "stonehearth_ace:food:honey",
+                  "price_factor": 1.4,
+                  "max_quantity": 6,
+                  "chance": 0.6
+               },
+               {
+                  "uri": "stonehearth:food:sugar",
+                  "price_factor": 1.5,
+                  "max_quantity": 8,
+                  "chance": 0.5
+               },
+               {
+                  "material": "raw_food vegetable hearty",
+                  "price_factor": 3.5,
+                  "max_quantity": 8,
+                  "chance": 0.6
+               },
+               {
+                  "material": "thread resource",
+                  "price_factor": 2.5,
+                  "max_quantity": 12,
+                  "chance": 0.5
+               },
+               {
+                  "uri": "stonehearth:containers:input_bin:woven",
+                  "price_factor": 1.5,
+                  "max_quantity": 6,
+                  "chance": 0.6
+               },
+               {
+                  "uri": "stonehearth_ace:tools:backpack_cloth",
+                  "price_factor": 1.8,
+                  "max_quantity": 4,
+                  "chance": 0.6
+               }
+            ]
+         }
+      },
+      "exclusive_candledark": {
+         "category": "exclusive",
+         "population_role": "candledark_merchant",
+         "population_gender": "male",
+         "min_city_tier": 1,
+         "required_stall": "stonehearth_ace:furniture:market_stall:candledark",
+         "weight": 4,
+         "cooldown": 16,
+         "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/exclusive_shops/candledark_shop.json",
+         "shoptions": {
+            "rarity_weights": {
+               "common": 4
+            },
+            "max_wanted_items": 3,
+            "wanted_items": [
+               {
+                  "uri": "stonehearth:food:pumpkin:pumpkin_basket",
+                  "price_factor": 2.5,
+                  "max_quantity": 12
+               },
+               {
+                  "uri": "stonehearth_ace:decoration:megacrop:mega_pumpkin",
+                  "price_factor": 3,
+                  "max_quantity": 4,
+                  "chance": 0.7
+               },
+               {
+                  "material": "grain",
+                  "price_factor": 3,
+                  "max_quantity": 10,
+                  "chance": 0.6
+               },
+               {
+                  "material": "fiber resource",
+                  "price_factor": 2.8,
+                  "max_quantity": 12,
+                  "chance": 0.5
+               },
+               {
+                  "material": "stone resource",
+                  "price_factor": 3.5,
+                  "max_quantity": 12,
+                  "chance": 0.5
+               },
+               {
+                  "uri": "stonehearth_ace:consumables:fertilizer",
+                  "price_factor": 1.8,
+                  "max_quantity": 6,
+                  "chance": 0.5
+               },
+               {
+                  "uri": "stonehearth:food:sugar",
+                  "price_factor": 1.5,
+                  "max_quantity": 6,
+                  "chance": 0.5
+               },
+               {
+                  "uri": "stonehearth_ace:consumables:fertilizer_upgrade_2",
+                  "price_factor": 1.8,
+                  "max_quantity": 6,
+                  "chance": 0.4
+               },
+               {
+                  "uri": "stonehearth_ace:resources:candledark:soulfire",
+                  "price_factor": 4,
+                  "max_quantity": 5,
+                  "chance": 0.1
+               }
+            ]
+         }
       }
    }
 }

@@ -1,0 +1,99 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(giant_gingerbread.qb)",
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(decoration_1.qb)",
+                     "file(decoration_2.qb)",
+                     "file(decoration_3.qb)",
+                     "file(decoration_4.qb)",
+                     "file(decoration_5.qb)",
+                     "file(decoration_6.qb)",
+                     "file(decoration_7.qb)",
+                     "file(decoration_8.qb)"
+                  ]
+               }
+            ]
+         },
+         "model1": {
+            "models": [
+               "file(giant_gingerbread.qb)",
+               "file(decoration_1.qb)"
+            ]
+         },
+         "model2": {
+            "models": [
+               "file(giant_gingerbread.qb)",
+               "file(decoration_2.qb)"
+            ]
+         },
+         "model3": {
+            "models": [
+               "file(giant_gingerbread.qb)",
+               "file(decoration_3.qb)"
+            ]
+         },
+         "model4": {
+            "models": [
+               "file(giant_gingerbread.qb)",
+               "file(decoration_4.qb)"
+            ]
+         },
+         "model5": {
+            "models": [
+               "file(giant_gingerbread.qb)",
+               "file(decoration_5.qb)"
+            ]
+         },
+         "model6": {
+            "models": [
+               "file(giant_gingerbread.qb)",
+               "file(decoration_6.qb)"
+            ]
+         },
+         "model7": {
+            "models": [
+               "file(giant_gingerbread.qb)",
+               "file(decoration_7.qb)"
+            ]
+         },
+         "model8": {
+            "models": [
+               "file(giant_gingerbread.qb)",
+               "file(decoration_8.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0, "z": -0.3 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "allow_vertical_adjacent": true
+      },
+      "render_info": {
+         "scale": 0.1
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.decoration.frostfeast.giant_gingerbread.display_name)",
+         "description": "i18n(stonehearth_ace:entities.decoration.frostfeast.giant_gingerbread.description)",
+         "icon": "file(giant_gingerbread.png)",
+         "category": "decoration",
+         "material_tags": [
+            "decoration",
+            "crafted",
+            "festival",
+            "frostfeast",
+            "stockpile_decoration"
+         ]
+      },
+      "stonehearth_ace:create_entity": {
+         "assign_random_model_variant": true
+      }
+   }
+}

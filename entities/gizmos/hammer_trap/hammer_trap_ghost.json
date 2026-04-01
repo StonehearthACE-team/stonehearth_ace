@@ -1,0 +1,37 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "type": "entity",
+   "components": {
+      "render_info": {
+         "scale": 0.15,
+         "animation_table": "/stonehearth_ace/data/rigs/entities/gizmos/hammer_trap/hammer_trap.json"
+      },
+      "effect_list": {
+         "default": "/stonehearth_ace/data/rigs/entities/gizmos/hammer_trap/effects/idle.json"
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(hammer_trap.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.gizmos.hammer_trap.display_name)",
+         "description": "i18n(stonehearth_ace:entities.gizmos.hammer_trap.description)",
+         "icon": "file(hammer_trap.png)",
+         "category": "defense",
+         "material_tags": [
+            "wood",
+            "defense",
+            "stockpile_defense"
+         ]
+      }
+   }
+}

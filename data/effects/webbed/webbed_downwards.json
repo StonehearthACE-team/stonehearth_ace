@@ -1,0 +1,26 @@
+{
+   "type": "effect",
+   "tracks": {
+      "poison_breath": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/webbed/webbed_light.cubemitter.json",
+         "start_time": 0,
+         "loop": true,
+         "transforms": { "x": 0, "y": -1.5, "z": 0,
+            "rx": -90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "skulls": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/webbed/webbed_downwards_strings.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0, "y": -1.5, "z": 0,
+            "rx": -90,
+            "ry": 0,
+            "rz": 0
+         }
+      }
+   }
+}

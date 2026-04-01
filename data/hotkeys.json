@@ -1,6 +1,9 @@
 {
    "categories": {},
    "keys": {
+      "cam:follow": {
+         "combo1": "keyk"
+      },
       "cam:previous": {
          "display_name": "i18n(stonehearth_ace:ui.shell.settings.controls_tab.key_binding_names.cam_previous)",
          "category": "camera",
@@ -168,47 +171,77 @@
          "combo1": "ctrl+keyi",
          "combo2": ""
       },
+      "fight:party_1": {
+         "combo2": "ctrl+digit1"
+      },
+      "fight:party_2": {
+         "combo2": "ctrl+digit2"
+      },
+      "fight:party_3": {
+         "combo2": "ctrl+digit3"
+      },
+      "fight:party_4": {
+         "combo2": "ctrl+digit4"
+      },
+      "fight:move": {
+         "combo1": "ctrl+keym",
+         "combo2": ""
+      },
+      "fight:attack": {
+         "combo1": "ctrl+keya",
+         "combo2": ""
+      },
+      "fight:defend": {
+         "combo1": "ctrl+keyd",
+         "combo2": ""
+      },
+      "fight:cancelOrders": {
+         "combo1": "ctrl+backspace"
+      },
       "fight:attack_all_parties": {
          "display_name": "i18n(stonehearth_ace:data.hotkeys.keys.fight_attack_all_parties.display_name)",
          "category": "fight",
          "ordinal": 91,
-         "combo1": "",
+         "combo1": "shift+keya",
          "combo2": ""
       },
       "fight:attack_party_1": {
          "display_name": "i18n(stonehearth_ace:data.hotkeys.keys.fight_attack_party_1.display_name)",
          "category": "fight",
          "ordinal": 92,
-         "combo1": "",
-         "combo2": ""
+         "combo1": "shift+digit7",
+         "combo2": "shift+digit1"
       },
       "fight:attack_party_2": {
          "display_name": "i18n(stonehearth_ace:data.hotkeys.keys.fight_attack_party_2.display_name)",
          "category": "fight",
          "ordinal": 93,
-         "combo1": "",
-         "combo2": ""
+         "combo1": "shift+digit8",
+         "combo2": "shift+digit2"
       },
       "fight:attack_party_3": {
          "display_name": "i18n(stonehearth_ace:data.hotkeys.keys.fight_attack_party_3.display_name)",
          "category": "fight",
          "ordinal": 94,
-         "combo1": "",
-         "combo2": ""
+         "combo1": "shift+digit9",
+         "combo2": "shift+digit3"
       },
       "fight:attack_party_4": {
          "display_name": "i18n(stonehearth_ace:data.hotkeys.keys.fight_attack_party_4.display_name)",
          "category": "fight",
          "ordinal": 95,
-         "combo1": "",
-         "combo2": ""
+         "combo1": "shift+digit0",
+         "combo2": "shift+digit4"
       },
       "fight:cancel_attack": {
          "display_name": "i18n(stonehearth_ace:data.hotkeys.keys.fight_cancel_attack.display_name)",
          "category": "fight",
          "ordinal": 99,
-         "combo1": "",
+         "combo1": "backspace",
          "combo2": ""
+      },
+      "bulletin:manager": {
+         "combo1": "keyj"
       },
 		"zone:quest_storage": {
          "display_name": "i18n(stonehearth_ace:data.hotkeys.keys.zone_quest_storage.display_name)",
@@ -238,7 +271,7 @@
          "display_name": "i18n(stonehearth_ace:data.hotkeys.keys.zone_decorative_flowers.display_name)",
          "category": "zone",
          "ordinal": 22,
-         "combo1": "ctrl+keyd",
+         "combo1": "alt+keyd",
          "combo2": ""
       },
 		"zone:orchard": {

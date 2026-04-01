@@ -25,7 +25,10 @@ function AceAttackMeleeAdjacent:run(ai, entity, args)
       return
    end
 
-   if args.face_target then
+   local bone_transform_component = entity:get_component('stonehearth:bone_transform')
+   if bone_transform_component then
+      bone_transform_component:turn_to_face(target)
+   elseif args.face_target then
       radiant.entities.turn_to_face(entity, target)
    end
 

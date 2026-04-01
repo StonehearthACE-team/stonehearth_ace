@@ -1,0 +1,27 @@
+{
+   "type": "recipe",
+   "effort": 32,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.weaver.recipes.candledark.hanging_cocoon_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.weaver.recipes.candledark.hanging_cocoon_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.weaver.recipes.candledark.hanging_cocoon_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/candledark/hanging_cocoon/hanging_cocoon.png",
+   "workshop": "stonehearth:weaver:loom",
+   "level_requirement": 5,
+   "manual_unlock": true,
+   "ingredients": [
+      {
+         "material": "fiber resource",
+         "count": 8
+      },
+      {
+         "material": "thread resource",
+         "count": 3
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:candledark:hanging_cocoon"
+      }
+   ]
+}

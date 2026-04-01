@@ -21,6 +21,15 @@ function terrain_check.meets_commmand_requirements(entity, requirements)
          end
       end
 
+      if requirements.height then
+         if requirements.height.max and location.y > requirements.height.max then
+            return false
+         end
+         if requirements.height.min and location.y < requirements.height.min then
+            return false
+         end
+      end
+
       return true
    end
 

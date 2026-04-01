@@ -329,6 +329,10 @@ end
 function AceWaterComponent:evaporate(amount)
    self._sv._last_evaporation_time = stonehearth.calendar:get_elapsed_time()
 
+   if stonehearth.weather:get_current_weather():is_rain() then
+      return
+   end
+
    if not self:top_layer_in_wetting_mode() then
       return amount
    end
@@ -656,6 +660,7 @@ end
 function AceWaterComponent:_grow_region(volume, add_location, top_layer, edge_region, channel_region)
    local channel_manager = stonehearth.hydrology:get_channel_manager()
    local world_bounds = radiant.terrain.get_terrain_component():get_bounds()
+   local is_rain = stonehearth.weather:get_current_weather():is_rain()
    world_bounds.max.y = constants.terrain.MAX_Y_OVERRIDE
    local entity_location = self._location
    local top_layer = Region3(top_layer) -- consider removing this copy
@@ -664,7 +669,7 @@ function AceWaterComponent:_grow_region(volume, add_location, top_layer, edge_re
 
    -- grow the region until we run out of volume or edges
    while volume > 0 and not edge_region:empty() do
-      if volume < constants.hydrology.WETTING_VOLUME * 0.5 then
+      if not is_rain and volume < constants.hydrology.WETTING_VOLUME * 0.5 or is_rain and volume < constants.hydrology.RAIN_WETTING_VOLUME * 0.5 then
          -- too little volume to wet a block, so just let it evaporate
          volume = 0
          break
@@ -738,6 +743,15 @@ function AceWaterComponent:_grow_region(volume, add_location, top_layer, edge_re
    self:_update_wetting_layer()
    --self.__saved_variables:mark_changed()
    return volume, info
+end
+
+function AceWaterComponent:_subtract_wetting_volume(volume)
+   local is_rain = stonehearth.weather:get_current_weather():is_rain()
+   local wetting_volume = is_rain and constants.hydrology.RAIN_WETTING_VOLUME or constants.hydrology.WETTING_VOLUME
+
+   volume = volume - wetting_volume
+   volume = math.max(volume, 0)
+   return volume
 end
 
 -- return value and parameters all in world coordinates

@@ -1,0 +1,31 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.holding_net_trapped.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.holding_net_trapped.description)",
+   "icon": "file(holding_net_trapped.png)",
+   "duration": "30m+20m",
+   "persistent": true,
+   "effect": "stonehearth:effects:poof_effect:small",
+   "script": "stonehearth_ace:buff_scripts:trap",
+   "script_info": {
+      "trap_uri": "stonehearth_ace:gizmos:traps:holding_net",
+      "scale_multiplier": 1.1
+   },
+   "injected_ai": {
+      "actions": [
+         "stonehearth:actions:compelled_behaviors:struggle"
+      ]
+   },
+   "modifiers": {
+      "multiplicative_dmg_received_modifier": {
+         "add": 0.2
+      },
+      "speed": {
+         "max": 0
+      },
+      "menace": {
+         "max": 1
+      }
+   }
+}

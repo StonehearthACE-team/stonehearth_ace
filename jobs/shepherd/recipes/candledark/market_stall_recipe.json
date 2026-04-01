@@ -1,0 +1,30 @@
+{
+   "type": "recipe",
+   "effort": 24,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.shepherd.recipes.candledark.market_stall_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.shepherd.recipes.candledark.market_stall_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.shepherd.recipes.candledark.market_stall_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/furniture/market_stall/exclusive/candledark_market_stall/candledark_market_stall.png",
+	"manual_unlock": true,
+   "level_requirement": 3,
+   "ingredients": [
+      {
+         "material": "thatch resource",
+         "count": 6
+      },
+      {
+         "material": "wood resource",
+         "count": 4
+      },
+      {
+         "uri": "stonehearth_ace:refined:metal_bits:hard",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:furniture:market_stall:candledark"
+      }
+   ]
+}

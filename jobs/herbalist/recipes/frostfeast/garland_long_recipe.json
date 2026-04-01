@@ -1,0 +1,35 @@
+{
+   "type": "recipe",
+   "effort": 36,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.frostfeast.garland_long_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.frostfeast.garland_long_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.frostfeast.garland_long_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/frostfeast/garland_long/garland_long.png",
+   "workshop": "stonehearth:herbalist:workbench",
+   "level_requirement": 5,
+   "manual_unlock": true,
+   "ingredients": [
+		{
+			"uri": "stonehearth_ace:resources:bough_bale:evergreen",
+			"count": 6
+		},
+      {
+         "material": "seed pine",
+         "count": 4
+      },
+		{
+         "material": "cloth resource",
+         "count": 2
+      },
+		{
+         "uri": "stonehearth:refined:gold_flakes",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:frostfeast:garland:long"
+      }
+   ]
+}

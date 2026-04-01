@@ -64,6 +64,14 @@ function MoveToTargetableLocation:_update_think_output(ai, entity, args)
       return
    end
 
+   -- ACE: Do not try to reposition if you can't move
+   local attributes_comp = entity:get_component('stonehearth:attributes')
+   local speed = attributes_comp and attributes_comp:get_attribute('speed')
+   if speed and speed < 1 then
+      clear_think_output()
+      return
+   end
+
    -- We only think if the target is not targetable.
    -- This prevents unnecessary pathfinding when we can already shoot the target.
    if stonehearth.combat:in_range_and_has_line_of_sight(entity, args.target, weapon) then

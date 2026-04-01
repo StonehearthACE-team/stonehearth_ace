@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 20,
+   "work_units": 9,
+   "recipe_name": "i18n(stonehearth_ace:jobs.engineer.recipes.ammunition_nets_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.engineer.recipes.ammunition_nets_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.engineer.recipes.ammunition_nets_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/refined/ammunition/nets/ammunition_nets.png",
+   "workshop": "stonehearth_ace:engineer:workbench_basic",
+   "level_requirement": 1,
+   "ingredients": [
+      {
+        "material": "wood resource",
+        "count": 2
+      },
+      {
+        "material": "thread resource",
+        "count": 3
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:refined:ammunition:nets"
+      }
+   ]
+}

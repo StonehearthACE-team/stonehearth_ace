@@ -1,0 +1,102 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth_ace:mixins:tile:simple_carpet",
+      "file(old_carpet_ghost.json)"
+   ],
+   "components": {
+      "model_variants": {
+         "end_point": {
+            "models": [
+               "file(end_point.qb)"
+            ]
+         },
+         "straight": {
+            "models": [
+               "file(straight.qb)"
+            ]
+         },
+         "corner_concave_closed": {
+            "models": [
+               "file(corner_concave_closed.qb)"
+            ]
+         },
+         "corner_concave_open": {
+            "models": [
+               "file(corner_concave_open.qb)"
+            ]
+         },
+         "edge_closed_both": {
+            "models": [
+               "file(edge_closed_both.qb)"
+            ]
+         },
+         "edge_closed_clock": {
+            "models": [
+               "file(edge_closed_clock.qb)"
+            ]
+         },
+         "edge_closed_counter": {
+            "models": [
+               "file(edge_closed_counter.qb)"
+            ]
+         },
+         "edge_open": {
+            "models": [
+               "file(edge_open.qb)"
+            ]
+         },
+         "center_closed_all": {
+            "models": [
+               "file(center_closed_all.qb)"
+            ]
+         },
+         "center_closed_one": {
+            "models": [
+               "file(center_closed_one.qb)"
+            ]
+         },
+         "center_closed_adjacent": {
+            "models": [
+               "file(center_closed_adjacent.qb)"
+            ]
+         },
+         "center_closed_opposite": {
+            "models": [
+               "file(center_closed_opposite.qb)"
+            ]
+         },
+         "center_closed_three": {
+            "models": [
+               "file(center_closed_three.qb)"
+            ]
+         },
+         "center_open": {
+            "models": [
+               "file(center_open.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(old_carpet_iconic.json)",
+         "ghost_form": "file(old_carpet_ghost.json)",
+         "placeable_on_ground": true
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 5,
+         "rarity": "uncommon",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 3
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

@@ -1,0 +1,25 @@
+{
+   "type": "entity",
+   "components": {
+      "stonehearth:equipment_piece": {
+         "slot": "mainhand",
+         "render_type": "none",
+         "military_score": 20
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:weapon_data": {
+         "base_damage": 40,
+         "reach": 2
+      },
+      "stonehearth:combat:melee_attacks": [
+         {
+            "name": "smash",
+            "effect": "smash",
+            "active_frame": 10,
+            "cooldown": 200,
+            "priority": 0
+         }
+      ]
+   }
+}

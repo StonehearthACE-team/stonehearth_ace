@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 24,
+   "work_units": 9,
+   "recipe_name": "i18n(stonehearth_ace:jobs.engineer.recipes.ammunition_heavy_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.engineer.recipes.ammunition_heavy_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.engineer.recipes.ammunition_heavy_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/refined/ammunition/heavy/ammunition_heavy.png",
+   "workshop": "stonehearth:engineer:workbench",
+   "level_requirement": 6,
+   "ingredients": [
+      {
+         "material": "feather resource",
+         "count": 1
+      },
+      {
+        "uri": "stonehearth:refined:steel_ingot",
+        "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:refined:ammunition:heavy"
+      }
+   ]
+}

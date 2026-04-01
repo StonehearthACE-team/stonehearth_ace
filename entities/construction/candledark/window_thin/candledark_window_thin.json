@@ -1,0 +1,42 @@
+{
+   "type": "entity",
+   "mixins": "file(candledark_window_thin_ghost.json)",
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(candledark_window_thin_iconic.json)",
+         "ghost_form": "file(candledark_window_thin_ghost.json)",
+         "placeable_on_walls": true,
+         "placeable_on_ground": true,
+         "hide_placement_ui": false
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": 0 },
+               "max": { "x": 1, "y": 4, "z": 1 }
+            }
+         ]
+      },
+      "stonehearth:commands": {
+         "commands": [
+            "stonehearth_ace:commands:transform:frostfeast:swap_model_variant"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 11,
+         "rarity": "uncommon",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 14
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

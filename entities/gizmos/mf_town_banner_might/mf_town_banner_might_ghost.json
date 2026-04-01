@@ -1,5 +1,8 @@
 {
-   "mixins": "stonehearth:mixins:placed_object",
+   "mixins": [
+      "stonehearth:mixins:placed_object",
+      "stonehearth_ace:mixins:protected_from_targeting"
+   ],
    "type": "entity",
    "components": {
       "model_variants": {
@@ -19,8 +22,14 @@
          "display_name": "i18n(stonehearth_ace:mountain_folk.entities.gizmos.mf_town_banner_might.mf_town_banner_might_ghost.display_name)",
          "description": "i18n(stonehearth_ace:mountain_folk.entities.gizmos.mf_town_banner_might.mf_town_banner_might_ghost.description)",
          "icon": "file(mf_town_banner_might.png)",
-         "category": "decoration",
-         "material_tags":["bronze", "cloth", "decoration", "stockpile_decoration"]
+         "category": "quest",
+         "material_tags": [
+            "bronze",
+            "cloth",
+            "decoration",
+            "stockpile_decoration",
+            "stockpile_quest_items"
+         ]
       }
    }
 }

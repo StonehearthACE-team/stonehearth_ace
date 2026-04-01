@@ -1,0 +1,30 @@
+{
+   "type": "recipe",
+   "effort": 20,
+   "work_units": 12,
+   "recipe_name": "i18n(stonehearth_ace:jobs.engineer.recipes.hammer_trap_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.engineer.recipes.hammer_trap_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.engineer.recipes.hammer_trap_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/gizmos/hammer_trap/hammer_trap.png",
+   "workshop": "stonehearth_ace:engineer:workbench_basic",
+   "level_requirement": 1,
+   "ingredients": [
+      {
+         "material": "wood resource",
+         "count": 4
+      },
+      {
+         "uri": "stonehearth_ace:refined:wooden_gear",
+         "count": 3
+      },
+      {
+         "material": "fiber resource",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:gizmos:hammer_trap"
+      }
+   ]
+}

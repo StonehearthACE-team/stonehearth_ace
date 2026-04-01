@@ -136,6 +136,11 @@ function AceWeatherService:is_bad_weather()
    return state and state:is_bad_weather()
 end
 
+function AceWeatherService:is_rain()
+   local state = self._sv.current_weather_state
+   return state and state:is_rain()
+end
+
 function AceWeatherService:is_frozen()
    local state = self._sv.current_weather_state
    return state and state:is_frozen()

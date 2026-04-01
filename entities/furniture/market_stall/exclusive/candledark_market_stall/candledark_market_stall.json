@@ -1,0 +1,62 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth_ace:mixins:market_stall:tier_2",
+      "file(candledark_market_stall_ghost.json)"
+   ],
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(candledark_market_stall_iconic.json)",
+         "ghost_form": "file(candledark_market_stall_ghost.json)",
+         "placeable_on_ground": true
+      },
+      "stonehearth_ace:market_stall": {
+         "mixintypes": {
+            "tier": "remove",
+            "stall_models": "override"
+         },
+         "stall_models": {
+            "default": {
+               "model_data": {
+                  "model": "file(default_shop.qb)",
+                  "matrix": "shop",
+                  "scale": 0.1,
+                  "offset": { "x": -5, "y": 0, "z": 16 }
+               },
+               "entity_points": [
+                  {
+                     "bone_name": "goodsBackRow2"
+                  },
+                  {
+                     "bone_name": "goodsBackRow3"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4"
+                  },
+                  {
+                     "bone_name": "goodsMidRow5"
+                  }
+               ]
+            }
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 28,
+         "rarity": "rare",
+         "shop_info": {
+            "sellable": true
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 11
+      }
+   }
+}

@@ -1,0 +1,42 @@
+{
+   "type" : "effect",
+   "tracks": {
+      "animation": {
+         "type": "animation_effect",
+         "start_time": 0,
+         "speed": 1.3,
+         "animation": "smash.json",
+         "loop": false
+      },
+      "sound": {
+         "type": "sound_effect",
+         "loop": false,
+         "start_time": 20,
+         "min_distance": 30,
+         "max_instances": 6,
+         "falloff" : 4.5,
+         "volume": 40,
+         "track" : "stonehearth:sounds:turnipshooter_fire"
+      },
+       "sound_2": {
+         "type": "sound_effect",
+         "loop": false,
+         "start_time": 0,
+         "min_distance": 15,
+         "max_instances": 6,
+         "falloff" : 4.5,
+         "volume": 50,
+         "track" : "stonehearth:sounds:clamp_trap_trigger"
+      },
+      "sound_3": {
+         "type": "sound_effect",
+         "loop": false,
+         "start_time": 330,
+         "min_distance": 15,
+         "max_instances": 6,
+         "falloff" : 4.5,
+         "volume": 40,
+         "track" : "stonehearth:sounds:turnipshooter_lock"
+      }
+   }
+}

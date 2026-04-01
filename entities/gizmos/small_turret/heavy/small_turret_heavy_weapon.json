@@ -1,0 +1,42 @@
+{
+   "type": "entity",
+   "components": {
+      "stonehearth:equipment_piece": {
+         "slot": "mainhand",
+         "render_type": "none",
+         "military_score": 35
+      }
+   },
+   "entity_data": {
+      "stonehearth:buffs": {
+         "inflictable_debuffs": {
+            "fracture": {
+               "uri": "stonehearth_ace:buffs:fracture",
+               "chance": 0.8
+            },
+            "fracture_major": {
+               "uri": "stonehearth_ace:buffs:major_fracture",
+               "chance": 0.2
+            }
+         }
+      },
+      "stonehearth:combat:weapon_data": {
+         "base_damage": 110,
+         "base_ranged_damage": 110,
+         "range": 40,
+         "projectile_speed": 60,
+         "projectile_uri": "stonehearth_ace:weapons:bolt_heavy",
+         "projectile_start_offset": { "x": 0, "y": 2.1, "z": 0 },
+         "projectile_end_offset": { "x": 0, "y": 2.1, "z": 0 }
+      },
+      "stonehearth:combat:ranged_attacks": [
+         {
+            "name": "fire_heavy",
+            "effect": "fire",
+            "active_frame": 31,
+            "cooldown": 250,
+            "priority": 0
+         }
+      ]
+   }
+}

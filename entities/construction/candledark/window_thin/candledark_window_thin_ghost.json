@@ -1,0 +1,88 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "type": "entity",
+   "components": {
+      "render_info": {
+         "scale": 0.099
+      },
+      "mob": {
+         "align_to_grid": [
+            "x"
+         ],
+         "model_origin": { "x": -0.55, "y": 0, "z": 0 },
+         "region_origin": { "x": 0, "y": 0, "z": 0.5 }
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(candledark_window_thin.qb)",
+                     "file(candledark_window_thin_2.qb)",
+                     "file(candledark_window_thin_3.qb)"
+                  ]
+               }
+            ]
+         },
+         "model1": {
+            "models": [
+               "file(candledark_window_thin.qb)"
+            ]
+         },
+         "model2": {
+            "models": [
+               "file(candledark_window_thin_2.qb)"
+            ]
+         },
+         "model3": {
+            "models": [
+               "file(candledark_window_thin_3.qb)"
+            ]
+         }
+      },
+      "stonehearth:fixture": {
+         "cursor": "stonehearth:cursors:create_window",
+         "margin": {
+            "left": 0,
+            "right": 0,
+            "top": 1,
+            "bottom": 1
+         },
+         "bounds": {
+            "min": { "x": 0, "y": 0 },
+            "max": { "x": 1, "y": 4 }
+         }
+      },
+      "stonehearth:portal": {
+         "cutter": [
+            {
+               "min": { "x": 0, "y": 0 },
+               "max": { "x": 1, "y": 4 }
+            }
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.construction.candledark.window_thin.display_name)",
+         "description": "i18n(stonehearth_ace:entities.construction.candledark.window_thin.description)",
+         "icon": "file(candledark_window_thin.png)",
+         "category": "window",
+         "material_tags": [
+            "stone",
+            "candledark",
+            "festival",
+            "fancy",
+            "olden",
+            "portal",
+            "crafted",
+            "window",
+            "stockpile_portal"
+         ]
+      },
+      "stonehearth_ace:create_entity": {
+         "assign_random_model_variant": true
+      }
+   }
+}

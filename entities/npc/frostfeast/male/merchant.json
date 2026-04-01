@@ -1,0 +1,78 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:base_goblin_npc",
+   "components": {
+      "render_info": {
+         "scale": 0.1,
+         "animation_table": "/stonehearth/data/rigs/entities/monster/goblins/goblin"
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(merchant.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "mixintypes": {
+         "stonehearth:ai_packs": "override",
+         "stonehearth:idle_effects": "override"
+      },
+      "stonehearth:ai_packs": {
+         "packs": [
+            "stonehearth:ai_pack:humanoid",
+            "stonehearth:ai_pack:conversation",
+            "stonehearth:ai_pack:injury",
+            "stonehearth:ai_pack:death",
+            "stonehearth:ai_pack:idle",
+            "stonehearth:ai_pack:idle:bored:idle_effects"
+         ]
+      },
+      "stonehearth:conversation_type": "humanoid",
+      "stonehearth:idle_effects": {
+         "effects": [
+            {
+               "name": "emote_applaud",
+               "weight": 0.5
+            },
+            {
+               "name": "idle_look_around",
+               "weight": 1
+            },
+            {
+               "name": "yawn",
+               "weight": 0.5
+            },
+            {
+               "name": "whistle",
+               "weight": 2
+            },
+            {
+               "name": "emote_wave",
+               "weight": 0.5
+            },
+            {
+               "name": "talk_question",
+               "weight": 0.5
+            },
+            {
+               "name": "emote_pickear_fail",
+               "weight": 0.5
+            },
+            {
+               "name": "emote_pickear_success",
+               "weight": 0.5
+            }
+         ]
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.npc.frostfeast.male.merchant.display_name)",
+         "description": "i18n(stonehearth_ace:entities.npc.frostfeast.male.merchant.description)",
+         "icon": "file(merchant.png)",
+         "material_tags": [
+            "merchant"
+         ]
+      }
+   }
+}

@@ -1,0 +1,30 @@
+{
+   "type": "recipe",
+   "effort": 18,
+   "work_units": 9,
+   "recipe_name": "i18n(stonehearth_ace:jobs.engineer.recipes.ammunition_fire_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.engineer.recipes.ammunition_fire_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.engineer.recipes.ammunition_fire_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/refined/ammunition/fire/ammunition_fire.png",
+   "workshop": "stonehearth:engineer:workbench",
+   "level_requirement": 5,
+   "ingredients": [
+      {
+         "material": "feather resource",
+         "count": 1
+      },
+      {
+        "uri": "stonehearth_ace:refined:metal_bits:hard",
+        "count": 3
+      },
+      {
+        "uri": "stonehearth:resources:coal:lump_of_coal",
+        "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:refined:ammunition:fire"
+      }
+   ]
+}
