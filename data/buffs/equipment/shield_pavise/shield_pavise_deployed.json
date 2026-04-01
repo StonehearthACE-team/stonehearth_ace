@@ -1,0 +1,44 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.shield_pavise.deployed.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.shield_pavise.deployed.description)",
+   "icon": "file(shield_pavise_deployed.png)",
+   "persistent": true,
+   "effect": "stonehearth:effects:trap_arm",
+   "added_commands": [
+      "stonehearth_ace:commands:shield_pavise:undeploy"
+   ],
+   "script": "stonehearth_ace:buff_scripts:trap",
+   "script_info": {
+      "trap_uri": "stonehearth_ace:gizmos:traps:pavise_shield",
+      "trap_owner": "self",
+      "scale_with_target": false,
+      "equip_when_added": "stonehearth_ace:armor:pavise_shield_placeholder",
+      "equip_when_removed": "stonehearth_ace:armor:pavise_shield",
+      "only_in_combat": true
+   },
+   "properties": [
+      "cannot_panic"
+   ],
+   "modifiers": {
+      "additive_weapon_range_modifier": {
+         "add": 10
+      },
+      "speed": {
+         "max": 0
+      },
+      "courage": {
+         "multiply": 1.2
+      },
+      "multiplicative_dmg_received_modifier": {
+         "add": -0.6
+      },
+      "multiplicative_dmg_modifier": {
+         "add": 0.1
+      },
+      "debuff_resistance": {
+         "add": 1
+      }
+   }
+}

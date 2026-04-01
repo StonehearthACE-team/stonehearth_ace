@@ -689,8 +689,14 @@ function ace_entities.is_solid_location(location)
 end
 
 function ace_entities.is_entity_protected_from_targeting(entity)
-   -- perhaps add a property that can be set dynamically? for now just use a material
-   return radiant.entities.is_material(entity, 'protected_from_targeting')
+   local protected = radiant.entities.is_material(entity, 'protected_from_targeting') or false
+
+   local category = radiant.entities.get_category(entity)
+   if category == 'quest' or category == 'trophy' then
+      protected = true
+   end
+
+   return protected
 end
 
 function ace_entities.set_entity_movement_modifier(entity, region, mm_data)

@@ -52,6 +52,30 @@
                   "script_data": {
                      "disallowed_terrain": {
                         "rock": true
+                     },
+                     "height": {
+                        "max": 42
+                     }
+                  }
+               },
+               "request_action": "stonehearth_ace:transform",
+               "request_action_overlay_effect": "stonehearth:effects:loot_effect",
+               "transforming_worker_effect": "fiddle",
+               "transforming_worker_effect_times": 3,
+               "transform_effect": "stonehearth:effects:poof_effect",
+               "auto_request": true
+            },
+            "restore_terrain_hills": {
+               "transform_uri": "stonehearth_ace:landmark:goblin_camp_patch_stone:hills",
+               "command": "stonehearth_ace:commands:transform:goblin_camp:hills",
+               "command_requirements": {
+                  "script": "stonehearth_ace:scripts:transform:terrain_check",
+                  "script_data": {
+                     "disallowed_terrain": {
+                        "rock": true
+                     },
+                     "height": {
+                        "min": 43
                      }
                   }
                },

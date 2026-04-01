@@ -1,0 +1,99 @@
+{
+   "type": "entity",
+   "mixins": [
+      "file(hammer_trap_ghost.json)",
+      "stonehearth:mixins:siege_trap"
+   ],
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(hammer_trap_iconic.json)",
+         "ghost_form": "file(hammer_trap_ghost.json)",
+         "placeable_on_ground": true
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 2, "y": 1, "z": 2 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 2, "y": 7, "z": 2 }
+            }
+         ]
+      },
+      "stonehearth:siege_weapon": {
+         "max_uses": 4
+      },
+      "stonehearth:equipment": {
+         "items": [
+            "stonehearth_ace:gizmos:hammer_trap:weapon"
+         ]
+      },
+      "sensor_list": {
+         "sensors": {
+            "sight": {
+               "type": "sensor",
+               "radius": 3
+            }
+         }
+      },
+      "stonehearth:bone_transform": {
+         "bones": [
+            "column",
+            "lock",
+            "hammer"
+         ]
+      },
+      "stonehearth:loot_drops": {
+         "entries": {
+            "items": {
+               "firewood": {
+                  "num_rolls": {
+                     "min": 1,
+                     "max": 2
+                  },
+                  "items": {
+                     "firewood": {
+                        "uri": "stonehearth_ace:resources:fuel:bundle_of_firewood"
+                     }
+                  }
+               },
+               "wooden_gear": {
+                  "num_rolls": {
+                     "min": 1,
+                     "max": 3
+                  },
+                  "items": {
+                     "wooden_gear": {
+                        "uri": "stonehearth_ace:refined:wooden_gear"
+                     }
+                  }
+               }
+            }
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:placement": {
+         "effect": "wrench",
+         "tag": "mechanical"
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 16,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": -2
+      }
+   }
+}

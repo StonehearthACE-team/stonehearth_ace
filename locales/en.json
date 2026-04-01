@@ -339,8 +339,20 @@
                   "trigger": {
                      "old_khan": {
                         "encounters": {
-                           "unlock_blue_token_recipe": {
-                              "bulletin_title": "The Blacksmith has unlocked the Decorative Elite Gong recipe!"
+                           "wait_for_green_camp_boss_killed": {
+                              "tracking_bulletin": "Destroy the Red Kiln's Scout Siege Camp! It will send raids every few days while standing!"
+                           },
+                           "wait_for_blue_camp_boss_killed": {
+                              "tracking_bulletin": "Destroy the Red Kiln's Elite Siege Camp! It will send raids every couple days while standing!"
+                           },
+                           "wait_for_red_camp_boss_killed": {
+                              "tracking_bulletin": "Destroy the Red Kiln's Master Siege Camp! It will send raids every one or two days while standing!"
+                           },
+                           "wait_for_purple_camp_boss_killed": {
+                              "tracking_bulletin": "Destroy the Red Kiln Golden General's Siege Camp! It will send raids every day while standing!"
+                           },
+                           "wait_for_warchief_boss_camp_destroyed": {
+                              "tracking_bulletin": "The Warchief herself is here! Her Siege Camp must be destroyed!"
                            },
                            "titan_dialog": {
                               "dialog_tree_info": {
@@ -671,7 +683,7 @@
                         "rc_weapon_armor_shop_1_exotic": {
                            "shop_info": {
                               "name": "Rajin's Wandering Blades Armory",
-                              "title": "An easterling merchant has arrived with simple equipment from the Pal'mum desert"
+                              "title": "An easterling merchant has arrived with simple equipment from the Pal'Mum desert"
                            }
                         },
                         "na_weapon_armor_shop_1_exotic": {
@@ -737,7 +749,7 @@
                         "rc_exotic_general_goods_shop_1": {
                            "shop_info": {
                               "name": "The Solitary Cactus Exotic Emporium",
-                              "title": "An easterling merchant has arrived with some unique goods from the Pal'mum desert"
+                              "title": "An easterling merchant has arrived with some unique goods from the Pal'Mum desert"
                            }
                         },
                         "na_exotic_general_goods_shop_1": {
@@ -909,7 +921,7 @@
                         "rc_weapon_armor_shop_2_exotic": {
                            "shop_info": {
                               "name": "Great Musa's Caravan Armory",
-                              "title": "An easterling merchant has arrived with good quality equipment from the Pal'mum desert"
+                              "title": "An easterling merchant has arrived with good quality equipment from the Pal'Mum desert"
                            }
                         },
                         "na_weapon_armor_shop_2_exotic": {
@@ -975,7 +987,7 @@
                         "rc_exotic_general_goods_shop_2": {
                            "shop_info": {
                               "name": "The Sandrose Groceries & Exotic Emporium",
-                              "title": "An easterling trader has arrived with unique goods from the Pal'mum desert"
+                              "title": "An easterling trader has arrived with unique goods from the Pal'Mum desert"
                            }
                         },
                         "na_exotic_general_goods_shop_2": {
@@ -1213,7 +1225,7 @@
                         "rc_weapon_armor_shop_3_exotic": {
                            "shop_info": {
                               "name": "Thali Pandora's Trailing Armory",
-                              "title": "An easterling merchant has arrived with the best weapons and armor from the Pal'mum desert"
+                              "title": "An easterling merchant has arrived with the best weapons and armor from the Pal'Mum desert"
                            }
                         },
                         "na_weapon_armor_shop_3_exotic": {
@@ -1278,8 +1290,8 @@
                         },
                         "rc_exotic_general_goods_shop_3": {
                            "shop_info": {
-                              "name": "The Pal'mum Delegates Exotic Emporium",
-                              "title": "An easterling caravan has arrived with lots of unique goods from the Pal'mum desert"
+                              "name": "The Pal'Mum Delegates Exotic Emporium",
+                              "title": "An easterling caravan has arrived with lots of unique goods from the Pal'Mum desert"
                            }
                         },
                         "na_exotic_general_goods_shop_3": {
@@ -1348,6 +1360,18 @@
                            "shop_info": {
                               "name": "Dom Vandon's Caravan",
                               "title": "An exclusive Silk Road caravan is in town with exotic goods from the far east"
+                           }
+                        },
+                        "frostfeast_shop": {
+                           "shop_info": {
+                              "name": "The Frostfather's Workshop",
+                              "title": "An exclusive envoy of the Frostfather arrived with loads of Frostfeast goods"
+                           }
+                        },
+                        "candledark_shop": {
+                           "shop_info": {
+                              "name": "Otherworldly Wares",
+                              "title": "An exclusive merchant arrives on behalf of the good spirits of Candledark"
                            }
                         }
                      },
@@ -7272,8 +7296,16 @@
                "description": "Striking the gong will temporarily change the town's soundtrack for half a day!"
             },
             "reload_ammunition_common": {
-               "display_name": "Reload Turret",
-               "description": "Order the Engineer to reload this turret with Common Turret Ammunition.<br><br>This command is enabled by default as soon as the turret runs out of ammunition."
+               "display_name": "Reload Turret (Common)",
+               "description": "Order the Engineer to reload this turret with Common Turret Ammunition. (24 uses)<br><br>This command will be enabled by default as soon as the turret runs out of ammunition."
+            },
+            "reload_ammunition_fire": {
+               "display_name": "Reload Turret (Incendiary)",
+               "description": "Order the Engineer to reload this turret with Incendiary Turret Ammunition. (20 uses)<br><br>This command will be enabled by default as soon as the turret runs out of ammunition."
+            },
+            "reload_ammunition_heavy": {
+               "display_name": "Reload Turret (Heavy)",
+               "description": "Order the Engineer to reload this turret with armor-penetrating Heavy Turret Ammunition. (16 uses)<br><br>This command will be enabled by default as soon as the turret runs out of ammunition."
             },
             "reload_gourd_shooter": {
                "display_name": "Reload Turret (Golden Gourds)",
@@ -7316,6 +7348,10 @@
             "stunt_growth_cancel": {
                "display_name": "Cancel Queued Stunting",
                "description": "This tree has a queued order to be stunted in a future stage. Use this command to cancel that order!"
+            },
+            "reload_net_thrower": {
+               "display_name": "Reload Turret (Nets)",
+               "description": "Order the Engineer to reload this turret with a Box of Throwable Nets. (8 uses)<br><br>This command will be enabled by default as soon as the turret runs out of ammunition."
             }
          },
          "slaughter_shepherd": {
@@ -7592,6 +7628,24 @@
          "avoid_pet_charming": {
             "display_name": "Disallow Charming Pets",
             "description": "This Trapper is currently set to sometimes tame new pets when checking traps. Click to forbid them!"
+         },
+         "shield_pavise": {
+            "deploy": {
+               "display_name": "Deploy Pavise",
+               "description": "Deploy the Pavise and set up a defensive position! When the Pavise is deployed, this hearthling will no longer be able to move.<ul><li>This command will be ignored outside of combat, it can only be deployed in such situations</li><li>Deploying the Pavise increases their Courage, damage inflicted and maximum range</li><li>Additionally, it also reduces damage received from all sources by 60% and increases their resistance against wounds and negative effects</li><li>It will be automatically retrieved when combat ends</li></ul>"
+            },
+            "undeploy": {
+               "display_name": "Retrieve Pavise",
+               "description": "Put the Pavise back and get moving again!<ul><li>It will be automatically retrieved when combat ends</li></ul>"
+            }
+         },
+         "toggle_cistern_on": {
+            "display_name": "Closed",
+            "description": "The Cistern is currently closed and able to accumulate water. Click to open it and release!"
+         },
+         "toggle_cistern_off": {
+            "display_name": "Open",
+            "description": "The Cistern is currently open and will no longer accumulate water. Click to close it and start collecting again!"
          }
       },
       "buffs": {
@@ -7896,11 +7950,11 @@
             },
             "chilly_resist_buff": {
                "display_name": "Lightly Bundled",
-               "description": "This hearthling is protected against chilly weather.<ul><li>➕ Damage from Freezing weather is very slightly reduced</li></ul>"
+               "description": "This hearthling is protected against chilly weather.<ul><li>➕ Damage from freezing weather is very slightly reduced</li></ul>"
             },
             "cold_resist_buff": {
                "display_name": "Bundled",
-               "description": "This hearthling is protected against cold weather.<ul><li>➕ Damage from Freezing weather is reduced, and they're immune to Frostbites</li></ul>"
+               "description": "This hearthling is protected against cold weather.<ul><li>➕ Damage from freezing weather is reduced, and they're immune to Frostbites</li></ul>"
             },
             "freezing_resist_buff": {
                "display_name": "Very Bundled",
@@ -8746,6 +8800,24 @@
                "display_name": "Webbed (Trapped)",
                "description": "Stuck in a spidersilk cocoon! Help!"
             }
+         },
+         "holding_net_trapped": {
+            "display_name": "Entrapped",
+            "description": "Caught in a holding net! Menace is greatly reduced and will not be able to move until this effect is gone. Damage received from all sources is increased by 20%."
+         },
+         "shield_pavise": {
+            "display_name": "Pavise (On Back)",
+            "deployed": {
+               "display_name": "Pavise (Deployed)",
+               "description": "Behind the cover of a deployed Pavise. Courage is increased by 20%<ul><li>Damage inflicted is increased by 10%</li><li>Range is increased by 10</li><li>Damage received from all sources is reduced by 60%</li><li>Provides extra resistance against receiving wounds and other negative effects</li></ul>"
+            },
+            "description": "Wearing a Pavise and ready to deploy! Speed is slightly reduced.<ul><li>While wearing a Pavise, the Archer can no longer utilize a quiver</li></ul>"
+         },
+         "devoted": {
+            "devoted_gilded_buff": {
+               "display_name": "Devoted (Gilded)",
+               "description": "Speed increased by 25.<ul><li>This hearthling will be able to work 10% longer before needing to sleep</li><li>This hearthling's need for social interactions will increase 25% slower</ul>"
+            }
          }
       },
       "loadouts": {
@@ -9014,11 +9086,11 @@
       "footman": {
          "footman_description": {
             "level_4_data": {
-               "perk_000_description": "The Footman is now practiced at optimizing the effect of each blow."
+               "perk_000_description": "The Footman is now practiced at optimizing the effect of each blow.<p>💪 The bonuses from the Footman Training buff are now permanent, even if they stop being a Footman"
             },
             "level_1_data": {
                "training_perk_name": "Combat Training",
-               "training_perk_description": "The Footman can use Training Dummies to train their combat techniques and earn experience up to Job Level 3",
+               "training_perk_description": "The Footman can use Training Dummies to train their combat techniques and earn experience up to Job Level 3<p>💪 Being a Footman will improve their Courage, Stamina and Muscle on every Level. Starting on Level 4, these bonuses become permanent even if they stop being a Footman",
                "perk_000_description": "The Footman knows that all combats may have mortal consequences, and attacks with renewed determination."
             },
             "level_3_data": {
@@ -9095,7 +9167,7 @@
             "description": "A rearguard fighter capable of using ranged weaponry like bows, crossbows and a variety of hindering types of arrows or bolts to attack their foes.",
             "level_1_data": {
                "training_perk_name": "Archery Training",
-               "training_perk_description": "The Archer can use Archery Targets to train their precision and earn experience up to Job Level 3",
+               "training_perk_description": "The Archer can use Archery Targets to train their precision and earn experience up to Job Level 3<p>💪 Being an Archer will improve their Menace, Muscle, Courage and Speed on every Level. Starting on Level 4, these bonuses become permanent even if they stop being an Archer",
                "perk_001_description": "The Archer's damage is increased"
             },
             "level_2_data": {
@@ -9107,7 +9179,7 @@
                "perk_000_description": "The Archer can attack enemies from further away"
             },
             "level_4_data": {
-               "perk_000_description": "The Archer shoots arrows with greater speed"
+               "perk_000_description": "The Archer shoots arrows with greater speed<p>💪 The bonuses from the Archer Training buff are now permanent, even if they stop being an Archer"
             },
             "level_6_data": {
                "perk_000_description": "The Archer learns the ancient art of quick shots, allowing rapid firing of two arrows in rapid succession"
@@ -9170,7 +9242,7 @@
          "cleric_description": {
             "level_1_data": {
                "training_perk_name": "Healer Training",
-               "training_perk_description": "The Cleric can use Sheep tamed by a Shepherd to practice their magical gestures and earn experience up to Job Level 3.<br><br>Clerics that prefer using a scepter will not be able to train!",
+               "training_perk_description": "The Cleric can use Sheep tamed by a Shepherd to practice their magical gestures and earn experience up to Job Level 3.<br><br>Clerics that prefer using a scepter will not be able to train!<p>💪 Being a Cleric will improve their Willpower, resistances and Speed on every Level. Starting on Level 4, these bonuses become permanent even if they stop being a Cleric",
                "perk_000_description": "The Cleric's presence heals everyone around them periodically"
             },
             "level_2_data": {
@@ -9182,7 +9254,7 @@
             "description": "A combat healer that channels holy magic to not only mend wounds but also boost their allies through auras and effects.",
             "level_4_data": {
                "perk_000_name": "Heal Aura (Rank 2)",
-               "perk_000_description": "The healing aura power and radius are increased.<br><br>The Cleric is now able to practice magical healing every six hours, treating two wounds of medium severity and recovering some health."
+               "perk_000_description": "The healing aura power and radius are increased.<br><br>The Cleric is now able to practice magical healing every six hours, treating two wounds of medium severity and recovering some health.<p>💪 The bonuses from the Cleric Training buff are now permanent, even if they stop being a Cleric"
             },
             "level_5_data": {
                "perk_000_name": "Major Strength & Weakness",
@@ -9272,7 +9344,7 @@
             "description": "A defensive fighter focused on protecting allies from harm and rounding up enemies, striking fear in their hearts!",
             "level_1_data": {
                "training_perk_name": "Squire Training",
-               "training_perk_description": "The Knight can use Training Dummies to train their defensive taunting skills and earn experience up to Job Level 3",
+               "training_perk_description": "The Knight can use Training Dummies to train their defensive taunting skills and earn experience up to Job Level 3<p>💪 Being a Knight will improve their Stamina, Willpower and Courage on every Level. Starting on Level 4, these bonuses become permanent even if they stop being a Knight",
                "perk_000_description": "Increases the amount of healing received by the Knight and their passive resistance against negative effects & wounds. Greater fortitude allows the Knight to feel more comfortable in armor, also slightly increasing their Speed.",
                "perk_001_name": "Bulwark",
                "perk_001_description": "The Knight gains an additional 10% defense from equipment"
@@ -9284,7 +9356,7 @@
                "perk_000_description": "The healing received is greatly increased, the Speed bonus and the additional resistance against negative effects & wounds are doubled."
             },
             "level_4_data": {
-               "perk_000_description": "The Knight gains an additional 20% armor from equipment",
+               "perk_000_description": "The Knight gains an additional 20% armor from equipment<p>💪 The bonuses from the Knight Training buff are now permanent, even if they stop being a Knight",
                "perk_000_name": "Bulwark (Rank 2)"
             },
             "level_5_data": {
@@ -10480,6 +10552,26 @@
                   "recipe_name": "Big Frostfeast Pine Wreath",
                   "description": "For when you're feeling really festive.",
                   "flavor": ""
+               },
+               "garland_long_recipe": {
+                  "recipe_name": "Long Frostfeast Pine Garland",
+                  "description": "A long, festive and natural decoration for a holiday town!",
+                  "flavor": "The vertical length can be customized after it is placed"
+               },
+               "garland_recipe": {
+                  "recipe_name": "Frostfeast Pine Garland",
+                  "description": "Very appreciated and natural Frostfeast decoration.",
+                  "flavor": "The vertical length can be customized after it is placed"
+               },
+               "garland_short_recipe": {
+                  "recipe_name": "Short Frostfeast Pine Garland",
+                  "description": "A shorter version of a beloved holiday decoration.",
+                  "flavor": "The vertical length can be customized after it is placed"
+               },
+               "garland_tiny_recipe": {
+                  "recipe_name": "Tiny Frostfeast Pine Garland",
+                  "description": "So tiny! Like an unmade wreath, adorable over small windows.",
+                  "flavor": "The vertical length can be customized after it is placed"
                }
             }
          },
@@ -10642,8 +10734,20 @@
             "equipment_name": "Combat Equipment",
             "ranged_weapons_name": "Defense: Turrets",
             "traps_name": "Defense: Traps",
+            "ammunition_name": "Defense: Ammunition",
+            "engineer_workbench_basic_recipe": {
+               "recipe_name": "Engineer's Basic Toolbench",
+               "description": "Used by the Engineer to craft their most simple gadgets and contraptions.",
+               "flavor": ""
+            },
             "engineer_workbench_recipe": {
-               "description": "Used by the Engineer to craft their various gadgets and contraptions."
+               "description": "Used by the Engineer to craft more advanced gadgets and contraptions.",
+               "flavor": "Replaces the Basic Toolbench"
+            },
+            "pavise_shield_recipe": {
+               "recipe_name": "Archer Pavise",
+               "description": "A strong oblong shield that can be deployed on the ground for offensive and defensive benefits.",
+               "flavor": "Must be manually deployed with a command on the unit frame but is automatically retrieved after combat"
             },
             "refrigerator_small_recipe": {
                "recipe_name": "Small Refrigerator",
@@ -10672,6 +10776,11 @@
                "recipe_name": "The Ascendant Star",
                "description": "An impressive and powerful Knight's weapon.",
                "flavor": "Engineered to shatter any piece of armor"
+            },
+            "wooden_cistern_recipe": {
+               "recipe_name": "Wooden Cistern",
+               "description": "A neat container designed to collect rainwater, which can then be released at will from its tap.",
+               "flavor": "Can't be moved after being placed, use the 'Destroy' tool to remove it"
             },
             "water_gate_recipe": {
                "recipe_name": "Copper Water Gate",
@@ -10717,14 +10826,19 @@
                "description": "For times when only the strongest door will do. This is a slightly larger alternative to the Castle Portcullis.",
                "flavor": "Definitely needs more iron"
             },
+            "wooden_gear_recipe": {
+               "recipe_name": "Wooden Gear",
+               "description": "Used to craft some basic gadgets. Wooden gears are large and unreliable.",
+               "flavor": ""
+            },
             "bronze_gear_recipe": {
                "recipe_name": "Bronze Gear (x3)",
-               "description": "Used to craft some basic gadgets and mechanisms. A single bar will yield three gears.",
+               "description": "Used to craft intermediate gadgets and mechanisms. A single bar will yield three gears.",
                "flavor": "Luckily it has teeth that do not require brushing"
             },
             "iron_gear_recipe": {
                "recipe_name": "Iron Gear (x2)",
-               "description": "Used to craft intermediate gadgets and mechanisms. A single bar will yield two gears."
+               "description": "Used to craft advanced gadgets and mechanisms. A single bar will yield two gears."
             },
             "lock_recipe": {
                "recipe_name": "Steel Lock",
@@ -10741,14 +10855,39 @@
                "description": "A more elegant and refined machine, required by the most advanced contraptions that one can make.",
                "flavor": "By gear and component, metal shall come alive! -Ava Ferreavia, Ingeniator Magna"
             },
+            "ammunition_nets_recipe": {
+               "recipe_name": "Box of Throwable Nets",
+               "description": "Pack a box full of sturdy nets arranged to be loaded and launched by a net thrower.",
+               "flavor": "Be careful not to get tangled!"
+            },
             "ammunition_common_recipe": {
                "recipe_name": "Common Turret Ammunition",
                "description": "Craft a bunch of bolts and get them ready for action in a special box that can be loaded into bolt turrets.",
-               "flavor": "Lock and load"
+               "flavor": "Provides 24 uses. Lock and load"
+            },
+            "ammunition_fire_recipe": {
+               "recipe_name": "Incendiary Turret Ammunition",
+               "description": "Craft dangerous incendiary bolts that can set targets on fire after being loaded into bolt turrets.",
+               "flavor": "Provides 20 uses. Handle with care!"
+            },
+            "ammunition_heavy_recipe": {
+               "recipe_name": "Heavy Turret Ammunition",
+               "description": "Craft a box of strong, steel bolts with increased damage and armor-breaking effects to be loaded into bolt turrets.",
+               "flavor": "Provides 16 uses"
+            },
+            "simple_quiver_bolts_recipe": {
+               "recipe_name": "Spiky Bolt Quiver",
+               "description": "A quiver equippable by an Archer. The bolts encased by it will slow down enemies.",
+               "flavor": "A bolt quiver can only be worn with crossbows"
             },
             "small_turret_recipe": {
                "recipe_name": "Bolt Turret",
-               "description": "Shoots metal bolts at enemies from a distance. Requires reloading after 24 shots.",
+               "description": "Shoots bolts at enemies from a distance. Comes unloaded but can be loaded with different types of ammunition.",
+               "flavor": "Must be placed by an Engineer"
+            },
+            "net_thrower_recipe": {
+               "recipe_name": "Net Thrower",
+               "description": "A simple turret that launches nets on enemies, hindering their movement for some time. Requires reloading after 8 shots.",
                "flavor": "Must be placed by an Engineer"
             },
             "turnip_shooter_recipe": {
@@ -10766,6 +10905,11 @@
                "description": "Shoots sweet potatoes at enemies from a distance. Requires reloading after 16 shots.",
                "flavor": "Po-ta-toes! Boil 'em, mash 'em, shoot 'em at your enemies! Must be placed by an Engineer"
             },
+            "hammer_trap_recipe": {
+               "recipe_name": "Hammer Trap",
+               "description": "Deals a tiny amount of damage. Must be placed by an Engineer and requires maintenance after 4 uses.",
+               "flavor": "'Do not stand underneath heavy objects' -Ascendancy Collective of Mechanics & Engineers"
+            },
             "storage_name": "Storage"
          },
          "engineer_description": {
@@ -10782,6 +10926,10 @@
                "perk_001_name": "Handyman (Rank 3)",
                "perk_001_description": "The Engineer is now able to repair anything that belongs to your town, regardless of who crafted it or where it came from!"
             }
+         },
+         "engineer_workbench_basic": {
+            "display_name": "Engineer's Basic Toolbench",
+            "description": "Used by the Engineer for their most basic crafts."
          }
       },
       "potter": {
@@ -11252,6 +11400,9 @@
                "description": "Beautiful clay chest capable of storing lots of items.",
                "flavor": "A place for tributea and offerings to Monkey and Her Mystery"
             },
+            "pedestal_firepit_recipe": {
+               "recipe_name": "Small Clay Firepit"
+            },
             "fireplace_clay_small_recipe": {
                "recipe_name": "Small Clay Fireplace",
                "description": "A very simple hearth. A chimney can be extended from it after it has been placed and, similarly to a door or window, it can be placed on walls.",
@@ -11308,25 +11459,70 @@
                   "description": "Let your crafter express their creativity on a nice snowling!",
                   "flavor": "The holidays are magical so it will never melt! Hopefully..."
                },
+               "snow_lantern_recipe": {
+                  "recipe_name": "Frostfeast Snow Lantern",
+                  "description": "A bunch of snowballs stacked around some candles creating a cool light.",
+                  "flavor": "A favorite of snowy days"
+               },
+               "light_string_vertical_long_recipe": {
+                  "recipe_name": "Frostfeast Long Vertical Lights",
+                  "description": "A long string holding a bunch of tiny glass globes filled with magic light!",
+                  "flavor": "A very long string of lights, useful for tall structures!"
+               },
                "light_string_vertical_recipe": {
                   "recipe_name": "Frostfeast Vertical Lights (x2)",
                   "description": "A string holding a bunch of tiny glass globes filled with magic light!",
                   "flavor": "The power of the Hearth is so... Uh... Convenient"
                },
                "light_string_vertical_short_recipe": {
-                  "recipe_name": "Frostfeast Vertical Short Lights (x3)",
+                  "recipe_name": "Frostfeast Short Vertical Lights (x3)",
                   "description": "A short string holding a bunch of tiny glass globes filled with magic light!",
-                  "flavor": "Slightly shorter version, vertical strings of light can be hanged on edges to form cascades!"
+                  "flavor": "Slightly shorter version, vertical strings of light can also be hanged on edges to form cascades!"
+               },
+               "light_string_horizontal_long_recipe": {
+                  "recipe_name": "Frostfeast Long Horizontal Lights",
+                  "description": "A long string holding a bunch of tiny glass globes filled with magic light!",
+                  "flavor": "Can be extended downwards with a beautiful curtain of tiny lights!"
                },
                "light_string_horizontal_recipe": {
                   "recipe_name": "Frostfeast Horizontal Lights (x2)",
                   "description": "A string holding a bunch of tiny glass globes filled with magic light!",
-                  "flavor": "Goes great on top of doors!"
+                  "flavor": "Can be extended downwards with a beautiful curtain of tiny lights!"
                },
                "light_string_horizontal_short_recipe": {
-                  "recipe_name": "Frostfeast Horizontal Short Lights (x3)",
+                  "recipe_name": "Frostfeast Short Horizontal Lights (x3)",
                   "description": "A short string holding a bunch of tiny glass globes filled with magic light!",
-                  "flavor": "Can't be turned off"
+                  "flavor": "Can be extended downwards with a beautiful curtain of tiny lights!"
+               },
+               "light_string_colors_vertical_long_recipe": {
+                  "recipe_name": "Frostfeast Long Vertical Colorful Lights",
+                  "description": "A long string holding a bunch of tiny glass globes filled with colorful magic light!",
+                  "flavor": "These will never turn off. Even if you want it!"
+               },
+               "light_string_colors_vertical_recipe": {
+                  "recipe_name": "Frostfeast Vertical Colorful Lights (x2)",
+                  "description": "A string holding a bunch of tiny glass globes filled with colorful magic light!",
+                  "flavor": "Magic is definitely dazzling..."
+               },
+               "light_string_colors_vertical_short_recipe": {
+                  "recipe_name": "Frostfeast Short Vertical Colorful Lights (x3)",
+                  "description": "A short string holding a bunch of tiny glass globes filled with colorful magic light!",
+                  "flavor": "It's like a bunch of fairies flying!"
+               },
+               "light_string_colors_horizontal_long_recipe": {
+                  "recipe_name": "Frostfeast Long Horizontal Colorful Lights",
+                  "description": "A long string holding a bunch of tiny glass globes filled with colorful magic light!",
+                  "flavor": "Can be extended downwards with a beautiful curtain of tiny lights!"
+               },
+               "light_string_colors_horizontal_recipe": {
+                  "recipe_name": "Frostfeast Horizontal Colorful Lights (x2)",
+                  "description": "A string holding a bunch of tiny glass globes filled with colorful magic light!",
+                  "flavor": "Can be extended downwards with a beautiful curtain of tiny lights!"
+               },
+               "light_string_colors_horizontal_short_recipe": {
+                  "recipe_name": "Frostfeast Short Horizontal Colorful Lights (x3)",
+                  "description": "A short string holding a bunch of tiny glass globes filled with colorful magic light!",
+                  "flavor": "Can be extended downwards with a beautiful curtain of tiny lights!"
                }
             },
             "candledark": {
@@ -11435,6 +11631,36 @@
                "recipe_name": "Beaver Golem",
                "description": "Performs building tasks.",
                "flavor": "They can build dam well"
+            },
+            "summon_stone_old_wood_trunk_recipe": {
+               "recipe_name": "Old Trunk Stone",
+               "description": "Summons a fallen old wood log that can be chopped for wood.",
+               "flavor": "Fallen trunks can also be used decoratively or as a seat for a more outdoorsy meal!"
+            },
+            "summon_stone_juniper_trunk_recipe": {
+               "recipe_name": "Juniper Trunk Stone",
+               "description": "Summons a small, fallen juniper log that can be chopped for wood or carved into furniture.",
+               "flavor": "Fallen trunks can also be used decoratively or as a seat for a more outdoorsy meal!"
+            },
+            "summon_stone_birch_trunk_recipe": {
+               "recipe_name": "Birch Trunk Stone",
+               "description": "Summons a small, fallen birch log that can be chopped for wood or carved into furniture.",
+               "flavor": "Fallen trunks can also be used decoratively or as a seat for a more outdoorsy meal!"
+            },
+            "summon_stone_oak_trunk_recipe": {
+               "recipe_name": "Oak Trunk Stone",
+               "description": "Summons a medium, fallen oak log that can be chopped for wood or carved into furniture.",
+               "flavor": "Fallen trunks can also be used decoratively or as a seat for a more outdoorsy meal!"
+            },
+            "summon_stone_pine_trunk_recipe": {
+               "recipe_name": "Pine Trunk Stone",
+               "description": "Summons a large, fallen pine log that can be chopped for wood or carved into furniture.",
+               "flavor": "Fallen trunks can also be used decoratively or as a seat for a more outdoorsy meal!"
+            },
+            "summon_stone_highland_pine_trunk_recipe": {
+               "recipe_name": "Highland Pine Trunk Stone",
+               "description": "Summons a large, fallen highland pine log that can be chopped for wood or carved into furniture.",
+               "flavor": "Fallen trunks can also be used decoratively or as a seat for a more outdoorsy meal!"
             },
             "summon_stone_vein_marble_recipe": {
                "recipe_name": "Marble Vein Stone",
@@ -11945,7 +12171,7 @@
                "flavor": "For when your window view is boring enough"
             },
             "window_box_snow_poppy_recipe": {
-               "recipe_name": "Siv's Carved Window Planter",
+               "recipe_name": "Firnn's Carved Window Planter",
                "description": "A finely made stone planter to be placed under window frames. The herb is planted and tended by an Herbalist.",
                "flavor": "A dark arctic morning is always made brighter with a poppy."
             },
@@ -12217,6 +12443,46 @@
                   "recipe_name": "Purple Candledark Table",
                   "description": "Craft a nice purple tablecloth with the picture of a cute ghost for your seasonal party!",
                   "flavor": "Aww, it looks so sad!"
+               },
+               "door_recipe": {
+                  "recipe_name": "Candledark Olden Door",
+                  "description": "Build a sturdy yet flimsy-looking wooden door with a stone frame.",
+                  "flavor": ""
+               },
+               "door_reinforced_recipe": {
+                  "recipe_name": "Candledark Olden Reinforced Door",
+                  "description": "Build a reinforced wooden door with a stone frame that is taller than usual.",
+                  "flavor": ""
+               },
+               "door_frame_recipe": {
+                  "recipe_name": "Candledark Olden Door Frame",
+                  "description": "Craft a stone door frame that is a large arch.",
+                  "flavor": ""
+               },
+               "double_door_recipe": {
+                  "recipe_name": "Candledark Olden Double Door",
+                  "description": "Build a very large and reinforced wooden door with a stone frame.",
+                  "flavor": "Are we really going inside?"
+               },
+               "double_door_frame_recipe": {
+                  "recipe_name": "Candledark Olden Large Door Frame",
+                  "description": "Craft a large stone door frame.",
+                  "flavor": ""
+               },
+               "window_recipe": {
+                  "recipe_name": "Candledark Olden Window",
+                  "description": "Build an old-looking stone window with a few visual variations.",
+                  "flavor": ""
+               },
+               "window_tall_recipe": {
+                  "recipe_name": "Candledark Olden Tall Window",
+                  "description": "Craft an old-looking tall stone window with a few visual variations.",
+                  "flavor": ""
+               },
+               "window_thin_recipe": {
+                  "recipe_name": "Candledark Olden Thin Window",
+                  "description": "Build an old-looking stone window that is slender and taller than usual.",
+                  "flavor": ""
                }
             }
          },
@@ -12884,6 +13150,31 @@
                "recipe_name": "Small Iron Stove",
                "description": "A compact but very efficient fireplace. A chimney can be extended from it after it has been placed.",
                "flavor": "Made in cast iron, you won't even notice the soot!"
+            },
+            "decorative_scout_gong_recipe": {
+               "recipe_name": "Scout Gong",
+               "description": "The green gong, first of the Gongs of Four Colors. Inspired by the Kobold Scout.",
+               "flavor": "Even scouts are adorned with gold. This gong will attract enemies one day!"
+            },
+            "decorative_elite_gong_recipe": {
+               "recipe_name": "Elite Gong",
+               "description": "The blue gong, second of the Gongs of Four Colors. Inspired by the Elite Kobold Menace.",
+               "flavor": "As it turns out, their hats were very dense. This gong will attract enemies one day!"
+            },
+            "decorative_master_gong_recipe": {
+               "recipe_name": "Master Gong",
+               "description": "The red gong, third of the Gongs of Four Colors. Inspired by the Master Kobold Archer.",
+               "flavor": "Great for taunting master kobolds. This gong will attract enemies one day!"
+            },
+            "decorative_generals_gong_recipe": {
+               "recipe_name": "General's Golden Gong",
+               "description": "The purple gong, last of the Gongs of Four Colors. Inspired by the Kobold Archer General.",
+               "flavor": "The generals hat, when melted down, could have filled a pond with gold. This gong will attract enemies one day!"
+            },
+            "decorative_red_kiln_gong_recipe": {
+               "recipe_name": "Decorative Red Kiln Gong",
+               "description": "Inspired by the Gongs of Four Colors, a symbol of this town's triumph against the Warchief.",
+               "flavor": "This gong is purely decorative and will never attract enemies"
             },
             "frostfeast": {
                "candlestick_recipe": {
@@ -13656,6 +13947,26 @@
                   "recipe_name": "Frostfeast Pudding",
                   "description": "Delicious and bold dessert made from a very sweet, fruity and nutty batter. A winter classic!",
                   "flavor": "Frostfeast meals must be placed down before consumed"
+               },
+               "giant_gingerbread_recipe": {
+                  "recipe_name": "Frostfeast Giant Decorative Cookie",
+                  "description": "A giant gingerbread hearthling ready to greet and welcome anyone into a household ready for Frostfeast!",
+                  "flavor": "Do you know the Muffin Man?"
+               },
+               "gingerbread_house_ascendancy_recipe": {
+                  "recipe_name": "Frostfeast Gingerbread Forest House",
+                  "description": "A tiny, classic home built with gingerbread cookies and candy.",
+                  "flavor": "The Burlyhands' favorite Frostfeast tradition"
+               },
+               "gingerbread_house_rayyas_children_recipe": {
+                  "recipe_name": "Frostfeast Gingerbread Desert House",
+                  "description": "A tiny model of a traditional house from the desert of Pal'Mum made with cookies and candy.",
+                  "flavor": ""
+               },
+               "gingerbread_house_northern_alliance_recipe": {
+                  "recipe_name": "Frostfeast Gingerbread Northern House",
+                  "description": "A tiny depiction of a traditional nordic house erected with cookies and candy.",
+                  "flavor": "Is it sugar or is it snow?"
                }
             },
             "veggie_stew_recipe": {
@@ -14239,6 +14550,11 @@
                   "recipe_name": "Classic Frostfeast Wide Window",
                   "description": "A wide window in the style of the homes from the Frostfather's region.",
                   "flavor": ""
+               },
+               "market_stall_recipe": {
+                  "recipe_name": "Frostfeast Market Stand",
+                  "description": "A special place for trading seasonal Frostfeast goods all year round.",
+                  "flavor": "Straight from the Frostfather's Workshop!"
                }
             },
             "candledark": {
@@ -14291,6 +14607,31 @@
                   "recipe_name": "Candledark Olden Bench",
                   "description": "A very comfortable and fancy seating, ideal for sprucing up your common room.",
                   "flavor": ""
+               },
+               "old_chest_recipe": {
+                  "recipe_name": "Candledark Olden Chest",
+                  "description": "An old-looking, battered chest for storing your precious belongings.",
+                  "flavor": "Everyone needs a memory chest in their cellars"
+               },
+               "old_table_for_one_recipe": {
+                  "recipe_name": "Candledark Olden Table for One",
+                  "description": "Build a small table ideal for a single person or for decorating.",
+                  "flavor": ""
+               },
+               "old_dining_table_recipe": {
+                  "recipe_name": "Candledark Olden Dining Table",
+                  "description": "Craft a large dining table that can sit a small group.",
+                  "flavor": "For when banquets are too much"
+               },
+               "old_dresser_recipe": {
+                  "recipe_name": "Candledark Olden Dresser",
+                  "description": "Build a nice, old-looking wardrobe to decorate a fancy bedroom.",
+                  "flavor": "Lion, Witch and lamp-post not included"
+               },
+               "old_writing_desk_recipe": {
+                  "recipe_name": "Candledark Olden Writing Desk",
+                  "description": "Craft a nice, old-looking desk with drawers and a shelf.",
+                  "flavor": "Great for writing horror stories"
                },
                "bookcase_short_recipe": {
                   "recipe_name": "Candledark Olden Bookcase (Short)",
@@ -14560,11 +14901,6 @@
             "simple_quiver_recipe": {
                "description": "A quiver equippable by an Archer. Stores crippling arrows that will slow enemies."
             },
-            "simple_quiver_bolts_recipe": {
-               "recipe_name": "Spiky Bolt Quiver",
-               "description": "A quiver equippable by an Archer. The bolts encased by it will slow down enemies.",
-               "flavor": "A bolt quiver can only be worn with crossbows"
-            },
             "curtain_door_recipe": {
                "recipe_name": "Curtain Door",
                "description": "A pretty yet weak passage.",
@@ -14806,6 +15142,36 @@
                   "recipe_name": "Crafter Candledark Witch Hat",
                   "description": "Craft a fancy witch hat to be worn by Crafters. It provides protection from warm weather and the Candledark Cheer effect.",
                   "flavor": "No, it doesn't speak in riddles"
+               },
+               "cobweb_floor_recipe": {
+                  "recipe_name": "Candledark Cobweb (Floor)(x3)",
+                  "description": "Weave some decorative cobwebs that can be placed on the floor, on the floor against walls or on the floor against a corner.",
+                  "flavor": "Cobwebs will also slow down anyone that walks over them!"
+               },
+               "cobweb_wall_recipe": {
+                  "recipe_name": "Candledark Cobweb (Wall)(x3)",
+                  "description": "Weave some decorative cobwebs that can be placed on a wall or on a wall corner.",
+                  "flavor": "Do you ever clean?!"
+               },
+               "cobweb_ceil_recipe": {
+                  "recipe_name": "Candledark Cobweb (Ceiling)(x3)",
+                  "description": "Weave some decorative cobwebs that can be placed on a wall against the ceiling or on a wall corner against the ceiling.",
+                  "flavor": ""
+               },
+               "cocoon_recipe": {
+                  "recipe_name": "Candledark Decorative Cocoon",
+                  "description": "Weave a large, hearthling-sized cocoon that looks like a spider's captured prey!",
+                  "flavor": "Creepy!"
+               },
+               "hanging_cocoon_recipe": {
+                  "recipe_name": "Candledark Decorative Hanging Cocoon",
+                  "description": "Weave a large, hearthling-sized cocoon that can hang from the ceiling on a thin strand of cobweb!",
+                  "flavor": "Also creepy!"
+               },
+               "old_carpet_recipe": {
+                  "recipe_name": "Candledark Olden Carpet",
+                  "description": "Craft 9 small pieces of carpet that will connect into a single, custom-shaped carpet when placed together!",
+                  "flavor": "A hallway favorite"
                }
             }
          },
@@ -15098,6 +15464,11 @@
                   "recipe_name": "Candledark Decorative Broom (Wall)",
                   "description": "A simple, wicked broom to be hanged on a wall!",
                   "flavor": "The latest solution on parking for witches!"
+               },
+               "market_stall_recipe": {
+                  "recipe_name": "Candledark Market Spot",
+                  "description": "A rustic spot for an exclusive Candledark merchant to set up their shop.",
+                  "flavor": "Caramel apples all-year-round!"
                }
             },
             "frostfeast": {
@@ -17240,6 +17611,38 @@
                   "display_name": "Candledark Hidden Bookcase Door",
                   "description": "Very sneaky! Very mysterious! Your own secret passage. Enemies will not be able to see it."
                }
+            },
+            "door": {
+               "display_name": "Candledark Olden Door",
+               "description": "The little window means you can peek inside, right?"
+            },
+            "door_frame": {
+               "display_name": "Candledark Olden Door Frame",
+               "description": "An imposing stone arch."
+            },
+            "door_reinforced": {
+               "display_name": "Candledark Olden Reinforced Door",
+               "description": "Turns any castle into a spooky castle."
+            },
+            "double_door": {
+               "display_name": "Candledark Olden Double Door",
+               "description": "Your new favorite front door!"
+            },
+            "double_door_frame": {
+               "display_name": "Candledark Olden Large Door Frame",
+               "description": "An even more imposing arch!"
+            },
+            "window": {
+               "display_name": "Candledark Olden Window",
+               "description": "You still want the sun to reach inside..."
+            },
+            "window_tall": {
+               "display_name": "Candledark Olden Tall Window",
+               "description": "A great way to look inviting and scary at the same time."
+            },
+            "window_thin": {
+               "display_name": "Candledark Olden Thin Window",
+               "description": "Very hard to squeeze through."
             }
          },
          "ladder_rope": {
@@ -18474,7 +18877,7 @@
             "description": "A decorative window planter carved in stone."
          },
          "window_box_stone_snow_poppy": {
-            "display_name": "Siv's Carved Window Planter",
+            "display_name": "Firnn's Carved Window Planter",
             "description": "A very finely carved stone window planter."
          },
          "golden_clay_wall_planter": {
@@ -19248,13 +19651,35 @@
          },
          "ammunition_common": {
             "display_name": "Common Turret Ammunition",
-            "description": "Simple bolts with hard metal tips used to build or reload combat turrets."
+            "description": "Simple bolts with hard metal tips used to reload combat turrets."
          },
          "dyes": {
             "firstbloom_spring_colors": {
                "display_name": "Dyes (Firstbloom Spring Colors)",
                "description": "A collection of soft and sweet springy tones to be used in crafting Firstbloom items!"
             }
+         },
+         "wooden_gear": {
+            "display_name": "Wooden Gear",
+            "description": "Unreliable. Used to craft basic gadgetry and mechanisms."
+         },
+         "bronze_gear": {
+            "description": "Sturdy but heavy. Used to craft intermediate gadgetry and mechanisms."
+         },
+         "iron_gear": {
+            "description": "Durable and strong. Used to craft advanced gadgetry and mechanisms."
+         },
+         "ammunition_fire": {
+            "display_name": "Incendiary Turret Ammunition",
+            "description": "Metal bolts with flammable tips used to reload combat turrets."
+         },
+         "ammunition_heavy": {
+            "display_name": "Heavy Turret Ammunition",
+            "description": "Large steel bolts used to reload combat turrets."
+         },
+         "ammunition_nets": {
+            "display_name": "Box of Throwable Nets",
+            "description": "A box full of sturdy nets arranged to be loaded and launched by a mechanical device."
          }
       },
       "trees": {
@@ -20033,6 +20458,14 @@
                "display_name": "Caravanserai",
                "description": "A customized booth for attracting an exclusive caravaneer from the far east!"
             },
+            "frostfeast_market_stall": {
+               "display_name": "Frostfeast Market Stand",
+               "description": "An exclusive spot for trading Frostfeast goods all year round!"
+            },
+            "candledark_market_stall": {
+               "display_name": "Candledark Market Spot",
+               "description": "An exclusive spot for trading Candledark goods all year round!"
+            },
             "makers_market_stall": {
                "display_name": "Sculptor's Guild Market Stall",
                "description": "A customized stall for attracting an exclusive and rare statues merchant!"
@@ -20583,6 +21016,22 @@
             "old_chair": {
                "display_name": "Candledark Olden Chair",
                "description": "It's a complete set with stuffed pillows, back support and a creaking leg."
+            },
+            "old_dining_table": {
+               "display_name": "Candledark Olden Dining Table",
+               "description": "It's like a baby banquet table!"
+            },
+            "old_dresser": {
+               "display_name": "Candledark Olden Dresser",
+               "description": "Perhaps the origin of the expression 'skeletons in the closet'?"
+            },
+            "old_table_for_one": {
+               "display_name": "Candledark Olden Table for One",
+               "description": "Perfect for being lonely in your own spooky manor."
+            },
+            "old_writing_desk": {
+               "display_name": "Candledark Olden Writing Desk",
+               "description": "Goes really well with sad poetry."
             }
          },
          "pet_urn": {
@@ -21527,6 +21976,34 @@
          }
       },
       "decoration": {
+         "decorative_scout_gong": {
+            "decorative_scout_gong_ghost": {
+               "display_name": "Scout's Gong (Rank 1)",
+               "description": "The Red Kiln's green gong, inspired by the Kobold Scout."
+            }
+         },
+         "decorative_elite_gong": {
+            "decorative_elite_gong_ghost": {
+               "display_name": "Elite Gong (Rank 2)",
+               "description": "The Red Kiln's blue gong, inspired by the Elite Kobold Menace."
+            }
+         },
+         "decorative_master_gong": {
+            "decorative_master_gong_ghost": {
+               "display_name": "Master's Gong (Rank 3)",
+               "description": "The Red Kiln's red gong, inspired by the Kobold Master Archer."
+            }
+         },
+         "decorative_generals_gong": {
+            "decorative_generals_gong_ghost": {
+               "display_name": "General's Golden Gong (Rank 4)",
+               "description": "The Red Kiln's purple gong, inspired by the Kobold Archer General."
+            }
+         },
+         "decorative_red_kiln_gong": {
+            "display_name": "Decorative Red Kiln Gong",
+            "description": "Inspired by the Gongs of Four Colors, a decoration that symbolizes mastery against the Red Kiln."
+         },
          "amberstone_lantern": {
             "display_name": "Amberstone Lantern"
          },
@@ -22006,13 +22483,25 @@
                "display_name": "Amberstone Small Frostfeast Present",
                "description": "Suspiciously magic. Bounces around every now and then..."
             },
+            "snow_lantern": {
+               "display_name": "Frostfeast Snow Lantern",
+               "description": "Very easy to make but very nice to look at!"
+            },
+            "light_string_horizontal_long": {
+               "display_name": "Frostfeast Long Horizontal Lights",
+               "description": "Nothing says 'Frostfeast' more than a string of lights. Can be extended with a beautiful curtain."
+            },
             "light_string_horizontal": {
                "display_name": "Frostfeast Horizontal Lights",
-               "description": "A string of joy powered by the Hearth!"
+               "description": "A string of joy powered by the Hearth! Can be extended with a beautiful curtain of lights."
             },
             "light_string_horizontal_short": {
                "display_name": "Frostfeast Short Horizontal Lights",
-               "description": "Perfect for decorating in the winter!"
+               "description": "Perfect for decorating in the winter! Can be extended with a beautiful curtain of lights."
+            },
+            "light_string_vertical_long": {
+               "display_name": "Frostfeast Long Vertical Lights",
+               "description": "A cascade of happiness for the end of the year!"
             },
             "light_string_vertical": {
                "display_name": "Frostfeast Vertical Lights",
@@ -22020,7 +22509,31 @@
             },
             "light_string_vertical_short": {
                "display_name": "Frostfeast Short Vertical Lights",
-               "description": "A cascade of happiness for the end of the year!"
+               "description": "Look at the lights, so pretty!"
+            },
+            "light_string_colors_horizontal_long": {
+               "display_name": "Frostfeast Long Horizontal Colorful Lights",
+               "description": "So many colors... Can be extended with a beautiful curtain of lights."
+            },
+            "light_string_colors_horizontal": {
+               "display_name": "Frostfeast Horizontal Colorful Lights",
+               "description": "It's magical! Can be extended with a beautiful curtain of lights."
+            },
+            "light_string_colors_horizontal_short": {
+               "display_name": "Frostfeast Short Horizontal Colorful Lights",
+               "description": "Ready for Frostfeast! Can be extended with a beautiful curtain of lights."
+            },
+            "light_string_colors_vertical_long": {
+               "display_name": "Frostfeast Long Vertical Colorful Lights",
+               "description": "Looks like a string of stars!"
+            },
+            "light_string_colors_vertical": {
+               "display_name": "Frostfeast Vertical Colorful Lights",
+               "description": "Everyone loves Frostfeast lights!"
+            },
+            "light_string_colors_vertical_short": {
+               "display_name": "Frostfeast Short Vertical Colorful Lights",
+               "description": "Small but pretty."
             },
             "mistletoe": {
                "display_name": "Frostfeast Mistletoe",
@@ -22045,6 +22558,38 @@
             "present_archeologist": {
                "display_name": "Sara Loft's Frostfeast Present",
                "description": "'The nicest loot you'll ever get outside of a tomb', says the tag."
+            },
+            "gingerbread_house_ascendancy": {
+               "display_name": "Frostfeast Gingerbread Forest House",
+               "description": "A tiny house made of gingerbread cookies and candy."
+            },
+            "gingerbread_house_rayyas_children": {
+               "display_name": "Frostfeast Gingerbread Desert House",
+               "description": "A tiny house made of gingerbread cookies and candy."
+            },
+            "gingerbread_house_northern_alliance": {
+               "display_name": "Frostfeast Gingerbread Northern House",
+               "description": "A tiny house made of gingerbread cookies and candy."
+            },
+            "giant_gingerbread": {
+               "display_name": "Frostfeast Giant Decorative Cookie",
+               "description": "Greeting everyone with Frostfeast flavor!"
+            },
+            "garland": {
+               "display_name": "Frostfeast Pine Garland",
+               "description": "Not recommended if you have cats..."
+            },
+            "garland_long": {
+               "display_name": "Long Frostfeast Pine Garland",
+               "description": "A long, festive and natural decoration for a holiday town!"
+            },
+            "garland_short": {
+               "display_name": "Short Frostfeast Pine Garland",
+               "description": "Very appreciated and natural Frostfeast decoration."
+            },
+            "garland_tiny": {
+               "display_name": "Tiny Frostfeast Pine Garland",
+               "description": "So tiny! Can be way longer than it is wide if extended. Crazy, right?"
             }
          },
          "hearth_wolf": {
@@ -22385,6 +22930,30 @@
             "literary_skull": {
                "display_name": "Candledark Literary Skull",
                "description": "To be, or not to be: that is the question. Or is it?"
+            },
+            "cobweb_ceil": {
+               "display_name": "Candledark Cobweb (Ceiling)",
+               "description": "These are always hard to reach when cleaning..."
+            },
+            "cobweb_floor": {
+               "display_name": "Candledark Cobweb (Floor)",
+               "description": "Sticky and strong, will slow anyone down!"
+            },
+            "cobweb_wall": {
+               "display_name": "Candledark Cobweb (Wall)",
+               "description": "Great for hanging portraits without having to punch a hole on the wall!"
+            },
+            "cocoon": {
+               "display_name": "Candledark Cocoon",
+               "description": "It's just a decoration, it's empty, right? Right?!"
+            },
+            "hanging_cocoon": {
+               "display_name": "Candledark Hanging Cocoon",
+               "description": "Keep your head up, you wouldn't want to stumble on those..."
+            },
+            "old_carpet": {
+               "display_name": "Candledark Olden Carpet",
+               "description": "Will connect to adjacent pieces to form a single, custom-shaped carpet!"
             }
          },
          "ember_ashes": {
@@ -24780,6 +25349,11 @@
                "display_name_desert": "Cactusling",
                "display_name_highlands": "Birchling"
             },
+            "giant_entling": {
+               "display_name_arctic": "Giant Groveling",
+               "display_name_desert": "Giant Cactusling",
+               "display_name_highlands": "Giant Birchling"
+            },
             "mila": {
                "display_name": "Spirit of Mila",
                "description": "Ready to defend others!"
@@ -25341,6 +25915,10 @@
          },
          "dy_steel_shield": {
             "display_name": "Dynasty Steel Arc Shield"
+         },
+         "pavise_shield": {
+            "display_name": "Archer Pavise",
+            "description": "Provides a little armor when worn on the back, but greater benefits when deployed."
          }
       },
       "weapons": {
@@ -25904,6 +26482,18 @@
          "potato_bullet": {
             "display_name": "Sweet Potato",
             "description": "Sweet revenge."
+         },
+         "bolt_fire": {
+            "display_name": "Incendiary Bolt",
+            "description": "Sparks a fire!"
+         },
+         "bolt_heavy": {
+            "display_name": "Heavy Bolt",
+            "description": "Extra 'Oomph'"
+         },
+         "thrown_net": {
+            "display_name": "Thrown Net",
+            "description": "It's good when your net is fast!"
          }
       },
       "gizmos": {
@@ -25913,6 +26503,12 @@
             "empty": {
                "display_name": "Empty Bolt Turret",
                "description": "This turret has gone dry! Requires reloading with Common Turret Ammunition."
+            },
+            "heavy": {
+               "display_name": "Bolt Turret (Heavy)"
+            },
+            "fire": {
+               "display_name": "Bolt Turret (Incendiary)"
             }
          },
          "turnip_shooter": {
@@ -26166,6 +26762,30 @@
             "pumpkin_roots": {
                "display_name": "Candledark Pumpkin Roots",
                "description": "Kill it with fire! Oh, wait... Nevermind, there's someone in there!"
+            },
+            "holding_net": {
+               "display_name": "Holding Net",
+               "description": "Enemies might try destroying it to release their friend!"
+            },
+            "pavise_shield": {
+               "display_name": "Archer Pavise (Deployed)",
+               "description": "Providing cover, offensive and defensive benefits to the user behind it."
+            }
+         },
+         "hammer_trap": {
+            "display_name": "Hammer Trap",
+            "description": "A comically oversized mallet that deals a tiny amount of damage."
+         },
+         "wooden_cistern": {
+            "display_name": "Wooden Cistern",
+            "description": "Will slowly fill up with water when under rainfall. Toggle it to release the water!"
+         },
+         "net_thrower": {
+            "display_name": "Net Thrower",
+            "description": "Flings carefully prepared nets to immobilize your enemies!",
+            "empty": {
+               "display_name": "Net Thrower (Empty)",
+               "description": "This turret has gone dry! Requires reloading with a Box of Throwable Nets!"
             }
          }
       },
@@ -26915,6 +27535,12 @@
             "iconic_description": "Place it so it can be harvested for 12 strong, hardy bones.",
             "display_name": "Strong Bone Material Pile",
             "description": "Harvest it for 12 pieces of hard, strong bone material!"
+         },
+         "candledark": {
+            "old_chest": {
+               "display_name": "Candledark Olden Chest",
+               "description": "Perfect for holding family heirlooms in forgotten cellars!"
+            }
          }
       },
       "tools": {
@@ -28077,6 +28703,10 @@
                "frostfather": {
                   "display_name": "The Frostfather",
                   "description": "An incredibly generous soul"
+               },
+               "merchant": {
+                  "display_name": "Porridge the Grumpy",
+                  "description": "Here on behalf of Tomtee and the Frostfather's Workshop."
                }
             }
          },
@@ -28105,7 +28735,7 @@
                },
                "knight_hadrian": {
                   "display_name": "Knight Hadrian",
-                  "description": "Famous professor of the best Chilvary School this side of the Pal'mum."
+                  "description": "Famous professor of the best Chilvary School this side of the Pal'Mum."
                },
                "artificer_wrynn": {
                   "display_name": "Artificer Wrynn",
@@ -28154,7 +28784,7 @@
                   "description": "The first Amberstone merchant to travel to the surface in decades!"
                },
                "thali_pandora": {
-                  "description": "Accomplished blacksmith of the Pal'mum, here to sell her crafts.",
+                  "description": "Accomplished blacksmith of the Pal'Mum, here to sell her crafts.",
                   "display_name": "Thali Pandora"
                },
                "farmer_gem": {
@@ -28196,6 +28826,10 @@
                "cultist": {
                   "display_name": "Friendly Cultist",
                   "description": "Appreciates lighting candles in inconvenient times and unusual places."
+               },
+               "merchant": {
+                  "display_name": "Cornelius the Stalk Broker",
+                  "description": "Outstanding on the field of growing markets."
                }
             },
             "female": {
@@ -28396,6 +29030,30 @@
             "summon_stone_patch_surface_ghost": {
                "description": "Grows into a patch of surface terrain, such as grass or sand, up to 13x13 blocks in size."
             }
+         },
+         "summon_stone_oak_trunk": {
+            "display_name": "Oak Trunk Stone",
+            "description": "Summons a fallen oak log that can be chopped for wood or carved into furniture."
+         },
+         "summon_stone_birch_trunk": {
+            "display_name": "Birch Trunk Stone",
+            "description": "Summons a fallen birch log that can be chopped for wood or carved into furniture."
+         },
+         "summon_stone_highland_pine_trunk": {
+            "display_name": "Highland Pine Stone",
+            "description": "Summons a fallen highland pine log that can be chopped for wood or carved into furniture."
+         },
+         "summon_stone_juniper_trunk": {
+            "display_name": "Juniper Trunk Stone",
+            "description": "Summons a fallen juniper log that can be chopped for wood or carved into furniture."
+         },
+         "summon_stone_pine_trunk": {
+            "display_name": "Pine Trunk Stone",
+            "description": "Summons a fallen pine log that can be chopped for wood or carved into furniture."
+         },
+         "summon_stone_old_wood_trunk": {
+            "display_name": "Old Trunk Stone",
+            "description": "Summons a fallen old wood log that can be chopped for wood."
          }
       },
       "humans": {
@@ -30734,7 +31392,8 @@
             "bone_resource_edible_name": "Any Animal Bone",
             "sweetener_other_fluid_resource_name": "Any Honey or Syrup",
             "teapots_resource_name": "Any Teapot",
-            "coffee_pots_resource_name": "Any Coffee Pot"
+            "coffee_pots_resource_name": "Any Coffee Pot",
+            "gear_refined_name": "Any Gear"
          }
       }
    },

@@ -1,0 +1,40 @@
+{
+   "unit_info": {
+      "display_name": "i18n(stonehearth_ace:entities.monsters.forest.giant_entling.display_name_highlands)"
+   },
+   "mixintypes": {
+		"loot_drops": "override"
+   },
+   "loot_drops": {
+      "entries": {
+         "default": {
+            "num_rolls": {
+               "min": 1,
+               "max": 2
+            },
+            "items": {
+               "log": {
+                  "uri": "stonehearth_ace:resources:wood:birch_log",
+                  "weight": 3
+               },
+               "ore": {
+                  "uri": "stonehearth:resources:iron:ore",
+                  "weight": 1
+               },
+               "ore2": {
+                  "uri": "stonehearth:resources:silver:ore",
+                  "weight": 1
+               },
+               "ore3": {
+                  "uri": "stonehearth:resources:gold:ore",
+                  "weight": 1
+               },
+               "ore4": {
+                  "uri": "stonehearth:resources:tin:ore",
+                  "weight": 1
+               }
+            }
+         }
+      }
+   }
+}

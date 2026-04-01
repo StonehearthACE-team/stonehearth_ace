@@ -1,0 +1,12 @@
+{
+   "type": "command",
+   "name": "shield_pavise_deploy",
+   "display_name": "i18n(stonehearth_ace:data.commands.shield_pavise.deploy.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.shield_pavise.deploy.description)",
+   "icon": "file(shield_pavise_deploy.png)",
+   "action": "call",
+   "function": "stonehearth_ace:shield_pavise_toggle",
+   "args": [
+      "deploy"
+   ]
+}

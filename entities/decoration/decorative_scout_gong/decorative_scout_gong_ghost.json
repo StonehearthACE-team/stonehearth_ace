@@ -1,6 +1,21 @@
 {
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(decorative_scout_gong.qb)"
+            ]
+         }
+      }
+   },
    "entity_data": {
       "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.decoration.decorative_scout_gong.decorative_scout_gong_ghost.display_name)",
+         "description": "i18n(stonehearth_ace:entities.decoration.decorative_scout_gong.decorative_scout_gong_ghost.description)",
+         "icon": "file(decorative_scout_gong.png)",
          "category": "quest",
          "material_tags": [
             "stockpile_quest_items"

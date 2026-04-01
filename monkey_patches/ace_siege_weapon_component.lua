@@ -14,6 +14,12 @@ function AceSiegeWeaponComponent:activate()
                self:_on_interval(amount)
             end)
    end
+
+   self._target_exclusion_buffs = self._json.target_exclusion_buffs or nil
+end
+
+function AceSiegeWeaponComponent:get_target_exclusion_buffs()
+   return self._target_exclusion_buffs
 end
 
 function AceSiegeWeaponComponent:_on_interval(amount)

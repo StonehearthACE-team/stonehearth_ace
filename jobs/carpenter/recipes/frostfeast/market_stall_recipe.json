@@ -1,0 +1,39 @@
+{
+   "type": "recipe",
+   "effort": 35,
+   "work_units": 6,
+   "recipe_name": "i18n(stonehearth_ace:jobs.carpenter.recipes.frostfeast.market_stall_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.carpenter.recipes.frostfeast.market_stall_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.carpenter.recipes.frostfeast.market_stall_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/furniture/market_stall/exclusive/frostfeast_market_stall/frostfeast_market_stall.png",
+   "workshop": "stonehearth:carpenter:toolbench",
+   "manual_unlock": true,
+   "level_requirement": 5,
+   "ingredients": [
+      {
+         "material": "wood resource",
+         "count": 2
+      },
+      {
+         "material": "herb white resource",
+         "count": 2
+      },
+		{
+			"uri": "stonehearth:trees:pine:sapling",
+			"count": 1
+		},
+      {
+         "material": "cloth fine resource",
+         "count": 2
+      },
+		{
+         "uri": "stonehearth:refined:gold_flakes",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:furniture:market_stall:frostfeast"
+      }
+   ]
+}

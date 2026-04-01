@@ -1,0 +1,42 @@
+{
+   "type": "entity",
+   "components": {
+      "stonehearth:equipment_piece": {
+         "slot": "mainhand",
+         "render_type": "none",
+         "military_score": 32
+      }
+   },
+   "entity_data": {
+      "stonehearth:buffs": {
+         "inflictable_debuffs": {
+            "infection": {
+               "uri": "stonehearth_ace:buffs:fire:on_fire:minor",
+               "chance": 1
+            },
+            "fire": {
+               "uri": "stonehearth_ace:buffs:fire:on_fire",
+               "chance": 0.1
+            }
+         }
+      },
+      "stonehearth:combat:weapon_data": {
+         "base_damage": 40,
+         "base_ranged_damage": 40,
+         "range": 40,
+         "projectile_speed": 35,
+         "projectile_uri": "stonehearth_ace:weapons:bolt_fire",
+         "projectile_start_offset": { "x": 0, "y": 2.1, "z": 0 },
+         "projectile_end_offset": { "x": 0, "y": 2.1, "z": 0 }
+      },
+      "stonehearth:combat:ranged_attacks": [
+         {
+            "name": "fire",
+            "effect": "fire",
+            "active_frame": 31,
+            "cooldown": 100,
+            "priority": 0
+         }
+      ]
+   }
+}

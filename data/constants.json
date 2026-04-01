@@ -130,6 +130,9 @@
          "SLOT_TO_BONE_MAP": {
             "accessory": "pelvis",
             "backpack": "torso",
+            "quiver_arrows": "torso",
+            "quiver_bolts": "torso",
+            "pavise_shield": "torso",
             "beekeeping_hat": "head",
             "cape": "back",
             "combat_default_skill": "root",
@@ -321,7 +324,8 @@
          "TEND_SOFT_COOLDOWN": "36h"
       },
       "hydrology": {
-         "MIN_INFINITE_WATER_HEIGHT": 0.6
+         "MIN_INFINITE_WATER_HEIGHT": 0.6,
+         "RAIN_WETTING_VOLUME": 0.01
       },
       "immigration_requirements": {
          "__comment": "Net_worth is default value (here just for reference; food has only the * 1.5 added by ACE as a 'general multiplier' of difficulty",

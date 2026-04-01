@@ -1,0 +1,30 @@
+{
+   "type": "entity",
+   "mixins": "file(summon_stone_juniper_trunk_ghost.json)",
+   "components": {
+      "stonehearth:evolve": {},
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(summon_stone_juniper_trunk_iconic.json)",
+         "ghost_form": "file(summon_stone_juniper_trunk_ghost.json)",
+         "placeable_on_ground": true
+      }
+   },
+   "entity_data": {
+      "stonehearth:evolve_data": {
+         "next_stage": "stonehearth_ace:trees:juniper:trunk",
+         "evolve_time": "0m"
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 11,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:placement": {
+         "effect": "cast_geomancer",
+         "tag": "summon_stone"
+      }
+   }
+}

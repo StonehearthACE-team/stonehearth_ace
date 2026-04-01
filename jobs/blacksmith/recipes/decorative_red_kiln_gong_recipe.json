@@ -1,0 +1,27 @@
+{
+   "type": "recipe",
+   "effort": 60,
+   "work_units": 15,
+   "workshop": "stonehearth_ace:blacksmith:workbench_advanced",
+   "recipe_name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.decorative_red_kiln_gong_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.blacksmith.recipes.decorative_red_kiln_gong_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.blacksmith.recipes.decorative_red_kiln_gong_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/decorative_red_kiln_gong/decorative_red_kiln_gong.png",
+   "manual_unlock": true,
+   "level_requirement": 6,
+   "ingredients": [
+      {
+         "material": "wood resource",
+         "count": 2
+      },
+      {
+         "uri": "stonehearth:refined:gold_ingot",
+         "count": 4
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:decorative_red_kiln_gong"
+      }
+   ]
+}

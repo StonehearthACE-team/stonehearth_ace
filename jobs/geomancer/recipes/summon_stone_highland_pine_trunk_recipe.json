@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 16,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.geomancer.recipes.summon_stone_highland_pine_trunk_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.geomancer.recipes.summon_stone_highland_pine_trunk_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.geomancer.recipes.summon_stone_highland_pine_trunk_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/landmark/summon_stone_highland_pine_trunk/summon_stone_highland_pine_trunk.png",
+   "workshop": "stonehearth:geomancer:workbench",
+   "level_requirement": 4,
+   "ingredients": [
+		{
+			"uri": "stonehearth_ace:resources:wood:highland_pine_log",
+			"count": 4
+		},
+	   {
+         "material": "earth_essence resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:landmark:summon_stone:minor:highland_pine:trunk"
+      }
+   ]
+}

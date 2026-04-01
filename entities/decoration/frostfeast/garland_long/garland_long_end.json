@@ -1,0 +1,42 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(garland_long_end.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.1009
+      },
+      "mob": {
+         "model_origin": { "x": -2, "y": 1, "z": 0.15 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "allow_vertical_adjacent": true
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.decoration.frostfeast.garland_long.display_name)",
+         "description": "i18n(stonehearth_ace:entities.decoration.frostfeast.garland_long.description)"
+      },
+      "navgrid": {
+         "ignore_gravity": true,
+         "has_physics": false
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 0,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 12
+      }
+   }
+}

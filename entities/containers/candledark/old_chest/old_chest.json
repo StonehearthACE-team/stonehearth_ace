@@ -1,0 +1,52 @@
+{
+   "type": "entity",
+   "mixins": "file(old_chest_ghost.json)",
+   "components": {
+      "stonehearth:storage": {
+         "type": "crate",
+         "capacity": 64
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(old_chest_iconic.json)",
+         "ghost_form": "file(old_chest_ghost.json)",
+         "placeable_on_ground": true
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 2, "z": 1 }
+            }
+         ],
+         "adjacency_flags": [
+            "front",
+            "left",
+            "right"
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 2, "z": 1 }
+            }
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 19,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 16
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

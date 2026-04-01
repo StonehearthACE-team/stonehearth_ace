@@ -1,0 +1,51 @@
+{
+   "type": "entity",
+   "components": {
+      "render_info": {
+         "scale": 0.12
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(pavise_shield.qb)"
+            ]
+         }
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -0.5, "y": 0, "z": -0.5 },
+               "max": { "x": 1.5, "y": 3, "z": 1.5 }
+            }
+         ]
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "stonehearth:loot_drops": {
+         "entries": {
+            "default": {
+               "num_rolls": {
+                  "min": 1,
+                  "max": 1
+               },
+               "items": {
+                  "shield": {
+                     "uri": "stonehearth_ace:armor:pavise_shield"
+                  }
+               }
+            }
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.gizmos.traps.pavise_shield.display_name)",
+         "description": "i18n(stonehearth_ace:entities.gizmos.traps.pavise_shield.description)"
+      },
+      "stonehearth:appeal": {
+         "appeal": 3
+      }
+   }
+}

@@ -1,0 +1,49 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth_ace:mixins:portals:double_door_frame:ghost",
+      "stonehearth:mixins:placed_object"
+   ],
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(double_door_frame.qb)"
+            ]
+         }
+      },
+      "stonehearth:fixture": {
+         "bounds": {
+            "max": { "y": 6 }
+         }
+      },
+      "stonehearth:portal": {
+         "mixintypes": {
+            "cutter": "override"
+         },
+         "cutter": [
+            {
+               "min": { "x": -2, "y": 0 },
+               "max": { "x": 2, "y": 6 }
+            }
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.construction.candledark.double_door_frame.display_name)",
+         "description": "i18n(stonehearth_ace:entities.construction.candledark.double_door_frame.description)",
+         "icon": "file(double_door_frame.png)",
+         "category": "door",
+         "material_tags": [
+            "stone",
+            "portal",
+            "crafted",
+            "door",
+            "olden",
+            "frame",
+            "stockpile_portal"
+         ]
+      }
+   }
+}

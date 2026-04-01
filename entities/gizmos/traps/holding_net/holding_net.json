@@ -1,0 +1,49 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:destructable_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(holding_net.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.08
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -0.5, "y": 0, "z": -0.5 },
+               "max": { "x": 1.5, "y": 3, "z": 1.5 }
+            }
+         ]
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "stonehearth:attributes": {
+         "max_health": {
+            "value": 250
+         },
+         "menace": {
+            "type": "basic",
+            "value": 40
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:on_destroy": {
+         "effect": "stonehearth:effects:poof_effect"
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.gizmos.traps.holding_net.display_name)",
+         "description": "i18n(stonehearth_ace:entities.gizmos.traps.holding_net.description)"
+      },
+      "stonehearth:appeal": {
+         "appeal": 0
+      }
+   }
+}

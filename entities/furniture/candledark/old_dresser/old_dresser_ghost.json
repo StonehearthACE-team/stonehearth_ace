@@ -1,0 +1,38 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(old_dresser.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": -0.6 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "render_info": {
+         "scale": 0.11
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.furniture.candledark.old_dresser.display_name)",
+         "description": "i18n(stonehearth_ace:entities.furniture.candledark.old_dresser.description)",
+         "icon": "file(old_dresser.png)",
+         "category": "furniture",
+         "material_tags": [
+            "wood",
+            "furniture",
+            "olden",
+            "fancy",
+            "festival",
+            "candledark",
+            "dresser",
+            "crafted",
+            "stockpile_furniture"
+         ]
+      }
+   }
+}

@@ -1,0 +1,71 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth_ace:mixins:market_stall:tier_3",
+      "file(frostfeast_market_stall_ghost.json)"
+   ],
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(frostfeast_market_stall_iconic.json)",
+         "ghost_form": "file(frostfeast_market_stall_ghost.json)",
+         "placeable_on_ground": true
+      },
+      "stonehearth_ace:market_stall": {
+         "mixintypes": {
+            "tier": "remove",
+            "stall_models": "override"
+         },
+         "stall_models": {
+            "default": {
+               "model_data": [
+                  {
+                     "model": "file(default_shop.qb)",
+                     "matrix": "Lights",
+                     "scale": 0.1001,
+                     "offset": { "x": 35, "y": 0, "z": 31 },
+                     "material": "materials/glowy_voxel.material.json"
+                  },
+                  {
+                     "model": "file(default_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1001,
+                     "offset": { "x": 35, "y": 0, "z": 31 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsMidRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsBackRow4"
+                  },
+                  {
+                     "bone_name": "goodsBackRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow6"
+                  }
+               ]
+            }
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 74,
+         "rarity": "rare"
+      },
+      "stonehearth:appeal": {
+         "appeal": 20
+      }
+   }
+}

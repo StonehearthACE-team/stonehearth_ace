@@ -153,6 +153,13 @@ function AceEquipmentPieceComponent:_remove_buffs()
          radiant.entities.remove_buff(self._sv.owner, buff, false);
       end
    end
+
+   -- Remove buffs that are not directly added by this item (injected) but have the item as a requirement for their persistence.
+   if self._json.indirect_buffs then
+      for _, buff in ipairs(self._json.indirect_buffs) do
+         radiant.entities.remove_buff(self._sv.owner, buff, false);
+      end
+   end
 end
 
 return AceEquipmentPieceComponent

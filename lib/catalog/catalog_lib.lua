@@ -351,7 +351,8 @@ function catalog_lib._add_catalog_description(catalog, full_alias, json, base_da
          if json.components['stonehearth:attributes'].max_health then
             catalog_data.max_health = json.components['stonehearth:attributes'].max_health.value
          end
-         if json.components['stonehearth:attributes'].menace and json.components['stonehearth:siege_weapon'] then
+         if json.components['stonehearth:attributes'].menace and json.components['stonehearth:siege_weapon'] or
+            json.components['stonehearth:attributes'].menace and entity_data['stonehearth:siege_object'] then
             catalog_data.menace = json.components['stonehearth:attributes'].menace.value
             if json.components['sensor_list'] and json.components['sensor_list'].sensors and json.components['sensor_list'].sensors.sight then
                catalog_data.sight_range = json.components['sensor_list'].sensors.sight.radius

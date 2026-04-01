@@ -1,0 +1,37 @@
+{
+   "type": "entity",
+   "components": {
+      "stonehearth:equipment_piece": {
+         "slot": "mainhand",
+         "render_type": "none"
+      }
+   },
+   "entity_data": {
+      "stonehearth:buffs": {
+         "inflictable_debuffs": {
+            "trap": {
+               "uri": "stonehearth_ace:buffs:holding_net:trapped",
+               "chance": 1
+            }
+         }
+      },
+      "stonehearth:combat:weapon_data": {
+         "base_damage": 5,
+         "base_ranged_damage": 5,
+         "range": 25,
+         "projectile_speed": 32,
+         "projectile_uri": "stonehearth_ace:weapons:thrown_net",
+         "projectile_start_offset": { "x": 0, "y": 1.4, "z": 0 },
+         "projectile_end_offset": { "x": 0, "y": 1.4, "z": 0 }
+      },
+      "stonehearth:combat:ranged_attacks": [
+         {
+            "name": "fire_throwable_net",
+            "effect": "fire",
+            "active_frame": 9,
+            "cooldown": 600,
+            "priority": 0
+         }
+      ]
+   }
+}

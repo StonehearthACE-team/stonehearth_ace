@@ -1,0 +1,43 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(cocoon.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.decoration.candledark.cocoon.display_name)",
+         "description": "i18n(stonehearth_ace:entities.decoration.candledark.cocoon.description)",
+         "icon": "file(cocoon.png)",
+         "category": "decoration",
+         "material_tags": [
+            "decoration",
+            "festival",
+            "candledark",
+            "crafted",
+            "cocoon",
+            "stockpile_decoration"
+         ]
+      },
+      "stonehearth_ace:create_entity": {
+         "scale_range": {
+            "min": 0.9,
+            "max": 1.2
+         }
+      }
+   }
+}

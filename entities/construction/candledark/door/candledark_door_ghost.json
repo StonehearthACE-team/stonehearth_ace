@@ -1,0 +1,52 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth:mixins:portals:single_door:ghost",
+      "stonehearth:mixins:placed_object"
+   ],
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(candledark_door.qb)"
+                  ]
+               }
+            ]
+         },
+         "model1": {
+            "models": [
+               "file(candledark_door.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0.05, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.construction.candledark.door.display_name)",
+         "description": "i18n(stonehearth_ace:entities.construction.candledark.door.description)",
+         "icon": "file(candledark_door.png)",
+         "category": "door",
+         "material_tags": [
+            "stone",
+            "candledark",
+            "festival",
+            "olden",
+            "fancy",
+            "portal",
+            "crafted",
+            "door",
+            "stockpile_portal"
+         ]
+      },
+      "stonehearth_ace:create_entity": {
+         "assign_random_model_variant": true
+      }
+   }
+}

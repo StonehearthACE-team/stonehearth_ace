@@ -1,0 +1,27 @@
+{
+   "type": "recipe",
+   "effort": 20,
+   "work_units": 20,
+   "recipe_name": "i18n(stonehearth_ace:jobs.carpenter.recipes.candledark.old_dresser_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.carpenter.recipes.candledark.old_dresser_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.carpenter.recipes.candledark.old_dresser_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/furniture/candledark/old_dresser/old_dresser.png",
+   "workshop": "stonehearth:carpenter:toolbench",
+   "manual_unlock": true,
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "material": "wood resource",
+         "count": 4
+      },
+      {
+         "uri": "stonehearth_ace:refined:metal_bits:soft",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:furniture:candledark:old_dresser"
+      }
+   ]
+}

@@ -1,0 +1,67 @@
+{
+   "type": "entity",
+   "mixins": "file(garland_tiny_ghost.json)",
+   "components": {
+      "model_variants": {
+         "extended": {
+            "models": [
+               "file(garland_tiny_2.qb)"
+            ]
+         }
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": 0 },
+               "max": { "x": 2, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(garland_tiny_iconic.json)",
+         "ghost_form": "file(garland_tiny_ghost.json)",
+         "placeable_on_walls": true
+      },
+      "stonehearth_ace:extensible_object": {
+         "extend_command": "stonehearth_ace:commands:extensible_object:extend",
+         "remove_command": "stonehearth_ace:commands:extensible_object:remove",
+         "extension_entity": "stonehearth_ace:extensible_object:null_extension",
+         "end_entity": "stonehearth_ace:decoration:frostfeast:garland:tiny:end",
+         "max_length": 5,
+         "multi_matrix_mode": "random",
+         "matrix": [
+            "garland",
+            "garlandA",
+            "garlandB"
+         ],
+         "extended_model_variant": true,
+         "rotations": [
+            {
+               "dimension": "y",
+               "direction": { "x": 0, "y": -1, "z": 0 },
+               "model": "file(garland_tiny_extension.qb)",
+               "offset": { "x": 10, "y": 10, "z": 5 },
+               "origin": { "x": 0, "y": 0, "z": 0 },
+               "terminus": { "x": 2, "y": 0, "z": 1 },
+               "scale": 0.101
+            }
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 48,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 30
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

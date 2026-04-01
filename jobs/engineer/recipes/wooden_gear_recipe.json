@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 7,
+   "work_units": 12,
+   "recipe_name": "i18n(stonehearth_ace:jobs.engineer.recipes.wooden_gear_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.engineer.recipes.wooden_gear_recipe.description)",
+   "flavor":  "i18n(stonehearth_ace:jobs.engineer.recipes.wooden_gear_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/refined/wooden_gear/wooden_gear.png",
+   "workshop": "stonehearth_ace:engineer:workbench_basic",
+   "level_requirement": 1,
+   "ingredients": [
+      {
+        "material": "wood resource",
+        "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:refined:wooden_gear"
+      }
+   ]
+}

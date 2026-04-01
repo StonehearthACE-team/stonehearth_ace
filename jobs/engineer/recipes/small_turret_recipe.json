@@ -4,8 +4,10 @@
    "description": "i18n(stonehearth_ace:jobs.engineer.recipes.small_turret_recipe.description)",
    "flavor": "i18n(stonehearth_ace:jobs.engineer.recipes.small_turret_recipe.flavor)",
    "portrait": "/stonehearth_ace/entities/gizmos/small_turret/small_turret.png",
+   "level_requirement": 4,
    "mixintypes": {
-      "ingredients": "override"
+      "ingredients": "override",
+      "produces": "override"
    },
    "ingredients": [
       {
@@ -23,10 +25,11 @@
       {
          "uri": "stonehearth:refined:iron_gear",
          "count": 2
-      },    
+      }
+   ],
+   "produces": [
       {
-         "uri": "stonehearth_ace:refined:ammunition:common",
-         "count": 1
+         "item": "stonehearth_ace:gizmos:small_turret:empty"
       }
    ]
 }

@@ -1,0 +1,15 @@
+{
+   "type": "command",
+   "name": "reload_ammunition_fire",
+   "group": "stonehearth_ace:transform",
+   "display_name": "i18n(stonehearth_ace:data.commands.transform.reload_ammunition_fire.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.transform.reload_ammunition_fire.description)",
+   "default_enabled": true,
+   "ordinal": 98,
+   "icon": "file(ammunition_fire.png)",
+   "action": "call",
+   "function": "stonehearth_ace:transform_command",
+   "args": [
+      "fire"
+   ]
+}

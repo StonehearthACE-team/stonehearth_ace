@@ -260,13 +260,15 @@ App.StonehearthUnitFrameView = App.View.extend({
       this.$('#nametag').click(function() {
          if ($(this).hasClass('clickable')) {
             var isPet = self.get('model.stonehearth:pet');
+            var uri = self.get('model.uri');
+            var catalogData = App.catalog.getCatalogData(uri);
             if (isPet) {
                App.stonehearthClient.showPetCharacterSheet(self.get('uri'));
             }
             else {
                var name = self.get('custom_name');
                if (!name || name == '') {
-                  name = i18n.t(self.get('display_name'));
+                  name = i18n.t(catalogData.display_name) + '*';
                }
                self.$('#nameInput').val(name)
                   .width(self.$('#nametag').outerWidth() - 16)  // 16 is the total padding and border of #nameInput
@@ -570,7 +572,7 @@ App.StonehearthUnitFrameView = App.View.extend({
       var name_entity = self.get('name_entity');
       var unit_info = self.get(name_entity + '.stonehearth:unit_info');
       
-      var canChangeName = playerCheck && unit_info && (unit_info.custom_name || unit_info.allow_customization) && !unit_info.locked;
+      var canChangeName = playerCheck && unit_info && (unit_info.custom_name || unit_info.custom_name == '' || unit_info.allow_customization) && !unit_info.locked;
       self.set('canChangeName', canChangeName);
       self.notifyPropertyChange('canChangeName');
 

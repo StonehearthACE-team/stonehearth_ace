@@ -1,0 +1,27 @@
+{
+   "type": "recipe",
+   "effort": 27,
+   "work_units": 20,
+   "recipe_name": "i18n(stonehearth_ace:jobs.carpenter.recipes.candledark.old_chest_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.carpenter.recipes.candledark.old_chest_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.carpenter.recipes.candledark.old_chest_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/containers/candledark/old_chest/old_chest.png",
+   "workshop": "stonehearth:carpenter:toolbench",
+   "manual_unlock": true,
+   "level_requirement": 5,
+   "ingredients": [
+      {
+         "material": "wood resource",
+         "count": 4
+      },
+      {
+         "uri": "stonehearth_ace:refined:metal_bits:hard",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:containers:candledark:old_chest"
+      }
+   ]
+}

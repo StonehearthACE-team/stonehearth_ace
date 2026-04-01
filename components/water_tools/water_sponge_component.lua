@@ -19,6 +19,7 @@ function WaterSpongeComponent:initialize()
    self._output_rate = self._json.output_rate or 0
    self._create_water = self._json.create_water
    self._destroy_water = self._json.destroy_water
+   self._rainfall_based = self._json.rainfall_based
    -- if the sponge is in absorb mode, disable once it's at full capacity; if in release mode, disable once it's empty
    self._auto_disable_on_full_or_empty = self._json.auto_disable_on_full_or_empty
    self._destroy_entity_when_empty = self._json.destroy_entity_when_empty
@@ -78,6 +79,16 @@ function WaterSpongeComponent:post_activate()
          self:set_output_location(nil, nil)
       end)
 
+   if self._rainfall_based then
+      self._weather_listener = radiant.events.listen(radiant, 'stonehearth_ace:weather_state_started', function()
+         self:_update_weather()
+      end)
+   end
+
+   if self._use_toggle_enabled then
+      self._enabled_listener = radiant.events.listen(self._entity, 'stonehearth_ace:enabled_changed', self, self._on_enabled_changed)
+   end
+
    self:_startup()
 end
 
@@ -93,6 +104,14 @@ function WaterSpongeComponent:destroy()
    if self._extensions_cleared_listener then
       self._extensions_cleared_listener:destroy()
       self._extensions_cleared_listener = nil
+   end
+   if self._weather_listener then
+      self._weather_listener:destroy()
+      self._weather_listener = nil
+   end
+   if self._enabled_listener then
+      self._enabled_listener:destroy()
+      self._enabled_listener = nil
    end
    self:_stop_effects()
    self:_destroy_output_waterfall_channel()
@@ -153,6 +172,10 @@ function WaterSpongeComponent:_startup()
 	if not location then
 		return
 	end
+
+   if self._rainfall_based then
+      self:_update_weather()
+   end
 
    stonehearth.hydrology:unregister_water_processor(self._entity:get_id(), self)
    stonehearth.hydrology:register_water_processor(self._entity:get_id(), self, location.y)
@@ -224,6 +247,38 @@ function WaterSpongeComponent:set_output_location(location, origin)
    end
 end
 
+function WaterSpongeComponent:_update_weather()
+   local weather = stonehearth.weather:get_current_weather()
+   local humidity = weather:get_humidity()
+   local is_rain = weather:is_rain()
+   local new_rate = is_rain and self._json.output_rate * humidity or 0
+   local location = radiant.entities.get_world_grid_location(self._entity)
+
+   -- can't fill up if not getting any rain... right?
+   if location then   
+      location.y = location.y + (self._json.height_offset or 0)
+      if stonehearth.terrain:is_sheltered(location) then
+         new_rate = 0
+      end
+   end
+   
+   self:set_output_rate(new_rate)
+   self:set_enabled(is_rain, is_rain)
+end
+
+function WaterSpongeComponent:_on_enabled_changed(enabled)
+   -- If rainfall based, water creation is already handled by the fact it is raining or not, and the toggle is probably used by the water gate component to control the tap/exit point. We want it to work in reverse then, by disabling the water creation when the tap is open and reactivating it (or not) when it is closed
+   if self._rainfall_based then
+      if self:is_flow_enabled() then
+         self:set_enabled(false, false)
+      else
+         self:_update_weather()
+      end
+   else
+      self:set_enabled(enabled, enabled)
+   end
+end
+
 function WaterSpongeComponent:set_enabled(input, output)
    self._sv.input_enabled = input
    self._sv.output_enabled = output
@@ -288,7 +343,7 @@ function WaterSpongeComponent:on_tick_water_processor()
                output_rate = 0
             end
 
-            if not self._create_water then
+            if not self._create_water and not self._rainfall_based then
                if self._container then
                   -- if we're not creating water, it has to come from our container (which can get fed by input or by others' output)
                   -- update the output_rate based on how much we actually have in the container

@@ -1,0 +1,15 @@
+{
+   "type": "command",
+   "name": "reload_net_thrower",
+   "group": "stonehearth_ace:transform",
+   "display_name": "i18n(stonehearth_ace:data.commands.transform.reload_net_thrower.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.transform.reload_net_thrower.description)",
+   "default_enabled": true,
+   "ordinal": 97,
+   "icon": "file(net_thrower.png)",
+   "action": "call",
+   "function": "stonehearth_ace:transform_command",
+   "args": [
+      "net_thrower"
+   ]
+}

@@ -1,0 +1,21 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.devoted.devoted_gilded_buff.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.devoted.devoted_gilded_buff.description)",
+   "icon": "file(devoted_gilded_buff.png)",
+   "modifiers": {
+      "speed": {
+         "add": 25
+      },
+      "sleepiness": {
+         "multiply": 0.9
+      },
+      "social_loss_amount": {
+         "multiply": 0.75
+      }
+   },
+   "disallowed_buffs": [
+      "stonehearth:buffs:devoted"
+   ]
+}

@@ -98,7 +98,7 @@ function ModelsRenderer:_create_model_nodes(options)
    local model = options.model
    local matrix = options.matrix or 'background'
    local multi_matrix_mode = options.multi_matrix_mode or 'all'
-   local material = options.material or 'materials/voxel.material.json'
+   local material = options.material
 
    if options.origin and options.direction and options.length then
       if options.length > 0 then
@@ -146,7 +146,9 @@ function ModelsRenderer:_create_single_node(parent_node, location, rotation, off
    local node = _radiant.client.create_qubicle_matrix_node(parent_node, model, matrix, offset)
    if node then
       node:set_transform(location.x, location.y, location.z, 0, rotation, 0, scale, scale, scale)
-      node:set_material(material)
+      if material then
+         node:set_material(material)
+      end
       return node
    else
       --log:error('nil result from create_qubicle_matrix_node "%s" with rotation %s', model, rotation)

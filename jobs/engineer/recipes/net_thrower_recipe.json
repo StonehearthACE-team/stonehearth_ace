@@ -1,0 +1,30 @@
+{
+   "type": "recipe",
+   "effort": 45,
+   "work_units": 12,
+   "recipe_name": "i18n(stonehearth_ace:jobs.engineer.recipes.net_thrower_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.engineer.recipes.net_thrower_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.engineer.recipes.net_thrower_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/gizmos/net_thrower/net_thrower.png",
+   "workshop": "stonehearth_ace:engineer:workbench_basic",
+   "level_requirement": 1,
+   "ingredients": [
+      {
+         "material": "wood resource",
+         "count": 3
+      },
+      {
+         "uri": "stonehearth_ace:refined:wooden_gear",
+         "count": 2
+      },
+      {
+         "uri": "stonehearth_ace:refined:ammunition:nets",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:gizmos:net_thrower"
+      }
+   ]
+}

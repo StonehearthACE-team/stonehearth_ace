@@ -4,13 +4,16 @@
          "value_in_gold": 4
       },
       "stonehearth:catalog": {
+         "description": "i18n(stonehearth_ace:entities.refined.bronze_gear.description)",
          "icon": "/stonehearth_ace/entities/refined/bronze_gear/bronze_gear.png",
+         "mixintypes": {
+            "material_tags": "override"
+         },
          "material_tags": [
             "stockpile_gizmos",
             "bronze",
             "gear",
-            "refined",
-            "stockpile_refined_craftable"
+            "refined"
          ]
       }
    }

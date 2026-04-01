@@ -1,5 +1,18 @@
 {
    "mixintypes": {
       "type": "remove"
+   },
+   "components": {
+      "stonehearth:attributes": {
+         "multiplicative_dmg_received_modifier": {
+            "type": "basic",
+            "value": 1,
+            "min": 0
+         },
+         "additive_dmg_received_modifier": {
+            "type": "basic",
+            "value": 0
+         }
+      }
    }
 }

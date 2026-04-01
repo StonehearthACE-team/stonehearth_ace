@@ -1,5 +1,12 @@
 {
    "craftable_recipes": {
+      "workbenches": {
+         "recipes": {
+            "engineer_workbench_basic": {
+               "recipe": "file(engineer_workbench_basic_recipe.json)"
+            }
+         }
+      },
       "legendary": {
          "recipes": {
             "legendary_chainmail": {
@@ -13,6 +20,9 @@
       "gadget_parts": {
          "ordinal": 10,
          "recipes": {
+            "wooden_gear": {
+               "recipe": "file(wooden_gear_recipe.json)"
+            },
             "metal_bits_hard": {
                "recipe": "/stonehearth_ace/jobs/common/recipes/removed_recipe.json"
             },
@@ -29,7 +39,7 @@
                "recipe": "file(lock_recipe.json)"
             },
             "ammunition_common": {
-               "recipe": "file(ammunition_common_recipe.json)"
+               "recipe": "/stonehearth_ace/jobs/common/recipes/removed_recipe.json"
             }
          }
       },
@@ -37,17 +47,26 @@
          "ordinal": 15,
          "name": "i18n(stonehearth_ace:jobs.engineer.recipes.equipment_name)",
          "recipes": {
+            "simple_quiver_bolts": {
+               "recipe": "file(simple_quiver_bolts_recipe.json)"
+            },
             "bronze_crossbow": {
                "recipe": "file(bronze_crossbow_recipe.json)"
             },
             "steel_crossbow": {
                "recipe": "file(steel_crossbow_recipe.json)"
+            },
+            "pavise_shield": {
+               "recipe": "file(pavise_shield_recipe.json)"
             }
          }
       },
       "traps": {
          "name": "i18n(stonehearth_ace:jobs.engineer.recipes.traps_name)",
          "recipes": {
+            "hammer_trap": {
+               "recipe": "file(hammer_trap_recipe.json)"
+            },
             "decoy_trap": {
                "recipe": "file(decoy_trap_recipe.json)"
             }
@@ -55,7 +74,29 @@
       },
       "ranged_weapons": {
          "name": "i18n(stonehearth_ace:jobs.engineer.recipes.ranged_weapons_name)",
-         "recipes": {}
+         "recipes": {
+            "net_thrower": {
+               "recipe": "file(net_thrower_recipe.json)"
+            }
+         }
+      },
+      "ammunition": {
+         "ordinal": 41,
+         "name": "i18n(stonehearth_ace:jobs.engineer.recipes.ammunition_name)",
+         "recipes": {
+            "ammunition_nets": {
+               "recipe": "file(ammunition_nets_recipe.json)"
+            },
+            "ammunition_common": {
+               "recipe": "file(ammunition_common_recipe.json)"
+            },
+            "ammunition_fire": {
+               "recipe": "file(ammunition_fire_recipe.json)"
+            },
+            "ammunition_heavy": {
+               "recipe": "file(ammunition_heavy_recipe.json)"
+            }
+         }
       },
       "storage": {
          "ordinal": 20,
@@ -98,6 +139,9 @@
          "ordinal": 75,
          "name": "i18n(stonehearth_ace:jobs.engineer.recipes.fluid_control_name)",
          "recipes": {
+            "wooden_cistern": {
+               "recipe": "file(wooden_cistern_recipe.json)"
+            },
             "water_gate": {
                "recipe": "file(water_gate_recipe.json)"
             },

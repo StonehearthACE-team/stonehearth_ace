@@ -70,6 +70,13 @@ function Patrol:_destroy_listeners()
 end
 
 function Patrol:start(ai, entity, args)
+   -- Can't patrol if you can't move!
+   local attributes_comp = entity:get_component('stonehearth:attributes')
+   local speed = attributes_comp and attributes_comp:get_attribute('speed')
+   if speed and speed < 1 then
+      ai:abort('can not move, can not patrol')
+   end
+
    if radiant.entities.exists(self._party) then
       local party = self._party:get_component('stonehearth:party')
       if not party then

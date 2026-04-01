@@ -1,17 +1,16 @@
 {
+   "mixins": [
+	  "stonehearth_ace:mixins:weapons:bow"
+   ],
+   "type": "entity",
    "components": {
-      "stonehearth_ace:statistics": {},
-      "stonehearth_ace:titles": {},
       "stonehearth:equipment_piece": {
-         "equipment_types": ["bow"],
-         "required_job_level": 6
-      }
+	     "required_job_level": 6
+	  }
    },
    "entity_data": {
       "stonehearth:catalog": {
-	     "display_name": "i18n(stonehearth_ace:entities.weapons.rc_legendary_bow.display_name)",
-		  "description": "i18n(stonehearth_ace:entities.weapons.rc_legendary_bow.description)",
-         "material_tags":["legendary", "bow", "ranged_weapon", "rc_legendary_bow", "stockpile_weapon"]
+         "material_tags":["legendary", "rc_made", "crafted"]
       }
    }
 }

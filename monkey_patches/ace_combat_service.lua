@@ -162,6 +162,12 @@ function AceCombatService:_calculate_damage(attacker, target, attack_info, base_
 
    local damage = total_damage - total_armor
 
+   -- ACE: Now calculate any damage received modifiers!
+   local multiplicative_dmg_received_modifier = attributes_component:get_attribute('multiplicative_dmg_received_modifier', 1)
+   local additive_dmg_received_modifier = attributes_component:get_attribute('additive_dmg_received_modifier', 0)
+
+   damage = damage * multiplicative_dmg_received_modifier + additive_dmg_received_modifier
+
    -- ACE: Cover siege damage
    if self:is_killable_target_of_type(target, 'siege') then
       local ec = attacker:get_component('stonehearth:equipment')
