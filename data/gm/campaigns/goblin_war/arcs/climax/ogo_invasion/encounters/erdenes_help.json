@@ -1,0 +1,48 @@
+{
+   "dialog_tree_info": {
+      "nodes": {
+         "accept_offer": {
+            "bulletin": {
+               "choices": {
+                  "stonehearth:data.gm.campaigns.goblin_war.erdenes_help.dialog_tree_info.dialog_nodes.accept_offer.choice_001": {
+                     "out_edge": {
+                        "type": "trigger_many",
+                        "out_edges": [
+                           "unlock_windchimes",
+                           "rc_unlock_windchimes",
+                           "na_unlock_windchimes"
+                        ]
+                     }
+                  }
+               }
+            }
+         },
+         "erdene_description": {
+            "bulletin": {
+               "choices": {
+                  "stonehearth:data.gm.campaigns.goblin_war.erdenes_help.dialog_tree_info.dialog_nodes.erdene_description.choice_000": {
+                     "out_edge": {
+                        "type": "trigger_many",
+                        "out_edges": [
+                           "unlock_windchimes",
+                           "rc_unlock_windchimes",
+                           "na_unlock_windchimes"
+                        ]
+                     }
+                  },
+                  "stonehearth:data.gm.campaigns.goblin_war.erdenes_help.dialog_tree_info.dialog_nodes.erdene_description.choice_001": {
+                     "out_edge": {
+                        "type": "trigger_many",
+                        "out_edges": [
+                           "unlock_windchimes",
+                           "rc_unlock_windchimes",
+                           "na_unlock_windchimes"
+                        ]
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+}

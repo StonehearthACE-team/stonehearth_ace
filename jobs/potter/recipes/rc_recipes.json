@@ -14,18 +14,25 @@
             }
          }
       },
-	  "tools_weapons": {
-		 "recipes": {
-			"clay_spear": {
-				"recipe": "file(clay_spear_recipe.json)"
-			},
-			"shepherds_crook": {
-				"recipe": "file(rc_shepherds_crook_recipe.json)"
-			},
-			"cook_spoon": {
-				"recipe": "file(rc_cook_clay_spoon_recipe.json)"
-			}
-		 }
-	  }
+      "tools_weapons": {
+         "recipes": {
+            "clay_spear": {
+               "recipe": "file(clay_spear_recipe.json)"
+            },
+            "shepherds_crook": {
+               "recipe": "file(rc_shepherds_crook_recipe.json)"
+            },
+            "cook_spoon": {
+               "recipe": "file(rc_cook_clay_spoon_recipe.json)"
+            }
+         }
+      },
+      "utility": {
+         "recipes": {
+            "mountains_windchime": {
+               "recipe": "file(rc_mountains_windchime_recipe.json)"
+            }
+         }
+      }
    }
 }
