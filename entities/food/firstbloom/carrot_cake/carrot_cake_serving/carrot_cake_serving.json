@@ -1,0 +1,49 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(carrot_cake_serving.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "food",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth:food": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 110,
+            "drink_satisfaction": 15
+         },
+         "default": {
+            "satisfaction": 90,
+            "drink_satisfaction": 10
+         },
+         "applied_buffs": [
+            "stonehearth_ace:buffs:consumption:merry_time:firstbloom",
+            "stonehearth_ace:buffs:consumption:sweet_energy",
+            "stonehearth_ace:buffs:consumption:baked_goodness"
+         ],
+         "quality": 6
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.firstbloom.carrot_cake.serving.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.firstbloom.carrot_cake.serving.description)",
+         "material_tags": [
+            "food",
+            "baked",
+            "carrot_cake_serving",
+            "prepared_dessert",
+            "carrot_cake",
+            "vegetarian",
+            "lunch_time"
+         ],
+         "subject_override": "stonehearth_ace:food:firstbloom:carrot_cake"
+      }
+   }
+}
