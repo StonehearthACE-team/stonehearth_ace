@@ -9,35 +9,29 @@
                <h2>{{i18n stonehearth_ace:ui.game.pet_manager.details}}</h2>
                <div id="petDetailsInnerPane" class="downSection">
                   <center>
-                  <div id="selectedPortrait">
-                     <img class="hasPetsIcon"/>
-                  </div>
+                  <div id="selectedPortrait" class='portrait'/>
                   <div id="selectedName">
                      {{i18n_key view.selected.stonehearth:unit_info.custom_name self=this}}
                   </div>
+                  {{#if view.pets_list}}
                   <div id="selectedDescription">
-                     {{i18n_key view.selected self=this}}
-                     
+                     {{i18n stonehearth_ace:ui.game.pet_manager.current_owner}}<br> {{i18n_key view.selected.stonehearth:pet.owner_custom_name self=this}} 
                   </div>
-      
+                  {{/if}}
                   <div id="traits">
-                     {{#each view.selected.traits}}
-                        <div class="item" >
-                           {{i18n_key this self=this}}
+                     {{#each view.selected.buffs itemView="stonehearthTraitItem"}}
+                        <div class="item" {{bind-attr uri=this.uri}}>
+                           <img {{bind-attr src=this.icon}} />
                         </div>
                      {{/each}}
                   </div>
 
                   <div class="toolbar">
-                     <a id="release_pet" href="#"  class='uisounds'>
-                        <button class="brown" {{bind-attr class=":commandButton enabled:buttonEnabled:buttonDisabled" }}>
-                           {{i18n_key view.selected.release_pet.display_name}}
-                        </button>
-                     </a>
+                     
                      {{#each view.selected.available_commands}}
-                        <a href="#" class='uisounds'>
+                     <a {{bind-attr id=command.name}} href="#" {{action "doCommand" this view.selected target="view"}} class='uisounds'>
                            <button class="brown" {{bind-attr class=":commandButton enabled:buttonEnabled:buttonDisabled" }}>
-                              {{i18n_key this self=view.selected}}
+                              {{i18n_key this.display_name self=view.selected}}
                            </button>
                         </a>
                      {{/each}}
@@ -45,7 +39,6 @@
                   </center>
                </div>
             </div>
-      
             <div id="tasksPetsList" class="petsList">
                <div id="listTitles" class="flex-container">
                   <button class="brown statButton nameIcon">
@@ -54,37 +47,27 @@
                   <div class="listTitle" id="tasksTitleName" data-sort-key="name">
                      <h2>{{i18n stonehearth_ace:ui.game.pet_manager.name}}</h2>
                   </div>
-                  <div class="listTitle statTitle healthTitle" data-sort-key="health">
-                     <button class="brown statButton">
-                        <div class="healthImg"></div>
-                     </button>
+                  <div class="listTitle" data-sort-key="activity">
+                     <h2>{{i18n stonehearth_ace:ui.game.pet_manager.activity}}</h2>
                   </div>
-                  <div class="listTitle statTitle moodTitle" data-sort-key="happiness">
-                     <button class="brown statButton">
-                        <div class="happinessImg"></div>
-                     </button>
+                  <div class="listTitle" data-sort-key="health">
+                     <h2>{{i18n stonehearth_ace:ui.game.pet_manager.health}}</h2>
+                  </div>
+                  <div class="listTitle calories" data-sort-key="hunger">
+                     <h2>{{i18n stonehearth_ace:ui.game.pet_manager.hunger}}</h2>
+                  </div>
+                  <div class="listTitle" data-sort-key="social">
+                     <h2>{{i18n stonehearth_ace:ui.game.pet_manager.social}}</h2>
+                  </div>
+                  <div class="listTitle" data-sort-key="sleepiness">
+                     <h2>{{i18n stonehearth_ace:ui.game.pet_manager.sleepiness}}</h2>
                   </div>
                </div>
                <div id="listContent" class="innerBox">
                   <table id="petTable">
                      <tbody>
-                        {{#each view.pets_list}}
-                           {{#if this.selected}}
-                              <tr class="selected petrow uisounds">
-                                 <td class="petIcon">
-                                    <img class="hasPetsIcon"/>
-                                 </td>
-                                 <td class="nameColumn">
-                                    {{i18n_key this.stonehearth:unit_info.custom_name self=this}}
-                                 </td>
-                                 <td class="petHealth">
-                                    {{i18n_key this.health self=this}}/{{i18n_key this.maxHealth self=this}}
-                                 </td>
-                                 <td class="petMood">
-                                    {{i18n_key this.moodValue self=this}}
-                                 </td>
-                              </tr>
-                           {{else}}
+                        {{#if view.pets_list}}
+                           {{#each view.pets_list}}
                               <tr class="petrow uisounds">
                                  <td class="icon">
                                     <img class="hasPetsIcon"/>
@@ -92,15 +75,32 @@
                                  <td class="nameColumn">
                                     {{i18n_key this.stonehearth:unit_info.custom_name self=this}}
                                  </td>
-                                 <td class="petHealth">
-                                    {{i18n_key this.health self=this}}/{{i18n_key this.maxHealth self=this}}
+                                 <td class="petActivity centralized">
+                                    {{i18n_key this.activity self=this}}
                                  </td>
-                                 <td class="petMood">
-                                    {{i18n_key this.moodValue self=this}}
+                                 <td class="petHealth centralized">
+                                    {{i18n_key this.health self=this}}%
                                  </td>
+                                 <td class="petHunger centralized">
+                                    {{i18n_key this.hunger self=this}}%
+                                 </td>
+                                 <td class="petSocial centralized">
+                                    {{i18n_key this.social self=this}}%
+                                 </td>
+                                 <td class="petSleepiness centralized">
+                                    {{i18n_key this.sleepiness self=this}}%
+                                 </td>                            
                               </tr>
-                           {{/if}}
-                        {{/each}}
+                           {{/each}}
+                        {{else}}
+                           <tr class="petrow">
+                              <td colspan="8">
+                                 <div class="noPets centralized">
+                                    {{i18n stonehearth_ace:ui.game.pet_manager.no_pets}}
+                                 </div>
+                              </td>
+                           </tr>
+                        {{/if}}
                      </tbody>
                   </table>
                </div>

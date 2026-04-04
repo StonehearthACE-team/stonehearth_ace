@@ -1,38 +1,6 @@
-var mocked_pets = [
-   kitty = {
-      display_name: 'Kitty',
-      description: 'Befriended by Lara',
-      traits: ['Nice', 'Strong', 'Carnivore'],
-      available_commands: ['Pet', 'Feed', 'Play'],
-      release_pet: {display_name: 'Release Pet'},
-      health: '100',
-      maxHealth: '100',
-      moodValue: '5',
-      selected: true
-   },
-   batman = {
-      display_name: 'Batman',
-      description: 'Befriended by Ivens',
-      traits: ['Disguised', 'Strong', 'Powerful'],
-      available_commands: ['Pet', 'Hunt', 'Play'],
-      release_pet: {display_name: 'Release Pet'},
-      health: '100',
-      maxHealth: '100',
-      moodValue: '5'
-   },
-   mingau = {
-      display_name: 'Mingau',
-      description: 'Befriended by Lara',
-      traits: ['Fat', 'Talkative', 'Bald'],
-      available_commands: ['Pet', 'Feed'],
-      release_pet: {display_name: 'Release Pet'},
-      health: '100',
-      maxHealth: '100',
-      moodValue: '5'
-   }
-]
-var pets_list = [];
-   
+let pets_list = [];
+let mainView = null;
+
 App.StonehearthAcePetsView = App.View.extend({
    templateName: 'petsView',
    uriProperty: 'model',
@@ -50,57 +18,109 @@ App.StonehearthAcePetsView = App.View.extend({
    init: function() {
       var self = this;
       this._super();
-      
-
-      
-      //mocking this before actually getting the data from the game
-      self.set('pets', mocked_pets);
-      
+      mainView = this;
+      //Trace town pets on init
       this._traceTownPets();
-      
       
    },
    
    _traceTownPets: function() {
       var playerId = App.stonehearthClient.getPlayerId()
       var self = this;
-      //console.log("Player ID: " + playerId);
       radiant.call_obj('stonehearth.town', 'get_town_entity_command', playerId)
          .done(function (response) {
             var components = {
                town_pets: {
                  '*': {
-                   'stonehearth:commands': {},
-                   'stonehearth:pet': {},
-                   'stonehearth:unit_info': {},
-                 },
+                     'stonehearth:commands': {
+                        'commands': {},
+                     },
+                     'stonehearth:pet': {},
+                     'stonehearth:unit_info': {},
+                     "stonehearth:ai": {
+                        "status_text_data": {},
+                     },
+                     'stonehearth:buffs' : {
+                        'buffs' : {
+                           '*' : {}
+                        }
+                     },
+                     'stonehearth:expendable_resources': {},
+                  },
                },
             };
             var town = response.town;
-            //console.log("town: " + JSON.stringify(response));
-            self._trace_pets = new StonehearthDataTrace(town, components)
+            self._petTraces = new StonehearthDataTrace(town, components)
                .progress(function (response) {
                   if (self.isDestroying || self.isDestroyed) {
                      return;
                   }
                   var town_pets = response.town_pets || {};
-                  //console.log(town_pets)
-                  var list_keys = Object.keys(town_pets);
-                  var pets_list = []
-                  var pet_object = {}
-                  
-                  for (var i = 0; i < list_keys.length; i++){
-                     pet_object = town_pets[list_keys[i]];
-                     pets_list[i] = pet_object;
-                     //console.log("DISPLAY name: ", pets_list[i]['stonehearth:unit_info'].custom_name);
-                     //console.log("UI GAME CUSTOM name: ", pets_list[i]['stonehearth:ui.game.entities.custom_name']);
-                     
+                  if (town_pets == {}) return //if no pets, return
+                  else if (self.get('pets_list')) { //check if pets list has changed
+                     var townNew = JSON.stringify(town_pets)
+                     var townOld = JSON.stringify(self.get('town_pets'))
+                     if (townOld==townNew) {
+                        return
+                     }
                   }
-                  
-                  
-                  self.set('pets_list', pets_list);
-                  self.set('selected', pets_list[0]);
-                  return pets_list;
+                  else {
+                     self.set('pets_list', [])
+                     var list_keys = Object.keys(town_pets);
+                     var pet_object = {}
+                     for (var i = 0; i < list_keys.length; i++){
+                        //Get pet object and add to list
+                        pet_object = town_pets[list_keys[i]];
+                        pets_list[i] = pet_object;
+                        //Get health, hunger, social and sleepiness percentages
+                        var health_percentage = Math.round(((pets_list[i]['stonehearth:expendable_resources'].resource_percentages.health)*100)*10)/10;
+                        var hunger_percentage = Math.round(100-(Math.round(((pets_list[i]['stonehearth:expendable_resources'].resource_percentages.calories)*100)*10)/10)/10);
+                        var social_percentage = Math.round(((pets_list[i]['stonehearth:expendable_resources'].resource_percentages.social_satisfaction)*100)*10)/10;
+                        var sleepiness_percentage = Math.round(((pets_list[i]['stonehearth:expendable_resources'].resource_percentages.sleepiness)*100)*10)/10;
+                        pets_list[i].health = String(health_percentage)
+                        pets_list[i].hunger = String(hunger_percentage)
+                        pets_list[i].social = String(social_percentage)
+                        pets_list[i].sleepiness = String(sleepiness_percentage)
+                        //Get pet status
+                        pets_list[i].activity = pets_list[i]['stonehearth:ai'].status_text_key
+                        //Get pet Buffs
+                        var buff_keys = Object.keys(pets_list[i]['stonehearth:buffs'].buffs);
+                        var buff_list = [];
+                        for (var j = 0; j < buff_keys.length; j++){
+                           
+                           buff_list[j] = pets_list[i]['stonehearth:buffs'].buffs[buff_keys[j]];
+                           
+                        }
+                        pets_list[i].buffs = buff_list;
+
+                        //Get pet commands
+                        var command_keys = Object.keys(pets_list[i]['stonehearth:commands'].commands);
+                        var command_list = [];
+                        for (var j = 0; j < command_keys.length; j++){
+                           
+                           command_list[j] = pets_list[i]['stonehearth:commands'].commands[command_keys[j]];
+                           
+                        }
+                        //console.log(command_list[0].display_name)
+                        pets_list[i].available_commands = command_list;
+                                             
+                     }
+                     
+                     //Set pet list and selected pet + portrait for the first time
+                     self.set('pets_list', pets_list);
+                     self.set('town_pets', town_pets)
+                     if (!self.get('selected') && pets_list[0]) {
+                        self.set('selected', pets_list[0]);
+                        self.set('selected_index', pets_list[0]);
+                        var uri = pets_list[0].__self;
+                        var portrait_url = '/r/get_portrait/?type=headshot&animation=idle_breathe.json&entity=' + uri + '&cache_buster=' + Math.random();
+                        self.$('#selectedPortrait').css('background-image', 'url(' + portrait_url + ')');  
+                     }       
+                     
+                     
+                     //debugger
+                     return;
+                  }
                   
                })
                .fail(function(e) {
@@ -117,10 +137,7 @@ App.StonehearthAcePetsView = App.View.extend({
 
       this.$().draggable({ handle: '.title' });
 
-      self.$().on('click', '.moodIcon', function() {
-         self._moodIconClicked = true;
-      });
-
+      //not functional yet
       self.$().on('click', '.listTitle', function() {
          var newSortKey = $(this).attr('data-sort-key');
          if (newSortKey) {
@@ -139,35 +156,50 @@ App.StonehearthAcePetsView = App.View.extend({
       if (self.hideOnCreate) {
          self.hide();
       }
-
-      console.log("antes", pets_list)
-      pets_list = this._traceTownPets();
-      console.log("depois", pets_list)
-      console.log("pets list", pets_list)
+      //Change pet selection on click
       self.$('#petTable').on('click', 'tr', function () {
-         $('#petTable tr').removeClass('selected');
-          $(this).addClass('selected');
-          self.set('selected', pets_list[$(this).index()]);
+         console.log(pets_list)
+         if(pets_list.length > 0){ //check if any pets are available to select
+            if(!$(this).hasClass('selected')) {
+               $('#petTable tr').removeClass('selected');
+               $(this).addClass('selected');
+               self.set('selected', pets_list[$(this).index()]);
+               self.set('selected_index', $(this).index());
+            }
+            //Re-select portrait
+            var uri = pets_list[$(this).index()].__self;
+            var portrait_url = '/r/get_portrait/?type=headshot&animation=idle_breathe.json&entity=' + uri + '&cache_buster=' + Math.random();
+            self.$('#selectedPortrait').css('background-image', 'url(' + portrait_url + ')');
+            //Focus on entity and open pet sheet
+            radiant.call('stonehearth:camera_look_at_entity', uri);
+            radiant.call('stonehearth:select_entity', uri);
+            radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:start_menu:focus' });
+            //recheck the pets list
+            mainView._traceTownPets();
+         }
       });
-
-      self.$('#release_pet').on('click', function (_, e) {
-         App.gameView.addView(App.StonehearthConfirmView, {
-            title : i18n.t('stonehearth:ui.game.pet_character_sheet.release_pet_confirm_dialog.title'),
-            message : i18n.t('stonehearth:ui.game.pet_character_sheet.release_pet_confirm_dialog.message'),
-            buttons : [
-               {
-                  id: 'accept',
-                  label: i18n.t('stonehearth:ui.game.pet_character_sheet.release_pet_confirm_dialog.accept'),
-                  click: function() {
-                     radiant.call('stonehearth:release_pet', e.entity);
-                  }
-               },
-               {
-                  id: 'cancel',
-                  label: i18n.t('stonehearth:ui.game.pet_character_sheet.release_pet_confirm_dialog.cancel')
-               }
-            ]
-         });
-      });
+   },
+   actions: {
+      doCommand: function(command) {
+         var self = this;
+         var pet_data = self.get('selected');
+         var pet_id = pet_data.__self;
+         var player_id = pet_data.player_id;
+         App.stonehearthClient.doCommand(pet_id, player_id, command);
+         //Check if pet was removed
+         if (command.name == 'release_pet') {
+            //remove pet from list and recheck the pets list
+            $('#petTable').find('tr').eq(self.get('selected_index')).remove();
+            pets_list.splice(self.get('selected_index'), 1);
+            self.set('pets_list', pets_list);
+            self.set('selected', pets_list[0]);
+            $('#petTable').find('tr').eq(0).addClass('selected');
+            var uri = pets_list[0].__self;
+            var portrait_url = '/r/get_portrait/?type=headshot&animation=idle_breathe.json&entity=' + uri + '&cache_buster=' + Math.random();
+            self.$('#selectedPortrait').css('background-image', 'url(' + portrait_url + ')');  
+            mainView._traceTownPets();
+            
+         }
+      },
    },
 });
