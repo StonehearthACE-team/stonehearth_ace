@@ -1070,7 +1070,7 @@ function AceTown:get_requested_placement_tasks(placement_tag)
 end
 
 function AceTown:get_requested_build_placement_tasks(placement_tag)
-   return self._build_placement_tasks[placement_tag or NO_PLACEMENT_TAG] or {}
+   return self._build_placement_tasks and self._build_placement_tasks[placement_tag or NO_PLACEMENT_TAG] or {}
 end
 
 function AceTown:request_placement_task(iconic_uri, quality, require_exact, placement_tag)
