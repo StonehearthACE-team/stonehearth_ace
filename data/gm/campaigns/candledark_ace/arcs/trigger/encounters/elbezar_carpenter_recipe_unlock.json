@@ -2,6 +2,20 @@
    "type": "encounter",
    "encounter_type": "unlock_recipe",
    "in_edge": "elbezar_carpenter_recipe_unlock",
+	"can_start": {
+		"test_1": {
+			"na_check": {
+				"type": "deny_if",
+				"item": "kingdom",
+				"value": "northern_alliance:kingdoms:northern_alliance"
+			},
+			"rc_check": {
+				"type": "deny_if",
+				"item": "kingdom",
+				"value": "rayyas_children:kingdoms:rayyas_children"
+			}
+		}
+	},
    "unlock_recipe_info": {
       "job": "stonehearth:jobs:carpenter",
       "recipe_key": [

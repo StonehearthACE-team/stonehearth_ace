@@ -2,6 +2,15 @@
    "type": "encounter",
    "encounter_type": "unlock_recipe",
    "in_edge": "elbezar_mason_recipe_unlock",
+	"can_start": {
+		"test_1": {
+			"na_check": {
+				"type": "deny_if_not",
+				"item": "kingdom",
+				"value": "northern_alliance:kingdoms:northern_alliance"
+			}
+		}
+	},
    "unlock_recipe_info": {
       "job": "stonehearth:jobs:mason",
       "recipe_key": [
