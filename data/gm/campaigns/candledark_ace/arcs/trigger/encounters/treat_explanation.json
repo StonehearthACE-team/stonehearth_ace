@@ -31,6 +31,7 @@
                "choices": {
                   "i18n(stonehearth_ace:data.gm.campaigns.candledark_ace.treat_explanation.dialog_tree_info.dialog_nodes.msg2.choice_000)": {
                      "out_edge": {
+						"type": "trigger_many",
 						"out_edges": [
 							"treat_explanation_recipe_unlock"
 						]
