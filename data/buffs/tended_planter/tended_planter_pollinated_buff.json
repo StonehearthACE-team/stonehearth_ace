@@ -1,0 +1,11 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.tended_planter_pollinated.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.tended_planter_pollinated.description)",
+   "icon": "file(../beehive/beehive_buff.png)",
+   "effect": "stonehearth_ace:effects:tended_planter_glow",
+   "restore_effect": true,
+   "duration": "12h",
+   "repeat_add_action": "renew_duration"
+}

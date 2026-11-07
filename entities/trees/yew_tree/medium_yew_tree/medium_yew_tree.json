@@ -159,7 +159,10 @@
          "display_name": "i18n(stonehearth_ace:entities.trees.yew_tree.medium_yew_tree.display_name)",
          "description": "i18n(stonehearth_ace:entities.trees.yew_tree.medium_yew_tree.description)",
          "subject_override": "stonehearth_ace:trees:yew:large",
-         "icon": "file(medium_yew_tree.png)"
+         "icon": "file(medium_yew_tree.png)",
+         "material_tags": [
+            "no_pollination"
+         ]
       },
       "stonehearth:stump_data": {
          "stump_alias": "stonehearth_ace:trees:yew:medium:stump"

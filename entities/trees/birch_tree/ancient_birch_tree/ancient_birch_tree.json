@@ -100,6 +100,20 @@
                      "pelt": {
                         "uri": "stonehearth_ace:trees:birch:seed",
                         "weight": 1
+                     },
+                     "monster": {
+                        "type": "spawn",
+                        "uri": "stonehearth:monsters:forest:entling",
+                        "weight": 4,
+                        "options": {
+                           "owner": "forest",
+                           "tuning": "stonehearth_ace:monster_tuning:forest:hard_entling",
+                           "effect": "stonehearth:effects:poof_effect:grey",
+                           "hostile": true,
+                           "bulletin": {
+                              "title": "i18n(stonehearth_ace:data.gm.campaigns.ambient_threats.loot_spawns.sighted_bulletin.harvesting)"
+                           }
+                        }
                      }
                   }
                }
@@ -152,7 +166,10 @@
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:entities.trees.birch_tree.ancient_birch_tree.display_name)",
          "description": "i18n(stonehearth_ace:entities.trees.birch_tree.ancient_birch_tree.description)",
-         "subject_override": "stonehearth_ace:trees:birch:large"
+         "subject_override": "stonehearth_ace:trees:birch:large",
+         "material_tags": [
+            "no_pollination"
+         ]
       },
       "stonehearth:stump_data": {
          "stump_alias": "stonehearth_ace:trees:birch:large:stump"

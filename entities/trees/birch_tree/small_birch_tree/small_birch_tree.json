@@ -166,7 +166,10 @@
          "display_name": "i18n(stonehearth_ace:entities.trees.birch_tree.small_birch_tree.display_name)",
          "description": "i18n(stonehearth_ace:entities.trees.birch_tree.small_birch_tree.description)",
          "subject_override": "stonehearth_ace:trees:birch:large",
-         "icon": "file(small_birch_tree.png)"
+         "icon": "file(small_birch_tree.png)",
+         "material_tags": [
+            "no_pollination"
+         ]
       },
       "stonehearth:stump_data": {
          "stump_alias": "stonehearth_ace:trees:birch:small:stump"
