@@ -159,6 +159,11 @@ function AttackSummon:_create_summon(uri, entity, args)
 end
 
 function AttackSummon:stop(ai, entity, args)
+   if self._script_timer then
+      self._script_timer:destroy()
+      self._script_timer = nil
+   end
+
    if self._summon_timers then
       for i = 1, #self._summon_timers do
          self._summon_timers[i]:destroy()

@@ -296,8 +296,8 @@ function AceCombatService:_get_nearby_units(target, attacker, player_id)
                if location then
                   local target_table = radiant.entities.get_target_table(citizen, 'aggro')
                   if (target_table and target_table:contains(target)) or
-                     radiant.math.point_within_sphere(location, enemy_location, radius) or
-                     radiant.math.point_within_sphere(location, ally_location, radius) then
+                     (enemy_location and radiant.math.point_within_sphere(location, enemy_location, radius)) or
+                     (ally_location and radiant.math.point_within_sphere(location, ally_location, radius)) then
                      units[id] = citizen
                      count = count + 1
                   end

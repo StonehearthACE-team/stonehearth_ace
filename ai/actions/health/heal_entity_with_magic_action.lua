@@ -6,7 +6,7 @@ HealEntityWithMagic.does = 'stonehearth:healing'
 HealEntityWithMagic.args = {}
 HealEntityWithMagic.priority = 1
 
-local MIN_GUTS_PERCENTAGE_TO_PREFER = 90
+local MIN_GUTS_PERCENTAGE_TO_PREFER = 0.9
 
 local function make_is_healable_entity_filter(player_id)
    return stonehearth.ai:filter_from_key('stonehearth_ace:healing:heal_entity_with_magic', player_id, function(target)

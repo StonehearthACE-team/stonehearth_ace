@@ -133,11 +133,11 @@ function UniversalStorageService:register_storage(entity)
          self._player_traces[entity_id] = entity:trace_player_id('universal storage service')
             :on_changed(function(new_player_id)
                if new_player_id ~= player_id then
-                  player_id = new_player_id
-
-                  self:unregister_storage(entity)
+                  self:unregister_storage(entity, player_id)
                   -- clear out the group before re-registering
                   us_comp:set_group_id(nil)
+
+                  player_id = new_player_id
                   self:register_storage(entity)
                end
             end)
@@ -157,8 +157,8 @@ function UniversalStorageService:register_storage(entity)
    end
 end
 
-function UniversalStorageService:unregister_storage(entity)
-   local player_storage = self._sv.player_storages[entity:get_player_id()]
+function UniversalStorageService:unregister_storage(entity, player_id)
+   local player_storage = self._sv.player_storages[player_id or entity:get_player_id()]
    if player_storage then
       player_storage:unregister_storage(entity)
    end

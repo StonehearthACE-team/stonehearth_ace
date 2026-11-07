@@ -23,8 +23,7 @@ function WhiteoutWeather:_start_whiteout()
    self._sv._start_timer = nil	
 	
 	local bulletin_data = {
-      title = "i18n(stonehearth_ace:data.weather.whiteout.bulletin_name)",
-      notification_closed_callback = '_on_closed'
+      title = "i18n(stonehearth_ace:data.weather.whiteout.bulletin_name)"
    }
 	
 	local players = stonehearth.player:get_non_npc_players()

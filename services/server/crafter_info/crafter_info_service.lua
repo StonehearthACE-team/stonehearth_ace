@@ -95,6 +95,7 @@ end
 function CrafterInfoService:_create_kingdom_listener(player_id)
    self._kingdom_assigned_listeners[player_id] = radiant.events.listen(radiant, 'radiant:player_kingdom_assigned', function(args)
       if args.player_id == player_id then
+         self._kingdom_assigned_listeners[player_id]:destroy()
          self._kingdom_assigned_listeners[player_id] = nil
          self:get_crafter_info(player_id)
       end

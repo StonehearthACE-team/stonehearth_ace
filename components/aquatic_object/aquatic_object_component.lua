@@ -132,6 +132,7 @@ end
 
 function AquaticObjectComponent:queue_destruction()
    self._queued_destruction = function()
+      self._queued_destruction = nil
       if not self._sv.in_the_water then
          radiant.entities.kill_entity(self._entity)         
       end

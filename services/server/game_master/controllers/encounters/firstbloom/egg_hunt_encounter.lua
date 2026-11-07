@@ -137,23 +137,25 @@ function EggHunt:_create_egg(uri, hidden_uris)
          adjusted_location = radiant.terrain.get_point_on_terrain(Point3(x, 0, z))       
       end
 
-      adjusted_location = radiant.terrain.find_closest_standable_point_to(adjusted_location, 10, egg, true)
+      if adjusted_location then
+         adjusted_location = radiant.terrain.find_closest_standable_point_to(adjusted_location, 10, egg, true)
 
-      local search_cube = Cube3(adjusted_location - Point3(1, 2, 1), adjusted_location + Point3(1, 2, 1))
-      local is_in_water = next(radiant.terrain.get_entities_in_cube(search_cube, function(e)
-                        return e:get_component('stonehearth:water') ~= nil
-                        end)) ~= nil
-      local is_close_to_other_eggs = false
-      for _, existing_egg in ipairs(self._sv.eggs) do
-         if radiant.entities.distance_between(existing_egg, adjusted_location) <= 15 then
-            is_close_to_other_eggs = true
+         local search_cube = Cube3(adjusted_location - Point3(1, 2, 1), adjusted_location + Point3(1, 2, 1))
+         local is_in_water = next(radiant.terrain.get_entities_in_cube(search_cube, function(e)
+                           return e:get_component('stonehearth:water') ~= nil
+                           end)) ~= nil
+         local is_close_to_other_eggs = false
+         for _, existing_egg in ipairs(self._sv.eggs) do
+            if radiant.entities.distance_between(existing_egg, adjusted_location) <= 15 then
+               is_close_to_other_eggs = true
+            end
          end
-      end
-      if is_in_water or is_close_to_other_eggs then
-         radiant.entities.destroy_entity(egg)
-         egg = nil
-      else
-         found = true
+         if is_in_water or is_close_to_other_eggs then
+            radiant.entities.destroy_entity(egg)
+            egg = nil
+         else
+            found = true
+         end
       end
    end
 

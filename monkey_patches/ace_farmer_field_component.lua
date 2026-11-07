@@ -863,7 +863,7 @@ function AceFarmerFieldComponent:_update_climate()
 
    if frozen ~= self._sv.frozen then
       self._sv.frozen = frozen
-      self.__saved_variables:mark_changed()
+      changed = true
    end
 
    if changed then
@@ -977,7 +977,7 @@ end
 function AceFarmerFieldComponent:_set_flooded(flooded)
    if flooded ~= self._sv.flooded then
       self._sv.flooded = flooded
-      self.__saved_variables:mark_changed()
+      self:_set_growth_factors()
       self:_set_crops_flooded(flooded)
    end
 end
@@ -995,7 +995,7 @@ end
 function AceFarmerFieldComponent:_set_frozen(frozen)
    if frozen ~= self._sv.frozen then
       self._sv.frozen = frozen
-      self.__saved_variables:mark_changed()
+      self:_set_growth_factors()
    end
 end
 

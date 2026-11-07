@@ -77,7 +77,7 @@ end
 AceWaitForEventEncounter._ace_old_stop = WaitForEventEncounter.stop
 function AceWaitForEventEncounter:stop()
    if self._sv.tracking_bulletin then
-      self:_destroy_bulletins()
+      self:_destroy_bulletin()
    end
 
    self:_ace_old_stop()

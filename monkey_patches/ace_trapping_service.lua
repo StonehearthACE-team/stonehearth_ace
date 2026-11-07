@@ -48,7 +48,7 @@ end
 function AceTrappingService:get_fish_trap_capture_loot_table()
    self:_ensure_fish_trap_loot_tables()
 
-   return self._fish_trap_capture_biome_loot_table
+   return self._fish_trap_capture_loot_table
 end
 
 function AceTrappingService:get_fish_trap_harvest_loot_table()

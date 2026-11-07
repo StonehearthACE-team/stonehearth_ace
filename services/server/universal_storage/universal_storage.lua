@@ -189,6 +189,7 @@ function UniversalStorage:unregister_storage(entity)
       -- if this access node is being destroyed and it's the last one in its list, destroy its universal storage entity
       -- TODO: properly handle when all remaining access nodes are *in* this storage; just blow it up? disallow undeploy if any items in its universal storage?
       if not access_nodes_by_storage or not next(access_nodes_by_storage) then
+         self._access_nodes_by_storage[storage_id] = nil
          local storage = self._sv.storages[storage_id]
          if storage then
             self._sv.storages[storage_id] = nil
