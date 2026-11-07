@@ -281,6 +281,10 @@ function HerbalistPlanterComponent:set_harvest_plant(harvest_plant)
    end
 end
 
+function HerbalistPlanterComponent:is_pollinable()
+   return self._planted_crop_stats and self._planted_crop_stats.pollination ~= false
+end
+
 function HerbalistPlanterComponent:is_harvest_enabled()
    return self._sv.harvest_enabled
 end

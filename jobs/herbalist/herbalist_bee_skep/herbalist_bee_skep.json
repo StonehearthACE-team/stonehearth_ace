@@ -32,6 +32,7 @@
          "iconic_form": "file(herbalist_bee_skep_iconic.json)",
          "placeable_on_ground": true
       },
+      "stonehearth_ace:bee_skep": {},
       "stonehearth:renewable_resource_node": {
          "resource": "stonehearth_ace:food:honey",
          "start_unharvestable": true,
@@ -120,7 +121,67 @@
             }
          }
       },
-      "stonehearth_ace:transform": {}
+      "stonehearth_ace:transform": {},
+      "stonehearth_ace:static_component_info": {
+         "details": {
+            "data": {
+               "type": "credit_list",
+               "sections": [
+                  {
+                     "footer": "i18n(stonehearth_ace:jobs.herbalist.herbalist_bee_skep.static_component_info.description)"
+                  },
+                  {
+                     "header": "i18n(stonehearth_ace:jobs.herbalist.herbalist_bee_skep.static_component_info.header_herbalist_planters)",
+                     "entries": [
+                        "i18n(stonehearth_ace:entities.plants.bog_myrtle_plant.display_name)",
+                        "i18n(stonehearth:entities.plants.wax_plant_green.wax_plant_green_ghost.display_name)",
+                        "i18n(stonehearth:entities.plants.wax_plant_purple.wax_plant_purple_ghost.display_name)",
+                        "i18n(stonehearth_ace:entities.vines.highland_vine.display_name)",
+                        "i18n(stonehearth_ace:entities.plants.water_lily_pad.water_lily_pad_ghost.display_name)",
+                        "i18n(stonehearth_ace:entities.plants.water_lily_white.water_lily_white_ghost.display_name)",
+                        "i18n(stonehearth_ace:entities.plants.water_lily_yellow.water_lily_yellow_ghost.display_name)",
+                        "i18n(stonehearth_ace:entities.plants.water_lily_purple.water_lily_purple_ghost.display_name)",
+                        "i18n(stonehearth_ace:entities.plants.water_lily_pink.water_lily_pink_ghost.display_name)"
+                     ]
+                  },
+                  {
+                     "footer": "i18n(stonehearth_ace:jobs.herbalist.herbalist_bee_skep.static_component_info.header_wild_plants)"
+                  },
+                  {
+                     "header": "i18n(stonehearth_ace:jobs.herbalist.herbalist_bee_skep.static_component_info.header_farmer_crops)",
+                     "entries": [
+                        "i18n(stonehearth_ace:entities.crops.barley_crop.display_name)",
+                        "i18n(stonehearth_ace:entities.crops.beetroot_crop.display_name)",
+                        "i18n(stonehearth:entities.crops.corn_crop.display_name)",
+                        "i18n(stonehearth_ace:entities.crops.lettuce_crop.display_name)",
+                        "i18n(stonehearth_ace:entities.crops.millet_crop.display_name)",
+                        "i18n(stonehearth_ace:entities.crops.paddy_crop.display_name)",
+                        "i18n(stonehearth_ace:entities.crops.rye_crop.display_name)",
+                        "i18n(stonehearth:entities.crops.wheat_crop.display_name)"
+                     ]
+                  },
+                  {
+                     "header": "i18n(stonehearth_ace:jobs.herbalist.herbalist_bee_skep.static_component_info.header_trees)",
+                     "entries": [
+                        "i18n(stonehearth_ace:entities.crops.oak_tree_crop.display_name)",
+                        "i18n(stonehearth_ace:entities.crops.juniper_tree_crop.display_name)",
+                        "i18n(stonehearth_ace:entities.crops.pine_tree_crop.display_name)",
+                        "i18n(stonehearth_ace:entities.crops.birch_tree_crop.display_name)",
+                        "i18n(stonehearth_ace:entities.crops.hazelnut_tree_crop.display_name)",
+                        "i18n(stonehearth_ace:entities.crops.walnut_tree_crop.display_name)",
+                        "i18n(stonehearth_ace:entities.crops.date_tree_crop.display_name)",
+                        "i18n(stonehearth_ace:entities.crops.highland_pine_tree_crop.display_name)",
+                        "i18n(stonehearth_ace:entities.crops.yew_tree_crop.display_name)",
+                        "i18n(stonehearth_ace:entities.trees.parana_pine_tree.medium_parana_pine_tree.display_name)",
+                        "i18n(stonehearth_ace:entities.crops.tumbleweed_crop.display_name)",
+                        "i18n(stonehearth_ace:entities.crops.wintermoss_crop.display_name)",
+                        "i18n(stonehearth_ace:entities.crops.dwarfsbeard_crop.display_name)"
+                     ]
+                  }
+               ]
+            }
+         }
+      }
    },
    "entity_data": {
       "stonehearth_ace:transform_data": {

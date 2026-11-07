@@ -1,8 +1,8 @@
 {
-   "components": {
+	"components": {
 		"render_info": {
-         "scale": 0.13
-      },
+			"scale": 0.13
+		},
 		"mob": {
 			"model_origin": {
 				"x": -0.05,
@@ -11,11 +11,11 @@
 			}
 		}
 	},
-   "entity_data": {
-      "stonehearth:catalog": {
+	"entity_data": {
+		"stonehearth:catalog": {
 			"description": "i18n(stonehearth_ace:entities.plants.wax_plant_purple.description)",
-         "material_tags": ["decoration"],
+			"material_tags": [ "decoration", "no_pollination" ],
 			"icon": "file(wax_plant_purple.png)"
-      }
-   }
+		}
+	}
 }
