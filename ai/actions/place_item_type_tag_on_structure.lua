@@ -148,9 +148,9 @@ function PlaceItemTypeTagOnStructure:_try_next_entry(ai, entity)
    local require_exact_str = require_exact and '*' or ''
 
    local pickup_filter = stonehearth.ai:filter_from_key('stonehearth:place_item_type_on_structure',
-         work_player_id .. '+q:' .. quality .. ':' .. iconic_uri .. require_exact_str .. ':p',
+         work_player_id .. '+q:' .. quality .. ':' .. iconic_uri .. require_exact_str .. ':p:' .. tostring(tag),
          function(item)
-            return _is_placeable_iconic(work_player_id, iconic_uri, quality, require_exact, item, self._required_placement_tag)
+            return _is_placeable_iconic(work_player_id, iconic_uri, quality, require_exact, item, tag)
          end)
    
    local ghost_filter = stonehearth.ai:filter_from_key('stonehearth:place_item_type_on_structure',

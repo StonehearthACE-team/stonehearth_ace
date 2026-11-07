@@ -11,10 +11,13 @@ function WaitForSpecialAttentionCondition:start_thinking(ai, entity, args)
    self._entity = entity
    self._signaled = false
    self._priority = nil
-   if not self._buff_listener then
-      self._buff_listener = radiant.events.listen(entity, 'stonehearth:buff_added', self, self._on_buff_added)
+   if not self._buff_added_listener then
+      self._buff_added_listener = radiant.events.listen(entity, 'stonehearth:buff_added', self, self._on_buffs_changed)
    end
-   self:_on_buff_added()  -- Safe to do sync since it can't call both clear_think_output and set_think_output.
+   if not self._buff_removed_listener then
+      self._buff_removed_listener = radiant.events.listen(entity, 'stonehearth:buff_removed', self, self._on_buffs_changed)
+   end
+   self:_on_buffs_changed()  -- Safe to do sync since it can't call both clear_think_output and set_think_output.
 end
 
 function WaitForSpecialAttentionCondition:start(ai, entity, args)
@@ -27,13 +30,17 @@ function WaitForSpecialAttentionCondition:stop_thinking(ai, entity, args)
 end
 
 function WaitForSpecialAttentionCondition:destroy()
-   if self._buff_listener then
-      self._buff_listener:destroy()
-      self._buff_listener = nil
+   if self._buff_added_listener then
+      self._buff_added_listener:destroy()
+      self._buff_added_listener = nil
+   end
+   if self._buff_removed_listener then
+      self._buff_removed_listener:destroy()
+      self._buff_removed_listener = nil
    end
 end
 
-function WaitForSpecialAttentionCondition:_on_buff_added()
+function WaitForSpecialAttentionCondition:_on_buffs_changed()
    local condition, priority = healing_lib.get_highest_priority_condition(self._entity)
 
    self._ai:set_utility(priority or 0)

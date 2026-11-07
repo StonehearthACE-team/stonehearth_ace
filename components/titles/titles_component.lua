@@ -216,6 +216,7 @@ function TitlesComponent:_get_highest_renown_title()
       local renown = self:_get_title_renown(title, rank)
       if not highest_renown or renown > highest_renown then
          highest_title = title
+         highest_renown = renown
       end
    end
    return highest_title

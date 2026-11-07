@@ -248,7 +248,7 @@ function MechanicalComponent:_update_component_info()
       comp_info:set_component_detail('stonehearth_ace:mechanical', 'consumes',
          'stonehearth_ace:component_info.stonehearth_ace.mechanical.consumes', {
             def_consumes = floor(self._def_consumes),
-            produces = floor(self._sv.consumes)
+            consumes = floor(self._sv.consumes)
          })
    end
    if self._def_resistance > 0 then

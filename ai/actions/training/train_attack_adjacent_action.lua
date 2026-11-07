@@ -24,7 +24,7 @@ function TrainAttackAdjacent:start(ai, entity, args)
    log:debug('%s starting with %s', entity, args.target)
    local check_conditions = self:_check_conditions(ai, entity, args)
    if check_conditions then
-      log:aborting('%s rejecting due to check_conditions: %s', entity, check_conditions)
+      log:debug('%s aborting due to check_conditions: %s', entity, check_conditions)
       ai:abort(check_conditions)
       return
    end

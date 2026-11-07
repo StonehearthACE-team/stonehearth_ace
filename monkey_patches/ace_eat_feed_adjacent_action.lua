@@ -1,3 +1,4 @@
+local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_lib'
 local EatFeedAdjacent = require 'stonehearth.ai.actions.pasture_animal.eat_feed_adjacent_action'
 
 local AceEatFeedAdjacent = class()
@@ -7,7 +8,7 @@ function AceEatFeedAdjacent:stop(ai, entity, args)
    local quality_chances
    
    if self._animal_feed_data then
-      local animal_feed = radiant.entities.get_entity_data(args.food, 'stonehearth_ace:animal_feed')
+      local animal_feed = radiant.entities.get_entity_data(args.food, 'stonehearth:animal_feed')
       quality_chances = animal_feed and animal_feed.quality_chances
 
       -- Add the feed buff, if any

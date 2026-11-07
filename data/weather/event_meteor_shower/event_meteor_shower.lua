@@ -23,8 +23,7 @@ function EventMeteorShowerWeather:start()
    self._sv._meteorite_timer = stonehearth.calendar:set_persistent_timer('event_meteor_shower meteorite', METEORITE_INTERVAL, radiant.bind(self, '_spawn_meteorite'))
 
    local bulletin_data = {
-      title = "i18n(stonehearth_ace:data.weather.event.meteor_shower.bulletin_name)",
-      notification_closed_callback = '_on_closed'
+      title = "i18n(stonehearth_ace:data.weather.event.meteor_shower.bulletin_name)"
    }
    
    local players = stonehearth.player:get_non_npc_players()
@@ -61,8 +60,8 @@ function EventMeteorShowerWeather:_spawn_meteorite()
    --meteorite:add_component('stonehearth:commands'):add_command('stonehearth:commands:loot_item')
    -- Choose a point to hit.
    local terrain_bounds = stonehearth.terrain:get_bounds()
-   local x = rng:get_int(terrain_bounds.min.x, terrain_bounds.max.x)
-   local z = rng:get_int(terrain_bounds.min.z, terrain_bounds.max.z)
+   local x = rng:get_int(terrain_bounds.min.x, terrain_bounds.max.x - 1)
+   local z = rng:get_int(terrain_bounds.min.z, terrain_bounds.max.z - 1)
    local pt = radiant.terrain.get_point_on_terrain(Point3(x, terrain_bounds.max.y, z))
    local ground_point = radiant.terrain.find_placement_point(pt, 0, 10, meteorite)
 

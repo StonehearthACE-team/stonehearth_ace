@@ -11,7 +11,7 @@ function AceRunRestEffect:run(ai, entity, args)
 
    self._health_listener = radiant.events.listen(entity, 'stonehearth:expendable_resource_changed:health', self, self._on_status_changed)
    self._conditions_listener = radiant.events.listen(entity, 'stonehearth:buff_removed', self, self._on_status_changed)
-   self:_create_status_unchanged_timer()
+   self:_on_status_changed()
 
    stonehearth.ai:reconsider_entity(self._bed, 'injured entity in bed')
    while not self._signaled do

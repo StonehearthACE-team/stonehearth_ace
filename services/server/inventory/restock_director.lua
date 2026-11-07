@@ -541,6 +541,7 @@ function RestockDirector:_transfer_reconsider_items_into_restockable_queue(recon
    -- only transfer if the restockable queue is empty
    if restockable:get_size() == 0 and reconsider:get_size() > 0 then
       local remaining_item_attempts = FAILED_ITEM_REQUEUE_BATCH_SIZE
+      local popped_dead = false
       while reconsider:get_size() > 0 and remaining_item_attempts > 0 do
          local _, item = reconsider:top()
          reconsider:pop()
@@ -550,6 +551,15 @@ function RestockDirector:_transfer_reconsider_items_into_restockable_queue(recon
             local rating = self:_rate_item(item)
             restockable:push(rating, item)
             remaining_item_attempts = remaining_item_attempts - 1
+         else
+            popped_dead = true
+         end
+      end
+      if popped_dead then
+         for id, item in pairs(self._reconsidering_items) do
+            if not item:is_valid() then
+               self._reconsidering_items[id] = nil
+            end
          end
       end
       return true

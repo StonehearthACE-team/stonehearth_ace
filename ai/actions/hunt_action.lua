@@ -44,7 +44,7 @@ function HuntAnimalAction:start_thinking(ai, entity, args)
    local avoid_hunting = properties_comp and properties_comp:has_property('avoid_hunting')
    if avoid_hunting then
       self._allow_hunting_listener = radiant.events.listen(entity, 'stonehearth_ace:avoid_hunting_changed', function()
-            if properties_comp:has_property('avoid_hunting') then
+            if not properties_comp:has_property('avoid_hunting') then
                set_think_output()
             end
          end)

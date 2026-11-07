@@ -158,6 +158,7 @@ function MechanicalService:_disable_network(network)
    self._networks[network.id] = nil
    for id, entity in pairs(network.entities) do
       self:_disable_entity_in_network(entity, network)
+      self:_remove_entity_from_n_by_e_network(id, network.id)
    end
 end
 

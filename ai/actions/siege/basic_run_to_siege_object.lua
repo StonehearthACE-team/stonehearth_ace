@@ -6,8 +6,8 @@ RunToSiege.args = {}
 RunToSiege.priority = 0.02
 
 function RunToSiege:start_thinking(ai, entity, args)
-   local assaulting = stonehearth.combat:get_assaulting(self._entity)
-   local defending = stonehearth.combat:get_defending(self._entity)
+   local assaulting = stonehearth.combat:get_assaulting(entity)
+   local defending = stonehearth.combat:get_defending(entity)
    if assaulting or defending then
       return -- don't interrupt if entity is in combat
    end

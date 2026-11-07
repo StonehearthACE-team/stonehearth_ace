@@ -145,7 +145,8 @@ function crafting_lib.craft_items(ai, crafter, workshop, recipe, ingredients, in
          radiant.events.trigger_async(crafter, 'stonehearth:crafter:craft_item', crafting_data)
 
          for _, prod_item in ipairs(all_products) do
-            if prod_item:get_uri() == primary_uri then
+            local root = entity_forms_lib.get_root_entity(prod_item) or prod_item
+            if prod_item:get_uri() == primary_uri or root:get_uri() == primary_uri then
                primary_output = primary_output + 1
             end
          end

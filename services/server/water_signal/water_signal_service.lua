@@ -147,6 +147,9 @@ function WaterSignalService:_update_signal_region(signal)
             local chunk = self._signals_by_chunk[chunk_id]
             if chunk then
                chunk[signal.id] = nil
+               if not next(chunk) then
+                  self._signals_by_chunk[chunk_id] = nil
+               end
             end
          end
       end
