@@ -1,6 +1,6 @@
 var _componentInfoShown = false;
 
-var _updateComponentInfoShown = function() {
+var _updateComponentInfoShown = function () {
    let compInfo = App.gameView.getView(App.ComponentInfoView);
    if (compInfo) {
       compInfo._onEntitySelected();
@@ -22,7 +22,7 @@ $(top).on('stonehearthReady', function (cc) {
    }
 
    // need to apply the setting on load as well
-   stonehearth_ace.getModConfigSetting('stonehearth_ace', 'show_component_info', function(value) {
+   stonehearth_ace.getModConfigSetting('stonehearth_ace', 'show_component_info', function (value) {
       $(top).trigger('show_component_info_changed', { value: value });
    });
 });
@@ -34,12 +34,13 @@ App.ComponentInfoView = App.View.extend({
 
    components: [],
 
-   willDestroyElement: function() {
+   willDestroyElement: function () {
       var self = this;
       self.$().find('.tooltipstered').tooltipster('destroy');
 
       self.$().off('click');
       $(top).off("radiant_selection_changed.component_info");
+      $(top).off("component_info_toggled");
 
       self._destroyTraces();
 
@@ -68,12 +69,12 @@ App.ComponentInfoView = App.View.extend({
       App.stonehearth.modalStack.push(this);
    },
 
-   init: function() {
+   init: function () {
       var self = this;
       self._super();
 
       radiant.call_obj('stonehearth.selection', 'get_selected_command')
-         .done(function(data) {
+         .done(function (data) {
             if (self.isDestroyed || self.isDestroying) {
                return;
             }
@@ -88,13 +89,13 @@ App.ComponentInfoView = App.View.extend({
       this.$().draggable({ handle: '.title' });
 
       // load up the default component data
-      $.getJSON('/stonehearth_ace/data/component_info/component_info.json', function(data) {
+      $.getJSON('/stonehearth_ace/data/component_info/component_info.json', function (data) {
          var sortedData = [];
-         radiant.each(data, function(k, v) {
+         radiant.each(data, function (k, v) {
             v.name = k;
             sortedData.push(v);
          });
-         sortedData.sort(function(a, b) {
+         sortedData.sort(function (a, b) {
             if (a.name < b.name) {
                return -1;
             }
@@ -103,7 +104,7 @@ App.ComponentInfoView = App.View.extend({
             }
             return 0;
          })
-         
+
          self.set('generalDetails', sortedData);
 
          if (self.get('specificDetails')) {
@@ -128,24 +129,19 @@ App.ComponentInfoView = App.View.extend({
       self.hide();
    },
 
-   _destroyTraces: function() {
+   _destroyTraces: function () {
+      var self = this;
+
       if (self._tracer) {
          self._tracer.destroy();
          self._tracer = null;
       }
 
-      if (self.selectedEntityTrace) {
-         self.selectedEntityTrace.destroy();
-         self.selectedEntityTrace = null;
-      }
-
-      if (self.selectedEntityInfoTrace) {
-         self.selectedEntityInfoTrace.destroy();
-         self.selectedEntityInfoTrace = null;
-      }
+      self.selectedEntityTrace = null;
+      self.selectedEntityInfoTrace = null;
    },
 
-   _onEntitySelected: function(e) {
+   _onEntitySelected: function (e) {
       var self = this;
       var entity;
 
@@ -172,16 +168,15 @@ App.ComponentInfoView = App.View.extend({
 
       self._tracer = new RadiantTrace();
       self.selectedEntityTrace = self._tracer.traceUri(entity, {})
-         .progress(function(result) {
+         .progress(function (result) {
             if (self.isDestroying || self.isDestroyed) {
                return;
             }
 
             self.set('selectedGeneral', result);
-            if (result['stonehearth_ace:component_info'])
-            {
+            if (result['stonehearth_ace:component_info']) {
                self.selectedEntityInfoTrace = self._tracer.traceUri(result['stonehearth_ace:component_info'], {})
-                  .progress(function(compResult) {
+                  .progress(function (compResult) {
                      if (self.isDestroying || self.isDestroyed) {
                         return;
                      }
@@ -193,12 +188,12 @@ App.ComponentInfoView = App.View.extend({
                self.set('selectedDetails', {});
             }
          })
-         .fail(function(e) {
+         .fail(function (e) {
             console.log(e);
          });
    },
 
-   _updateData: function() {
+   _updateData: function () {
       var self = this;
 
       var general = self.get('generalDetails');
@@ -208,7 +203,7 @@ App.ComponentInfoView = App.View.extend({
          var specific = self.get('selectedDetails');
          var data = [];
 
-         radiant.each(general, function(_, component) {
+         radiant.each(general, function (_, component) {
             if (selected[component.name]) {
                // if the selected entity has this component, we're adding it to the list
                var entry = {
@@ -226,7 +221,7 @@ App.ComponentInfoView = App.View.extend({
                   entry.showGeneral = !specificDetails.hide_general;
                   entry.showSpecific = !specificDetails.hide_specific;
                   entry.visible = entry.showGeneral || entry.showSpecific;
-                  radiant.each(specificDetails.details, function(name, specific) {
+                  radiant.each(specificDetails.details, function (name, specific) {
                      var details = self._createDetailDiv(specific);
                      entry.specificDetails.push({
                         'details': details,
@@ -234,7 +229,7 @@ App.ComponentInfoView = App.View.extend({
                      });
                   });
 
-                  entry.specificDetails.sort(function(a, b) {
+                  entry.specificDetails.sort(function (a, b) {
                      return a.ordinal - b.ordinal;
                   })
                }
@@ -258,7 +253,7 @@ App.ComponentInfoView = App.View.extend({
 
    _createDetailDiv: function (details) {
       var self = this;
-      
+
       var detail = details.detail;
       switch (detail.type) {
          case 'string':
@@ -275,7 +270,7 @@ App.ComponentInfoView = App.View.extend({
 
             var hasSelected = detail.entries.some(x => x.selected);
 
-            detail.entries.forEach(function(entry){
+            detail.entries.forEach(function (entry) {
                var noDescription = entry.description == null;
                var classes = (hasSelected && !entry.selected ? 'deselected ' : '') + (noDescription ? 'noDescription ' : '') + 'entrySpacing listItem';
                content += `<div class="${classes}">`;
@@ -306,7 +301,7 @@ App.ComponentInfoView = App.View.extend({
             // 'sections' contains the sections which each contain optional header, entries, and footer
             var content = '';
 
-            detail.sections.forEach(function(section){
+            detail.sections.forEach(function (section) {
                var sectionContent = '';
                var isCentered = section.centered !== false;
                var centeredClass = isCentered ? ' class="centered"' : '';
@@ -317,7 +312,7 @@ App.ComponentInfoView = App.View.extend({
 
                if (section.entries) {
                   var entries = [];
-                  section.entries.forEach(function(entry){
+                  section.entries.forEach(function (entry) {
                      entries.push(i18n.t(entry));
                   });
 
@@ -342,7 +337,7 @@ App.ComponentInfoView = App.View.extend({
 
             var items = {};
             // condense the items by uri and quality
-            radiant.each(detail.items, function(_, item){
+            radiant.each(detail.items, function (_, item) {
                var key = item.uri + '|' + (item.quality || 1);
                var arrItem = items[key];
                if (arrItem) {
@@ -359,11 +354,11 @@ App.ComponentInfoView = App.View.extend({
             });
 
             items = radiant.map_to_array(items);
-            items.sort(function(a, b) {
+            items.sort(function (a, b) {
                return a.key.localeCompare(b.key);
             });
 
-            radiant.each(items, function(_, arrItem){
+            radiant.each(items, function (_, arrItem) {
                var item = arrItem.item;
                var catalogData = App.catalog.getCatalogData(item.uri);
                if (catalogData) {
@@ -399,12 +394,12 @@ App.ComponentInfoView = App.View.extend({
 
             var isWaitingForCallback = false;
 
-            stonehearth_ace.loadAvailableTitles(detail.titles_json, function(allTitles) {
+            stonehearth_ace.loadAvailableTitles(detail.titles_json, function (allTitles) {
                var titlesArr = stonehearth_ace.getTitlesList(allTitles, detail.titles, '', true)
                var titlesContent = '';
-   
+
                var descriptions = {};
-               radiant.each(titlesArr, function(_, titleData) {
+               radiant.each(titlesArr, function (_, titleData) {
                   titlesContent += '<div class="specificTitle">';
                   // for each title, offer name and description
                   // then do <ul> for all the ranks (with gray/italic "next" rank at end [attained == false])
@@ -412,7 +407,7 @@ App.ComponentInfoView = App.View.extend({
                   titlesContent += `<span class="listHeader">${i18n.t(titleData.display_name)}: ${i18n.t(titleData.description)}</span>`;
 
                   var list = '<ul class="titleList">';
-                  radiant.each(titleData.ranks, function(_, rankData) {
+                  radiant.each(titleData.ranks, function (_, rankData) {
                      descriptions[rankData.key] = rankData.description;
                      var renown = '';
                      if (rankData.renown) {
@@ -433,20 +428,20 @@ App.ComponentInfoView = App.View.extend({
                   content += titlesContent;
                }
 
-               Ember.run.scheduleOnce('afterRender', self, function() {
+               Ember.run.scheduleOnce('afterRender', self, function () {
                   var titleRank = self.$('.titleRank');
                   if (titleRank) {
                      // don't give description tooltips for the unattained "next" ones
-                     self.$('.titleRank.attained').each(function() {
+                     self.$('.titleRank.attained').each(function () {
                         var description = i18n.t(descriptions[$(this).attr('description-key')]);
                         var renown = $(this).attr('renown');
                         if (renown) {
-                           description += '<br>' + i18n.t('stonehearth_ace:component_info.stonehearth_ace.titles.renown', {renown: renown});
+                           description += '<br>' + i18n.t('stonehearth_ace:component_info.stonehearth_ace.titles.renown', { renown: renown });
                         }
                         App.guiHelper.addTooltip($(this), description);
                      });
 
-                     self.$('.titleRank.unattained').each(function() {
+                     self.$('.titleRank.unattained').each(function () {
                         App.guiHelper.addTooltip($(this), i18n.t('stonehearth_ace:component_info.stonehearth_ace.titles.unattained'));
                      });
                   }

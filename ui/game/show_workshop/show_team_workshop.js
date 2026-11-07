@@ -22,17 +22,17 @@ App.workshopManager = {
          .done(function (response) {
             self.workbenchItemTracker = response.tracker;
             self.workbenchItemTrackerTrace = new StonehearthDataTrace(self.workbenchItemTracker, {
-                  'tracking_data': {
-                     '*': {
-                        'items': {
-                           '*': {
-                              'stonehearth:workshop': {},
-                              'stonehearth_ace:auto_craft': {}
-                           }
+               'tracking_data': {
+                  '*': {
+                     'items': {
+                        '*': {
+                           'stonehearth:workshop': {},
+                           'stonehearth_ace:auto_craft': {}
                         }
                      }
                   }
-               })
+               }
+            })
                .progress(function (response) {
                   self.workbenchItemTrackerData = response.tracking_data;
                   self.notifyItemsChanged();
@@ -54,10 +54,10 @@ App.workshopManager = {
       var anyWorkshopVisible = _.any(self.workshops, function (w) { return w.isVisible; });
       if (anyWorkshopVisible && !self.usableItemTrackerTrace) {
          var itemTraces = {
-            "tracking_data" : {
-               "stonehearth:loot:gold" : {
-                  "items" : {
-                     "*" : {
+            "tracking_data": {
+               "stonehearth:loot:gold": {
+                  "items": {
+                     "*": {
                         "stonehearth:stacks": {}
                      }
                   }
@@ -84,7 +84,7 @@ App.workshopManager = {
             if (self.workshops[jobAlias]) return;
             if (response.job_info_object) {
                self.workshops[jobAlias] = App.stonehearth.showTeamWorkshopView = App.gameView.addView(
-                     App.StonehearthTeamCrafterView, { uri: response.job_info_object });
+                  App.StonehearthTeamCrafterView, { uri: response.job_info_object });
                if (show || cb) {
                   var workshop = self.workshops[jobAlias];
                   $(workshop).on('recipesInitialized', function () {
@@ -153,35 +153,35 @@ App.workshopManager = {
 };
 
 App.StonehearthTeamCrafterView = App.View.extend({
-   templateName : 'stonehearthTeamCrafter',
+   templateName: 'stonehearthTeamCrafter',
    uriProperty: 'model',
    closeOnEsc: true,
    skipInvisibleUpdates: true,
    components: {
-      "order_list" : {
-         "orders" : {
+      "order_list": {
+         "orders": {
             // "associated_orders" : {
             //    "*": {},
             // },
-            "curr_crafters" : {},
-            "recipe" : {},
+            "curr_crafters": {},
+            "recipe": {},
          },
-         "secondary_orders" : {
+         "secondary_orders": {
             // "associated_orders" : {
             //    "*": {},
             // },
-            "curr_crafters" : {},
-            "recipe" : {},
+            "curr_crafters": {},
+            "recipe": {},
          },
-         "auto_craft_orders" : {
+         "auto_craft_orders": {
             // "associated_orders" : {
             //    "*": {},
             // },
-            "curr_crafters" : {},
-            "recipe" : {},
+            "curr_crafters": {},
+            "recipe": {},
          },
       },
-      "recipe_list" : {
+      "recipe_list": {
          "*": {
             "recipes": {
                "*": {
@@ -205,10 +205,15 @@ App.StonehearthTeamCrafterView = App.View.extend({
    queueAnywayStatus: false,
    maxActiveOrders: 30,
    scrollAmount: 78,
+   _scrollHoldTimer: null,
+   _scrollHoldFrame: null,
+   _scrollHoldDirection: 0,
+   _scrollHoldList: null,
+   _scrollHoldDidStart: false,
    craft_button_text: 'stonehearth:ui.game.show_workshop.craft',
    highlightedOrders: [],
 
-   makeSortable: function(element, args) {
+   makeSortable: function (element, args) {
       if (element) {
          if (args == 'destroy' && !element.is('.ui-sortable')) {
             return;
@@ -289,7 +294,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
    }.observes('isVisible'),
 
    // ACE: added lots of features
-   didInsertElement: function() {
+   didInsertElement: function () {
       var self = this;
       self._super();
 
@@ -303,7 +308,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
       self.set('maxActiveOrders', App.constants.crafting.DEFAULT_MAX_CRAFT_ORDERS);
 
       radiant.call('radiant:get_config', 'mods.stonehearth.max_crafter_orders')
-         .done(function(response) {
+         .done(function (response) {
             var maxCrafterOrders = response['mods.stonehearth.max_crafter_orders'];
             if (maxCrafterOrders) {
                self.set('maxActiveOrders', maxCrafterOrders);
@@ -320,7 +325,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
       });
       App.workshopManager.notifyItemsChanged();
 
-      self.$().on( 'click', '.craftNumericButton', function() {
+      self.$().on('click', '.craftNumericButton', function () {
          var button = $(this);
          var inputControl = button.parent().find('input');
          var oldValue = parseInt(inputControl.val());
@@ -338,11 +343,11 @@ App.StonehearthTeamCrafterView = App.View.extend({
                if (allIngredients && allIngredients.length > 0) {
                   var ingredientCount = allIngredients.length;
                   var maxOrdersMakeable = parseInt(inputControl.attr('max'));
-                  for (var i=0; i < ingredientCount; ++i) {
+                  for (var i = 0; i < ingredientCount; ++i) {
                      var currentIngredient = $(allIngredients[i]);
                      var have = parseInt(currentIngredient.find('.numHave').html());
                      var required = parseInt(currentIngredient.find('.numNeeded').html());
-                     var maxProduceable = Math.floor(have/required);
+                     var maxProduceable = Math.floor(have / required);
                      if (maxProduceable < maxOrdersMakeable) {
                         maxOrdersMakeable = maxProduceable;
                      }
@@ -366,7 +371,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
             if (e.ctrlKey) {
                orderArgs = { type: "maintain", at_least: 1, quick_add: true };
             } else {
-               orderArgs = { type: "make", amount: 1, quick_add: true};
+               orderArgs = { type: "make", amount: 1, quick_add: true };
             }
             if (e.shiftKey) {
                orderArgs.order_index = 1;
@@ -379,11 +384,11 @@ App.StonehearthTeamCrafterView = App.View.extend({
                orderArgs = { type: "maintain", at_least: orderArgs.amount, quick_add: true };
             }
             radiant.call_obj(self.getOrderList(), 'add_order_command', recipe, orderArgs)
-               .done(function(return_data){
+               .done(function (return_data) {
                   if (self.isDestroyed || self.isDestroying) {
                      return;
                   }
-                  radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:carpenter_menu:confirm'} );
+                  radiant.call('radiant:play_sound', { 'track': 'stonehearth:sounds:ui:carpenter_menu:confirm' });
                });
          }
       });
@@ -398,7 +403,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
             var orderId = parseInt(item.attr("data-orderid"));
             var deleteAssociatedOrders = stonehearth_ace.isShiftKeyActive();
             radiant.call_obj(orderList, 'delete_order_command', orderId, deleteAssociatedOrders)
-               .done(function(return_data){
+               .done(function (return_data) {
                   radiant.call('stonehearth_ace:force_order_list_update', self.get('model.alias'));
                   // item.remove();
                   // if (return_data && return_data.associated_orders) {
@@ -406,7 +411,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
                   //       self.$('.orders').find("[data-orderid='"+order_id+"']").remove();
                   //    })
                   // }
-                  radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:carpenter_menu:trash'} );
+                  radiant.call('radiant:play_sound', { 'track': 'stonehearth:sounds:ui:carpenter_menu:trash' });
                });
          }
       });
@@ -421,7 +426,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
          var isPrimaryOrderList = $el.closest('.orders').attr('id') == 'orders';
          var primaryOrders = self.get('model.order_list.orders') || [];
          var orderList = (primaryOrders).concat(self.get('model.order_list.secondary_orders') || []).concat(self.get('model.order_list.auto_craft_orders') || []);
-         radiant.each(orderList, function(_, o) {
+         radiant.each(orderList, function (_, o) {
             if (o.id == orderId) {
                order = o;
                return false;
@@ -471,7 +476,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
             // if this order has associated orders, highlight only the direct children (the orders that will be removed if this one is removed)
             if (order.building_id) {
                self.highlightedOrders = [];
-               radiant.each(orderList, function(_, o) {
+               radiant.each(orderList, function (_, o) {
                   if (o.building_id == order.building_id) {
                      self.highlightedOrders.push(o);
                   }
@@ -490,7 +495,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
                   self._associatedOrdersTrace.destroy();
                   self._associatedOrdersTrace = null;
                }
-               self._associatedOrdersTrace = new StonehearthDataTrace(order.__self, {'associated_orders': { '*': { 'order': {} } }})
+               self._associatedOrdersTrace = new StonehearthDataTrace(order.__self, { 'associated_orders': { '*': { 'order': {} } } })
                   .progress(function (response) {
                      if (self._associatedOrdersTrace) {
                         self._associatedOrdersTrace.destroy();
@@ -551,7 +556,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
 
       self._updateCraftSearchChecks(_craftSearchChecks);
 
-      self.$('#allCrafters').on('click', '.categoryCrafter', function() {
+      self.$('#allCrafters').on('click', '.categoryCrafter', function () {
          var $elem = $(this);
          var id = $elem.attr('crafterId');
 
@@ -559,7 +564,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
          if (member) {
             var enable = false;
             var categories = [];
-            radiant.each(member.categoryMembers, function(category, categoryMember) {
+            radiant.each(member.categoryMembers, function (category, categoryMember) {
                if (categoryMember.disabled) {
                   enable = true;
                }
@@ -568,7 +573,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
             radiant.call('stonehearth_ace:set_crafting_categories_disabled', member.objectRef, categories, !enable);
 
             // also update the status so it toggles the class on the element
-            radiant.each(member.categoryMembers, function(category, categoryMember) {
+            radiant.each(member.categoryMembers, function (category, categoryMember) {
                Ember.set(categoryMember, 'disabled', !enable);
                self._updateAllMembersDisabledForCategory(category);
             });
@@ -576,7 +581,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
          }
       });
 
-      self.$('#recipeItems').on('click', '.categoryCrafter', function() {
+      self.$('#recipeItems').on('click', '.categoryCrafter', function () {
          var $elem = $(this);
          var id = $elem.attr('crafterId');
          var category = $elem.attr('category');
@@ -601,7 +606,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
       self.hide(false);  // Hidden by default.
    },
 
-   destroy: function() {
+   destroy: function () {
       if (this._playerInventoryTrace) {
          this._playerInventoryTrace.destroy();
          this._playerInventoryTrace = null;
@@ -656,11 +661,11 @@ App.StonehearthTeamCrafterView = App.View.extend({
       this._super();
    },
 
-   _destroyCrafterTraces: function(exceptTheseCrafters) {
+   _destroyCrafterTraces: function (exceptTheseCrafters) {
       var keptTraces = {};
       var tracesRemoved = false;
       if (this._crafterTraces) {
-         radiant.each(this._crafterTraces, function(id, trace) {
+         radiant.each(this._crafterTraces, function (id, trace) {
             if (exceptTheseCrafters && exceptTheseCrafters[id] != null) {
                keptTraces[id] = trace;
             }
@@ -674,10 +679,10 @@ App.StonehearthTeamCrafterView = App.View.extend({
       return tracesRemoved;
    },
 
-   _updateAllMembersDisabledForCategory: function(category) {
+   _updateAllMembersDisabledForCategory: function (category) {
       var self = this;
       var allDisabled = true;
-      radiant.each(self._memberLookup, function(id, member) {
+      radiant.each(self._memberLookup, function (id, member) {
          if (member.categoryMembers[category] && !member.categoryMembers[category].disabled) {
             allDisabled = false;
             return false;
@@ -689,7 +694,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
       }
    },
 
-   _getOrderById: function(orderId) {
+   _getOrderById: function (orderId) {
       var self = this;
       var [order, index, count] = self._getOrderFromOrderList(orderId, self.get('model.order_list.orders'));
 
@@ -704,10 +709,10 @@ App.StonehearthTeamCrafterView = App.View.extend({
       return [order, index, count];
    },
 
-   _getOrderFromOrderList: function(orderId, orderList) {
+   _getOrderFromOrderList: function (orderId, orderList) {
       var order;
       var index = 1;
-      radiant.each(orderList, function(_, o) {
+      radiant.each(orderList, function (_, o) {
          if (o.id == orderId) {
             order = o;
             return false;
@@ -719,7 +724,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
       return [order, index, orderList.length];
    },
 
-   _destroyModifyOrderDiv: function() {
+   _destroyModifyOrderDiv: function () {
       var self = this;
       self._isModifyingOrder = false;
       var modifyDif = self.$().find('.modifyOrder');
@@ -770,7 +775,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
       if (index > 1) {
          $moveToTop = $('<img class="moveOrderToTopBtn button">');
          $modifyDiv.append($moveToTop);
-         $moveToTop.click(function() {
+         $moveToTop.click(function () {
             radiant.call_obj(orderList, 'change_order_position_command', 1, orderId);
             self._destroyModifyOrderDiv();
          });
@@ -784,7 +789,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
       if (index < count) {
          $moveToBottom = $('<img class="moveOrderToBottomBtn button">');
          $modifyDiv.append($moveToBottom);
-         $moveToBottom.click(function() {
+         $moveToBottom.click(function () {
             radiant.call_obj(orderList, 'change_order_position_command', -1, orderId);
             self._destroyModifyOrderDiv();
          });
@@ -804,7 +809,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
             $swapPriority.addClass('moveOrderToPrimaryList');
          }
          $modifyDiv.append($swapPriority);
-         $swapPriority.click(function() {
+         $swapPriority.click(function () {
             radiant.call('stonehearth_ace:toggle_order_list_priority', self.get('model.alias'), orderId);
             self._destroyModifyOrderDiv();
          });
@@ -857,7 +862,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
       self.$('.orderListItem').removeClass('buildingHighlighted craftHighlighted');
    },
 
-   getOrderList: function(){
+   getOrderList: function () {
       return this.get('model.order_list').__self;
    },
 
@@ -879,10 +884,10 @@ App.StonehearthTeamCrafterView = App.View.extend({
       var manuallyUnlockedRecipes = self.get('model.manually_unlocked');
       var highestLevel = self.get('model.highest_level');
 
-      radiant.each(recipes, function(category_id, category) {
+      radiant.each(recipes, function (category_id, category) {
          var recipe_array = [];
          var category_has_visible_recipes = false;
-         radiant.each(category.recipes, function(recipe_key, recipe_info) {
+         radiant.each(category.recipes, function (recipe_key, recipe_info) {
             var recipe = recipe_info.recipe
             var formatted_recipe = radiant.shallow_copy(recipe);
             formatted_recipe.needs_ingredient_formatting = true;
@@ -891,7 +896,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
             formatted_recipe.description = i18n.t(formatted_recipe.description);
             var is_locked = formatted_recipe.level_requirement > highestLevel;
             var is_hidden = formatted_recipe.manual_unlock && !manuallyUnlockedRecipes[formatted_recipe.recipe_key] ? true : false;
-            if(is_hidden == false){
+            if (is_hidden == false) {
                category_has_visible_recipes = true;
             }
             Ember.set(formatted_recipe, 'is_hidden', is_hidden);
@@ -907,7 +912,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
 
             formatted_recipe.is_craftable = self._areRequirementsMet(formatted_recipe, highestLevel) ? 1 : 0;
             //formatted_recipe.category = category_id;
-            
+
             recipe_array.push(formatted_recipe);
             self.allRecipes[formatted_recipe.recipe_key] = formatted_recipe;
          });
@@ -919,7 +924,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
 
             var categoryMembers = [];
             var allDisabled = true;
-            memberArray.forEach(function(member) {
+            memberArray.forEach(function (member) {
                var disabled = member.disabledCategories[category_id] || false;
                if (!disabled) {
                   allDisabled = false;
@@ -934,12 +939,12 @@ App.StonehearthTeamCrafterView = App.View.extend({
                member.categoryMembers[category_id] = categoryMember;
                memberEnabledCount[member.id] = (memberEnabledCount[member.id] || 0) + (disabled ? 0 : 1);
             });
-            
+
             var ui_category = {
                category: category.name,
                category_id: category_id,
-               ordinal:  category.ordinal,
-               recipes:  recipe_array,
+               ordinal: category.ordinal,
+               recipes: recipe_array,
                members: categoryMembers,
                allMembersDisabled: allDisabled,
             };
@@ -948,7 +953,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
          }
       });
 
-      memberArray.forEach(function(member) {
+      memberArray.forEach(function (member) {
          var enabledCount = memberEnabledCount[member.id] || 0;
          var enabledClass = enabledCount == totalCategories ? 'enabledCrafting' : (enabledCount == 0 ? 'allDisabledCrafting' : 'someEnabledCrafting');
          Ember.set(member, 'categoryCraftingClass', enabledClass);
@@ -973,7 +978,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
       self._recipeListInitialized = true;
    }.observes('model.recipe_list'),
 
-   _updateMembers: function() {
+   _updateMembers: function () {
       var self = this;
       var members = this.get('model.members');
 
@@ -990,11 +995,11 @@ App.StonehearthTeamCrafterView = App.View.extend({
 
       if (members) {
          var removedMembers = {};
-         radiant.each(memberLookup, function(id, member) {
+         radiant.each(memberLookup, function (id, member) {
             removedMembers[id] = true;
          });
 
-         radiant.each(members, function(id, member) {
+         radiant.each(members, function (id, member) {
             delete removedMembers[id];
 
             // the individual members need to be traced to track their disabled categories
@@ -1023,14 +1028,14 @@ App.StonehearthTeamCrafterView = App.View.extend({
                      if (self.isDestroyed || self.isDestroying) {
                         return;
                      }
-                     
+
                      var m = self._memberLookup[id];
                      if (m) {
                         var jobController = response;
                         if (jobController) {
                            var level = jobController.last_gained_lv;
                            var disabledCategories = jobController.disabled_crafting_categories;
-                           
+
                            // this can be set without updating the ui because it only shows in tooltips
                            m.category_profiencies = jobController.category_profiencies;
 
@@ -1048,7 +1053,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
 
          // removed members must be removed from the list
          var removedAny = false;
-         radiant.each(removedMembers, function(id, _) {
+         radiant.each(removedMembers, function (id, _) {
             memberArray.removeObject(memberLookup[id]);
             delete memberLookup[id];
             removedAny = true;
@@ -1070,8 +1075,8 @@ App.StonehearthTeamCrafterView = App.View.extend({
       self._buildRecipeArray();
       self._updateFullDetailedOrderList();
 
-      Ember.run.scheduleOnce('afterRender', function() {
-         self.$('#allCrafters .categoryCrafter').each(function() {
+      Ember.run.scheduleOnce('afterRender', function () {
+         self.$('#allCrafters .categoryCrafter').each(function () {
             var $elem = $(this);
             App.tooltipHelper.createDynamicTooltip($elem, function () {
                var id = $elem.attr('crafterId');
@@ -1084,7 +1089,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
                   };
 
                   var categories = [];
-                  radiant.each(self.allCategories, function(category, data) {
+                  radiant.each(self.allCategories, function (category, data) {
                      categories.push({
                         category: data.category,
                         ordinal: data.ordinal,
@@ -1101,22 +1106,22 @@ App.StonehearthTeamCrafterView = App.View.extend({
                   switch (member.categoryCraftingClass) {
                      case 'enabledCrafting':
                         tooltipString = `<div>${i18n.t('stonehearth_ace:ui.game.show_workshop.category_crafter.status_all_enabled')}</div><div class='verticalSpacer'>` +
-                              i18n.t('stonehearth_ace:ui.game.show_workshop.category_crafter.disable_all_description', data) + '</div>';
+                           i18n.t('stonehearth_ace:ui.game.show_workshop.category_crafter.disable_all_description', data) + '</div>';
                         break;
                      case 'allDisabledCrafting':
                         tooltipString = `<div>${i18n.t('stonehearth_ace:ui.game.show_workshop.category_crafter.status_all_disabled')}</div><div class='verticalSpacer'>` +
-                              i18n.t('stonehearth_ace:ui.game.show_workshop.category_crafter.enable_all_description', data) + '</div>';
+                           i18n.t('stonehearth_ace:ui.game.show_workshop.category_crafter.enable_all_description', data) + '</div>';
                         break;
                      case 'someEnabledCrafting':
                         tooltipString = `<div>${i18n.t('stonehearth_ace:ui.game.show_workshop.category_crafter.status_some_enabled')}</div><div class='verticalSpacer'>` +
-                        i18n.t('stonehearth_ace:ui.game.show_workshop.category_crafter.enable_all_description', data) + '</div>';
+                           i18n.t('stonehearth_ace:ui.game.show_workshop.category_crafter.enable_all_description', data) + '</div>';
                         break;
                   }
 
                   tooltipString += '<div class="details"><div class="stat"><span>' +
-                        i18n.t('stonehearth_ace:ui.game.show_workshop.category_crafter.proficiencies') + '</span></div>';
+                     i18n.t('stonehearth_ace:ui.game.show_workshop.category_crafter.proficiencies') + '</span></div>';
 
-                  categories.forEach(function(category) {
+                  categories.forEach(function (category) {
                      var categoryName = i18n.t(category.category);
                      var proficiency = Math.min(100, Math.floor(category.proficiency * 100));
                      var headerClass = category.enabled ? 'available' : 'unavailable';
@@ -1132,12 +1137,12 @@ App.StonehearthTeamCrafterView = App.View.extend({
    },
 
    // Go through recipes displayed and update based on whether recipe is now craftable or not
-   _updateCraftableRecipes: function() {
+   _updateCraftableRecipes: function () {
       var self = this;
       var recipeItems = self.$('.itemContainer');
       if (recipeItems) {
          var highestLevel = self.get('model.highest_level');
-         $.each(recipeItems, function(_, el) {
+         $.each(recipeItems, function (_, el) {
             var item = $(el);
             var recipeKey = item.attr('recipe_key');
             var recipe = self.allRecipes[recipeKey];
@@ -1152,14 +1157,14 @@ App.StonehearthTeamCrafterView = App.View.extend({
    // Adding ingredient and workshop details to the recipe is expensive
    // so do it on demand we when we access a recipe.
    // ACE: override this function to add stacks consideration to ingredients
-   _getOrCalculateRecipeData: function(recipe_key) {
+   _getOrCalculateRecipeData: function (recipe_key) {
       var self = this;
       var formatted_recipe = recipe_key && self.allRecipes[recipe_key];
       if (formatted_recipe && formatted_recipe.needs_ingredient_formatting) {
          var ingredients = formatted_recipe.ingredients;
          //Add ingredient images to the recipes
          formatted_recipe.ingredients = [];
-         radiant.each(ingredients, function(i, ingredient) {
+         radiant.each(ingredients, function (i, ingredient) {
             var formatted_ingredient = radiant.shallow_copy(ingredient);
             if (formatted_ingredient.material) {
                formatted_ingredient.identifier = formatted_ingredient.material;
@@ -1208,12 +1213,12 @@ App.StonehearthTeamCrafterView = App.View.extend({
    },
 
    //Something with an ordinal of 1 should have precedence
-   _compareByOrdinal: function(a, b) {
+   _compareByOrdinal: function (a, b) {
       return (a.ordinal - b.ordinal);
    },
 
    // ACE: Sort the recipies first by their level requirement, *then by ordinal*, and finally by their user visible name
-   _compareByLevelAndAlphabetical: function(a, b) {
+   _compareByLevelAndAlphabetical: function (a, b) {
       // put all auto-craft recipes at the end
       if (a.is_auto_craft && !b.is_auto_craft) {
          return 1;
@@ -1255,22 +1260,22 @@ App.StonehearthTeamCrafterView = App.View.extend({
    },
 
    //Updates the recipe display (note: now that this is just a variable, do we need a separate observer?)
-   _updateRecipeLocking: function() {
+   _updateRecipeLocking: function () {
       Ember.run.scheduleOnce('afterRender', this, '_setPreviewStyling');
    }.observes('model.highest_level', 'model.manually_unlocked'),
 
-   _onCurrentRecipeChanged: function() {
+   _onCurrentRecipeChanged: function () {
       Ember.run.scheduleOnce('afterRender', this, '_setPreviewStyling');
    }.observes('currentRecipe'),
 
-   _addExtraCraftOrderConditions: function(recipe, condition) {
+   _addExtraCraftOrderConditions: function (recipe, condition) {
       var self = this;
       if (stonehearth_ace.isShiftKeyActive()) {
          condition.order_index = 1;
       }
    },
 
-   selectRecipe: function(recipe_key, remaining, maintainNumber) {
+   selectRecipe: function (recipe_key, remaining, maintainNumber) {
       var self = this;
       self.set('currentRecipe', self._getOrCalculateRecipeData(recipe_key));
       self.queueAnywayStatus = false;
@@ -1288,7 +1293,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
          this.hide(true);
       },
 
-      select: function(object, remaining, maintainNumber) {
+      select: function (object, remaining, maintainNumber) {
          if (object) {
             this.selectRecipe(object.recipe_key, remaining, maintainNumber);
          }
@@ -1302,7 +1307,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
             // TODO: play a error sound here?
             return;
          }
-         radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:carpenter_menu:confirm'} );
+         radiant.call('radiant:play_sound', { 'track': 'stonehearth:sounds:ui:carpenter_menu:confirm' });
          var recipe = this._getOrCalculateRecipeData(this.currentRecipe.recipe_key);
 
          var condition;
@@ -1327,58 +1332,78 @@ App.StonehearthTeamCrafterView = App.View.extend({
       },
 
       //delete the current order
-      delete: function(orderId) {
+      delete: function (orderId) {
          var orderList = this.getOrderList();
          radiant.call_obj(orderList, 'delete_order_command', orderId)
-            .done(function(returnData){
-               radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:carpenter_menu:trash'} );
+            .done(function (returnData) {
+               radiant.call('radiant:play_sound', { 'track': 'stonehearth:sounds:ui:carpenter_menu:trash' });
             });
       },
 
-      queueAnyway: function() {
+      queueAnyway: function () {
          this._showCraftUI(true);
          this.queueAnywayStatus = true;
       },
 
       //Does anyone use this functionality?
-      togglePause: function(){
+      togglePause: function () {
          var orderList = this.getOrderList()
 
          if (this.get('model.order_list.is_paused')) {
-            radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:carpenter_menu:open'} );
+            radiant.call('radiant:play_sound', { 'track': 'stonehearth:sounds:ui:carpenter_menu:open' });
          } else {
-            radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:carpenter_menu:closed'} );
+            radiant.call('radiant:play_sound', { 'track': 'stonehearth:sounds:ui:carpenter_menu:closed' });
          }
          radiant.call_obj(orderList, 'toggle_pause');
       },
 
-      toggleSecondaryListPause: function(){
+      toggleSecondaryListPause: function () {
          if (this.get('model.order_list.is_secondary_list_paused')) {
-            radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:carpenter_menu:open'} );
+            radiant.call('radiant:play_sound', { 'track': 'stonehearth:sounds:ui:carpenter_menu:open' });
          } else {
-            radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:carpenter_menu:closed'} );
+            radiant.call('radiant:play_sound', { 'track': 'stonehearth:sounds:ui:carpenter_menu:closed' });
          }
          radiant.call('stonehearth_ace:toggle_secondary_order_list_pause', this.get('model.alias'));
       },
 
-      scrollOrderListUp: function() {
+      scrollOrderListUp: function () {
+         if (this._scrollHoldDidStart) {
+            this._scrollHoldDidStart = false;
+            return;
+         }
+
          this._scrollOrderList(this.$('#orderList'), -this.scrollAmount);
       },
 
-      scrollOrderListDown: function() {
+      scrollOrderListDown: function () {
+         if (this._scrollHoldDidStart) {
+            this._scrollHoldDidStart = false;
+            return;
+         }
+
          this._scrollOrderList(this.$('#orderList'), this.scrollAmount);
       },
 
-      scrollsecondaryOrderListUp: function() {
+      scrollsecondaryOrderListUp: function () {
+         if (this._scrollHoldDidStart) {
+            this._scrollHoldDidStart = false;
+            return;
+         }
+
          this._scrollOrderList(this.$('#secondaryOrderList'), -this.scrollAmount);
       },
 
-      scrollsecondaryOrderListDown: function() {
+      scrollsecondaryOrderListDown: function () {
+         if (this._scrollHoldDidStart) {
+            this._scrollHoldDidStart = false;
+            return;
+         }
+
          this._scrollOrderList(this.$('#secondaryOrderList'), this.scrollAmount);
       },
    },
 
-   isListForOrderPaused: function(order) {
+   isListForOrderPaused: function (order) {
       // if the order is in the primary list, return whether that list is enabled
       // otherwise return whether the secondary list is enabled
       var self = this;
@@ -1395,21 +1420,21 @@ App.StonehearthTeamCrafterView = App.View.extend({
    // Fires whenever the workshop changes, but the first update is all we really
    // care about. Recipes is saved on the context and updated when the recipe list first comes in
    // TODO: can't that fn just call _build_workshop_ui?
-   _contentChanged: function() {
+   _contentChanged: function () {
       Ember.run.scheduleOnce('afterRender', this, '_build_workshop_ui');
       Ember.run.scheduleOnce('afterRender', this, '_applySearchFilter');
    }.observes('recipes'),
 
-   _ordersTableSortable: function(table) {
+   _ordersTableSortable: function (table) {
       var self = this;
       var sortableOrders = self.makeSortable(self.$(table), {
          axis: "y",
-         start: function(event, ui) {
+         start: function (event, ui) {
             // on drag start, creates a temporary attribute on the element with the old index
-            $(this).attr('data-previndex', ui.item.index()+1);
+            $(this).attr('data-previndex', ui.item.index() + 1);
             self.is_sorting = ui.item[0];
          },
-         stop: function(event, ui) {
+         stop: function (event, ui) {
             //if we're not sorting anymore, don't do anything
             if (self.is_sorting == null) {
                return;
@@ -1417,7 +1442,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
             //If we're still sorting, then update the order list
             var newPos = ui.item.index() + 1;
             //aha, all is explained. Wrong variable name ::sigh::
-            var id =  parseInt(ui.item.attr("data"));
+            var id = parseInt(ui.item.attr("data"));
 
             //Check if we're replacing?
             if ($(this).attr('data-previndex') == newPos) {
@@ -1440,7 +1465,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
 
    //Called once when the model is loaded
    // ACE: override to modify search to allow searching ingredients and descriptions
-   _build_workshop_ui: function() {
+   _build_workshop_ui: function () {
       var self = this;
 
       if (!self.$("#craftWindow")) {
@@ -1451,30 +1476,30 @@ App.StonehearthTeamCrafterView = App.View.extend({
       var secondaryOrders = self.get('model.order_list.secondary_orders');
       var autoCraftOrders = self.get('model.order_list.auto_craft_orders');
       self._buildOrderList(self.$('#secondaryOrderList'),
-            (secondaryOrders && secondaryOrders.length > 0) || (autoCraftOrders && autoCraftOrders.length > 0));
+         (secondaryOrders && secondaryOrders.length > 0) || (autoCraftOrders && autoCraftOrders.length > 0));
 
       //build the order list(s) on the order tab
       self._ordersTableSortable('#makeOrdersTable');
       self._ordersTableSortable('#secondaryOrdersTable');
       self._ordersTableSortable('#autoCraftOrdersTable');
 
-      $(document).on('keyup.show_team_workshop keydown.show_team_workshop', function(e){
+      $(document).on('keyup.show_team_workshop keydown.show_team_workshop', function (e) {
          self._updateCraftInsertShown();
       });
 
-      self.$("#craftButton").hover(function() {
-            $(this).find('#craftButtonLabel').fadeIn();
-            self.HOVERING_CRAFT_BUTTON = true;
-            self.set('insertRecipePortrait', self.get('currentRecipe.portrait'));
-            self._updateCraftInsertShown();
-         }, function () {
-            $(this).find('#craftButtonLabel').fadeOut();
-            self.HOVERING_CRAFT_BUTTON = false;
-            self._updateCraftInsertShown();
-         });
+      self.$("#craftButton").hover(function () {
+         $(this).find('#craftButtonLabel').fadeIn();
+         self.HOVERING_CRAFT_BUTTON = true;
+         self.set('insertRecipePortrait', self.get('currentRecipe.portrait'));
+         self._updateCraftInsertShown();
+      }, function () {
+         $(this).find('#craftButtonLabel').fadeOut();
+         self.HOVERING_CRAFT_BUTTON = false;
+         self._updateCraftInsertShown();
+      });
 
       self.$(".category").on({
-         mouseenter: function() {
+         mouseenter: function () {
             var recipe = self._getOrCalculateRecipeData($(this).attr('recipe_key'));
             if (recipe) {
                self.HOVERING_ITEM = true;
@@ -1486,7 +1511,8 @@ App.StonehearthTeamCrafterView = App.View.extend({
          mouseleave: function () {
             self.HOVERING_ITEM = false;
             self._updateCraftInsertShown();
-         }}, '.itemContainer');
+         }
+      }, '.itemContainer');
 
       var tooltip = App.tooltipHelper.createTooltip(
          i18n.t('stonehearth_ace:ui.game.show_workshop.craft_button.title'),
@@ -1494,7 +1520,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
       self.$('#craftButton').tooltipster({
          delay: 1000,
          content: $(tooltip)
-      }); 
+      });
 
       // Perform filter after keyup to ensure that key has already been applied
       self.searchInput = self.$('#searchInput');
@@ -1519,7 +1545,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
             self.$('#searchContainer').blur();
          }
       });
-      
+
       // when it has focus, show the extra settings
       self._focusCheckIntervalID = null;
       self.$('#searchContainer').focusin(function (e) {
@@ -1534,7 +1560,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
             clearInterval(self._focusCheckIntervalID);
             self._focusCheckIntervalID = null;
          }
-         self._focusCheckIntervalID = setInterval(function() {
+         self._focusCheckIntervalID = setInterval(function () {
             if (!stonehearth_ace.isMouseDown()) {
                clearInterval(self._focusCheckIntervalID);
                self._focusCheckIntervalID = null;
@@ -1548,7 +1574,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
       App.guiHelper.addTooltip(self.$('#searchIngredientsDiv'), 'stonehearth_ace:ui.game.show_workshop.search_ingredients_description');
 
       //App.tooltipHelper.createDynamicTooltip(self.$('[title]'));
-      App.guiHelper.createDynamicTooltip(self.$('#recipeItems'), '.interactionOverlay', function($el) {
+      App.guiHelper.createDynamicTooltip(self.$('#recipeItems'), '.interactionOverlay', function ($el) {
          var key = $el.parent().attr('recipe_key');
          var recipe = self._getOrCalculateRecipeData(key);
          var jobAlias = self.get('model.alias');
@@ -1558,7 +1584,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
             description: recipe.description,
          };
          if (recipe.product_stacks) {
-            options.self = {'stonehearth:stacks': {stacks: recipe.product_stacks}};
+            options.self = { 'stonehearth:stacks': { stacks: recipe.product_stacks } };
          }
          var tooltip = $(App.guiHelper.createUriTooltip(recipe.product_uri, options));
 
@@ -1579,13 +1605,13 @@ App.StonehearthTeamCrafterView = App.View.extend({
                }
             }
 
-            var queuedOrdersString = i18n.t('stonehearth_ace:ui.game.show_workshop.tooltip_queued_orders', {count: totalOrders});
+            var queuedOrdersString = i18n.t('stonehearth_ace:ui.game.show_workshop.tooltip_queued_orders', { count: totalOrders });
             var div = `<div class='stat verticalSpacer'>${queuedOrdersString}`;
             if (totalMakeAmount > 0) {
-               div += `<div class='indented'>${i18n.t('stonehearth_ace:ui.game.show_workshop.tooltip_total_make_amount', {amount: totalMakeAmount})}</div>`;
+               div += `<div class='indented'>${i18n.t('stonehearth_ace:ui.game.show_workshop.tooltip_total_make_amount', { amount: totalMakeAmount })}</div>`;
             }
             if (maxMaintainAmount > 0) {
-               div += `<div class='indented'>${i18n.t('stonehearth_ace:ui.game.show_workshop.tooltip_max_maintain_amount', {amount: maxMaintainAmount})}</div>`;
+               div += `<div class='indented'>${i18n.t('stonehearth_ace:ui.game.show_workshop.tooltip_max_maintain_amount', { amount: maxMaintainAmount })}</div>`;
             }
 
             tooltip.append($(div + '</div>'));
@@ -1594,7 +1620,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
          return tooltip;
       });
 
-      App.guiHelper.createDynamicTooltip(self.$('#craftingWindow'), '.statusSign', function($el) {
+      App.guiHelper.createDynamicTooltip(self.$('#craftingWindow'), '.statusSign', function ($el) {
          var id = $el.attr('id');
          var title, text;
          if (id == 'secondaryListStatusSign') {
@@ -1615,7 +1641,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
       }
    },
 
-   _showCraftOrderTooltip: function($el, order, showToRight) {
+   _showCraftOrderTooltip: function ($el, order, showToRight) {
       var self = this;
 
       // if it's not a building order, offer the ability to modify the quantity
@@ -1684,7 +1710,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
                }
             }
 
-            var sCount = i18n.t('stonehearth_ace:ui.game.show_workshop.tooltip_associated_order_count', {count: count, valueClass: valueClass});
+            var sCount = i18n.t('stonehearth_ace:ui.game.show_workshop.tooltip_associated_order_count', { count: count, valueClass: valueClass });
             sOrders += `<div class='stat'><img class='imgHeader' src='${o.recipe.portrait}'/>${sCount}</div>`;
             totalCount += 1;
          }
@@ -1693,7 +1719,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
          // for now just list the direct children that will be removed if this order is removed
          if (totalCount > 0) {
             description += `<div class='verticalSpacer stat'><span class='header'>${i18n.t('stonehearth_ace:ui.game.show_workshop.tooltip_associated_orders')}</span></div>`;
-                  //+ `${i18n.t('stonehearth_ace:ui.game.show_workshop.tooltip_associated_order_count', {count: totalCount})}</div>`;
+            //+ `${i18n.t('stonehearth_ace:ui.game.show_workshop.tooltip_associated_order_count', {count: totalCount})}</div>`;
             description += `<div class='flexContainer faded'>${sOrders}</div>`;
          }
       }
@@ -1751,7 +1777,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
       $iEl.tooltipster('show');
    },
 
-   _applySearchFilter: function() {
+   _applySearchFilter: function () {
       var self = this;
       var search = self._curSearchTerm;
 
@@ -1774,14 +1800,14 @@ App.StonehearthTeamCrafterView = App.View.extend({
             var el = $(item);
             var recipeKey = el.attr('recipe_key');
 
-            if(self._recipeMatchesSearch(recipeKey, search, searchTitle, searchDescription, searchIngredients)) {
+            if (self._recipeMatchesSearch(recipeKey, search, searchTitle, searchDescription, searchIngredients)) {
                el.show();
             } else {
                el.hide();
             }
          });
 
-         self.$('.category').each(function(i, category) {
+         self.$('.category').each(function (i, category) {
             var el = $(category)
 
             if (el.find('.itemContainer:visible').length > 0) {
@@ -1793,18 +1819,18 @@ App.StonehearthTeamCrafterView = App.View.extend({
       }
    },
 
-   _shouldShowSecondaryOrders: function() {
+   _shouldShowSecondaryOrders: function () {
       var secondaryOrders = this.get('model.order_list.secondary_orders') || [];
       var autoCraftOrders = this.get('model.order_list.auto_craft_orders') || [];
       this.set('showSecondaryOrderList', secondaryOrders.length > 0 || autoCraftOrders.length > 0 ||
-            this.get('isShowingSecondaryCraftInsert') || this.get('isShowingAutoCraftInsert'));
+         this.get('isShowingSecondaryCraftInsert') || this.get('isShowingAutoCraftInsert'));
    }.observes('model.order_list.secondary_orders', 'model.order_list.auto_craft_orders', 'isShowingSecondaryCraftInsert', 'isShowingAutoCraftInsert'),
 
-   _autoCraftOrdersChanged: function() {
+   _autoCraftOrdersChanged: function () {
       $(this).trigger('stonehearth_ace:workshop:auto_craft_orders_changed');
    }.observes('model.order_list.auto_craft_orders'),
 
-   hasAutoCraftOrder: function(recipe_key) {
+   hasAutoCraftOrder: function (recipe_key) {
       var autoCraftOrders = this.get('model.order_list.auto_craft_orders') || [];
       for (var i = 0; i < autoCraftOrders.length; i++) {
          if (autoCraftOrders[i].recipe.recipe_key == recipe_key) {
@@ -1815,16 +1841,16 @@ App.StonehearthTeamCrafterView = App.View.extend({
       return false;
    },
 
-   _isCurrentOrderTypeAutoCraft: function() {
+   _isCurrentOrderTypeAutoCraft: function () {
       return this._getOrCalculateRecipeData(this.currentRecipe.recipe_key).is_auto_craft;
    },
 
-   _isCurrentOrderTypeMaintain: function() {
+   _isCurrentOrderTypeMaintain: function () {
       var type = this.$('input[name=' + this.get('orderTypeName') + ']:checked').val();
       return type == "maintain" && !this._getOrCalculateRecipeData(this.currentRecipe.recipe_key).is_auto_craft;
    },
 
-   _updateCraftInsertShown: function() {
+   _updateCraftInsertShown: function () {
       var self = this;
       var show = stonehearth_ace.isShiftKeyActive() && (self.HOVERING_CRAFT_BUTTON || self.HOVERING_ITEM);
 
@@ -1840,12 +1866,12 @@ App.StonehearthTeamCrafterView = App.View.extend({
       var isShowingSecondaryCraftInsert = false;
       if (show) {
          if ((self.HOVERING_CRAFT_BUTTON && self._isCurrentOrderTypeAutoCraft()) ||
-               (self.HOVERING_ITEM && self._hoveredRecipeIsAutoCraft)) {
+            (self.HOVERING_ITEM && self._hoveredRecipeIsAutoCraft)) {
             autoCraftDiv.show();
             isShowingAutoCraftInsert = true;
          }
          else if ((self.HOVERING_CRAFT_BUTTON && self._isCurrentOrderTypeMaintain()) ||
-               (self.HOVERING_ITEM && stonehearth_ace.isCtrlKeyActive())) {
+            (self.HOVERING_ITEM && stonehearth_ace.isCtrlKeyActive())) {
             maintainDiv.show();
             isShowingSecondaryCraftInsert = true;
          }
@@ -1858,7 +1884,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
       self.set('isShowingSecondaryCraftInsert', isShowingSecondaryCraftInsert);
    },
 
-   _focusAndKeyUpSearchInput: function() {
+   _focusAndKeyUpSearchInput: function () {
       var self = this;
       // we only care about this if the search setting checkboxes are visible; otherwise they're just initializing
       if (self.get('showSearchSettings')) {
@@ -1867,7 +1893,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
       }
    }.observes('searchTitle', 'searchDescription', 'searchIngredients'),
 
-   _recipeMatchesSearch: function(recipeKey, search, searchTitle, searchDescription, searchIngredients) {
+   _recipeMatchesSearch: function (recipeKey, search, searchTitle, searchDescription, searchIngredients) {
       var self = this;
       var recipe = self.allRecipes[recipeKey];
 
@@ -1891,11 +1917,11 @@ App.StonehearthTeamCrafterView = App.View.extend({
       return false;
    },
 
-   _stringContains: function(str, search) {
+   _stringContains: function (str, search) {
       return str && str.toLowerCase().indexOf(search) != -1;
    },
 
-   _selectFirstValidRecipe: function() {
+   _selectFirstValidRecipe: function () {
       for (var i = 0; i < this.recipes.length; i++) {
          var recipes = this.recipes[i].recipes;
          for (var j = 0; j < recipes.length; j++) {
@@ -1944,11 +1970,11 @@ App.StonehearthTeamCrafterView = App.View.extend({
       });
    }.observes('model.recipe_list'),
 
-   _updateCategoryCraftersTooltips: function() {
+   _updateCategoryCraftersTooltips: function () {
       // when the recipes get updated, wait for Ember.run.scheduleOnce('afterRender',) and then do dynamic tooltips
       var self = this;
-      Ember.run.scheduleOnce('afterRender', function() {
-         self.$('#recipeItems .categoryCrafter').each(function() {
+      Ember.run.scheduleOnce('afterRender', function () {
+         self.$('#recipeItems .categoryCrafter').each(function () {
             var $elem = $(this);
             App.tooltipHelper.createDynamicTooltip($elem, function () {
                var id = $elem.attr('crafterId');
@@ -1964,11 +1990,11 @@ App.StonehearthTeamCrafterView = App.View.extend({
                   };
 
                   var tooltipString = disable && i18n.t('stonehearth_ace:ui.game.show_workshop.category_crafter.disable_description', data) ||
-                        i18n.t('stonehearth_ace:ui.game.show_workshop.category_crafter.enable_description', data);
+                     i18n.t('stonehearth_ace:ui.game.show_workshop.category_crafter.enable_description', data);
 
                   tooltipString += '<div class="details"><div class="stat"><span class="header">' +
-                        i18n.t('stonehearth_ace:ui.game.show_workshop.category_crafter.proficiency') +
-                        `</span><span class="value">${Math.min(100, Math.floor((member.category_profiencies[category] || 0) * 100))}</span>%</div></div>`;
+                     i18n.t('stonehearth_ace:ui.game.show_workshop.category_crafter.proficiency') +
+                     `</span><span class="value">${Math.min(100, Math.floor((member.category_profiencies[category] || 0) * 100))}</span>%</div></div>`;
 
                   return $(App.tooltipHelper.createTooltip(i18n.t('stonehearth_ace:ui.game.show_workshop.category_crafter.title', data), tooltipString));
                }
@@ -1977,17 +2003,17 @@ App.StonehearthTeamCrafterView = App.View.extend({
       });
    }.observes('recipes'),
 
-   _updateSelectedWorkshopEntity: function(e, showSelectedWorkshopCrafting) {
+   _updateSelectedWorkshopEntity: function (e, showSelectedWorkshopCrafting) {
       var self = this;
-      
+
       if (!e) {
          e = App.workshopManager.selectedWorkshopEntity;
       }
 
       var uri = e && e.uri;
       var recipes = self.get('recipes');
-      radiant.each(recipes, function(_, recipeCategory) {
-         radiant.each(recipeCategory.recipes, function(_, recipe) {
+      radiant.each(recipes, function (_, recipeCategory) {
+         radiant.each(recipeCategory.recipes, function (_, recipe) {
             var isWorkshopSelected = false;
             if (showSelectedWorkshopCrafting == true) {
                isWorkshopSelected = !recipe.workshop;
@@ -2012,7 +2038,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
       });
    }.observes('recipes'),
 
-   _updateAlreadyQueuedRecipes: function() {
+   _updateAlreadyQueuedRecipes: function () {
       var self = this;
 
       var orders = (self.get('model.order_list.orders') || []).concat(
@@ -2030,8 +2056,8 @@ App.StonehearthTeamCrafterView = App.View.extend({
       self._orderRecipeMap = orderRecipeMap;
 
       var recipes = self.get('recipes');
-      radiant.each(recipes, function(_, recipeCategory) {
-         radiant.each(recipeCategory.recipes, function(_, recipe) {
+      radiant.each(recipes, function (_, recipeCategory) {
+         radiant.each(recipeCategory.recipes, function (_, recipe) {
             var isAlreadyQueued = orderRecipeMap[recipe.recipe_key] != null;
             if (recipe.is_already_queued != isAlreadyQueued) {
                Ember.set(recipe, 'is_already_queued', isAlreadyQueued);
@@ -2040,7 +2066,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
       });
    }.observes('recipes', 'model.order_list.orders', 'model.order_list.secondary_orders', 'model.order_list.auto_craft_orders'),
 
-   _updateCraftSearchChecks: function(checks) {
+   _updateCraftSearchChecks: function (checks) {
       var self = this;
 
       if (checks != null) {
@@ -2055,14 +2081,14 @@ App.StonehearthTeamCrafterView = App.View.extend({
             setVals[caseStr] = true;
          });
 
-         radiant.each(setVals, function(chk, val) {
+         radiant.each(setVals, function (chk, val) {
             var chkStr = 'search' + chk;
             self.set(chkStr, val);
             self.$('#' + chkStr + 'Checkbox').prop('checked', val);
          });
       }
    },
-   
+
    // ACE: handle gold stacks
    _updateUsableResources: function () {
       var self = this;
@@ -2108,28 +2134,28 @@ App.StonehearthTeamCrafterView = App.View.extend({
       self._usableUris = usableUris;
       self._usableMaterials = usableMaterials;
    },
-   
+
    _findUsableCount: function (ingredientData) {
       return (ingredientData.kind == 'uri' ? this._usableUris : this._usableMaterials)[ingredientData.identifier] || 0;
    },
 
    //When the order list updates, or when the inventory tracker updates, re-evaluate the requirements
    //on the details page
-   _updateFullDetailedOrderList: function() {
+   _updateFullDetailedOrderList: function () {
       this._updateOrdersInDetailedOrderList();
       this._updateSecondaryOrdersInDetailedOrderList();
    },
 
-   _updateOrdersInDetailedOrderList: function() {
+   _updateOrdersInDetailedOrderList: function () {
       this._updateDetailedOrderList(this.$('#orderList'), this.get('model.order_list.orders'));
    },
 
-   _updateSecondaryOrdersInDetailedOrderList: function() {
+   _updateSecondaryOrdersInDetailedOrderList: function () {
       this._updateDetailedOrderList(this.$('#secondaryOrderList'),
-            (this.get('model.order_list.secondary_orders') || []).concat(this.get('model.order_list.auto_craft_orders') || []));
+         (this.get('model.order_list.secondary_orders') || []).concat(this.get('model.order_list.auto_craft_orders') || []));
    },
 
-   _updateDetailedOrderList: function(orderList, orders) {
+   _updateDetailedOrderList: function (orderList, orders) {
       var self = this;
       if (!orders || !self.$('.orderListItem') || !self._recipeListInitialized) {
          return;
@@ -2211,7 +2237,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
    },
 
    //returns a string of unmet requirements
-   _calculate_failed_requirements: function(localRecipe) {
+   _calculate_failed_requirements: function (localRecipe) {
       var self = this;
       var requirementsString = "";
       var recipe = self._getOrCalculateRecipeData(localRecipe.recipe_key);
@@ -2231,7 +2257,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
                if (workshopData) {
                   if (recipe.is_auto_craft) {
                      // if it's an auto-craft recipe, go through and find if any auto-crafters have it enabled
-                     radiant.each(workshopData.items, function(_, item) {
+                     radiant.each(workshopData.items, function (_, item) {
                         autoCrafters.push(item);
                      });
                   }
@@ -2259,7 +2285,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
                   if (autoCraftComp) {
                      for (var j = 0; j < autoCraftComp.enabled_recipes.length; j++) {
                         if (autoCraftComp.enabled_recipes[j].recipe_key == recipe.recipe_key &&
-                              autoCraftComp.enabled_recipes[j].job == jobAlias) {
+                           autoCraftComp.enabled_recipes[j].job == jobAlias) {
                            canCraft = true;
                            break;
                         }
@@ -2281,10 +2307,10 @@ App.StonehearthTeamCrafterView = App.View.extend({
          var curr_level = this.get('model.highest_level')
          if (recipe.level_requirement > curr_level) {
             requirementsString = requirementsString +
-                                 i18n.t('stonehearth:ui.game.show_workshop.level_requirement_needed') +
-                                 i18n.t(self.get('model.class_name')) +
-                                 i18n.t('stonehearth:ui.game.show_workshop.level_requirement_level') +
-                                 recipe.level_requirement + '<br>';
+               i18n.t('stonehearth:ui.game.show_workshop.level_requirement_needed') +
+               i18n.t(self.get('model.class_name')) +
+               i18n.t('stonehearth:ui.game.show_workshop.level_requirement_level') +
+               recipe.level_requirement + '<br>';
          }
          else {
             // check if the are no crafters of the appropriate level *who have the category enabled*
@@ -2300,11 +2326,11 @@ App.StonehearthTeamCrafterView = App.View.extend({
             if (!canCraft) {
                var category = self.allCategories[recipe.category];
                requirementsString = requirementsString +
-                                 i18n.t('stonehearth_ace:ui.game.show_workshop.category_level_requirement_needed', {
-                                    category: category.category,
-                                    class: self.get('model.class_name'),
-                                    level: recipe.level_requirement || 1,
-                                 }) + '<br>';
+                  i18n.t('stonehearth_ace:ui.game.show_workshop.category_level_requirement_needed', {
+                     category: category.category,
+                     class: self.get('model.class_name'),
+                     level: recipe.level_requirement || 1,
+                  }) + '<br>';
             }
          }
       }
@@ -2330,7 +2356,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
    },
 
    // ACE: have to override this whole function just to get rid of the >999 truncating for stacks
-   _setPreviewStyling: function() {
+   _setPreviewStyling: function () {
       var self = this;
       if (!self.$()) {
          return;  // Menu already closed.
@@ -2502,20 +2528,19 @@ App.StonehearthTeamCrafterView = App.View.extend({
       var self = this;
       var productCatalogData = App.catalog.getCatalogData(recipe.product_uri);
       var outputHtml = "";
-      
+
       var isSingleItem = true;
-      if (recipe.produces && recipe.produces.length > 1 )
-      {
+      if (recipe.produces && recipe.produces.length > 1) {
          isSingleItem = false;
       }
-      
+
       if (isSingleItem) {
          outputHtml += '<div class="stat ' + cssClassName + '">'
          //Default case - recipe only produces one item, get the stats the normal way
          if (productCatalogData) {
             var propertyValue = self._getPropertyValue(recipe.produces[0], productCatalogData, catalogDataKey);
             if (propertyValue) {
-               outputHtml +=  propertyValue;
+               outputHtml += propertyValue;
             }
          }
          outputHtml += '</div>';
@@ -2527,7 +2552,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
          var previousProduct = null;
          var displayValue = "*";
          var numProducts = recipe.produces.length;
-         
+
          //First, run through assuming the products are different. 
          //This constructs an output string along the way that may be wasted - simplifies the code, and this is only run once on click
          for (var i = 0; i < numProducts; i++) {
@@ -2540,7 +2565,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
                   allProductsSame = false;
                }
                previousProduct = itemUri;
-               
+
                //Assemble a string of the style "10, 5, 3" 
                var itemData = App.catalog.getCatalogData(itemUri);
                if (itemData) {
@@ -2559,7 +2584,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
             }
          }
          outputHtml += '</div>';
-         
+
          //If all of the outputs were the same, then forget the string we just built and make a shorter, nicer-looking one
          if (allProductsSame) {
             outputHtml = '<div class="stat ' + cssClassName + ' mult">' + displayValue + " (x" + numProducts + ")</div>";
@@ -2576,9 +2601,9 @@ App.StonehearthTeamCrafterView = App.View.extend({
       }
       return displayValue;
    },
-   
+
    // ACE: use helper functions for stats and stat tooltips
-   preview: function() {
+   preview: function () {
       var self = this;
       var recipe = this._getOrCalculateRecipeData(this.currentRecipe.recipe_key);
 
@@ -2587,8 +2612,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
          var productCatalogData = App.catalog.getCatalogData(recipe.product_uri);
          var statHtml = '';
 
-         if (productCatalogData)
-         {
+         if (productCatalogData) {
             statHtml = self._addStats(recipe, productCatalogData);
          }
 
@@ -2625,7 +2649,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
       }
    },
 
-   _addStats: function(recipe, catalogData) {
+   _addStats: function (recipe, catalogData) {
       var self = this;
       var statHtml = '';
 
@@ -2665,14 +2689,14 @@ App.StonehearthTeamCrafterView = App.View.extend({
       return statHtml;
    },
 
-   _addStatTooltips: function(catalogData) {
+   _addStatTooltips: function (catalogData) {
       var self = this;
 
       App.tooltipHelper.createDynamicTooltip(self.$('.stat.appeal'), function () { return i18n.t('stonehearth:ui.game.show_workshop.tooltip_appeal_stat'); });
       App.tooltipHelper.createDynamicTooltip(self.$('.stat.netWorth'), function () { return i18n.t('stonehearth:ui.game.show_workshop.tooltip_net_worth_stat'); });
       App.tooltipHelper.createDynamicTooltip(self.$('.stat.effort'), function () { return i18n.t('stonehearth:ui.game.show_workshop.tooltip_effort_stat'); });
       App.tooltipHelper.createDynamicTooltip(self.$('.stat.fuelAmount'), function () { return i18n.t('stonehearth_ace:ui.game.show_workshop.tooltip_fuel_amount'); });
-      
+
       var satisfactionLevel;
       var servings;
       if (catalogData) {
@@ -2693,7 +2717,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
             }
 
             if (satisfactionLevel && servings) {
-               return i18n.t(`stonehearth_ace:ui.game.unit_frame.satisfaction.${satisfactionLevel}`, {servings: servings});
+               return i18n.t(`stonehearth_ace:ui.game.unit_frame.satisfaction.${satisfactionLevel}`, { servings: servings });
             }
          })
       }
@@ -2705,10 +2729,10 @@ App.StonehearthTeamCrafterView = App.View.extend({
       var productCatalogData = App.catalog.getCatalogData(recipe.product_uri);
 
       if (productCatalogData && (productCatalogData.equipment_required_level || productCatalogData.equipment_roles ||
-            productCatalogData.consumable_buffs || productCatalogData.consumable_effects || productCatalogData.consumable_after_effects ||
-            productCatalogData.buffs || productCatalogData.injected_buffs || productCatalogData.inflictable_debuffs ||
-            productCatalogData.equipment_types || productCatalogData.consumable_buffs || productCatalogData.consumable_effects ||
-            productCatalogData.consumable_after_effects || productCatalogData.collision_size || productCatalogData.storage_capacity)) {
+         productCatalogData.consumable_buffs || productCatalogData.consumable_effects || productCatalogData.consumable_after_effects ||
+         productCatalogData.buffs || productCatalogData.injected_buffs || productCatalogData.inflictable_debuffs ||
+         productCatalogData.equipment_types || productCatalogData.consumable_buffs || productCatalogData.consumable_effects ||
+         productCatalogData.consumable_after_effects || productCatalogData.collision_size || productCatalogData.storage_capacity)) {
          self.$('.detailsView').find('.tooltipstered').tooltipster('destroy');
 
          var collisionSize = productCatalogData.collision_size && i18n.t('stonehearth_ace:ui.game.unit_frame.collision_size', productCatalogData.collision_size);
@@ -2750,7 +2774,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
          } else {
             self.$('#levelRequirement').text('');
          }
-         
+
          var equipmentTypes = [];
          if (productCatalogData.equipment_types) {
             equipmentTypes = stonehearth_ace.getEquipmentTypesArray(productCatalogData.equipment_types);
@@ -2767,49 +2791,49 @@ App.StonehearthTeamCrafterView = App.View.extend({
 
          if (collisionSize) {
             var description = `<div class="stat"><span class="header">${i18n.t('stonehearth_ace:ui.game.entities.tooltip_size_header')}</span>` +
-                  `${i18n.t('stonehearth_ace:ui.game.entities.tooltip_size', productCatalogData.collision_size)}</div>`
+               `${i18n.t('stonehearth_ace:ui.game.entities.tooltip_size', productCatalogData.collision_size)}</div>`
             App.guiHelper.addTooltip(self.$('#collisionSize'), description);
          }
 
          if (maxLength) {
             var description = `<div class="stat"><span class="header">${i18n.t('stonehearth_ace:ui.game.entities.tooltip_max_length')}</span>` +
-                  `<span class="value">${maxLength}</span></div>`;
+               `<span class="value">${maxLength}</span></div>`;
             App.guiHelper.addTooltip(self.$('#maxLength'), description);
          }
 
          if (storageCapacity) {
             var description = `<div class="stat"><span class="header">${i18n.t('stonehearth_ace:ui.game.entities.tooltip_storage_capacity')}</span>` +
-                  `<span class="value">${storageCapacity}</span></div>`;
+               `<span class="value">${storageCapacity}</span></div>`;
             App.guiHelper.addTooltip(self.$('#storageCapacity'), description);
          }
 
          if (fuelCapacity) {
             var description = `<div class="stat"><span class="header">${i18n.t('stonehearth_ace:ui.game.entities.tooltip_fuel_capacity')}</span>` +
-                  `<span class="value">${fuelCapacity}</span></div>`;
+               `<span class="value">${fuelCapacity}</span></div>`;
             App.guiHelper.addTooltip(self.$('#fuelCapacity'), description);
          }
 
          if (warmthRadius) {
             var description = `<div class="stat"><span class="header">${i18n.t('stonehearth_ace:ui.game.entities.tooltip_warmth_radius')}</span>` +
-                  `<span class="value">${warmthRadius}</span></div>`;
+               `<span class="value">${warmthRadius}</span></div>`;
             App.guiHelper.addTooltip(self.$('#warmthRadius'), description);
          }
 
          if (maxHealth) {
             var description = `<div class="stat"><span class="header">${i18n.t('stonehearth_ace:ui.game.entities.tooltip_max_health')}</span>` +
-                  `<span class="value">${maxHealth}</span></div>`;
+               `<span class="value">${maxHealth}</span></div>`;
             App.guiHelper.addTooltip(self.$('#maxHealth'), description);
          }
 
          if (menace) {
             var description = `<div class="stat"><span class="header">${i18n.t('stonehearth_ace:ui.game.entities.tooltip_menace')}</span>` +
-                  `<span class="value">${menace}</span></div>`;
+               `<span class="value">${menace}</span></div>`;
             App.guiHelper.addTooltip(self.$('#menace'), description);
          }
 
          if (sightRange) {
             var description = `<div class="stat"><span class="header">${i18n.t('stonehearth_ace:ui.game.entities.tooltip_sight_range')}</span>` +
-                  `<span class="value">${sightRange}</span></div>`;
+               `<span class="value">${sightRange}</span></div>`;
             App.guiHelper.addTooltip(self.$('#sightRange'), description);
          }
 
@@ -2819,14 +2843,14 @@ App.StonehearthTeamCrafterView = App.View.extend({
                var tooltipString = i18n.t('stonehearth:ui.game.unit_frame.no_requirements');
                if (productCatalogData.equipment_roles) {
                   tooltipString = i18n.t('stonehearth:ui.game.unit_frame.equipment_description',
-                                          { class_list: radiant.getClassString(self.get('allowedClasses')) });
+                     { class_list: radiant.getClassString(self.get('allowedClasses')) });
                }
                if (productCatalogData.equipment_required_level) {
                   tooltipString += i18n.t('stonehearth:ui.game.unit_frame.level_description', { level_req: productCatalogData.equipment_required_level });
                }
                if (productCatalogData.equipment_types) {
                   tooltipString += '<br>' + i18n.t('stonehearth_ace:ui.game.unit_frame.equipment_types_description',
-                                                   { i18n_data: { types: stonehearth_ace.getEquipmentTypesString(self.get('equipmentTypes')) } });
+                     { i18n_data: { types: stonehearth_ace.getEquipmentTypesString(self.get('equipmentTypes')) } });
                }
                return $(App.tooltipHelper.createTooltip(i18n.t('stonehearth:ui.game.unit_frame.class_lv_title'), tooltipString));
             });
@@ -2836,7 +2860,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
          }
 
          // make tooltips for inflictable debuffs
-         Ember.run.scheduleOnce('afterRender', this, function() {
+         Ember.run.scheduleOnce('afterRender', this, function () {
             self._createBuffTooltips();
          });
 
@@ -2873,11 +2897,10 @@ App.StonehearthTeamCrafterView = App.View.extend({
       self._createBuffTooltipsByType('consumableAfterEffects', 'consumable_after_effect');
    },
 
-   _createBuffTooltipsByType: function(propertyName, tooltipName)
-   {
+   _createBuffTooltipsByType: function (propertyName, tooltipName) {
       var self = this;
       var buffs = self.get(propertyName);
-      radiant.each(buffs, function(_, buff) {
+      radiant.each(buffs, function (_, buff) {
          var div = self.$('[data-id="' + buff.uri + '"]');
          if (div && div.length > 0) {
             App.guiHelper.addTooltip(div, buff.description, i18n.t('stonehearth_ace:ui.game.unit_frame.' + tooltipName) + i18n.t(buff.display_name));
@@ -2885,7 +2908,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
       });
    },
 
-   _workshopPausedChange: function() {
+   _workshopPausedChange: function () {
       var isPaused = !!(this.get('model.order_list.is_paused'));
       var isSecondaryListPaused = !!(this.get('model.order_list.is_secondary_list_paused'));
 
@@ -2908,17 +2931,17 @@ App.StonehearthTeamCrafterView = App.View.extend({
       if (isSecondaryListPausedDiff) {
          this._animateStatusSign(this.$("#secondaryListStatusSign"), isSecondaryListPaused);
       }
-      
+
    }.observes('model.order_list.is_paused', 'model.order_list.is_secondary_list_paused'),
 
-   _animateStatusSign: function(sign, isPaused) {
+   _animateStatusSign: function (sign, isPaused) {
       if (sign) {
          sign.animate({
-               rot: isPaused ? 4 : -4,
-            },
+            rot: isPaused ? 4 : -4,
+         },
             {
                duration: 200,
-               step: function(now,fx) {
+               step: function (now, fx) {
                   var percentDone;
                   var end = fx.end;
                   var start = fx.start;
@@ -2930,16 +2953,16 @@ App.StonehearthTeamCrafterView = App.View.extend({
                   }
 
                   var scaleX = percentDone < .5 ? 1 - (percentDone * 2) : (percentDone * 2) - 1;
-                  $(this).css('-webkit-transform', 'rotate(' + now + 'deg) scale(' + scaleX +', 1)');
+                  $(this).css('-webkit-transform', 'rotate(' + now + 'deg) scale(' + scaleX + ', 1)');
                }
-         });
+            });
       }
    },
 
    //Attach sortable/draggable functionality to the order
    //list. Hook order list onto garbage can. Set up scroll
    //buttons.
-   _buildOrderList: function(orderList, enableTrash){
+   _buildOrderList: function (orderList, enableTrash) {
       var self = this;
 
       var sortableGarbage = self.makeSortable(orderList.find(".orders, .garbageList"), {
@@ -2947,43 +2970,43 @@ App.StonehearthTeamCrafterView = App.View.extend({
          connectWith: orderList.find(".garbageList"),
          beforeStop: function (event, ui) {
             //Called right after an object is dropped
-            if(ui.item[0].parentNode && ui.item[0].parentNode.classList.contains("garbageList")) {
+            if (ui.item[0].parentNode && ui.item[0].parentNode.classList.contains("garbageList")) {
                ui.item.addClass("hiddenOrder");
                var id = parseInt(ui.item.attr("data-orderid"))
                radiant.call_obj(self.getOrderList(), 'delete_order_command', id)
-                  .done(function(return_data){
+                  .done(function (return_data) {
                      ui.item.remove();
-                     radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:carpenter_menu:trash'} );
+                     radiant.call('radiant:play_sound', { 'track': 'stonehearth:sounds:ui:carpenter_menu:trash' });
                   });
-             }
+            }
          },
          over: function (event, ui) {
             //Called whenever we hover over a new target
             if (event.target.id == "garbageList") {
                ui.item.find(".deleteLabel").addClass("showDelete");
-               radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:carpenter_menu:highlight'} );
+               radiant.call('radiant:play_sound', { 'track': 'stonehearth:sounds:ui:carpenter_menu:highlight' });
             } else {
                ui.item.find(".deleteLabel").removeClass("showDelete");
             }
          },
-         start: function(event, ui) {
+         start: function (event, ui) {
             // on drag start, creates a temporary attribute on the element with the old index
             $(this).attr('data-previndex', orderList.find(".orderListItem").index(ui.item) + 1);
             self.is_sorting = ui.item[0];
          },
-         stop: function(event, ui) {
+         stop: function (event, ui) {
             //if we're not sorting anymore, don't do anything
             if (self.is_sorting == null) {
                return;
             }
             //Don't update objects inside the garbage list
-            if(ui.item[0].parentNode && ui.item[0].parentNode.classList.contains("garbageList")) {
+            if (ui.item[0].parentNode && ui.item[0].parentNode.classList.contains("garbageList")) {
                return;
             }
 
             //If we're still sorting, then update the order list
             var newPos = orderList.find(".orderListItem").index(ui.item) + 1;
-            var id =  parseInt(ui.item.attr("data-orderid"));
+            var id = parseInt(ui.item.attr("data-orderid"));
 
             //Check if we're replacing?
             if ($(this).attr('data-previndex') == newPos) {
@@ -3004,14 +3027,31 @@ App.StonehearthTeamCrafterView = App.View.extend({
       self._updateButtonStates(orderList);
       self._enableDisableTrash(orderList, enableTrash);
 
-      orderList.find('.orders').on('scroll', function() {
+      orderList.find('.orders').on('scroll', function () {
          // when the user scrolls with the mouse, make sure the scroll buttons are right
          self._scrollOrderList(orderList, null);
+      });
+
+      var upButton = orderList.find('.orderListUpBtn');
+      var downButton = orderList.find('.orderListDownBtn');
+
+      upButton.on('mousedown.aceScrollHold', function (e) {
+         e.preventDefault();
+         self._startScrollHold(orderList, -1);
+      });
+
+      downButton.on('mousedown.aceScrollHold', function (e) {
+         e.preventDefault();
+         self._startScrollHold(orderList, 1);
+      });
+
+      $(document).on('mouseup.aceScrollHold', function () {
+         self._stopScrollHold();
       });
    },
 
    // Update button visibility based on order list height
-   _updateButtonStates: function(orderList) {
+   _updateButtonStates: function (orderList) {
       var self = this;
       //Set the default state of the buttons
       var orders = orderList.find('.orders');
@@ -3027,16 +3067,78 @@ App.StonehearthTeamCrafterView = App.View.extend({
       }
    },
 
-   _scrollOrderList: function(orderList, amount) {
+   _startScrollHold: function (orderList, direction) {
+      var self = this;
+
+      self._stopScrollHold();
+
+      self._scrollHoldDirection = direction;
+      self._scrollHoldList = orderList;
+      self._scrollHoldDidStart = false;
+
+      self._scrollHoldTimer = setTimeout(function () {
+         self._scrollHoldDidStart = true;
+         self._scrollContinuously();
+      }, 100);
+   },
+
+   _scrollContinuously: function () {
+      var self = this;
+
+      if (!self._scrollHoldList || !self._scrollHoldDirection) {
+         return;
+      }
+
+      self._scrollOrderList(
+         self._scrollHoldList,
+         self._scrollHoldDirection * 8
+      );
+
+      self._scrollHoldFrame = requestAnimationFrame(function () {
+         self._scrollContinuously();
+      });
+   },
+
+   _stopScrollHold: function () {
+      var self = this;
+
+      if (self._scrollHoldTimer) {
+         clearTimeout(self._scrollHoldTimer);
+         self._scrollHoldTimer = null;
+      }
+
+      if (self._scrollHoldFrame) {
+         cancelAnimationFrame(self._scrollHoldFrame);
+         self._scrollHoldFrame = null;
+      }
+
+      self._scrollHoldDirection = 0;
+      self._scrollHoldList = null;
+   },
+
+   _scrollOrderList: function (orderList, amount) {
       var orders = orderList.find('.orders');
       var buttons = orderList.find('.scrollButtons');
-      var newScrollTop = Math.max(orders.scrollTop() + (amount || 0), 0);
+
+      var element = orders[0];
+      if (!element) {
+         return;
+      }
+
+      var maxScrollTop = Math.max(
+         element.scrollHeight - element.clientHeight,
+         0
+      );
+
+      var newScrollTop = Math.max(
+         0,
+         Math.min(element.scrollTop + (amount || 0), maxScrollTop)
+      );
+
       if (newScrollTop === 0) {
-         // top of list
          buttons.find('.orderListUpBtn').hide();
-         buttons.find('.orderListDownBtn').show();
-      } else if (newScrollTop + orders.innerHeight() >= orders[0].scrollHeight) {
-         // bottom of list
+         buttons.find('.orderListDownBtn').toggle(maxScrollTop > 0);
+      } else if (newScrollTop >= maxScrollTop) {
          buttons.find('.orderListUpBtn').show();
          buttons.find('.orderListDownBtn').hide();
       } else {
@@ -3045,7 +3147,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
       }
 
       if (amount != null) {
-         orders.animate({scrollTop: newScrollTop}, 100);
+         element.scrollTop = newScrollTop;
       }
    },
 
@@ -3060,7 +3162,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
       var self = this;
       if (!self.get('isVisible')) return;
       self._updatedOrders(self.$('#secondaryOrderList'),
-            (self.get('model.order_list.secondary_orders') || []).concat(self.get('model.order_list.auto_craft_orders') || []));
+         (self.get('model.order_list.secondary_orders') || []).concat(self.get('model.order_list.auto_craft_orders') || []));
       Ember.run.scheduleOnce('afterRender', self, '_updateSecondaryOrdersInDetailedOrderList');
    }.observes('model.order_list.secondary_orders', 'model.order_list.auto_craft_orders'),
 
@@ -3128,7 +3230,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
          }
       }
    }.observes('model.order_list.orders.length'),
-   
+
    orderTypeName: function () { return this.get('uri').replace(/\W/g, '') + '-orderType'; }.property('uri'),
    orderTypeMakeId: function () { return this.get('uri').replace(/\W/g, '') + '-make'; }.property('uri'),
    orderTypeMaintainId: function () { return this.get('uri').replace(/\W/g, '') + '-maintain'; }.property('uri'),
@@ -3152,7 +3254,7 @@ $(document).ready(function () {
       App.workshopManager._selectedEntityTraceDone = false;
       if (e && e.selected_entity) {
          App.workshopManager.selectedEntityTrace = new RadiantTrace(e.selected_entity)
-            .progress(function(result) {
+            .progress(function (result) {
                if (App.workshopManager._selectedEntityTraceDone) {
                   return;
                }
@@ -3186,12 +3288,12 @@ $(document).ready(function () {
    });
 });
 
-$(top).on('stonehearthReady', function() {
+$(top).on('stonehearthReady', function () {
    // need to apply the settings on load as well
-   stonehearth_ace.getModConfigSetting('stonehearth_ace', 'show_selected_workshop_crafting', function(value) {
+   stonehearth_ace.getModConfigSetting('stonehearth_ace', 'show_selected_workshop_crafting', function (value) {
       $(top).trigger('show_selected_workshop_crafting_changed', { value: value });
    });
-   stonehearth_ace.getModConfigSetting('stonehearth_ace', 'default_craft_search_checks', function(value) {
+   stonehearth_ace.getModConfigSetting('stonehearth_ace', 'default_craft_search_checks', function (value) {
       $(top).trigger('default_craft_search_checks_changed', { value: value });
    });
 });
