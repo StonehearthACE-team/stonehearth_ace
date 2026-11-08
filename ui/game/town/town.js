@@ -7,32 +7,37 @@ App.StonehearthTownView = App.View.extend({
    uriProperty: 'model',
 
    journalData: {
-      'initialized' : false,
-      'data' : null
+      'initialized': false,
+      'data': null
    },
    lastClickedUri: null,
    lastClickedItem: null,
 
-   init: function() {
+   init: function () {
       var self = this;
       this.journalData.initialized = false;
       this._super();
-      self.set('town_name', App.stonehearthClient.settlementName())
+      self.set('town_name', App.stonehearthClient.settlementName());
+      self.set('kingdom', i18n.t(App.population.getPopulationData().kingdom.display_name));
+      self.set('biome', radiant.call_obj('stonehearth.world_generation', 'get_biome'));
+      self.set('game_mode', radiant.call_obj('stonehearth.game_creation', 'get_game_mode'));
 
-      App.jobController.addChangeCallback('town', function() {
+      console.dir(App.population.getPopulationData())
+
+      App.jobController.addChangeCallback('town', function () {
          self.set('num_workers', App.jobController.getNumWorkers());
          self.set('num_crafters', App.jobController.getNumCrafters());
          self.set('num_soldiers', App.jobController.getNumSoldiers());
       }, true);
 
-      self.radiantTrace  = new RadiantTrace()
+      self.radiantTrace = new RadiantTrace()
       self.scoreTrace = self.radiantTrace.traceUri(App.stonehearthClient.gameState.scoresUri, {});
-      self.scoreTrace.progress(function(eobj) {
-            self.set('score_data', eobj);
-         });
+      self.scoreTrace.progress(function (eobj) {
+         self.set('score_data', eobj);
+      });
 
       radiant.call('stonehearth:get_journals')
-         .done(function(response){
+         .done(function (response) {
             var uri = response.journals;
 
             if (uri == undefined) {
@@ -43,21 +48,21 @@ App.StonehearthTownView = App.View.extend({
 
             self.radiantTraceJournals = new RadiantTrace();
             self.traceJournals = self.radiantTraceJournals.traceUri(uri, {});
-            self.traceJournals.progress(function(eobj) {
-                  self.journalData.data = eobj;
-                  if (eobj.journals_by_page.size > 0) {
-                     if (!self.journalData.initialized) {
-                        self.journalData.initialized = true;
-                        self._populatePages();
-                     }
+            self.traceJournals.progress(function (eobj) {
+               self.journalData.data = eobj;
+               if (eobj.journals_by_page.size > 0) {
+                  if (!self.journalData.initialized) {
+                     self.journalData.initialized = true;
+                     self._populatePages();
                   }
-               });
+               }
+            });
          });
 
       var self = this;
       radiant.call('stonehearth:get_town')
          .done(function (response) {
-            self._townTrace = new StonehearthDataTrace(response.result, { 'town_bonuses': { '*': {} }, 'default_storage': { '*': {}} })
+            self._townTrace = new StonehearthDataTrace(response.result, { 'town_bonuses': { '*': {} }, 'default_storage': { '*': {} } })
                .progress(function (response) {
                   if (self.isDestroyed || self.isDestroying) {
                      return;
@@ -75,10 +80,10 @@ App.StonehearthTownView = App.View.extend({
             self.set('foodImmigrationRequirement', response.food);
             self.set('netWorthImmigrationRequirement', response.net_worth);
          });
-      
+
    },
 
-   destroy: function() {
+   destroy: function () {
       App.jobController.removeChangeCallback('town');
 
       if (this.radiantTrace) {
@@ -97,23 +102,23 @@ App.StonehearthTownView = App.View.extend({
       this._super();
    },
 
-   didInsertElement: function() {
+   didInsertElement: function () {
       var self = this;
       this._super();
 
       this.$().draggable({ handle: '.title' });
 
-      var rows = self.$('#scores .row').each(function( index ) {
-         var row =  $( this );
+      var rows = self.$('#scores .row').each(function (index) {
+         var row = $(this);
          var scoreName = row.attr('id');
          var tooltipString = App.tooltipHelper.getTooltip(scoreName, null, true); // True for town description.
          if (tooltipString) {
             row.tooltipster({
-                  content: $(tooltipString)
-               });
+               content: $(tooltipString)
+            });
          }
       });
-      
+
       App.tooltipHelper.createDynamicTooltip(self.$('#workers'), function () {
          return i18n.t('stonehearth:ui.game.town_overview.num_workers');
       });
@@ -131,54 +136,54 @@ App.StonehearthTownView = App.View.extend({
       self._inventoryPalette = self.$('#inventoryPalette').stonehearthItemPalette({
          cssClass: 'inventoryItem',
          click: function (item) {
-               // when the player clicks an inventory item, we want to try to select and go to that item
-               // check if this was the last clicked item; if so, and it has count > 1, lookup "next" actual item for it
-               var uri = item.attr('uri');
-               var item_quality = item.attr('item_quality');
-               var items = self.getItemsFromUri(uri, item_quality);
-               if (items.length > 0) {
-                  if (uri != self.lastClickedUri) {
-                     self.lastClickedUri = uri;
-                     self.lastClickedItem = null;
-                  }
-                  var nextItem = 0;
-                  if (self.lastClickedItem) {
-                     nextItem = (items.indexOf(self.lastClickedItem) + 1) % items.length;
-                  }
-                  self.lastClickedItem = items[nextItem];
+            // when the player clicks an inventory item, we want to try to select and go to that item
+            // check if this was the last clicked item; if so, and it has count > 1, lookup "next" actual item for it
+            var uri = item.attr('uri');
+            var item_quality = item.attr('item_quality');
+            var items = self.getItemsFromUri(uri, item_quality);
+            if (items.length > 0) {
+               if (uri != self.lastClickedUri) {
+                  self.lastClickedUri = uri;
+                  self.lastClickedItem = null;
+               }
+               var nextItem = 0;
+               if (self.lastClickedItem) {
+                  nextItem = (items.indexOf(self.lastClickedItem) + 1) % items.length;
+               }
+               self.lastClickedItem = items[nextItem];
 
-                  radiant.call('stonehearth_ace:get_item_container', self.lastClickedItem)
-                     .done(function(response) {
-                        if (self.isDestroyed || self.isDestroying) {
-                           return;
-                        }
-                        var camera_focus = self.lastClickedItem;
-                        if (response.container && response.container != '') {
-                           // if it's a universal_storage, the response will also contain access_nodes; just use the first one that's in the world
-                           if (response.access_nodes) {
-                              for (var i = 0; i < response.access_nodes.length; i++) {
-                                 var access_node = response.access_nodes[i];
-                                 if (access_node.in_world) {
-                                    camera_focus = access_node.entity;
-                                    break;
-                                 }
+               radiant.call('stonehearth_ace:get_item_container', self.lastClickedItem)
+                  .done(function (response) {
+                     if (self.isDestroyed || self.isDestroying) {
+                        return;
+                     }
+                     var camera_focus = self.lastClickedItem;
+                     if (response.container && response.container != '') {
+                        // if it's a universal_storage, the response will also contain access_nodes; just use the first one that's in the world
+                        if (response.access_nodes) {
+                           for (var i = 0; i < response.access_nodes.length; i++) {
+                              var access_node = response.access_nodes[i];
+                              if (access_node.in_world) {
+                                 camera_focus = access_node.entity;
+                                 break;
                               }
                            }
-                           else {
-                              camera_focus = response.container;
-                           }
                         }
-                        // select and focus on the item, but if the item is in a container, focus on the container
-                        radiant.call('stonehearth:select_entity', self.lastClickedItem);
-                        radiant.call('stonehearth:camera_look_at_entity', camera_focus);
-                     });
-               }
+                        else {
+                           camera_focus = response.container;
+                        }
+                     }
+                     // select and focus on the item, but if the item is in a container, focus on the container
+                     radiant.call('stonehearth:select_entity', self.lastClickedItem);
+                     radiant.call('stonehearth:camera_look_at_entity', camera_focus);
+                  });
+            }
          }
       });
       self._inventoryPalette.stonehearthItemPalette('showSearchFilter');
 
       radiant.call_obj('stonehearth.inventory', 'get_inventory_capacity_command')
-         .done(function(response) {
+         .done(function (response) {
             if (self.isDestroying || self.isDestroyed) {
                return;
             }
@@ -186,16 +191,16 @@ App.StonehearthTownView = App.View.extend({
          });
 
       radiant.call_obj('stonehearth.inventory', 'get_item_tracker_command', 'stonehearth:basic_inventory_tracker')
-         .done(function(response) {
+         .done(function (response) {
             if (self.isDestroying || self.isDestroyed) {
                return;
             }
 
             var itemTraces = {
-               "tracking_data" : {
-                  "stonehearth:loot:gold" : {
-                     "items" : {
-                        "*" : {
+               "tracking_data": {
+                  "stonehearth:loot:gold": {
+                     "items": {
+                        "*": {
                            "stonehearth:stacks": {}
                         }
                      }
@@ -212,7 +217,7 @@ App.StonehearthTownView = App.View.extend({
                   self._updateItems();
                });
          })
-         .fail(function(response) {
+         .fail(function (response) {
             console.error(response);
          });
 
@@ -223,7 +228,7 @@ App.StonehearthTownView = App.View.extend({
       this.$('#overviewTab').show();
    },
 
-   _townDataChanged: function(data) {
+   _townDataChanged: function (data) {
       var self = this;
       var bonuses = [];
       radiant.each(data.town_bonuses, (uri, bonus) => {
@@ -283,7 +288,7 @@ App.StonehearthTownView = App.View.extend({
       self.set('inventory_item_count', totalNumItems);
    }),
 
-   willDestroyElement: function() {
+   willDestroyElement: function () {
       var self = this;
 
       this._inventoryPalette.stonehearthItemPalette('destroy');
@@ -307,25 +312,25 @@ App.StonehearthTownView = App.View.extend({
 
    //Page 1 of the book is a title page
    //Open to at least page 2, or the most recent praise page
-   _bookInit: function(bookPage) {
+   _bookInit: function (bookPage) {
       var self = this;
       this.$('.book').turn({
-                     display: 'double',
-                     acceleration: true,
-                     gradients: true,
-                     elevation:50,
-                     page: bookPage,
-                     turnCorners: "",
-                     when: {
-                        turned: function(e, page) {
-                           //console.log('Current view: ', $(this).turn('view'));
-                        }
-                     }
-                  });
+         display: 'double',
+         acceleration: true,
+         gradients: true,
+         elevation: 50,
+         page: bookPage,
+         turnCorners: "",
+         when: {
+            turned: function (e, page) {
+               //console.log('Current view: ', $(this).turn('view'));
+            }
+         }
+      });
 
-      this.$('.book').bind('turned', function(event, page, view) {
+      this.$('.book').bind('turned', function (event, page, view) {
          if (page > 1) {
-            var index = Math.floor(page / 2) - 1  + self.journalData.data.journal_start_index;
+            var index = Math.floor(page / 2) - 1 + self.journalData.data.journal_start_index;
             var pageData = self.journalData.data.journals_by_page[index];
             if (pageData) {
                self._setDate(pageData.date);
@@ -333,18 +338,18 @@ App.StonehearthTownView = App.View.extend({
          }
       });
 
-      this.$('.book').on( 'click', '.odd', function() {
-        self._turnForward();
+      this.$('.book').on('click', '.odd', function () {
+         self._turnForward();
       });
 
-      this.$('.book').on( 'click', '.even', function() {
+      this.$('.book').on('click', '.even', function () {
          self._turnBack();
       });
    },
 
    //Town related stuff
 
-   _updateUi: function() {
+   _updateUi: function () {
       var self = this;
 
       // Update net worth
@@ -354,16 +359,16 @@ App.StonehearthTownView = App.View.extend({
       if (netWorthLevel) {
          var settlementSize = i18n.t('stonehearth:ui.game.town_overview.networth.size.' + netWorthLevel);
          $('#descriptor').html(i18n.t('stonehearth:ui.game.town_overview.networth.town_description', {
-               "descriptor": i18n.t('stonehearth:ui.game.town_overview.networth.morale_descriptor.' + Math.floor(overallMoral/10)),
-               "noun": settlementSize,
-               "town_name": self.get('town_name'),
-            }));
+            "descriptor": i18n.t('stonehearth:ui.game.town_overview.networth.morale_descriptor.' + Math.floor(overallMoral / 10)),
+            "noun": settlementSize,
+            "town_name": self.get('town_name'),
+         }));
       }
 
       // Update happiness score
       self._updateHappinessScore();
 
-      var setValueFloored = function(key_name, value) {
+      var setValueFloored = function (key_name, value) {
          if (!value) {
             value = 0;
          }
@@ -379,7 +384,7 @@ App.StonehearthTownView = App.View.extend({
       setValueFloored('score_agriculture', self.get('score_data.category_scores.agriculture'));
    },
 
-   _updateHappinessScore: function() {
+   _updateHappinessScore: function () {
       var self = this;
       var scoreValue = self.get('score_data.median.happiness');
       if (!scoreValue) {
@@ -388,7 +393,7 @@ App.StonehearthTownView = App.View.extend({
 
       var moodNumber = Math.round(scoreValue);
       var moodString, icon;
-      $.each(App.happinessConstants.mood_data, function(mood, data) {
+      $.each(App.happinessConstants.mood_data, function (mood, data) {
          if (data.score == moodNumber) {
             moodString = mood;
             icon = data.icon;
@@ -410,21 +415,21 @@ App.StonehearthTownView = App.View.extend({
             moraleBanner.tooltipster('destroy');
          }
          moraleBanner.tooltipster({
-               content: $(tooltipString)
-            });
+            content: $(tooltipString)
+         });
       }
    },
 
-   _setIconClass: function(className, value) {
+   _setIconClass: function (className, value) {
       var iconValue = Math.floor(value / 10); // value between 1 and 10
       this.set(className, 'happiness_' + iconValue);
    },
 
-   _observerScores: function() {
+   _observerScores: function () {
       this._updateUi();
    }.observes('score_data.happiness'),
 
-   _updateMeter: function(element, value, text) {
+   _updateMeter: function (element, value, text) {
       element.progressbar({
          value: value
       });
@@ -437,8 +442,8 @@ App.StonehearthTownView = App.View.extend({
    //Take the journal data, make a bunch of pages from it
    //Put those pages under the right parent to make the book
    //Clean out the old pages before appending the new ones.
-   _populatePages: function() {
-      var allPages = '<div><div><div id="bookBeginning"><h2>' + App.stonehearthClient.settlementName() +  '</h2><p>' +  i18n.t('stonehearth:ui.game.town_overview.journal.town_log') + '</p></div></div></div>';
+   _populatePages: function () {
+      var allPages = '<div><div><div id="bookBeginning"><h2>' + App.stonehearthClient.settlementName() + '</h2><p>' + i18n.t('stonehearth:ui.game.town_overview.journal.town_log') + '</p></div></div></div>';
       var jbp = this.journalData.data.journals_by_page;
       var startIndex = this.journalData.data.journal_start_index;
       for (var i = 0; i < jbp.size; i++) {
@@ -463,7 +468,7 @@ App.StonehearthTownView = App.View.extend({
       this._bookInit(jbp.size * 2);
    },
 
-   _makePages: function(entries) {
+   _makePages: function (entries) {
       var allEntries = this._makeEntry(
          'gripeTitle',
          i18n.t('stonehearth:ui.game.town_overview.journal.gripes'),
@@ -478,16 +483,16 @@ App.StonehearthTownView = App.View.extend({
       return allEntries;
    },
 
-   _makeEntry: function(className, titleText, emptyText, entries) {
-      var allEntries = '<div><div><h2 class="' + className + '">' +  titleText + '</h2>';
+   _makeEntry: function (className, titleText, emptyText, entries) {
+      var allEntries = '<div><div><h2 class="' + className + '">' + titleText + '</h2>';
       if (!entries.length) {
          allEntries += emptyText;
       } else {
-         radiant.each(entries, function(j, entry) {
+         radiant.each(entries, function (j, entry) {
             var entryString = "<p class=\"logEntry\"><span class=\"logTitle\">"
-                              + i18n.t(entry.title, {entry: entry}) + "</span></br>"
-                              + i18n.t(entry.text, {entry: entry}) + "</br><span class=\"signature\">--"
-                              + i18n.t('stonehearth:ui.game.town_overview.journal.signature', {entry: entry}) + "</span></p>";
+               + i18n.t(entry.title, { entry: entry }) + "</span></br>"
+               + i18n.t(entry.text, { entry: entry }) + "</br><span class=\"signature\">--"
+               + i18n.t('stonehearth:ui.game.town_overview.journal.signature', { entry: entry }) + "</span></p>";
             allEntries += entryString;
          });
       }
@@ -495,10 +500,10 @@ App.StonehearthTownView = App.View.extend({
       return allEntries;
    },
 
-   _setDate: function(date) {
+   _setDate: function (date) {
       var dateLocalized;
       if (date) {
-         dateLocalized = i18n.t('stonehearth:ui.game.calendar.date_format_long', {date: date});
+         dateLocalized = i18n.t('stonehearth:ui.game.calendar.date_format_long', { date: date });
       } else {
          dateLocalized = i18n.t('stonehearth:ui.game.town_overview.journal.today');
       }
@@ -506,15 +511,15 @@ App.StonehearthTownView = App.View.extend({
       this.$("#journalDate").html(dateLocalized);
    },
 
-   _turnForward: function() {
+   _turnForward: function () {
       var page = $(".book").turn("page");
 
-      if ( page != undefined ) {
+      if (page != undefined) {
          $('.book').turn('next');
       }
    },
 
-   _turnBack: function() {
+   _turnBack: function () {
       var page = $(".book").turn("page");
 
       // never go to page 1
@@ -523,7 +528,7 @@ App.StonehearthTownView = App.View.extend({
       }
    },
 
-   _updateInventoryCountClass: function() {
+   _updateInventoryCountClass: function () {
       var self = this;
       var capacity = self.get('inventory_capacity');
       var count = self.get('inventory_item_count');
@@ -540,15 +545,15 @@ App.StonehearthTownView = App.View.extend({
             self._inventoryTabStatus = App.statusHelper.addStatus(inventoryTabButton, 'error_icon.png', 0, position + width, true);
 
             var tooltipString = App.tooltipHelper.createTooltip(i18n.t('stonehearth:ui.game.bulletin.inventory_full.title'),
-                                                               i18n.t('stonehearth:ui.game.bulletin.inventory_full.message'));
+               i18n.t('stonehearth:ui.game.bulletin.inventory_full.message'));
             if (tooltipString) {
                inventoryTabButton.tooltipster({
-                     content: $(tooltipString)
-                  });
+                  content: $(tooltipString)
+               });
                var inventoryCountElement = self.$('#inventoryCount');
                inventoryCountElement.tooltipster({
-                     content: $(tooltipString)
-                  });
+                  content: $(tooltipString)
+               });
             }
 
          }
@@ -589,10 +594,10 @@ App.StonehearthTownView = App.View.extend({
       self.set('defaultStorage', items);
       self.set('hasDefaultStorage', items.length > 0);
 
-      Ember.run.scheduleOnce('afterRender', this, function() {
+      Ember.run.scheduleOnce('afterRender', this, function () {
          var elements = self.$('.defaultStorageItem');
          if (elements) {
-            elements.each(function() {
+            elements.each(function () {
                var $el = $(this);
                var entity = self._getDefaultStorageEntity($el.attr('storage-id'));
                var catalogData = App.catalog.getCatalogData(entity.uri);
@@ -630,18 +635,18 @@ App.StonehearthTownView = App.View.extend({
       return items;
    },
 
-   _getDefaultStorageEntity: function(id) {
+   _getDefaultStorageEntity: function (id) {
       return this._defaultStorage && this._defaultStorage[id];
    },
 
    actions: {
-      back: function() {
+      back: function () {
          this._turnBack();
       },
-      forward: function() {
+      forward: function () {
          this._turnForward();
       },
-      goToDefaultStorage: function(id) {
+      goToDefaultStorage: function (id) {
          var entity = this._getDefaultStorageEntity(id);
          var entityId = entity && entity.__self;
          if (entityId) {
