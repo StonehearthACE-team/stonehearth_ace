@@ -38,7 +38,7 @@ function AcePresenceClientService:_check_presence_data_changed()
    self:_ace_old__check_presence_data_changed()
 end
 
-function PresenceClientService:_ensure_limited_data_call_timer()
+function AcePresenceClientService:_ensure_limited_data_call_timer()
    if self._limited_data_call_timer then
       return
    end
@@ -67,6 +67,19 @@ function PresenceClientService:_ensure_limited_data_call_timer()
             self._modified.ghost = false
          end
       end)
+end
+
+function AcePresenceClientService:is_non_npc(player_id)
+   if not self._presence_datastore then
+      return false
+   end
+
+   local data = self._presence_datastore:get_data()
+   if data.players and data.players[player_id] then
+      return data.players[player_id].is_non_npc or false
+   else
+      return false
+   end
 end
 
 return AcePresenceClientService

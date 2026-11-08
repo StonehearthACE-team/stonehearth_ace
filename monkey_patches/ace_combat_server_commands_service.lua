@@ -1,4 +1,5 @@
 local CombatServerCommandsService = require 'stonehearth.services.server.combat_server_commands.combat_server_commands_service'
+local validator = radiant.validator
 local AceCombatServerCommandsService = class()
 
 function AceCombatServerCommandsService:cancel_order_on_target(player_id, target)
@@ -70,6 +71,21 @@ function AceCombatServerCommandsService:_should_issue_individual_party_command_w
       player_id = radiant.entities.get_player_id(player_id)
    end
    return stonehearth.client_state:get_client_gameplay_setting(player_id, 'stonehearth_ace', 'issue_party_commands_when_job_disabled', true)
+end
+
+function AceCombatServerCommandsService:party_attack_target_entity(session, response, party, target_entity)
+   validator.expect_argument_types({'Entity', 'Entity'}, party, target_entity)
+
+   -- ACE: At least check what you're targeting, gosh. Remove this check if you want it to be possible to order your squads to attack trees, furniture, each other or even themselves again (with hotkeys)... Definitely gets a spot on the TOP 10 funny bugs
+   local target_killable = target_entity:get_component('stonehearth:expendable_resources') and target_entity:get_component('stonehearth:expendable_resources'):get_value('health')
+   if not stonehearth.player:are_entities_hostile(party, target_entity) or not target_killable then
+      return
+   end
+
+   -- target_entity might not be a valid object if it was destroyed after the client sent the attack request
+   if radiant.entities.is_entity(target_entity) then
+      self:_issue_party_event(party, target_entity, 'stonehearth:party_unit_attack_entity')
+   end
 end
 
 return AceCombatServerCommandsService
