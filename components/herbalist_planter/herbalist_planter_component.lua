@@ -281,7 +281,7 @@ function HerbalistPlanterComponent:set_harvest_plant(harvest_plant)
    end
 end
 
-function HerbalistPlanterComponent:is_pollinable()
+function HerbalistPlanterComponent:is_pollinatable()
    return self._planted_crop_stats and self._planted_crop_stats.pollination ~= false
 end
 

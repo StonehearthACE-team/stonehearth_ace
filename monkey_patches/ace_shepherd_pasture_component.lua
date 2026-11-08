@@ -755,15 +755,15 @@ end
 function AceShepherdPastureComponent:unregister_item(id)
    self._pasture_items[id] = nil
    if self._troughs[id] then
-+      self._troughs[id] = nil
-+      if not next(self._troughs) then
-+         radiant.on_game_loop_once('pasture lost its last trough', function()
-+            if self._entity:is_valid() and not next(self._troughs) then
-+               self:recalculate_feed_need()
-+            end
-+         end)
-+      end
-+   end
+      self._troughs[id] = nil
+      if not next(self._troughs) then
+         radiant.on_game_loop_once('pasture lost its last trough', function()
+            if self._entity:is_valid() and not next(self._troughs) then
+               self:recalculate_feed_need()
+            end
+         end)
+      end
+   end
 end
 
 function AceShepherdPastureComponent:set_collect_strays_enabled(enabled)
