@@ -26,7 +26,7 @@ function AcePetComponent:activate()
             local town = stonehearth.town:get_town(self._sv.owner)
             local location = town and radiant.terrain.find_placement_point(town:get_landing_location(), 0, 10)
             if location then
-               radiant.terrain.place_entity(self._entity, location)
+               radiant.terrain.place_entity(self._entity, location, { force_iconic = false })
             end
          end
       end

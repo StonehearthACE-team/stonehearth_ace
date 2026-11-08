@@ -22,7 +22,7 @@ function AceAiService:reconsider_entity(entity, reason, reconsider_parent)
          local container = inventory:container_for(entity)
          log:debug('reconsidering %s need to reconsider container %s', entity, tostring(container))
          if container then
-            local is_stockpile = container:get_component('stoneheath:stockpile')
+            local is_stockpile = container:get_component('stonehearth:stockpile')
             if not is_stockpile then
                -- ACE: also inform that container that it should remove the reconsidered entity from its storage filter caches
                local storage_comp = container:get_component('stonehearth:storage')
