@@ -2,7 +2,7 @@ local rng = _radiant.math.get_default_rng()
 local Point3 = _radiant.csg.Point3
 local Cube3 = _radiant.csg.Cube3
 local log = radiant.log.create_logger('bee_skep_component')
-local item_quality_lib =  'stonehearth_ace.lib.item_quality.item_quality_lib'
+local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_lib'
 local constants = require 'stonehearth.constants'
 local bee_skep_constants = constants.bee_skeps
 
@@ -24,9 +24,7 @@ function BeeSkepComponent:activate()
     self._pollinations = self._json and self._json.pollinations or bee_skep_constants.POLLINATIONS_PER_UPDATE
     self._improvement_chance = self._json and self._json.improvement_chance or bee_skep_constants.IMPROVEMENT_CHANCE
     self._score_loss = self._json and self._json.score_loss or bee_skep_constants.SCORE_LOSS_PER_FAILED_UPDATE
-    self._score_q2 = self._json and self._json.score_q2 or bee_skep_constants.SCORE_FOR_Q2
-    self._score_q3 = self._json and self._json.score_q3 or bee_skep_constants.SCORE_FOR_Q3
-    self._score_q4 = self._json and self._json.score_q4 or bee_skep_constants.SCORE_FOR_Q4
+    self._score_for_quality_upgrade = self._json and self._json.score_for_quality_upgrade or bee_skep_constants.SCORE_FOR_QUALITY_UPGRADE
     self._max_score = self._json and self._json.max_score or bee_skep_constants.MAX_SCORE
 
     if not self._search_cube then
@@ -42,13 +40,7 @@ function BeeSkepComponent:post_activate()
     local current_quality = radiant.entities.get_item_quality(self._entity)
     if self._sv._score == 0 and current_quality ~= 1 then
         log:info('bee skep %s already has higher quality, giving it a starting score', self._entity)
-        if current_quality == 4 then
-            self._sv._score = self._score_q4
-        elseif current_quality == 3 then
-            self._sv._score = self._score_q3
-        else
-            self._sv._score = self._score_q2
-        end
+        self._sv._score = self._score_for_quality_upgrade[math.max(1, math.floor(current_quality - 1))]
     end
 end
 
@@ -76,10 +68,9 @@ function BeeSkepComponent:_update()
 
     -- Determine the skep's location and prevent its shelter check from colliding with itself (this check is so stupid...)
     local location = radiant.entities.get_world_grid_location(self._entity)
-    location.y = (location.y + 3)
 
     -- if the skep is covered/sheltered, it should automatically fail updating
-    if stonehearth.terrain:is_sheltered(location) then
+    if stonehearth.terrain:is_sheltered(location + (Point3.unit_y * 3)) then
         log:info('bee skep %s is sheltered and loses score!', self._entity)
         self._sv._score = math.max(0, (self._sv._score - self._score_loss))
         self:_score_check()
@@ -125,7 +116,7 @@ function BeeSkepComponent:_can_pollinate(target)
     local herbalist_planter = target:get_component('stonehearth_ace:herbalist_planter')
     if herbalist_planter then
         log:debug('bee skep target %s is a herbalist planter', target)
-        return herbalist_planter:is_pollinable() and herbalist_planter:is_tendable()
+        return herbalist_planter:is_pollinatable() and herbalist_planter:is_tendable()
     end
 
     local crop = target:get_component('stonehearth:crop')
@@ -133,6 +124,7 @@ function BeeSkepComponent:_can_pollinate(target)
 
     if (crop and not radiant.entities.has_buff(target, POLLINATED_CROP_BUFF)) or
         (is_plant and not radiant.entities.has_buff(target, POLLINATED_BUFF)) then
+        log:debug('bee skep target %s is a crop or plant', target)
         return not radiant.entities.is_material(target, 'no_pollination')
     end
 
@@ -186,17 +178,17 @@ end
 
 function BeeSkepComponent:_score_check()
     local current_quality = radiant.entities.get_item_quality(self._entity)
+    local expected_quality = 1
+    for quality, score in ipairs(self._score_for_quality_upgrade) do
+        if self._sv._score >= score then
+            expected_quality = quality + 1
+        end
+    end
 
-    if self._sv._score >= self._score_q4 and current_quality ~= 4 then
-        item_quality_lib.apply_quality(self._entity, 4, {
+    if current_quality ~= expected_quality then
+        item_quality_lib.apply_quality(self._entity, expected_quality, {
             max_quality = item_quality_lib.get_max_random_quality(self._entity:get_player_id())
         })
-    elseif self._sv._score >= self._score_q3 and current_quality ~= 3 then
-        item_quality_lib.apply_quality(self._entity, 3)
-    elseif self._sv._score >= self._score_q2 and current_quality ~= 2 then
-        item_quality_lib.apply_quality(self._entity, 2)
-    elseif current_quality ~= 1 then
-        item_quality_lib.apply_quality(self._entity, 1)
     end
 end
 

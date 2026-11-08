@@ -22,9 +22,11 @@
          "RANGE": 32,
          "POLLINATIONS_PER_UPDATE": 3,
          "SCORE_LOSS_PER_FAILED_UPDATE": 20,
-         "SCORE_FOR_Q2": 80,
-         "SCORE_FOR_Q3": 210,
-         "SCORE_FOR_Q4": 460,
+         "SCORE_FOR_QUALITY_UPGRADE": [
+            80,
+            210,
+            460
+         ],
          "MAX_SCORE": 500,
          "IMPROVEMENT_CHANCE": 0.2
       },
