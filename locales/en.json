@@ -8818,6 +8818,21 @@
                "display_name": "Devoted (Gilded)",
                "description": "Speed increased by 25.<ul><li>This hearthling will be able to work 10% longer before needing to sleep</li><li>This hearthling's need for social interactions will increase 25% slower</ul>"
             }
+         },
+         "tended_planter_pollinated": {
+            "display_name": "Tended Planter (Pollinated)",
+            "description": "This planter has been tended to by happy little bees, increasing both its quality and the bee skep's quality!"
+         },
+         "bee_skep_buff": {
+            "description": "Handle with care...<ul><li>🐝 Bees will, over time and if not placed under a roof, pollinate nearby wild plants, Farmer crops and Herbalist planters</li><li>🌾 Pollinated wild plants have a small chance of increasing their quality</li><li>🥕 Pollinated Farmer crops are considered fertilized and might also get a natural quality increase</li><li>🌼 Pollinated Herbalist planters are considered tended, contributing to the quality increase of the planted herb</li><li>🍯 Every time a plant is pollinated, the skep itself enjoys a bit of progress towards increasing its own quality. However, if no nearby plants are able to be pollinated, the skep will slowly recede towards its base quality</li><li>❌ Not every crop or plant can be pollinated by bees, a full list can be found within the Info section of this skep!</li></ul>"
+         },
+         "pollinated_buff": {
+            "display_name": "Pollinated",
+            "description": "This plant has been visited by bees and will need some time before they can visit again."
+         },
+         "pollinated_crop_buff": {
+            "display_name": "Pollinated (Crop)",
+            "description": "Busy little bees have visited this crop and made it a little better!"
          }
       },
       "loadouts": {
@@ -10943,7 +10958,14 @@
          "herbalist_bee_skep": {
             "display_name": "Bee Skep",
             "description": "A neat house for bees, handled by the Herbalist. Won't produce during the winter.",
-            "unripe_description": "Not yet ready for harvesting, poor busy little bees!"
+            "unripe_description": "Not yet ready for harvesting, poor busy little bees!",
+            "static_component_info": {
+               "header_wild_plants": "This list includes any 🌾 Wild occurrences of these plants",
+               "header_farmer_crops": "🥕 Farmer crops that can't be pollinated by bees",
+               "header_herbalist_planters": "🌼 Herbalist planter crops that can't be pollinated by bees",
+               "description": "Although most plants can and will benefit from bee pollination, not every plant can be pollinated by them. This is a list of plants, per category, that will not be affected nor affect the bee skep:",
+               "header_trees": "🌳 Trees & bushes that can't be pollinated by bees"
+            }
          },
          "herbalist_cauldron": {
             "display_name": "Herbalist Stone Cauldron",

@@ -1,0 +1,26 @@
+{
+   "type": "effect",
+   "tracks": {
+      "bees": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/bees/bees_attack.cubemitter.json",
+         "start_time": 0,
+         "end_time": 500,
+         "transforms": { "x": 0, "y": 1, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "cubemitter": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth/data/horde/particles/sparkle/treasure_sparkle.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0, "y": 1, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      }
+   }
+}
