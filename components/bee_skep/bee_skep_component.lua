@@ -187,6 +187,7 @@ function BeeSkepComponent:_score_check()
 
     if current_quality ~= expected_quality then
         item_quality_lib.apply_quality(self._entity, expected_quality, {
+            allow_lower = true,
             max_quality = item_quality_lib.get_max_random_quality(self._entity:get_player_id())
         })
     end
