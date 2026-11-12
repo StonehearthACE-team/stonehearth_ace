@@ -51,7 +51,7 @@ function AceEncounter:get_unique_id()
 end
 
 function AceEncounter:get_encounter_music()
-   if self._encounter_music == nil then
+   if self._encounter_music == nil and self._sv._info then
       -- load encounter music table
       local music = self._sv._info.encounter_music
       if not music then

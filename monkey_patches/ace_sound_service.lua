@@ -96,6 +96,10 @@ function AceSound:recommend_combat_music(music)
       -- music at all.
       self:recommend_game_music('combat', 'music', self._constants.music.combat.kill_combat_music)
       radiant.set_realtime_timer("Sound _on_threat_changed", self._constants.music.combat.kill_combat_music.fade_in, function()
+            if self._combat_started then
+               return
+            end
+
             self:recommend_game_music('combat', 'music',   nil)
             self:recommend_game_music('combat', 'ambient', nil)
             self:_play_sound(self._constants.sounds.combat_finished_sound)

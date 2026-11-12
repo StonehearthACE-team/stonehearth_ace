@@ -254,7 +254,7 @@ function AceDeliveryQuest:_execute_requirements()
             local inventory = stonehearth.inventory:get_inventory(self._sv.ctx.player_id)
             inventory:subtract_gold(requirement.count)
          end
-      elseif requirement.type == 'have_item_quality' then
+      elseif requirement.type == 'have_item_quality' or requirement.type == 'net_worth' or requirement.type == 'placed_item' then
          -- Nothing to execute.
       else
          self._log:error('Invalid delivery quest requirement type: %s', requirement.type)

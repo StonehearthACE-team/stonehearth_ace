@@ -26,7 +26,6 @@ PetPullItemTypeFromStorage.think_output = {
 PetPullItemTypeFromStorage.priority = {0, 1}
 
 function PetPullItemTypeFromStorage:start(ai, entity, args)
-   print('ran')
    self._storage_location_trace = radiant.entities.trace_location(args.storage, 'storage location trace')
       :on_changed(function()
             ai:abort('storage container moved')
