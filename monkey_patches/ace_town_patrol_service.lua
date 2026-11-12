@@ -146,6 +146,7 @@ end
 function AceTownPatrol:_switch_to_auto(player_id)
 	self._sv._auto_patrol[player_id] = true
 	self._sv._patrollable_objects[player_id] = self:_get_auto_patrollable_objects(player_id)
+   self:_trigger_patrol_route_available(player_id)
 
 	-- saved variables will get set by the calling function, don't need to set them here
 end
