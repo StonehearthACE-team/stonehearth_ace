@@ -77,15 +77,20 @@ function item_quality_lib.apply_quality(item, quality, options)
       if options.min_quality then
          quality = math.max(quality, options.min_quality)
       end
-      if quality > 1 then
+      if quality > 1 or options.allow_lower then
          -- allow replacing existing, lower item qualities (assume the item has properly been removed from inventories if necessary)
          local iq_comp = item:get_component('stonehearth:item_quality')
          if iq_comp then
-            if iq_comp:get_quality() >= quality then
+            local iq_quality = iq_comp:get_quality()
+            if iq_quality == quality or (iq_quality > quality and not options.allow_lower) then
+               -- already this quality, or trying to set lower when not allowed
                return
             else
                item:remove_component('stonehearth:item_quality')
             end
+         elseif quality <= 1 then
+            -- no higher quality actually being set, so don't add the component
+            return
          end
          iq_comp = item:add_component('stonehearth:item_quality')
          if options.override_allow_variable_quality == nil then
