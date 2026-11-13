@@ -36,6 +36,8 @@ function AceItemQualityComponent:initialize_quality(quality, author, author_type
       end
    end
 
+   radiant.events.trigger(self._entity, 'stonehearth:item_quality_added', quality)
+
    self:_ace_old_initialize_quality(quality, author, author_type, options)
 end
 
