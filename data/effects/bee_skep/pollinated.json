@@ -1,0 +1,36 @@
+{
+   "type": "effect",
+   "tracks": {
+      "cubemitter": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/bees/bee_skep.cubemitter.json",
+         "start_time": 0,
+         "end_time": 900,
+         "transforms": { "x": 0, "y": 0.7, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "spiral": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/bees/pollination/pollination_spiral.cubemitter.json",
+         "start_time": 400,
+         "end_time": 700,
+         "transforms": { "x": 0, "y": -1.8, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "sound": {
+         "type": "sound_effect",
+         "loop": false,
+         "start_time": 0,
+         "min_distance": 12,
+         "falloff": 4,
+         "volume": 20,
+         "track": "stonehearth_ace:sounds:bees:starter"
+      }
+   }
+}

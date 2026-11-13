@@ -3,9 +3,9 @@
    "tracks": {
       "bees": {
          "type": "cubemitter",
-         "cubemitter": "/stonehearth_ace/data/horde/particles/bees/bees_attack.cubemitter.json",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/bees/bee_skep.cubemitter.json",
          "start_time": 0,
-         "end_time": 500,
+         "end_time": 900,
          "transforms": { "x": 0, "y": 1, "z": 0,
             "rx": 90,
             "ry": 0,
@@ -14,13 +14,33 @@
       },
       "cubemitter": {
          "type": "cubemitter",
-         "cubemitter": "/stonehearth/data/horde/particles/sparkle/treasure_sparkle.cubemitter.json",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/bees/pollination/wide_pollinated_sparkle.cubemitter.json",
          "loop": true,
-         "transforms": { "x": 0, "y": 1, "z": 0,
+         "transforms": { "x": 0, "y": 1.1, "z": 0,
             "rx": 90,
             "ry": 0,
             "rz": 0
          }
+      },
+      "spiral": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/bees/pollination/pollination_glow.cubemitter.json",
+         "start_time": 400,
+         "end_time": 900,
+         "transforms": { "x": 0, "y": -2.2, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "sound": {
+         "type": "sound_effect",
+         "loop": false,
+         "start_time": 0,
+         "min_distance": 12,
+         "falloff": 4,
+         "volume": 20,
+         "track": "stonehearth_ace:sounds:bees:starter"
       }
    }
 }

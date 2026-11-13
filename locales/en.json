@@ -8824,7 +8824,11 @@
             "description": "This planter has been tended to by happy little bees, increasing both its quality and the bee skep's quality!"
          },
          "bee_skep_buff": {
-            "description": "Handle with care...<ul><li>🐝 Bees will, over time and if not placed under a roof, pollinate nearby wild plants, Farmer crops and Herbalist planters</li><li>🌾 Pollinated wild plants have a small chance of increasing their quality</li><li>🥕 Pollinated Farmer crops are considered fertilized and might also get a natural quality increase</li><li>🌼 Pollinated Herbalist planters are considered tended, contributing to the quality increase of the planted herb</li><li>🍯 Every time a plant is pollinated, the skep itself enjoys a bit of progress towards increasing its own quality. However, if no nearby plants are able to be pollinated, the skep will slowly recede towards its base quality</li><li>❌ Not every crop or plant can be pollinated by bees, a full list can be found within the Info section of this skep!</li></ul>"
+            "description": "Handle with care...<ul><li>🐝 Bees will, over time and if not placed under a roof, pollinate nearby wild plants, Farmer crops and Herbalist planters</li><li>🌾 Pollinated wild plants have a small chance of increasing their quality</li><li>🥕 Pollinated Farmer crops might also get a natural quality increase that adds up to any used fertilizers</li><li>🌼 Pollinated Herbalist planters are considered tended, contributing to the quality increase of the planted herb</li><li>🍯 Every time a plant is pollinated, the skep itself enjoys a bit of progress towards increasing its own quality. However, if no nearby plants are able to be pollinated, the skep will slowly recede towards its base quality</li><li>❌ Not every crop or plant can be pollinated by bees, a full list can be found within the Info section of this skep!</li></ul>",
+            "pollination_display_name": "Pollination Status",
+            "pollination_up_description": "This bee colony is thriving with all the surrounding opportunities!<ul><li>🍯 Resource production is slightly faster</li></ul>",
+            "pollination_neutral_description": "This bee colony is going well for now, but they had to search for a while. It might be a problem soon...",
+            "pollination_down_description": "This bee colony is struggling to find nearby plants to pollinate. The skep's quality is compromised!<ul><li>🍯 Resource production is slightly slower</li></ul>"
          },
          "pollinated_buff": {
             "display_name": "Pollinated",
