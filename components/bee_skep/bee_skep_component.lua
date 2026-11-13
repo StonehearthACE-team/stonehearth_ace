@@ -37,10 +37,21 @@ function BeeSkepComponent:post_activate()
         self:_create_timers()
     end
 
-    local current_quality = radiant.entities.get_item_quality(self._entity)
-    if self._sv._score == 0 and current_quality ~= 1 then
-        log:info('bee skep %s already has higher quality, giving it a starting score', self._entity)
-        self._sv._score = self._score_for_quality_upgrade[math.max(1, math.floor(current_quality - 1))]
+    if not self._sv._initialized then
+        local current_quality = radiant.entities.get_item_quality(self._entity)
+        if current_quality ~= 1 then
+            log:info('bee skep %s already has higher quality %s, giving it a starting score', self._entity, current_quality)
+            self._sv._score = self._score_for_quality_upgrade[math.max(1, math.floor(current_quality - 1))]
+            self._sv._initialized = true
+        else
+            self._item_quality_listener = radiant.events.listen(self._entity, 'stonehearth:item_quality_added',
+                function(quality)
+                    self:_destroy_quality_listener()
+                    log:info('bee skep %s getting initialized with quality %s, giving it a starting score', self._entity, quality)
+                    self._sv._score = self._score_for_quality_upgrade[math.max(1, math.floor(quality - 1))]
+                    self._sv._initialized = true
+                end)
+        end
     end
 end
 
@@ -186,6 +197,7 @@ function BeeSkepComponent:_score_check()
     end
 
     if current_quality ~= expected_quality then
+        self:_destroy_quality_listener()
         item_quality_lib.apply_quality(self._entity, expected_quality, {
             allow_lower = true,
             max_quality = item_quality_lib.get_max_random_quality(self._entity:get_player_id())
@@ -195,7 +207,15 @@ end
 
 function BeeSkepComponent:destroy()
     self:_destroy_timers()
+    self:_destroy_quality_listener()
     self._sv._score = nil
+end
+
+function BeeSkepComponent:_destroy_quality_listener()
+    if self._item_quality_listener then
+        self._item_quality_listener:destroy()
+        self._item_quality_listener = nil
+    end
 end
 
 function BeeSkepComponent:_destroy_timers()
