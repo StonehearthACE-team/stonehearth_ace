@@ -18,17 +18,23 @@
          "MIN_INGREDIENT_BUFFER_MULTIPLIER": 1
       },
       "bee_skeps": {
-         "UPDATE_PERIOD": "6h+45m",
-         "RANGE": 32,
-         "POLLINATIONS_PER_UPDATE": 3,
-         "SCORE_LOSS_PER_FAILED_UPDATE": 20,
+         "UPDATE_PERIOD": "6h+90m",
+         "RANGE": 36,
+         "MAX_POLLINATIONS_PER_UPDATE": 4,
+         "SCORE_PER_POLLINATION": 1,
+         "SCORE_LOSS_PER_FAILED_UPDATE": 15,
          "SCORE_FOR_QUALITY_UPGRADE": [
             80,
             210,
             460
          ],
-         "MAX_SCORE": 500,
-         "IMPROVEMENT_CHANCE": 0.2
+         "MAX_SCORE": 600,
+         "IMPROVEMENT_CHANCE": [
+            0.04,
+            0.08,
+            0.14,
+            0.21
+         ]
       },
       "combat": {
          "ADDITIVE_COMBAT_LEASH_BONUS": 10,

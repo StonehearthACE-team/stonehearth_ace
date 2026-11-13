@@ -301,8 +301,8 @@ function HerbalistPlanterComponent:is_tend_enabled()
    return self._sv.tend_enabled
 end
 
-function HerbalistPlanterComponent:is_tendable(level)
-   if self:is_tend_enabled() and self._sv.planted_crop and self._planted_crop_stats then
+function HerbalistPlanterComponent:is_tendable(level, is_pollination)
+   if (self:is_tend_enabled() or is_pollination) and self._sv.planted_crop and self._planted_crop_stats then
       -- if a level is specified and the current crop is a higher level, no luck
       if level and level < self:get_planted_crop_level() then
          return false
