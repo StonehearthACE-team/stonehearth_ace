@@ -44,13 +44,13 @@ function RootsScript:get_closeby_targets(entity, location, info)
 	for _, target in pairs(all_entities) do
 		local is_hostile = stonehearth.player:are_entities_hostile(target, entity)
 		if is_hostile and radiant.entities.has_free_will(target) then
-			if radiant.entities.get_attribute(target, "menace")>1 then
+			if radiant.entities.get_attribute(target, "menace") > 1 then
 				table.insert(all_targets, target)
-				limit = limit -1
-				if limit <1 then
+				limit = limit - 1
+				if limit < 1 then
 					break
 				end
-			else
+			elseif #not_menacing < limit then
 				table.insert(not_menacing, target)
 			end
 		end

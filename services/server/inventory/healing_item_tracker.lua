@@ -20,7 +20,7 @@ function HealingItemTracker:create_key_for_entity(entity, storage)
       if in_public_storage or on_ground then
          local uri = entity:get_uri()
          healing_lib.cache_healing_item(uri, entity)
-         return uri
+         return tostring(entity:get_id())
       end
    end
    

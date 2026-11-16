@@ -212,7 +212,7 @@ end
 -- Drinking related functions are below
 function AceConsumptionComponent:get_drink_satiety_state()
    local drink_satiety = self._expendable_resources_component:get_value('drink_satiety')
-   if drink_satiety > self._thirst_sated_threshold then
+   if drink_satiety >= self._thirst_sated_threshold then
       return AceConsumptionComponent.THIRST_SATED
    elseif drink_satiety <= self._very_thirsty_threshold then
       return AceConsumptionComponent.VERY_THIRSTY
