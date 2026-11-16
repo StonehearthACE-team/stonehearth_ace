@@ -331,6 +331,17 @@ function TransformComponent:transform(transformer, ingredient, result_event)
    local transformed = transform_lib.transform(self._entity, 'stonehearth_ace:transform', transform_data.transform_uri, options)
    self._transforming = false
 
+   if ingredient and ingredient:is_valid() and self._entity:is_valid() then
+      local iconic_form = ingredient:get_component('stonehearth:iconic_form')
+      local root = iconic_form and iconic_form:get_root_entity() or ingredient
+      local entity_forms = root:get_component('stonehearth:entity_forms')
+      local iconic = entity_forms and entity_forms:get_iconic_entity()
+      local parent = iconic and iconic:is_valid() and radiant.entities.get_parent(iconic)
+      if parent and parent:get_id() == self._entity:get_id() and radiant.entities.exists_in_world(root) then
+         radiant.entities.remove_child(self._entity, iconic)
+      end
+   end
+
    -- specifically check for false; nil means it happened but no new entity was created to replace this one
    -- actually, all the more reason to cancel; otherwise it'll just keep going!
    -- if the entity is destroyed but no transformed entity is created (e.g., killed for loot bag), we don't need to cancel things

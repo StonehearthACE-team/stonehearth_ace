@@ -30,7 +30,9 @@ end
 
 AceDispatchQuest._ace_old__check_requirements = DispatchQuest._check_requirements
 function AceDispatchQuest:_check_requirements(citizen, requirements)
-   self:_ace_old__check_requirements(citizen, requirements)
+   if not self:_ace_old__check_requirements(citizen, requirements) then
+      return false
+   end
 
    if requirements.role then
       local job = citizen:get_component('stonehearth:job')

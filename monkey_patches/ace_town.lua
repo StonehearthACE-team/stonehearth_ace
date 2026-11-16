@@ -224,7 +224,7 @@ function AceTown:_requirements_met(person, job_uri)
       -- copy the table so we aren't overriding a cached resource
       parent_jobs = radiant.shallow_copy(parent_jobs)
    else
-      parent_jobs = {{job = job_data.parent_job, level_requirement = job_data.parent_level_requirement}}
+      parent_jobs = {{job = job_data.parent_job, level_requirement = job_data.parent_level_requirement, enabled = job_data.parent_job ~= nil}}
    end
 
    -- If we can't have the parent job, ignore that requirement.
