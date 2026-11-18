@@ -330,7 +330,7 @@ function AceWaterComponent:evaporate(amount)
    self._sv._last_evaporation_time = stonehearth.calendar:get_elapsed_time()
 
    if stonehearth.weather:get_current_weather():is_rain() then
-      return
+      return 0
    end
 
    if not self:top_layer_in_wetting_mode() then
