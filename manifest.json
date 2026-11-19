@@ -7605,6 +7605,7 @@
    },
    "overrides": {
       "radiant/js/radiant/trace.js": "file(radiant/js/radiant/trace.js)",
+      "debugtools/ui/campaign_browser/campaign_browser.js": "file(debugtools/ui/campaign_browser/campaign_browser.js)",
       "debugtools/ui/console/debug_console_commands.js": "file(debugtools/ui/console/debug_console_commands.js)",
       "debugtools/ui/debug_dock/debug_dock.js": "file(debugtools/ui/debug_dock/debug_dock.js)",
       "debugtools/ui/item_dropper/item_dropper.html": "file(debugtools/ui/item_dropper/item_dropper.html)",
@@ -9017,6 +9018,7 @@
          "file(ui/shell/select_settlement/select_settlement.js)"
       ],
       "less": [
+         "file(debugtools/ui/campaign_browser/campaign_browser.less)",
          "file(debugtools/ui/item_dropper/item_dropper.less)",
          "file(jobs/blacksmith/skin/workshop.less)",
          "file(jobs/brewer/skin/workshop.less)",
