@@ -790,6 +790,7 @@ function AceShepherdPastureComponent:_release_existing_animals()
          if pasture_comp and pasture_comp:get_pasture_type() == self:get_pasture_type() and pasture_comp:get_num_animals() < pasture_comp:get_max_animals() then
             pasture_comp:add_animal(animal)
             transferred = true
+            break
          end
       end
 
