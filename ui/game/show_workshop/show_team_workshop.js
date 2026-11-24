@@ -1597,24 +1597,28 @@ App.StonehearthTeamCrafterView = App.View.extend({
             var maxMaintainAmount = 0;
             for (var i = 0; i < totalOrders; i++) {
                var order = queuedOrders[i];
-               if (order.condition.type == 'maintain') {
-                  maxMaintainAmount = Math.max(maxMaintainAmount, order.condition.at_least);
-               }
-               else {
-                  totalMakeAmount += order.condition.remaining;
+               if (order.condition && order.condition.type) {
+                  if (order.condition.type == 'maintain') {
+                     maxMaintainAmount = Math.max(maxMaintainAmount, order.condition.at_least);
+                  }
+                  else {
+                     totalMakeAmount += order.condition.remaining;
+                  }
                }
             }
 
-            var queuedOrdersString = i18n.t('stonehearth_ace:ui.game.show_workshop.tooltip_queued_orders', { count: totalOrders });
-            var div = `<div class='stat verticalSpacer'>${queuedOrdersString}`;
-            if (totalMakeAmount > 0) {
-               div += `<div class='indented'>${i18n.t('stonehearth_ace:ui.game.show_workshop.tooltip_total_make_amount', { amount: totalMakeAmount })}</div>`;
-            }
-            if (maxMaintainAmount > 0) {
-               div += `<div class='indented'>${i18n.t('stonehearth_ace:ui.game.show_workshop.tooltip_max_maintain_amount', { amount: maxMaintainAmount })}</div>`;
-            }
+            if (totalMakeAmount > 0 || maxMaintainAmount > 0) {
+               var queuedOrdersString = i18n.t('stonehearth_ace:ui.game.show_workshop.tooltip_queued_orders', { count: totalOrders });
+               var div = `<div class='stat verticalSpacer'>${queuedOrdersString}`;
+               if (totalMakeAmount > 0) {
+                  div += `<div class='indented'>${i18n.t('stonehearth_ace:ui.game.show_workshop.tooltip_total_make_amount', { amount: totalMakeAmount })}</div>`;
+               }
+               if (maxMaintainAmount > 0) {
+                  div += `<div class='indented'>${i18n.t('stonehearth_ace:ui.game.show_workshop.tooltip_max_maintain_amount', { amount: maxMaintainAmount })}</div>`;
+               }
 
-            tooltip.append($(div + '</div>'));
+               tooltip.append($(div + '</div>'));
+            }
          }
 
          return tooltip;
