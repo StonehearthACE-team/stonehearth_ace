@@ -15,7 +15,7 @@ function AceShepherdPastureComponent:create()
    self:_ace_old_create()
    local player_id = self._entity:get_player_id()
    local collect_strays = stonehearth.client_state:get_client_gameplay_setting(player_id, 'stonehearth_ace', 'default_pasture_collect_strays')
-   --log:debug('creating pasture for %s and setting collect_strays to %s', player_id, collect_strays)
+   -- log:debug('creating pasture for %s and setting collect_strays to %s', player_id, collect_strays)
    self._sv.collect_strays = collect_strays
 end
 
@@ -103,26 +103,26 @@ function AceShepherdPastureComponent:post_activate()
       --    local animal = animal_data.entity
       --    self:_create_harvest_task(animal)
       -- end
-      --self:_register_with_town()
+      -- self:_register_with_town()
    end
 end
 
 -- for some reason, overriding the destroy function doesn't work, so we have to override this one that only gets called during destroy
 AceShepherdPastureComponent._ace_old__unregister_with_town = ShepherdPastureComponent._unregister_with_town
 function AceShepherdPastureComponent:_unregister_with_town()
-	self:_ace_old__unregister_with_town()
+   self:_ace_old__unregister_with_town()
 
-	-- destroy the add_grass timer
-	self:_destroy_grass_spawn_timer()
+   -- destroy the add_grass timer
+   self:_destroy_grass_spawn_timer()
 
-	if self._weather_check_alarm then
-		self._weather_check_alarm:destroy()
-		self._weather_check_alarm = nil
+   if self._weather_check_alarm then
+      self._weather_check_alarm:destroy()
+      self._weather_check_alarm = nil
    end
 
    if self._animal_sleep_alarm then
-		self._animal_sleep_alarm:destroy()
-		self._animal_sleep_alarm = nil
+      self._animal_sleep_alarm:destroy()
+      self._animal_sleep_alarm = nil
    end
 
    if self._grass_harvest_timer then
@@ -134,25 +134,25 @@ end
 function AceShepherdPastureComponent:_find_all_grass()
    -- this is a pretty hacky way of doing this, but I don't want to track all the different stages
    local grass_uri = self:_get_grass_uri()
-	local filter_fn = function(entity)
-		return string.sub(entity:get_uri(), 1, string.len(grass_uri)) == grass_uri
-	end
+   local filter_fn = function(entity)
+      return string.sub(entity:get_uri(), 1, string.len(grass_uri)) == grass_uri
+   end
 
-	local size = self:get_size()
-	local world_loc = radiant.entities.get_world_grid_location(self._entity)
-	local cube = Cube3(world_loc, world_loc + Point3(size.x, 1, size.z))
-	local region = Region3(cube)
-	return radiant.terrain.get_entities_in_region(region, filter_fn)
+   local size = self:get_size()
+   local world_loc = radiant.entities.get_world_grid_location(self._entity)
+   local cube = Cube3(world_loc, world_loc + Point3(size.x, 1, size.z))
+   local region = Region3(cube)
+   return radiant.terrain.get_entities_in_region(region, filter_fn)
 end
 
 -- called by the shepherd service once the field is created
 function AceShepherdPastureComponent:post_creation_setup()
    -- NO, DON'T spawn grass when it's created
    -- spawn a few grass if possible
-	-- determine the amount of grass in the pasture and use that instead of the total area
-	--local grass = self:_find_grass_spawn_points()
-	--local num_to_spawn = #grass / 200
-   --self:_spawn_grass(num_to_spawn, grass)
+   -- determine the amount of grass in the pasture and use that instead of the total area
+   -- local grass = self:_find_grass_spawn_points()
+   -- local num_to_spawn = #grass / 200
+   -- self:_spawn_grass(num_to_spawn, grass)
 
    self._sv.harvest_animals_renewable = true
    self._sv.harvest_grass = false
@@ -178,7 +178,10 @@ function AceShepherdPastureComponent:set_pasture_type_command(session, response,
 end
 
 function AceShepherdPastureComponent:set_size(x, z)
-   self._sv.size = { x = x, z = z}
+   self._sv.size = {
+      x = x,
+      z = z
+   }
    local ten_square_units = x * z / 100
    self._sv.max_population_data = {}
    for animal, data in pairs(self._pasture_data) do
@@ -206,13 +209,13 @@ function AceShepherdPastureComponent:_claim_animals_in_pasture()
    end
 
    local filter_fn = function(entity)
-		return uris[entity:get_uri()]
-	end
+      return uris[entity:get_uri()]
+   end
 
-	local size = self:get_size()
-	local world_loc = radiant.entities.get_world_grid_location(self._entity)
-	local cube = Cube3(world_loc, world_loc + Point3(size.x, 1, size.z))
-	local region = Region3(cube)
+   local size = self:get_size()
+   local world_loc = radiant.entities.get_world_grid_location(self._entity)
+   local cube = Cube3(world_loc, world_loc + Point3(size.x, 1, size.z))
+   local region = Region3(cube)
    local animals = radiant.terrain.get_entities_in_region(region, filter_fn)
 
    self:convert_and_add_animals(animals)
@@ -221,9 +224,9 @@ end
 function AceShepherdPastureComponent:_claim_pasture_items_in_pasture()
    -- reclaim any pasture items within the pasture grounds
    local size = self:get_size()
-	local world_loc = radiant.entities.get_world_grid_location(self._entity)
-	local cube = Cube3(world_loc, world_loc + Point3(size.x, 1, size.z))
-	local region = Region3(cube)
+   local world_loc = radiant.entities.get_world_grid_location(self._entity)
+   local cube = Cube3(world_loc, world_loc + Point3(size.x, 1, size.z))
+   local region = Region3(cube)
    local entities = radiant.terrain.get_entities_in_region(region)
 
    for _, entity in pairs(entities) do
@@ -258,13 +261,15 @@ function AceShepherdPastureComponent:convert_and_add_animals(animals)
       animal:add_component('stonehearth_ace:output'):set_parent_output(self._entity)
       animal:add_component('stonehearth:unit_info'):set_allow_customization(true)
 
-      self._sv.tracked_critters[animal:get_id()] = {entity = animal}
+      self._sv.tracked_critters[animal:get_id()] = {
+         entity = animal
+      }
       radiant.entities.set_player_id(animal, self._entity)
       self._sv.num_critters = self._sv.num_critters + 1
       self:_listen_for_renewables(animal)
       self:_listen_for_hungry_critter(animal)
 
-      --self:_create_harvest_task(animal)
+      -- self:_create_harvest_task(animal)
    end
 
    self:_calculate_reproduction_timer()
@@ -293,7 +298,7 @@ function AceShepherdPastureComponent:remove_animal(animal_id)
    self:_ace_old_remove_animal(animal_id)
 
    self._sv._queued_slaughters[animal_id] = nil
-   --self.__saved_variables:mark_changed()
+   -- self.__saved_variables:mark_changed()
 end
 
 AceShepherdPastureComponent._ace_old__create_animal_listeners = ShepherdPastureComponent._create_animal_listeners
@@ -367,7 +372,7 @@ function AceShepherdPastureComponent:_consider_maintain_animals()
       return
    end
 
-   --self.__saved_variables:mark_changed()
+   -- self.__saved_variables:mark_changed()
 end
 
 function AceShepherdPastureComponent:_try_slaughter(num_to_slaughter, not_if_named, not_if_renewably_harvestable)
@@ -516,20 +521,20 @@ function AceShepherdPastureComponent:_try_harvesting_grass()
 end
 
 function AceShepherdPastureComponent:_find_grass_spawn_points()
-	local grass = {}
-	local size = self:get_size()
-	local world_loc = radiant.entities.get_world_grid_location(self._entity)
-	for x = 1, size.x do
-		for z = 1, size.z do
-			local location = world_loc + Point3(x - 1, -1, z - 1)
-			local kind = radiant.terrain.get_block_kind_at(location)
-			if kind == 'grass' then
-				table.insert(grass, location)
-			end
-		end
-	end
+   local grass = {}
+   local size = self:get_size()
+   local world_loc = radiant.entities.get_world_grid_location(self._entity)
+   for x = 1, size.x do
+      for z = 1, size.z do
+         local location = world_loc + Point3(x - 1, -1, z - 1)
+         local kind = radiant.terrain.get_block_kind_at(location)
+         if kind == 'grass' then
+            table.insert(grass, location)
+         end
+      end
+   end
 
-	return grass
+   return grass
 end
 
 -- stonehearth_ace:feed_pasture_trough ai is done differently now
@@ -552,81 +557,81 @@ function AceShepherdPastureComponent:_start_grass_spawn()
    -- if the timer already existed, rebind it
    if self._sv._grass_spawn_timer and self._sv._grass_spawn_timer.bind then
       self._sv._grass_spawn_timer:bind(function()
-            self:_spawn_grass()
-         end)
+         self:_spawn_grass()
+      end)
    else
       self:_destroy_grass_spawn_timer()
-		self:_setup_grass_spawn_timer()
-	end
+      self:_setup_grass_spawn_timer()
+   end
 end
 
 function AceShepherdPastureComponent:_setup_grass_spawn_timer()
-	local spawn_period = self:_calculate_grass_spawn_period()
+   local spawn_period = self:_calculate_grass_spawn_period()
    self._sv._grass_spawn_timer = stonehearth.calendar:set_persistent_timer("pasture spawn grass", spawn_period, radiant.bind(self, '_spawn_grass'))
-   --self.__saved_variables:mark_changed()
+   -- self.__saved_variables:mark_changed()
 end
 
 function AceShepherdPastureComponent:_destroy_grass_spawn_timer()
-	if self._sv._grass_spawn_timer then
-		self._sv._grass_spawn_timer:destroy()
+   if self._sv._grass_spawn_timer then
+      self._sv._grass_spawn_timer:destroy()
       self._sv._grass_spawn_timer = nil
-      --self.__saved_variables:mark_changed()
-	end
+      -- self.__saved_variables:mark_changed()
+   end
 end
 
 function AceShepherdPastureComponent:_recalculate_duration()
-	if self._sv._grass_spawn_timer then
-		local old_duration = self._sv._grass_spawn_timer:get_duration()
-		local old_expire_time = self._sv._grass_spawn_timer:get_expire_time()
-		local old_start_time = old_expire_time - old_duration
+   if self._sv._grass_spawn_timer then
+      local old_duration = self._sv._grass_spawn_timer:get_duration()
+      local old_expire_time = self._sv._grass_spawn_timer:get_expire_time()
+      local old_start_time = old_expire_time - old_duration
 
-		local spawn_period = self:_get_base_grass_spawn_period()
-		local old_progress = self:_get_current_spawn_recalculate_progress()
-		local new_progress = (1 - old_progress) * (stonehearth.calendar:get_elapsed_time() - old_start_time) / old_duration
-		self._sv._grass_spawn_recalculate_progress = old_progress + new_progress
-		local time_remaining = math.max(0, spawn_period * (1 - self._sv._grass_spawn_recalculate_progress))
-		local scaled_time_remaining = self:_calculate_grass_spawn_period(time_remaining)
-		self:_destroy_grass_spawn_timer()
+      local spawn_period = self:_get_base_grass_spawn_period()
+      local old_progress = self:_get_current_spawn_recalculate_progress()
+      local new_progress = (1 - old_progress) * (stonehearth.calendar:get_elapsed_time() - old_start_time) / old_duration
+      self._sv._grass_spawn_recalculate_progress = old_progress + new_progress
+      local time_remaining = math.max(0, spawn_period * (1 - self._sv._grass_spawn_recalculate_progress))
+      local scaled_time_remaining = self:_calculate_grass_spawn_period(time_remaining)
+      self:_destroy_grass_spawn_timer()
       self._sv._grass_spawn_timer = stonehearth.calendar:set_persistent_timer("pasture spawn grass", scaled_time_remaining, radiant.bind(self, '_spawn_grass'))
-      --self.__saved_variables:mark_changed()
-	end
+      -- self.__saved_variables:mark_changed()
+   end
 end
 
 function AceShepherdPastureComponent:_get_current_spawn_recalculate_progress()
-	return self._sv._grass_spawn_recalculate_progress or 0
+   return self._sv._grass_spawn_recalculate_progress or 0
 end
 
 function AceShepherdPastureComponent:_calculate_grass_spawn_period(spawn_period)
-	if not spawn_period then
-		spawn_period = self:_get_base_grass_spawn_period()
-	end
-	-- This applies weather, biome, and town vitality multipliers
-	spawn_period = stonehearth.town:calculate_growth_period(self._entity:get_player_id(), spawn_period)
-	return spawn_period
+   if not spawn_period then
+      spawn_period = self:_get_base_grass_spawn_period()
+   end
+   -- This applies weather, biome, and town vitality multipliers
+   spawn_period = stonehearth.town:calculate_growth_period(self._entity:get_player_id(), spawn_period)
+   return spawn_period
 end
 
 function AceShepherdPastureComponent:_apply_season_multiplier(spawn_period)
-	return spawn_period
+   return spawn_period
 end
 
 function AceShepherdPastureComponent:_get_base_grass_spawn_period()
-	local spawn_period = radiant.entities.get_json(self).grass_spawn_period or DEFAULT_GRASS_SPAWN_RATE
-	return stonehearth.calendar:parse_duration(spawn_period)
+   local spawn_period = radiant.entities.get_json(self).grass_spawn_period or DEFAULT_GRASS_SPAWN_RATE
+   return stonehearth.calendar:parse_duration(spawn_period)
 end
 
 function AceShepherdPastureComponent:_spawn_grass(count, spawn_locations)
-	if not count then
-		count = math.ceil(math.sqrt(self:get_num_animals()))
-	end
-	if count < 1 then
-		return
+   if not count then
+      count = math.ceil(math.sqrt(self:get_num_animals()))
+   end
+   if count < 1 then
+      return
    end
 
-	if not spawn_locations then
-		spawn_locations = self:_find_grass_spawn_points()
-	end
-	if #spawn_locations < 1 then
-		return
+   if not spawn_locations then
+      spawn_locations = self:_find_grass_spawn_points()
+   end
+   if #spawn_locations < 1 then
+      return
    end
 
    local existing_grass = self:_find_all_grass()
@@ -637,20 +642,25 @@ function AceShepherdPastureComponent:_spawn_grass(count, spawn_locations)
       return
    end
 
-	local grass_uri = self:_get_spawn_grass_uri()
+   local grass_uri = self:_get_spawn_grass_uri()
 
-	local rng = _radiant.math.get_default_rng()
-	for i = 1, math.min(#spawn_locations, count) do
-		-- try to find an unoccupied space in the bounds; if 5 attempts fail, oh well, don't spawn it
+   local rng = _radiant.math.get_default_rng()
+   for i = 1, math.min(#spawn_locations, count) do
+      -- try to find an unoccupied space in the bounds; if 5 attempts fail, oh well, don't spawn it
       for attempt = 1, math.min(count, 5) do
          -- remove the location from our list of possibles as we try it, so we don't keep retrying invalid spaces
          -- because it's either already invalid or will become invalid once we spawn grass there
-			local location = table.remove(spawn_locations, rng:get_int(1, #spawn_locations)) + Point3(0, 1, 0)
-			if self:_is_valid_grass_spawn_location(location) then
-				-- we found a spot, spawn some grass
-				local grass_entity = radiant.entities.create_entity(grass_uri, {owner = self._entity})
-				local random_facing = rng:get_int(0, 3) * 90
-				radiant.terrain.place_entity(grass_entity, location, { force_iconic = false, facing = random_facing })
+         local location = table.remove(spawn_locations, rng:get_int(1, #spawn_locations)) + Point3(0, 1, 0)
+         if self:_is_valid_grass_spawn_location(location) then
+            -- we found a spot, spawn some grass
+            local grass_entity = radiant.entities.create_entity(grass_uri, {
+               owner = self._entity
+            })
+            local random_facing = rng:get_int(0, 3) * 90
+            radiant.terrain.place_entity(grass_entity, location, {
+               force_iconic = false,
+               facing = random_facing
+            })
             break
          end
 
@@ -662,24 +672,24 @@ function AceShepherdPastureComponent:_spawn_grass(count, spawn_locations)
       if #spawn_locations < 1 then
          break
       end
-	end
+   end
 
-	self:_setup_grass_spawn_timer()
+   self:_setup_grass_spawn_timer()
 end
 
 function AceShepherdPastureComponent:_get_grass_uri()
-	return radiant.entities.get_json(self).grass_uri or 'stonehearth_ace:terrain:pasture_grass'
+   return radiant.entities.get_json(self).grass_uri or 'stonehearth_ace:terrain:pasture_grass'
 end
 
 function AceShepherdPastureComponent:_get_spawn_grass_uri()
-	return radiant.entities.get_json(self).spawn_grass_uri or 'stonehearth_ace:terrain:pasture_grass:sprouting'
+   return radiant.entities.get_json(self).spawn_grass_uri or 'stonehearth_ace:terrain:pasture_grass:sprouting'
 end
 
 function AceShepherdPastureComponent:_is_valid_grass_spawn_location(location)
-	local filter_fn = function(entity)
-		return entity ~= self._entity
-	end
-	return not next(radiant.terrain.get_entities_at_point(location, filter_fn))
+   local filter_fn = function(entity)
+      return entity ~= self._entity
+   end
+   return not next(radiant.terrain.get_entities_at_point(location, filter_fn))
 end
 
 -- override this base function so it doesn't force animals to be hungry
@@ -766,6 +776,41 @@ function AceShepherdPastureComponent:unregister_item(id)
    end
 end
 
+function AceShepherdPastureComponent:_release_existing_animals()
+   local town = stonehearth.town:get_town(self._entity:get_player_id())
+   local town_pastures = town:get_animal_pastures()
+
+   for id, animal_data in pairs(self._sv.tracked_critters) do
+      local animal = animal_data.entity
+
+      -- ACE changes to allow animals being transferred to a new pasture:
+      local transferred = false
+      for _, pasture in pairs(town_pastures) do
+         local pasture_comp = pasture:get_component('stonehearth:shepherd_pasture')
+         if pasture_comp and pasture_comp:get_pasture_type() == self:get_pasture_type() and pasture_comp:get_num_animals() < pasture_comp:get_max_animals() then
+            pasture_comp:add_animal(animal)
+            transferred = true
+         end
+      end
+
+      -- Base game procedure:
+      -- If the animal is following a shepherd, remove it from the shepherd's follow queue
+      if not transferred then
+         local equipment_component = animal:add_component('stonehearth:equipment')
+         if equipment_component then
+            local pasture_tag = equipment_component:has_item_type('stonehearth:pasture_equipment:tag')
+            if pasture_tag then
+               local shepherded_animal_component = pasture_tag:get_component('stonehearth:shepherded_animal')
+               shepherded_animal_component:free_animal()
+            end
+         end
+      end
+   end
+   self._sv.tracked_critters = {}
+
+   self.__saved_variables:mark_changed()
+end
+
 function AceShepherdPastureComponent:set_collect_strays_enabled(enabled)
    if self._sv.collect_strays ~= enabled then
       self._sv.collect_strays = enabled
@@ -821,13 +866,10 @@ function AceShepherdPastureComponent:_collect_strays()
 
             if not world_region_shape:contains(critter_location) and shepherded_animal_component:can_follow() then
                local town = stonehearth.town:get_town(self._entity)
-               local find_stray_task = town:create_task_for_group(
-                  'stonehearth:task_groups:herding',
-                  'stonehearth:find_stray_animal',
-                  {animal = critter, pasture = self._entity})
-                     :set_source(critter)
-                     :once()
-                     :start()
+               local find_stray_task = town:create_task_for_group('stonehearth:task_groups:herding', 'stonehearth:find_stray_animal', {
+                  animal = critter,
+                  pasture = self._entity
+               }):set_source(critter):once():start()
 
                table.insert(self._added_pasture_tasks, find_stray_task)
             end
