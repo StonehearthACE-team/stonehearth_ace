@@ -407,6 +407,10 @@ function AceTown:is_entity_type_registered(type_name)
    return registered and next(registered) ~= nil
 end
 
+function AceTown:get_animal_pastures()
+   return self._animal_pastures
+end
+
 function AceTown:register_pasture_item(item, type)
    -- check this item's bounds to see if they fall within the bounds of any pastures
    -- ignore items that don't fully fit within a pasture, in order to prevent issues with items overlapping multiple pastures
