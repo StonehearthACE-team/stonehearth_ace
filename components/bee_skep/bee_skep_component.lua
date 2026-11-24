@@ -116,7 +116,7 @@ function BeeSkepComponent:_update()
    end)
    
    local amount = 0
-   for _ in pairs(potential_targets) do
+   for _, target in ipairs(potential_targets) do
       amount = amount + 1
    end
    log:debug('bee skep %s updating status buff, %s potential targets detected', self._entity, amount)
@@ -255,18 +255,18 @@ end
 function BeeSkepComponent:_update_status_buff(amount)
     local active_buff
 
-    if not self._sv._paused and amount then
-        if amount > 4 * self._max_pollinations then
+    if not self._sv._paused then
+        if amound and amount > 4 * self._max_pollinations then
             active_buff = POLLINATION_BUFFS[1]
-        elseif amount > 0 then
+        elseif amount and amount > 0 then
             active_buff = POLLINATION_BUFFS[2]
-        elseif amount == 0 then
+        else
             active_buff = POLLINATION_BUFFS[3]
         end
     end
 
     for _, buff in ipairs(POLLINATION_BUFFS) do
-        if buff == active_buff then
+        if buff == active_buff and not radiant.entities.has_buff(self._entity, buff) then
             radiant.entities.add_buff(self._entity, buff)
         else
             radiant.entities.remove_buff(self._entity, buff)
