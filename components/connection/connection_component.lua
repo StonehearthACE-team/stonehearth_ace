@@ -391,8 +391,8 @@ function ConnectionComponent:set_connected_stats(conn_type, conn_name, connected
       end
 
       if connected_to_id then
-         local new_status = (graph_id or threshold) and {graph_id = graph_id, threshold = threshold or prev_status.threshold}
          local prev_status = conn_data.connected_to[connected_to_id]
+         local new_status = (graph_id or threshold) and {graph_id = graph_id, threshold = threshold or prev_status.threshold}
          conn_data.connected_to[connected_to_id] = new_status
          if (prev_status ~= nil) ~= (new_status ~= nil) then
             local conn_modifier = (new_status and 1) or -1

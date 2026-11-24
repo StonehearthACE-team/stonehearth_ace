@@ -26,22 +26,6 @@ function AceBuff:destroy()
       self._timer:destroy()
       self._timer = nil
    end
-   if self._json and self._json.duration_statistics_key then
-      self:_update_duration_stat()
-   end
-
-   if self._json.thought and self._json.thought_remove_on_destroy and radiant.entities.has_thought(self._sv._entity, self._json.thought) then
-      radiant.entities.remove_thought(self._sv._entity, self._json.thought)
-   end
-
-   if self._json.added_commands then
-      self:_remove_commands()
-   end
-
-   if self._json.thought_added_on_destroy then
-      radiant.entities.add_thought(self._sv._entity, self._json.thought_added_on_destroy)
-   end
-
    if self._sv.added_bulletin then
       self._sv.added_bulletin:destroy()
       self._sv.added_bulletin = nil
@@ -53,8 +37,26 @@ function AceBuff:destroy()
 
    self:_cancel_craft_order()
 
-   if self._json.destroy_entity_on_expiration and self._removed_due_to_expiration then
-      radiant.entities.kill_entity(self._sv._entity)
+   if self._json then
+      if self._json.duration_statistics_key then
+         self:_update_duration_stat()
+      end
+
+      if self._json.thought and self._json.thought_remove_on_destroy and radiant.entities.has_thought(self._sv._entity, self._json.thought) then
+         radiant.entities.remove_thought(self._sv._entity, self._json.thought)
+      end
+
+      if self._json.added_commands then
+         self:_remove_commands()
+      end
+
+      if self._json.thought_added_on_destroy then
+         radiant.entities.add_thought(self._sv._entity, self._json.thought_added_on_destroy)
+      end
+
+      if self._json.destroy_entity_on_expiration and self._removed_due_to_expiration then
+         radiant.entities.kill_entity(self._sv._entity)
+      end
    end
 
    self:_ace_old_destroy()

@@ -312,7 +312,7 @@ end
 function QuestStorageComponent:_evaluate_requirements_satisfied(changed)
    changed.quantity = changed.entity:add_component('stonehearth:storage'):get_num_items()
    changed.satisfied = changed.quantity >= changed.requirement.quantity
-   if self._sv.bulletin then
+   if self._sv.bulletin and self._sv.bulletin.add_i18n_data then
       local copied = radiant.shallow_copy(changed)
       copied.entity = nil
       copied.items_cached_class = copied.satisfied and 'fullyCached' or 'notFullyCached'

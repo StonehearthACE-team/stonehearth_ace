@@ -412,7 +412,7 @@ App.StonehearthShopBulletinDialog = App.StonehearthBaseBulletinDialog.extend({
          }
          else if (item.material != null) {
             var catalogData = App.catalog.getCatalogData(uri);
-            if (radiant.isMaterial(catalogData.materials, item.material)) {
+            if (catalogData && catalogData.materials && radiant.isMaterial(catalogData.materials, item.material)) {
                foundItem = shopItem;
                break;
             }

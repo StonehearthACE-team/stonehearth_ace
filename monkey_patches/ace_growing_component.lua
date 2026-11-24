@@ -56,6 +56,14 @@ function AceGrowingComponent:post_activate()
 end
 
 function AceGrowingComponent:set_growth_stage(stage)
+   if type(stage) == 'string' and not tonumber(stage) then
+      for i, data in ipairs(self._growth_stages) do
+         if type(data) == 'table' and data.model_name == stage then
+            stage = i
+            break
+         end
+      end
+   end
    stage = math.max(1, math.min(stage, #self._growth_stages))
    self._sv.current_growth_stage = stage
    self._sv._current_growth_recalculate_progress = 0

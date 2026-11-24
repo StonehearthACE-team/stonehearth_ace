@@ -1,4 +1,4 @@
-local WeightedSet = require 'lib.algorithms.weighted_set'
+local WeightedSet = require 'stonehearth.lib.algorithms.weighted_set'
 local rng = _radiant.math.get_default_rng()
 local MAX_TRIES_TO_SPAWN = 10
 local SNARED_BUFF = 'stonehearth:buffs:tentacle_snared'
