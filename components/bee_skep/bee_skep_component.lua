@@ -7,11 +7,7 @@ local constants = require 'stonehearth.constants'
 local bee_skep_constants = constants.bee_skeps
 
 local SKEP_BUFF = 'stonehearth_ace:buffs:bee_skep'
-local POLLINATION_BUFFS = {
-         'stonehearth_ace:buffs:pollinated:pollination:up',
-         'stonehearth_ace:buffs:pollinated:pollination:neutral',
-         'stonehearth_ace:buffs:pollinated:pollination:down'
-      }
+local POLLINATION_BUFFS = {'stonehearth_ace:buffs:pollinated:pollination:up', 'stonehearth_ace:buffs:pollinated:pollination:neutral', 'stonehearth_ace:buffs:pollinated:pollination:down'}
 local POLLINATED_BUFF = 'stonehearth_ace:buffs:pollinated'
 local POLLINATED_CROP_BUFF = 'stonehearth_ace:buffs:pollinated:crop'
 local POLLINATED_PLANTER_BUFF = 'stonehearth_ace:buffs:tended_planter:pollinated'
@@ -47,17 +43,14 @@ function BeeSkepComponent:post_activate()
          self._sv._score = self._score_for_quality_upgrade[math.max(1, math.floor(current_quality - 1))]
          self._sv._initialized = true
       else
-         self._item_quality_listener = radiant.events.listen(self._entity, 'stonehearth:item_quality_added', 
-            function(quality)
-               self:_destroy_quality_listener()
-               log:info('bee skep %s getting initialized with quality %s, giving it a starting score', self._entity, quality)
-               self._sv._score = self._score_for_quality_upgrade[math.max(1, math.floor(quality - 1))]
-               self._sv._initialized = true
-            end)
+         self._item_quality_listener = radiant.events.listen(self._entity, 'stonehearth:item_quality_added', function(quality)
+            self:_destroy_quality_listener()
+            log:info('bee skep %s getting initialized with quality %s, giving it a starting score', self._entity, quality)
+            self._sv._score = self._score_for_quality_upgrade[math.max(1, math.floor(quality - 1))]
+            self._sv._initialized = true
+         end)
       end
    end
-
-   self:_seasonality_check()
 
    if self._is_restore then
       self:_score_check()
@@ -66,6 +59,8 @@ function BeeSkepComponent:post_activate()
    if not self._season_change_listener then
       self:_create_seasonal_listener()
    end
+
+   self:_seasonality_check()
 end
 
 function BeeSkepComponent:restore()
@@ -114,12 +109,12 @@ function BeeSkepComponent:_update()
    potential_targets = radiant.terrain.get_entities_in_cube(self._search_cube:translated(location), function(entity)
       return self:_can_pollinate(entity)
    end)
-   
+
    local amount = 0
-   for _, target in ipairs(potential_targets) do
+   for _ in pairs(potential_targets) do
       amount = amount + 1
    end
-   log:debug('bee skep %s updating status buff, %s potential targets detected', self._entity, amount)
+   -- log:debug('bee skep %s updating status buff, %s potential targets detected', self._entity, amount)
    self:_update_status_buff(amount)
 
    while next(potential_targets) and #target_entities < pollinations do
@@ -131,7 +126,7 @@ function BeeSkepComponent:_update()
       local random_key = keys[rng:get_int(1, #keys)]
       local target = potential_targets[random_key]
 
-      log:debug('bee skep %s target %s added!', self._entity, target)
+      -- log:debug('bee skep %s target %s added!', self._entity, target)
       table.insert(target_entities, target)
 
       potential_targets[random_key] = nil
@@ -153,7 +148,7 @@ end
 function BeeSkepComponent:_can_pollinate(target)
    local herbalist_planter = target:get_component('stonehearth_ace:herbalist_planter')
    if herbalist_planter then
-      log:debug('bee skep target %s is a herbalist planter', target)
+      -- log:debug('bee skep target %s is a herbalist planter', target)
       return herbalist_planter:is_pollinatable() and herbalist_planter:is_tendable(nil, true)
    end
 
@@ -161,7 +156,7 @@ function BeeSkepComponent:_can_pollinate(target)
    local is_plant = radiant.entities.get_category(target) == 'plants'
 
    if (crop and not radiant.entities.has_buff(target, POLLINATED_CROP_BUFF)) or (is_plant and not radiant.entities.has_buff(target, POLLINATED_BUFF)) then
-      log:debug('bee skep target %s is a crop or plant', target)
+      -- log:debug('bee skep target %s is a crop or plant', target)
       return not radiant.entities.is_material(target, 'no_pollination')
    end
 
@@ -253,25 +248,25 @@ function BeeSkepComponent:_seasonality_check()
 end
 
 function BeeSkepComponent:_update_status_buff(amount)
-    local active_buff
+   local active_buff
 
-    if not self._sv._paused then
-        if amound and amount > 4 * self._max_pollinations then
-            active_buff = POLLINATION_BUFFS[1]
-        elseif amount and amount > 0 then
-            active_buff = POLLINATION_BUFFS[2]
-        else
-            active_buff = POLLINATION_BUFFS[3]
-        end
-    end
+   if not self._sv._paused then
+      if amount and amount > 4 * self._max_pollinations then
+         active_buff = POLLINATION_BUFFS[1]
+      elseif amount and amount > 0 then
+         active_buff = POLLINATION_BUFFS[2]
+      else
+         active_buff = POLLINATION_BUFFS[3]
+      end
+   end
 
-    for _, buff in ipairs(POLLINATION_BUFFS) do
-        if buff == active_buff and not radiant.entities.has_buff(self._entity, buff) then
-            radiant.entities.add_buff(self._entity, buff)
-        else
-            radiant.entities.remove_buff(self._entity, buff)
-        end
-    end
+   for _, buff in ipairs(POLLINATION_BUFFS) do
+      if buff == active_buff and not radiant.entities.has_buff(self._entity, buff) then
+         radiant.entities.add_buff(self._entity, buff)
+      else
+         radiant.entities.remove_buff(self._entity, buff)
+      end
+   end
 end
 
 function BeeSkepComponent:destroy()
