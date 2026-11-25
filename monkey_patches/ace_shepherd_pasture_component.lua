@@ -788,9 +788,15 @@ function AceShepherdPastureComponent:_release_existing_animals()
       for _, pasture in pairs(town_pastures) do
          local pasture_comp = pasture:get_component('stonehearth:shepherd_pasture')
          if pasture_comp and pasture_comp:get_pasture_type() == self:get_pasture_type() and pasture_comp:get_num_animals() < pasture_comp:get_max_animals() then
-            pasture_comp:add_animal(animal)
-            transferred = true
-            break
+            local equipment_component = animal:get_component('stonehearth:equipment')
+            local pasture_tag = equipment_component and equipment_component:has_item_type('stonehearth:pasture_equipment:tag')
+            local shepherded_animal_component = pasture_tag and pasture_tag:get_component('stonehearth:shepherded_animal')
+            if shepherded_animal_component then
+               shepherded_animal_component:free_animal(true)
+               pasture_comp:convert_to_pasture_animal(animal)
+               transferred = true
+               break
+            end
          end
       end
 
