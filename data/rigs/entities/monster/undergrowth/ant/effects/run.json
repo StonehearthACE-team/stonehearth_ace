@@ -1,0 +1,30 @@
+{
+   "type" : "effect",
+   "tracks": {
+      "animation": {
+         "type": "animation_effect",
+         "start_time": 0,
+         "animation": "run.json",
+         "loop": true
+     },
+      "sound": {
+         "type": "sound_effect",
+         "loop" : true,
+         "start_time": 0,
+         "min_distance": 20,
+         "falloff" : 5,
+         "volume": 20,
+         "track" : {
+            "type": "one_of",
+            "items": [
+               "stonehearth:sounds:small_creature_footstep_01",
+               "stonehearth:sounds:small_creature_footstep_02",
+               "stonehearth:sounds:small_creature_footstep_03",
+               "stonehearth:sounds:small_creature_footstep_04",
+               "stonehearth:sounds:small_creature_footstep_05",
+               "stonehearth:sounds:small_creature_footstep_06"
+            ]
+         }
+      }
+   }
+}

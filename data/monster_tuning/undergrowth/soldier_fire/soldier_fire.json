@@ -1,0 +1,78 @@
+{
+   "type": "monster_tuning",
+   "equipment": {
+      "basic_siege": "stonehearth_ace:abilities:basic_door_breaker_abilities",
+      "weapon": "stonehearth_ace:weapons:undergrowth:soldier_fire_teeth",
+      "pierce": "stonehearth_ace:weapons:inflicted_wounds:pierce:medium",
+      "cut": "stonehearth_ace:weapons:inflicted_wounds:cut:medium"
+   },
+   "attributes": {
+      "max_health": 520,
+      "muscle": 18,
+      "menace": 72,
+      "courage": 700,
+      "speed": 41,
+      "additive_armor_modifier": 1
+   },
+   "loot_drops": {
+      "entries": {
+         "meat": {
+            "num_rolls": {
+               "min": 0,
+               "max": 2
+            },
+            "items": {
+               "meat": {
+                  "uri": "stonehearth:bitsy_ant_bug_meat",
+                  "weight": 1
+               }
+            }
+         },
+         "chitin": {
+            "num_rolls": {
+               "min": 1,
+               "max": 2
+            },
+            "items": {
+               "lump_of_coal": {
+                  "uri": "stonehearth:resources:coal:lump_of_coal",
+                  "weight": 1
+               },
+               "pelt": {
+                  "uri": "stonehearth:resources:bitsy_ant_chitin",
+                  "weight": 1
+               }
+            }
+         },
+         "loot_bag": {
+            "num_rolls": {
+               "min": 2,
+               "max": 3
+            },
+            "items": {
+               "loot": {
+                  "uri": "stonehearth_ace:loot_bag:undergrowth:ant",
+                  "type": "bag",
+                  "weight": 1
+               }
+            }
+         },
+         "currency": {
+            "num_rolls": {
+               "min": 0,
+               "max": 2
+            },
+            "items": {
+               "none": {
+                  "uri": "",
+                  "weight": 6
+               },
+               "undergrowth_currency": {
+                  "uri": "stonehearth_ace:loot:currency:undergrowth",
+                  "weight": 1
+               }
+            }
+         }
+      }
+   }
+}

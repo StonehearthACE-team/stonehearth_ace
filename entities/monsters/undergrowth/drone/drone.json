@@ -3,11 +3,11 @@
    "mixins": "stonehearth:mixins:monster",
    "components": {
       "render_info": {
-         "animation_table": "/stonehearth/data/rigs/entities/critters/beetle",
-         "scale": 0.12,
+         "animation_table": "/stonehearth_ace/data/rigs/entities/monster/undergrowth/ant",
+         "scale": 0.135,
          "color_map": "stonehearth_ace:color_map:ace",
          "material_maps": [
-            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+            "/stonehearth_ace/data/materials/material_maps/stonehearth_ace_material_map.json"
          ]
       },
       "model_variants": {
@@ -16,11 +16,6 @@
                "file(drone.qb)"
             ]
          }
-      },
-      "stonehearth:equipment": {
-         "items": [
-            "stonehearth:weapons:animals:weak_wolf_teeth"
-         ]
       },
       "stonehearth:attributes": {
          "max_health": {
@@ -42,47 +37,6 @@
          "speed": {
             "type": "basic",
             "value": 60
-         },
-         "exp_reward": {
-            "type": "basic",
-            "value": 8
-         }
-      },
-      "stonehearth:loot_drops": {
-         "force_auto_loot": true,
-         "entries": {
-            "meat": {
-               "num_rolls": {
-                  "min": 1,
-                  "max": 1
-               },
-               "items": {
-                  "meat": {
-                     "uri": "stonehearth:bitsy_ant_bug_meat",
-                     "weight": 1
-                  },
-                  "none": {
-                     "uri": "",
-                     "weight": 1
-                  }
-               }
-            },
-            "chitin": {
-               "num_rolls": {
-                  "min": 1,
-                  "max": 1
-               },
-               "items": {
-                  "pelt": {
-                     "uri": "stonehearth:resources:bitsy_ant_chitin",
-                     "weight": 1
-                  },
-                  "none": {
-                     "uri": "",
-                     "weight": 1
-                  }
-               }
-            }
          }
       }
    },
@@ -108,15 +62,15 @@
                "camera": {
                   "pos": [
                      17,
-                     0.8,
+                     11,
                      -27
                   ],
                   "look_at": [
-                     0,
+                     0.2,
                      0.6,
                      0
                   ],
-                  "fov": 45
+                  "fov": 42
                }
             }
          }

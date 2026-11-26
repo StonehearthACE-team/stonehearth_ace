@@ -1,0 +1,75 @@
+{
+   "type": "entity",
+   "components": {
+      "stonehearth:equipment_piece": {
+         "slot": "mainhand",
+         "render_type": "none"
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:weapon_data": {
+         "base_damage": 12,
+         "base_ranged_damage": 10,
+         "range": 18,
+         "reach": 2.5,
+         "projectile_speed": 14,
+         "projectile_uri": "stonehearth_ace:weapons:spider_web_projectile",
+         "projectile_start_offset": { "x": -0.2, "y": 0.7, "z": -1 },
+         "projectile_end_offset": { "x": 0, "y": 1.2, "z": 0 }
+      },
+      "stonehearth:combat:melee_attacks": [
+         {
+            "name": "combat_1h_backhand",
+            "effect": "combat_1h_backhand",
+            "active_frame": 17,
+            "cooldown": 0,
+            "priority": 0,
+            "aoe_effect": {
+               "aoe_target_limit": 2
+            }
+         },
+         {
+            "name": "combat_1h_forehand",
+            "effect": "combat_bite",
+            "active_frame": 16,
+            "cooldown": 0,
+            "priority": 0,
+            "aoe_effect": {
+               "aoe_target_limit": 2
+            }
+         }
+      ],
+      "stonehearth:combat:ranged_attacks": [
+         {
+            "name": "broodmother_web_attack",
+            "effect": "combat_shoot",
+            "active_frame": 7,
+            "cooldown": 18000,
+            "priority": 2,
+            "inflictable_debuffs": {
+               "infection": {
+                  "uri": "stonehearth_ace:buffs:webbed",
+                  "chance": 0.7
+               }
+            }
+         }
+      ],
+      "stonehearth_ace:combat:summon_attacks": [
+         {
+            "name": "summon_spiderlings",
+            "effect": "eat",
+            "summon_effect": "stonehearth:effects:poof_effect:small",
+            "amount": {
+               "min": 10,
+               "max": 12
+            },
+            "uris": {
+               "stonehearth_ace:monsters:undergrowth:spiderling": true
+            },
+            "active_frame": 30,
+            "cooldown": 125000,
+            "priority": 4
+         }
+      ]
+   }
+}

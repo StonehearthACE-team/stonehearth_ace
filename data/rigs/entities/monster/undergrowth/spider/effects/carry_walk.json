@@ -1,0 +1,24 @@
+{
+   "type" : "effect",
+   "tracks": {
+      "animation": {
+         "type": "animation_effect",
+         "start_time": 0,
+         "animation": "carry_walk.json",
+         "loop": true
+       },
+      "sound": {
+         "type": "sound_effect",
+         "loop" : true,
+         "start_time":  0,
+         "min_distance": 20,
+         "falloff" : 5,
+         "volume": 40,
+         "track" : "stonehearth:sounds:footsteps_walk_sound"
+      }
+   }      
+}
+
+
+   
+

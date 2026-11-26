@@ -1,0 +1,33 @@
+{
+   "type" : "effect",
+   "tracks": {
+      "animation": {
+            "type": "animation_effect",
+            "start_time": 0,
+            "speed": 1.3,
+            "animation": "carry_pickup.json",
+            "loop": false
+      },
+      "attack_trigger" : {
+            "type": "trigger_effect",
+            "start_frame": 18,
+            "end_time": 19
+      },
+      "sound": {
+         "type": "sound_effect",
+         "start_time": 80,
+         "min_distance": 27,
+         "falloff" : 5,
+         "volume": 60,
+         "track" : {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:hatchling_attack_01",
+               "stonehearth_ace:sounds:hatchling_attack_02",
+               "stonehearth_ace:sounds:hatchling_attack_03",
+               "stonehearth_ace:sounds:hatchling_attack_04"
+            ]
+         }
+      }
+   }
+}      

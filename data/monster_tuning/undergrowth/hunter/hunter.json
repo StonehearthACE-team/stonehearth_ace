@@ -1,0 +1,61 @@
+{
+   "type": "monster_tuning",
+   "equipment": {
+      "basic_siege": "stonehearth_ace:abilities:basic_door_breaker_abilities",
+      "weapon": "stonehearth_ace:weapons:undergrowth:spider_teeth",
+      "pierce": "stonehearth_ace:weapons:inflicted_wounds:pierce:medium",
+      "cut": "stonehearth_ace:weapons:inflicted_wounds:cut:medium"
+   },
+   "attributes": {
+      "max_health": 360,
+      "muscle": 22,
+      "menace": 60,
+      "courage": 500,
+      "speed": 84
+   },
+   "loot_drops": {
+      "entries": {
+         "meat": {
+            "num_rolls": {
+               "min": 0,
+               "max": 1
+            },
+            "items": {
+               "meat": {
+                  "uri": "stonehearth_ace:bitsy_spider_bug_meat",
+                  "weight": 1
+               }
+            }
+         },
+         "loot_bag": {
+            "num_rolls": {
+               "min": 1,
+               "max": 1
+            },
+            "items": {
+               "loot": {
+                  "uri": "stonehearth_ace:loot_bag:undergrowth:spider",
+                  "type": "bag",
+                  "weight": 1
+               }
+            }
+         },
+         "currency": {
+            "num_rolls": {
+               "min": 0,
+               "max": 1
+            },
+            "items": {
+               "none": {
+                  "uri": "",
+                  "weight": 8
+               },
+               "undergrowth_currency": {
+                  "uri": "stonehearth_ace:loot:currency:undergrowth",
+                  "weight": 1
+               }
+            }
+         }
+      }
+   }
+}

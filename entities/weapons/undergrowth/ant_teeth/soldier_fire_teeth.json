@@ -1,0 +1,77 @@
+{
+   "type": "entity",
+   "components": {
+      "stonehearth:equipment_piece": {
+         "slot": "mainhand",
+         "render_type": "none"
+      }
+   },
+   "entity_data": {
+      "stonehearth:buffs": {
+         "inflictable_debuffs": {
+            "weak_fire": {
+               "uri": "stonehearth_ace:buffs:fire:on_fire:minor",
+               "chance": 0.2
+            },
+            "fire": {
+               "uri": "stonehearth_ace:buffs:fire:on_fire",
+               "chance": 0.05
+            }
+         }
+      },
+      "stonehearth:combat:weapon_data": {
+         "base_damage": 15,
+         "reach": 1.4,
+         "base_ranged_damage": 11,
+         "range": 12,
+         "projectile_speed": 25,
+         "projectile_uri": "stonehearth_ace:weapons:small_fire_burst",
+         "projectile_start_offset": { "x": 0, "y": 0.8, "z": 0 },
+         "hit_effect": "stonehearth_ace:effects:hit_sparks:hit_effect:fire"
+      },
+      "stonehearth:combat:ranged_attacks": [
+         {
+            "name": "ant_fireshot",
+            "effect": "combat_shoot",
+            "active_frame": 29,
+            "cooldown": 20000,
+            "priority": 2
+         }
+      ],
+      "stonehearth:combat:melee_attacks": [
+         {
+            "name": "combat_1h_backhand",
+            "effect": "combat_1h_backhand",
+            "active_frame": 17,
+            "cooldown": 0,
+            "priority": 0
+         },
+         {
+            "name": "combat_1h_forehand",
+            "effect": "combat_bite",
+            "active_frame": 16,
+            "hit_effect": "stonehearth_ace:effects:hit_sparks:hit_effect:fire",
+            "cooldown": 0,
+            "priority": 0
+         }
+      ],
+      "stonehearth:combat:melee_defenses": [
+         {
+            "name": "ant_soldier_parry",
+            "effect": "combat_1h_parry",
+            "active_frame": 4,
+            "cooldown": 12000,
+            "priority": 1,
+            "chance_of_success": 0.6
+         },
+         {
+            "name": "ant_soldier_dodge",
+            "effect": "combat_1h_dodge",
+            "active_frame": 4,
+            "cooldown": 25000,
+            "priority": 2,
+            "chance_of_success": 0.3
+         }
+      ]
+   }
+}

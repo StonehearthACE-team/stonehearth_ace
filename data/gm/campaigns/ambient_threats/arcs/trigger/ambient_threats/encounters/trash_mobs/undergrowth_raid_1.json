@@ -8,10 +8,58 @@
       "mission": {
          "ctx_entity_registration_path": "undergrowth_raid_1",
          "members": {
-            "drones": {
+            "workers": {
                "from_population": {
                   "min": 2,
-                  "max": 4
+                  "max": 3
+               }
+            },
+            "drones": {
+               "from_population": {
+                  "min": 0,
+                  "max": 0
+               }
+            },
+            "soldiers": {
+               "from_population": {
+                  "min": 0,
+                  "max": 0
+               }
+            },
+            "fire_soldiers": {
+               "from_population": {
+                  "min": 0,
+                  "max": 0
+               }
+            },
+            "hunters": {
+               "from_population": {
+                  "min": 0,
+                  "max": 0
+               }
+            },
+            "spinners": {
+               "from_population": {
+                  "min": 0,
+                  "max": 0
+               }
+            },
+            "weavers": {
+               "from_population": {
+                  "min": 0,
+                  "max": 0
+               }
+            },
+            "broodmothers": {
+               "from_population": {
+                  "min": 0,
+                  "max": 0
+               }
+            },
+            "hulks": {
+               "from_population": {
+                  "min": 0,
+                  "max": 0
                }
             }
          }
