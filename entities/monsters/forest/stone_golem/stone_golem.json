@@ -3,28 +3,60 @@
 		"stonehearth_ace:mixins:inflicted_wounds:impact:medium",
 		"stonehearth_ace:mixins:inflicted_wounds:cut:easy"
 	],
-   "components": {
-	  "mixintypes": {
-		"model_variants": "override"
-	  },
-      "model_variants": {
-         "default": {
-            "models": [
-			   {
-                "type": "one_of",
-                "items": [
-					"/stonehearth/entities/monsters/forest/stone_golem/stone_golem.qb",
-					"/stonehearth/entities/monsters/forest/stone_golem/stone_golem_2.qb",
-					"/stonehearth/entities/monsters/forest/stone_golem/stone_golem_3.qb"
+	"components": {
+		"mixintypes": {
+			"model_variants": "override"
+		},
+		"model_variants": {
+			"default": {
+				"models": [
+					{
+						"type": "one_of",
+						"items": [
+							"/stonehearth/entities/monsters/forest/stone_golem/stone_golem.qb",
+							"/stonehearth/entities/monsters/forest/stone_golem/stone_golem_2.qb",
+							"/stonehearth/entities/monsters/forest/stone_golem/stone_golem_3.qb"
+						]
+					}
 				]
-			   }
-			]  
-         }
-      },
-	  "stonehearth:buffs": {
-         "buffs": {
-            "stonehearth_ace:buffs:fire:resistance": true
+			}
+		},
+		"stonehearth:buffs": {
+			"buffs": {
+				"stonehearth_ace:buffs:fire:resistance": true
+			}
+		},
+		"stonehearth:loot_drops": {
+         "entries": {
+            "split": {
+               "num_rolls": {
+                  "min": 0,
+                  "max": 4
+               },
+               "items": {
+                  "monster": {
+                     "type": "spawn",
+                     "uri": "stonehearth:monsters:forest:little_stone_golem",
+                     "weight": 1,
+                     "options": {
+                        "owner": "forest",
+                        "tuning": "stonehearth:monster_tuning:forest:little_stone_golem",
+                        "effect": "stonehearth:effects:poof_effect:small",
+                        "hostile": true,
+                        "override_spawn_chance_multiplier": 1,
+                        "bulletin": {
+                           "title": "i18n(stonehearth_ace:data.gm.campaigns.ambient_threats.loot_spawns.sighted_bulletin.splitting)"
+                        }
+                     }
+                  }
+               }
+            }
          }
       }
-   }
+	},
+	"entity_data": {
+		"stonehearth:target_type": {
+			"hit_effect": "stonehearth_ace:effects:hit_sparks:hit_effect:stone"
+		}
+	}
 }

@@ -4,9 +4,14 @@
 	],
 	"components": {
 		"stonehearth:buffs": {
-         "buffs": {
-            "stonehearth_ace:buffs:fire:resistance": true
-         	}
-      	}
+			"buffs": {
+				"stonehearth_ace:buffs:fire:resistance": true
+			}
+		}
+	},
+	"entity_data": {
+		"stonehearth:target_type": {
+			"hit_effect": "stonehearth_ace:effects:hit_sparks:hit_effect:stone"
+		}
 	}
 }

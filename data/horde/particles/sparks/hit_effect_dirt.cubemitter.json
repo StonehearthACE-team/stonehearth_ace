@@ -1,0 +1,94 @@
+{
+   "name": "hit_spark",
+   "duration": 300,
+   "material": "materials/cubemitter.material.json",
+   "loops": false,
+   "emission": {
+      "rate": {
+         "kind": "CONSTANT",
+         "values": [ 180 ]
+      },
+      "angle": {
+         "kind": "RANDOM_BETWEEN",
+         "values": [ 0, 140 ]
+      },
+      "origin": {
+         "surface": "POINT",
+         "values": {
+            "surface": "POINT"
+         }
+      }
+   },
+   "particle": {
+      "lifetime": {
+         "start": {
+            "kind": "CONSTANT",
+            "values": [ 320 ]
+         }
+      },
+      "speed": {
+         "start": {
+            "kind": "RANDOM_BETWEEN",
+            "values": [ 9, 15 ]
+         }
+      },
+      "rotation": {
+         "over_lifetime_x": {
+            "kind": "RANDOM_BETWEEN_CURVES",
+            "values": [
+               [
+                  [ 0, -360 ],
+                  [ 1, 360 ]
+               ],
+               [
+                  [ 0, 360 ],
+                  [ 1, 360 ]
+               ]
+            ]
+         }
+      },
+      "velocity": {
+         "over_lifetime_x": {
+            "kind": "CONSTANT",
+            "values": [ 0 ]
+         },
+         "over_lifetime_y": {
+            "kind": "CONSTANT",
+            "values": [ -4 ]
+         }
+      },
+      "scale": {
+         "start": {
+            "kind": "RANDOM_BETWEEN",
+            "values": [ 0.75, 0.12 ]
+         },
+         "over_lifetime": {
+            "kind": "RANDOM_BETWEEN_CURVES",
+            "values": [
+               [
+                  [ 0, 1 ],
+                  [ 1, 0 ]
+               ],
+               [
+                  [ 0, 1 ],
+                  [ 1, 0 ]
+               ]
+            ]
+         }
+      },
+      "color": {
+         "start": {
+            "kind": "CONSTANT",
+            "values": [ 0.431, 0.318, 0.098, 1 ]
+         },
+         "over_lifetime_a": {
+            "kind": "CURVE",
+            "values": [
+               [ 0, 1 ],
+               [ 0.7, 1 ],
+               [ 1, 0 ]
+            ]
+         }
+      }
+   }
+}

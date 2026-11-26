@@ -36,6 +36,9 @@ function AceAttackMeleeAdjacent:run(ai, entity, args)
 
    stonehearth.combat:start_cooldown(entity, self._attack_info)
 
+   -- ACE: Collect this info now
+   local hit_effect_to_play = self._attack_info.hit_effect or weapon_data.hit_effect or radiant.entities.get_entity_data(target, 'stonehearth:target_type') and radiant.entities.get_entity_data(target, 'stonehearth:target_type').hit_effect or 'stonehearth:effects:hit_sparks:hit_effect'
+
    -- the target might die when we attack them, so unprotect now!
    ai:unprotect_argument(target)
 
@@ -45,7 +48,7 @@ function AceAttackMeleeAdjacent:run(ai, entity, args)
 
    -- can't ai:execute this. it needs to run in parallel with the attack animation
    self._hit_effect = radiant.effects.run_effect(
-      target, 'stonehearth:effects:hit_sparks:hit_effect', self._attack_info.time_to_impact
+      target, hit_effect_to_play, self._attack_info.time_to_impact
    )
 
    self._impact_timer = stonehearth.combat:set_timer("AttackMeleeAdjacent do damage", self._attack_info.time_to_impact,

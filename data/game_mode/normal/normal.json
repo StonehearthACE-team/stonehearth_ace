@@ -3,5 +3,112 @@
    "description": "i18n(stonehearth_ace:ui.shell.select_game_story.game_modes.normal.description)",
    "image": "file(normal.png)",
    "baseline_happiness": 45,
-   "max_percent_health_redux": 75
+   "max_percent_health_redux": 75,
+   "encounter_tuning_overrides": {
+      "very_easy_raids": {
+         "can_start": {
+            "test_1": {
+               "military_strength_check": {
+                  "value": {
+                     "min": 20,
+                     "max": 85
+                  }
+               }
+            }
+         }
+      },
+      "easy_raids": {
+         "can_start": {
+            "test_1": {
+               "military_strength_check": {
+                  "value": {
+                     "min": 55,
+                     "max": 120
+                  }
+               }
+            }
+         }
+      },
+      "medium_raids": {
+         "can_start": {
+            "test_1": {
+               "military_strength_check": {
+                  "value": {
+                     "min": 90,
+                     "max": 165
+                  }
+               }
+            }
+         }
+      },
+      "hard_raids": {
+         "can_start": {
+            "test_1": {
+               "military_strength_check": {
+                  "value": {
+                     "min": 125,
+                     "max": 220
+                  }
+               }
+            }
+         }
+      },
+      "insane_raids": {
+         "can_start": {
+            "test_1": {
+               "military_strength_check": {
+                  "value": {
+                     "min": 160,
+                     "max": 270
+                  }
+               }
+            }
+         }
+      },
+      "epic_1_raids": {
+         "can_start": {
+            "test_1": {
+               "military_strength_check": {
+                  "value": {
+                     "min": 210,
+                     "max": 330
+                  }
+               }
+            }
+         }
+      },
+      "epic_2_raids": {
+         "can_start": {
+            "test_1": {
+               "military_strength_check": {
+                  "value": {
+                     "min": 250,
+                     "max": 480
+                  }
+               }
+            }
+         }
+      },
+      "epic_3_raids": {
+         "can_start": {
+            "test_1": {
+               "military_strength_check": {
+                  "value": {
+                     "min": 300,
+                     "max": 500
+                  }
+               }
+            }
+         }
+      },
+      "epic_4_raids": {
+         "can_start": {
+            "test_1": {
+               "military_strength_check": {
+                  "value": 420
+               }
+            }
+         }
+      }
+   }
 }

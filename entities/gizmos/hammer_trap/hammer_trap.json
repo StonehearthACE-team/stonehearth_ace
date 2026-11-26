@@ -51,34 +51,36 @@
       },
       "stonehearth:loot_drops": {
          "entries": {
-            "items": {
-               "firewood": {
-                  "num_rolls": {
-                     "min": 1,
-                     "max": 2
-                  },
-                  "items": {
-                     "firewood": {
-                        "uri": "stonehearth_ace:resources:fuel:bundle_of_firewood"
-                     }
-                  }
+            "firewood": {
+               "num_rolls": {
+                  "min": 1,
+                  "max": 2
                },
-               "wooden_gear": {
-                  "num_rolls": {
-                     "min": 1,
-                     "max": 3
-                  },
-                  "items": {
-                     "wooden_gear": {
-                        "uri": "stonehearth_ace:refined:wooden_gear"
-                     }
+               "items": {
+                  "firewood": {
+                     "uri": "stonehearth_ace:resources:fuel:bundle_of_firewood"
+                  }
+               }
+            },
+            "wooden_gear": {
+               "num_rolls": {
+                  "min": 1,
+                  "max": 3
+               },
+               "items": {
+                  "wooden_gear": {
+                     "uri": "stonehearth_ace:refined:wooden_gear"
                   }
                }
             }
          }
+
       }
    },
    "entity_data": {
+      "stonehearth:target_type": {
+         "hit_effect": "stonehearth_ace:effects:hit_sparks:hit_effect:wood"
+      },
       "stonehearth:placement": {
          "effect": "wrench",
          "tag": "mechanical"

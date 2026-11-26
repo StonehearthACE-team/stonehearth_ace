@@ -92,6 +92,39 @@ local log = radiant.log.create_logger('attack_ranged_action')
 --    ai:execute('stonehearth:run_effect', { effect = self._attack_info.effect })
 -- end
 
+function AceAttackRanged:start_thinking(ai, entity, args)
+   local weapon = stonehearth.combat:get_main_weapon(entity)
+
+   if not weapon or not weapon:is_valid() then
+      return
+   end
+
+   self._weapon_data = radiant.entities.get_entity_data(weapon, 'stonehearth:combat:weapon_data')
+
+   -- refetch every start_thinking as the set of actions may have changed
+   self._attack_types = stonehearth.combat:get_combat_actions(entity, 'stonehearth:combat:ranged_attacks')
+
+   if not next(self._attack_types) then
+      -- no ranged attacks
+      return
+   end
+
+   local equipment_data = stonehearth.combat:get_equipment_data(entity, 'stonehearth:projectile_data')
+   -- get projectile uri from an equipped skill or the main weapon
+   self._projectile_uri = equipment_data and equipment_data.projectile_uri or
+                          self._weapon_data and self._weapon_data.projectile_uri
+
+   -- [ACE] get hit effect from an equipped skill or the main weapon
+   self._hit_effect = equipment_data and equipment_data.hit_effect or
+                          self._weapon_data and self._weapon_data.hit_effect
+                          or nil
+
+   -- get offsets of where the projectile starts and ends
+   self:_get_projectile_offsets(self._weapon_data)
+
+   self:_choose_attack_action(ai, entity, args)
+end
+
 function AceAttackRanged:_shoot(attacker, target, weapon_data)
    if not target:is_valid() then
       return
@@ -114,11 +147,14 @@ function AceAttackRanged:_shoot(attacker, target, weapon_data)
    local assault_context = AssaultContext('melee', attacker, target, impact_time)
    stonehearth.combat:begin_assault(assault_context)
 
+   -- ACE: Collect this info now
+   local hit_effect_to_play = self._attack_info.hit_effect or self._hit_effect or radiant.entities.get_entity_data(target, 'stonehearth:target_type') and radiant.entities.get_entity_data(target, 'stonehearth:target_type').hit_effect or 'stonehearth:effects:hit_sparks:hit_effect'
+
    local impact_trace
    impact_trace = radiant.events.listen(projectile, 'stonehearth:combat:projectile_impact', function()
          if projectile:is_valid() and target:is_valid() then
             if not assault_context.target_defending then
-               radiant.effects.run_effect(target, 'stonehearth:effects:hit_sparks:hit_effect')
+               radiant.effects.run_effect(target, hit_effect_to_play)
                -- ACE: apply self-buffs before damage is calculated
                stonehearth.combat:apply_buffs(attacker, attacker, attack_info)
 

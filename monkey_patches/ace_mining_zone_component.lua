@@ -323,6 +323,7 @@ end
 -- need to override to handle loot quantity/quality properly when doubling loot from strength town bonus
 function AceMiningZoneComponent:mine_point(point)
    local loot = {}
+   local spawns = {}
 
    -- When mining a point, need to inspect the specialized regions to see if the point is a part of them.
    -- Need to pull loot from the specific landmark_blocks table which was specified for this specialized region.
@@ -332,11 +333,11 @@ function AceMiningZoneComponent:mine_point(point)
       local region_index = region_intersections[1]
       local intersection = radiant.terrain.remove_region_from_landmark(region, region_index)
       loot = landmark_lib.get_loot_from_region(intersection, radiant.terrain._landmarks[region_index][2])
-      log:debug('mined landmark point: %s', radiant.util.table_tostring(loot))
+      log:detail('mined landmark point: %s', radiant.util.table_tostring(loot))
    else
       local block_kind = radiant.terrain.get_block_kind_at(point)
-      loot = stonehearth.mining:roll_loot(block_kind)
-      log:debug('mined point: %s', radiant.util.table_tostring(loot))
+      loot, spawns = stonehearth.mining:roll_loot(block_kind)
+      log:detail('mined point, loot: %s | spawns: %s', radiant.util.table_tostring(loot), radiant.util.table_tostring(spawns))
    end
 
    -- TODO: detect materials of loot items and only apply town bonuses if they apply
@@ -379,7 +380,7 @@ function AceMiningZoneComponent:mine_point(point)
       end
    end
 
-   return loot
+   return loot, spawns
 end
 
 function AceMiningZoneComponent:should_have_ladders()

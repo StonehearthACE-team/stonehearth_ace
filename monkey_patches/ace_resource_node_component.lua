@@ -237,7 +237,10 @@ function AceResourceNodeComponent:_place_spawned_items(harvester, location, owne
    local spawned_items
    if json.resource_loot_table then
       local filter_args = self._loot_table_filter_args or (self._loot_table_filter_script and util.get_current_conditions_loot_table_filter_args())
-      local uris = LootTable(json.resource_loot_table, quality, self._loot_table_filter_script, filter_args):roll_loot()
+      local uris, spawns = LootTable(json.resource_loot_table, quality, self._loot_table_filter_script, filter_args):roll_loot()
+      if spawns then
+         options.spawns = spawns
+      end
       spawned_items = radiant.entities.get_successfully_output_items(radiant.entities.output_items(uris, location, 1, 3, options))
    else
       spawned_items = {}

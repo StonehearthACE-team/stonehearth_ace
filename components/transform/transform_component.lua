@@ -612,11 +612,13 @@ function TransformComponent:_place_additional_items(owner, collect_location)
    end
    local spawned_items
    if loot_table then
+      local loot, spawns = loot_table:roll_loot()
       local options = {
          owner = owner,
          inputs = owner,
          output = self._entity,
          spill_fail_items = true,
+         spawns = spawns
       }
       spawned_items = radiant.entities.output_items(loot_table:roll_loot(), collect_location, 1, 3, options).spilled
    else

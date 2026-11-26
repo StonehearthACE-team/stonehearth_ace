@@ -2,5 +2,10 @@
    "mixins": [
       "stonehearth_ace:mixins:tunnel_destructable_door"
    ],
-	"type": "entity"
+	"type": "entity",
+   "entity_data": {
+      "stonehearth:target_type": {
+         "hit_effect": "stonehearth_ace:effects:hit_sparks:hit_effect:clay"
+      }
+   }
 }

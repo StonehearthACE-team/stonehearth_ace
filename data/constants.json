@@ -183,8 +183,8 @@
             "VERY_LONG": "11d",
             "VERY_SHORT": "3d"
          },
-         "DEFAULT_FLOODED_GROWTH_TIME_MULTIPLIER": 3,
-         "DEFAULT_FROZEN_GROWTH_TIME_MULTIPLIER": 2,
+         "DEFAULT_FLOODED_GROWTH_TIME_MULTIPLIER": 4,
+         "DEFAULT_FROZEN_GROWTH_TIME_MULTIPLIER": 10,
          "DEFAULT_MEGACROP_DESCRIPTION": "i18n(stonehearth_ace:entities.crops.megacrops.default_description)",
          "DEFAULT_MEGACROP_SCALE": 2,
          "DEFAULT_PATTERN": [[2], [1]],
@@ -407,10 +407,10 @@
          "MAX_STALL_TIER": 3,
          "MERCHANT_CITIZEN_FOCUS": 0.8,
          "MIN_CITY_TIER": 1,
-         "NET_WORTH_MULTIPLIER": 0.004,
+         "NET_WORTH_MULTIPLIER": 0.002,
          "PERSISTENCE_ITEM_PRICE_FACTOR": 0.5,
          "PERSISTENCE_ITEM_QUALITY_COUNTS": [7, 3, 1],
-         "PERSISTENCE_TOWN_NAME_CHANCE": 0.5,
+         "PERSISTENCE_TOWN_NAME_CHANCE": 0.3,
          "rarities": {
             "COMMON": "common",
             "JUNK": "junk",
@@ -418,7 +418,7 @@
             "UNCOMMON": "uncommon"
          },
          "SPAWN_TIME": "8:00",
-         "TOTAL_TRADE_MULTIPLIER": 0.012
+         "TOTAL_TRADE_MULTIPLIER": 0.014
       },
       "name_overlay": {
          "NAME_TYPES": [

@@ -18,6 +18,9 @@ function AceSiegeAttackRanged:_shoot(attacker, target, weapon_data)
    local assault_context = AssaultContext('melee', attacker, target, impact_time)
    stonehearth.combat:begin_assault(assault_context)
 
+   -- ACE: Collect this info now
+   local hit_effect_to_play = self._attack_info.hit_effect or weapon_data.hit_effect or radiant.entities.get_entity_data(target, 'stonehearth:target_type') and radiant.entities.get_entity_data(target, 'stonehearth:target_type').hit_effect or 'stonehearth:effects:hit_sparks:hit_effect'
+
    -- save this because it will live on in the closure after the shot action has completed
    local attack_info = self._attack_info
 
@@ -25,7 +28,7 @@ function AceSiegeAttackRanged:_shoot(attacker, target, weapon_data)
    impact_trace = radiant.events.listen(projectile, 'stonehearth:combat:projectile_impact', function()
          if projectile:is_valid() and target:is_valid() then
             if not assault_context.target_defending then
-               radiant.effects.run_effect(target, 'stonehearth:effects:hit_sparks:hit_effect')
+               radiant.effects.run_effect(target, hit_effect_to_play)
                -- ACE: apply self-buffs before damage is calculated
                stonehearth.combat:apply_buffs(attacker, attacker, attack_info)
 

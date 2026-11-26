@@ -8,6 +8,22 @@ local log = radiant.log.create_logger('mining')
 local MiningService = require 'stonehearth.services.server.mining.mining_service'
 local AceMiningService = class()
 
+function AceMiningService:roll_loot(block_kind)
+   if not self._loot_tables then
+      self:_init_loot_tables()
+   end
+   local uris = {}
+   local spawns = {}
+
+   local loot_table = self._loot_tables[block_kind]
+   if loot_table then
+      uris, spawns = loot_table:roll_loot()
+   end
+
+   log:detail('rolling mining loot: %s | spawns: %s', radiant.util.table_tostring(uris), radiant.util.table_tostring(spawns))
+   return uris, spawns
+end
+
 -- ACE: vertically optimize mining region
 function AceMiningService:_bounding_box_merge(region, ordered_zones)
    local largest_merged_zone = nil
