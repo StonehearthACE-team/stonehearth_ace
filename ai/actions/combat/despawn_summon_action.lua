@@ -2,7 +2,7 @@
 local DespawnSummon = radiant.class()
 
 DespawnSummon.name = 'despawnSummon'
-DespawnSummon.does = 'stonehearth:idle'
+DespawnSummon.does = 'stonehearth:top'
 DespawnSummon.args = {}
 DespawnSummon.priority = 1.0
 

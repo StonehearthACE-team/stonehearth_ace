@@ -162,6 +162,7 @@ local monkey_patches = {
    ace_ownable_object_component = 'stonehearth.components.ownership.ownable_object_component',
    ace_party_component = 'stonehearth.components.party.party_component',
    ace_patrollable_object = 'stonehearth.services.server.town_patrol.patrollable_object',
+   ace_periodic_attribute_modification = 'stonehearth.data.buffs.scripts.periodic_attribute_modification',
    ace_periodic_health_modification = 'stonehearth.data.buffs.scripts.periodic_health_modification',
    ace_personality_component = 'stonehearth.components.personality.personality_component',
    ace_pet_component = 'stonehearth.components.pet.pet_component',

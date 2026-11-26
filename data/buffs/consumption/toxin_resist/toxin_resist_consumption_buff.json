@@ -1,0 +1,20 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.toxin_resist_consumption.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.toxin_resist_consumption.description)",
+   "icon": "file(toxin_resist_consumption_buff.png)",
+   "duration": "8h",
+   "repeat_add_action": "renew_duration",
+   "disallowed_buffs": [
+      "stonehearth_ace:buffs:toxin:sleeping",
+      "stonehearth_ace:buffs:toxin:panic",
+      "stonehearth_ace:buffs:toxin:weakness",
+      "stonehearth_ace:buffs:toxin:starvation",
+      "stonehearth:buffs:undead_infection",
+      "stonehearth_ace:buffs:infection:minor_infection"
+   ],
+   "disallowed_categories": [
+      "poison"
+   ]
+}

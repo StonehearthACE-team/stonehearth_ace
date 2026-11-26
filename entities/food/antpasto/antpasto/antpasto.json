@@ -1,0 +1,58 @@
+{
+   "mixins": "stonehearth:mixins:prepared_food_decay",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(antpasto.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      },
+      "stonehearth:stacks": {
+         "max_stacks": 8
+      }
+   },
+   "entity_data": {
+      "stonehearth:food_container": {
+         "effect": "fiddle",
+         "food": "stonehearth_ace:food:antpasto:antpasto_serving",
+         "stacks_per_serving": 1
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 31,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 3,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.antpasto.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.antpasto.description)",
+         "icon": "file(antpasto.png)",
+         "is_item": true,
+         "category": "food_prepared",
+         "material_tags": [
+            "food_container",
+            "prepared_food",
+            "antpasto",
+            "stockpile_prepared_food",
+            "meat",
+            "lunch_time",
+            "dinner_time"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 9
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

@@ -1,0 +1,38 @@
+{
+   "type": "recipe",
+   "effort": 34,
+   "work_units": 6,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.antpasto_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.antpasto_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.antpasto_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/antpasto/antpasto/antpasto.png",
+   "workshop": "stonehearth_ace:cook:workbench_advanced",
+   "level_requirement": 5,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:food:hardtack",
+         "count": 1
+      },
+      {
+         "material": "food bug_meat raw",
+         "count": 2
+      },
+      {
+         "uri": "stonehearth_ace:food:condiment",
+         "count": 2
+      },
+	   {
+         "uri": "stonehearth_ace:food:cooked_nuts",
+         "count": 1
+      },
+		{
+         "uri": "stonehearth_ace:food:cooking_oil",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:antpasto"
+      }
+   ]
+}

@@ -1,0 +1,43 @@
+{
+   "type" : "effect",
+   "tracks": {
+      "animation": {
+         "type": "animation_effect",
+         "start_time": 0,
+         "animation": "combat_dw_dual_strike.json",
+         "loop": false
+      },
+      "mainhand_sound": {
+         "type": "sound_effect",
+         "duration": 500,
+         "start_time": 150,
+		 "loop" : false,
+         "min_distance": 30,
+         "falloff" : 3.6,
+         "volume": 30,
+         "track" : {
+            "type": "one_of",
+            "items": [
+               "stonehearth:sounds:woodsword_forehand_01",
+               "stonehearth:sounds:woodsword_forehand_02"
+            ]
+         }
+      },
+	  "offhand_sound": {
+         "type": "sound_effect",
+         "duration": 400,
+         "start_time": 650,
+		 "loop" : false,
+         "min_distance": 30,
+         "falloff" : 3.6,
+         "volume": 30,
+         "track" : {
+            "type": "one_of",
+            "items": [
+               "stonehearth:sounds:woodsword_forehand_01",
+               "stonehearth:sounds:woodsword_forehand_02"
+            ]
+         }
+      }
+   }
+}

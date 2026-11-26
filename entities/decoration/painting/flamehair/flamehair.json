@@ -1,0 +1,18 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth_ace:mixins:decoration:painting:medium_portrait",
+      "file(flamehair_ghost.json)"
+   ],
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(flamehair_iconic.json)",
+         "ghost_form": "file(flamehair_ghost.json)"
+      }
+   },
+   "entity_data": {
+      "stonehearth:item_quality": {
+         "author": "Duality"
+      }
+   }
+}

@@ -1,5 +1,10 @@
 local FindHealableTargetObserver = require 'stonehearth.ai.observers.find_healable_target_observer'
+local constants = require 'stonehearth.constants'
+local Point3 = _radiant.csg.Point3
+
 local AceFindHealableTargetObserver = class()
+
+local NOT_WITHIN_LEASH_PENALTY_MULTIPLIER = constants.combat.NOT_WITHIN_LEASH_PENALTY_MULTIPLIER
 
 AceFindHealableTargetObserver._ace_old_activate = FindHealableTargetObserver.activate
 function AceFindHealableTargetObserver:activate()
@@ -127,6 +132,65 @@ function AceFindHealableTargetObserver:_find_target()
    end
 
    return nil, nil
+end
+
+-- Adding nil checks and some safety for possible errors (ACE)
+function AceFindHealableTargetObserver:_calculate_target_cost_benefit(entity_location, target, heal_score)
+   if not target or not target:is_valid() then
+      return 0
+   end
+
+   if not self._sight_sensor:contains_contents(target:get_id()) then
+      local is_primary_target = target == self._combat_state:get_primary_target(self._entity)
+      if not is_primary_target then
+         return 0
+      end
+   end
+
+   local target_location = nil
+   local target_mob = target:get_component('mob')
+   if target_mob then
+      target_location = target_mob:get_world_grid_location()
+   else
+      return 0
+   end
+
+   if radiant.entities.is_entity_suspended(target) then
+      return 0
+   end
+
+   local leash_penalty
+   -- Inlining stonehearth.combat:get_distance_outside_leash() for perf.
+   local leash = self._combat_state:get_leash_data()
+   if leash and target_location then
+      local projected_point = Point3(target_location)
+      projected_point.y = leash.center.y
+      local closest_point = leash.cube:get_closest_point(projected_point)
+      leash_penalty = closest_point:distance_to(target_location) * NOT_WITHIN_LEASH_PENALTY_MULTIPLIER
+   else
+      leash_penalty = 0
+   end
+   local score = heal_score - leash_penalty
+   if score < 0 then
+      return 0
+   end
+
+   local distance
+   if entity_location and target_location then
+      distance = entity_location:distance_to(target_location)
+   end
+   if distance and distance < 8 then
+      -- Below a minimum distance, being closer doesn't matter.
+      -- How much does this matter for ranged healing?
+      distance = 8
+   end
+
+   -- Only divide score by distance if we are not healing ourselves
+   if distance and distance ~= 0 then
+      score = score / distance
+   end
+
+   return score
 end
 
 return AceFindHealableTargetObserver
