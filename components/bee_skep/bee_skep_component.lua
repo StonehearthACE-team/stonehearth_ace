@@ -76,7 +76,7 @@ end
 
 function BeeSkepComponent:_create_timers()
    -- log:info('creating bee skep timer')
-   self._sv._update_timer = stonehearth.calendar:set_persistent_interval('bee skep update timer', self._update_period, function()
+   self._sv._update_timer = stonehearth.calendar:set_interval('bee skep update timer', self._update_period, function()
       self:_update()
    end)
 end
@@ -261,8 +261,10 @@ function BeeSkepComponent:_update_status_buff(amount)
    end
 
    for _, buff in ipairs(POLLINATION_BUFFS) do
-      if buff == active_buff and not radiant.entities.has_buff(self._entity, buff) then
-         radiant.entities.add_buff(self._entity, buff)
+      if buff == active_buff then
+         if not radiant.entities.has_buff(self._entity, buff) then
+            radiant.entities.add_buff(self._entity, buff)
+         end
       else
          radiant.entities.remove_buff(self._entity, buff)
       end
