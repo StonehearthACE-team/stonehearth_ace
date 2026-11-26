@@ -1,0 +1,42 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(roast_turkey_serving.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "food",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth:food": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 88
+         },
+         "default": {
+            "satisfaction": 74
+         },
+         "applied_buffs": [
+            "stonehearth_ace:buffs:consumption:regeneration:major"
+         ],
+         "quality": 6
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.roast_turkey.roast_turkey_serving.display_name)",
+         "description": "",
+         "material_tags": [
+            "food",
+            "roast_turkey_serving",
+            "meat",
+            "dinner_time"
+         ],
+         "subject_override": "stonehearth_ace:food:roast_turkey"
+      }
+   }
+}

@@ -13549,6 +13549,11 @@
                "description": "The meat of a whole duck flavored with mushrooms and braised in sweet sauce.",
                "flavor": "Exquisite!"
             },
+            "roast_turkey_recipe": {
+               "recipe_name": "Roast Turkey",
+               "description": "A juicy and flavorful bird roasted to perfection!",
+               "flavor": "Don't forget to be grateful for your meal"
+            },
             "bug_meat_stew_recipe": {
                "description": "Stringy, spicy, and perfect to eat on a cold day."
             },
@@ -23437,6 +23442,23 @@
                "description": "Grab it and run!"
             }
          },
+         "turkey": {
+            "display_name": "Turkey",
+            "description": "Gobble, gobble! A wild and plumpy bird.",
+            "young": {
+               "display_name": "Poult",
+               "description": "The humble beginnings of a chonky turkey..."
+            },
+            "species": "turkey",
+            "wild": {
+               "display_name": "i18n(stonehearth_ace:entities.critters.turkey.display_name)",
+               "description": "i18n(stonehearth_ace:entities.critters.turkey.description)"
+            },
+            "wild_young": {
+               "display_name": "i18n(stonehearth_ace:entities.critters.turkey.young.display_name)",
+               "description": "i18n(stonehearth_ace:entities.critters.turkey.young.description)"
+            }
+         },
          "rabbit_young": {
             "display_name": "Bunny",
             "description": "So little and cute! Will be a fine rabbit one day."
@@ -24457,6 +24479,23 @@
          "egg": {
             "display_name": "Poyo Egg"
          },
+         "turkey_meat": {
+            "display_name": "Turkey Meat",
+            "description": "It tastes like poyo, if you soak it with a stamina tonic."
+         },
+         "roast_turkey": {
+            "roast_turkey": {
+               "display_name": "Roast Turkey",
+               "description": "Deliciously crispy on the outside, juicy and tender inside!"
+            },
+            "roast_turkey_serving": {
+               "display_name": "Serving of Roast Turkey"
+            }
+         },
+         "turkey_meat_rotten": {
+            "display_name": "Rotten Turkey Meat",
+            "description": "Ugh, you've ruined Frostfeast!"
+         },
          "duck_meat": {
             "display_name": "Duck Meat",
             "description": "It tastes like poyo, but more spicy and exotic."
@@ -25147,7 +25186,8 @@
                "serving": {
                   "display_name": "Slice of Firstbloom Carrot Cake",
                   "description": "Yummy!"
-               }
+               },
+               "iconic_description": "Place it somewhere so hearthlings can serve themselves!"
             }
          },
          "antpasto_serving": {
