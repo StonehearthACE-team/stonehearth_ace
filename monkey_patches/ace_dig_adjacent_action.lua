@@ -1,5 +1,7 @@
 local Entity = _radiant.om.Entity
 local Point3 = _radiant.csg.Point3
+local rng = _radiant.math.get_default_rng()
+local game_master_lib = require 'stonehearth.lib.game_master.game_master_lib'
 local build_util = require 'stonehearth.lib.build_util'
 local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_lib'
 
@@ -127,32 +129,34 @@ function AceDigAdjacent:run(ai, entity, args)
 end
 
 function AceDigAdjacent:_mine_block(ai, entity, mining_zone, block)
-   if not mining_zone:is_valid() then
-      return false
-   end
+    if not mining_zone:is_valid() then
+        return false
+    end
 
-   local worker_location = radiant.entities.get_world_grid_location(entity)
+    local worker_location = radiant.entities.get_world_grid_location(entity)
 
-   radiant.entities.turn_to_face(entity, block)
-   ai:execute('stonehearth:run_effect', { effect = 'mine' })
+    radiant.entities.turn_to_face(entity, block)
+    ai:execute('stonehearth:run_effect', {
+        effect = 'mine'
+    })
 
-   -- check after yielding
-   if not mining_zone:is_valid() then
-      return false
-   end
+    -- check after yielding
+    if not mining_zone:is_valid() then
+        return false
+    end
 
-   -- The reserved region may include support blocks. We must release it before looking
-   -- for the next block to mine so that they will be included as candidates.
-   -- Also release it on any failure conditions.
-   self:_release_blocks(mining_zone)
+    -- The reserved region may include support blocks. We must release it before looking
+    -- for the next block to mine so that they will be included as candidates.
+    -- Also release it on any failure conditions.
+    self:_release_blocks(mining_zone)
 
-   -- any time we yield, check to make sure we're still in the same location
-   if radiant.entities.get_world_grid_location(entity) ~= worker_location then
-      return false
-   end
+    -- any time we yield, check to make sure we're still in the same location
+    if radiant.entities.get_world_grid_location(entity) ~= worker_location then
+        return false
+    end
 
    local mining_zone_component = mining_zone:get_component('stonehearth:mining_zone')
-   local loot = mining_zone_component:mine_point(block)
+   local loot, spawns = mining_zone_component:mine_point(block)
    local work_player_id = radiant.entities.get_work_player_id(entity)
    local options = {
       owner = work_player_id,
@@ -161,14 +165,17 @@ function AceDigAdjacent:_mine_block(ai, entity, mining_zone, block)
       output = mining_zone,
       spill_fail_items = true,
       quality = self:_get_quality_chances(entity, mining_zone, block),
+      spawns = spawns
    }
    log:spam('outputting mining loot %s', radiant.util.table_tostring(loot))
    radiant.entities.output_items(loot, worker_location, 1, 3, options)
 
-   -- apply quality to mined items if relevant
-   --self:_apply_quality(entity, work_player_id, items, mining_zone, block)
-   -- for the autotest
-   radiant.events.trigger(entity, 'stonehearth:mined_location', { location = block })
+    -- apply quality to mined items if relevant
+    -- self:_apply_quality(entity, work_player_id, items, mining_zone, block)
+    -- for the autotest
+    radiant.events.trigger(entity, 'stonehearth:mined_location', {
+        location = block
+    })
 
    -- do a check here for whether we need a ladder based on overall height at this point
    --log:debug('%s checking if mining ladder should be built at %s', entity, block)
@@ -177,14 +184,14 @@ function AceDigAdjacent:_mine_block(ai, entity, mining_zone, block)
       mining_zone_component:create_ladder_handle(block, normal)
    end
 
-   return true
+    return true
 end
 
 -- not using mining_zone or block, but maybe someone wants to override this function to take that into account
 -- e.g., higher/lower chances based on altitude
 function AceDigAdjacent:_get_quality_chances(entity, mining_zone, block)
-   local buffs_component = entity:get_component('stonehearth:buffs')
-   return buffs_component and buffs_component:get_managed_property('stonehearth_ace:mining_quality')
+    local buffs_component = entity:get_component('stonehearth:buffs')
+    return buffs_component and buffs_component:get_managed_property('stonehearth_ace:mining_quality')
 end
 
 function AceDigAdjacent:_get_block_to_mine(adjacent_location, ai)

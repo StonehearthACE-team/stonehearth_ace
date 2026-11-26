@@ -56,7 +56,7 @@ function AceLootDropsComponent:_on_kill_event(e)
          if filter_script and not filter_args then
             filter_args = util.get_current_conditions_loot_table_filter_args()
          end
-         local items = LootTable(loot_table, quality, filter_script, filter_args)
+         local items, spawns = LootTable(loot_table, quality, filter_script, filter_args)
                            :roll_loot()
          local options = {
             owner = force_auto_loot and loot_player_id or player_id,
@@ -64,6 +64,7 @@ function AceLootDropsComponent:_on_kill_event(e)
             inputs = kill_data.source,
             output = self._entity,
             spill_fail_items = true,
+            spawns = spawns
          }
          local min_distance = loot_table.drop_range and loot_table.drop_range.min or 1
          local max_distance = loot_table.drop_range and loot_table.drop_range.max or 3

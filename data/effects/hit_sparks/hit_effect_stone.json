@@ -1,0 +1,43 @@
+{
+   "type": "effect",
+   "tracks": {
+      "cubemitter": {
+         "type": "cubemitter",
+         "start_time": 0,
+         "end_time": 50,
+         "cubemitter": "/stonehearth_ace/data/horde/particles/sparks/hit_effect_stone.cubemitter.json",
+         "transforms": { "x": 0, "y": 1.25, "z": 0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "dust": {
+         "type": "cubemitter",
+         "start_time": 0,
+         "end_time": 70,
+         "cubemitter": "/stonehearth/data/horde/particles/dust_poof/dust_poof.cubemitter.json",
+         "transforms": { "x": 0, "y": 1, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "sound": {
+         "type": "sound_effect",
+         "duration": 1000,
+         "start_time": 0,
+         "min_distance": 26,
+         "falloff": 3.6,
+         "volume": 50,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth:sounds:mine_01",
+               "stonehearth:sounds:mine_02",
+               "stonehearth:sounds:mine_03"
+            ]
+         }
+      }
+   }
+}

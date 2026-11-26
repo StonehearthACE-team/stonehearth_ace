@@ -26,7 +26,7 @@
       },
       "stonehearth:attributes": {
          "max_health": {
-            "value": 250
+            "value": 180
          },
          "menace": {
             "type": "basic",
@@ -35,6 +35,9 @@
       }
    },
    "entity_data": {
+      "stonehearth:target_type": {
+         "hit_effect": "stonehearth_ace:effects:hit_sparks:hit_effect:web"
+      },
       "stonehearth:on_destroy": {
          "effect": "stonehearth:effects:poof_effect"
       },

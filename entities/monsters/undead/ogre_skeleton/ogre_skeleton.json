@@ -1,9 +1,9 @@
 {
    "type": "entity",
    "mixins": [
-		"stonehearth:mixins:undead",
-		"stonehearth_ace:mixins:inflicted_wounds:impact:hard"
-	],
+      "stonehearth:mixins:undead",
+      "stonehearth_ace:mixins:inflicted_wounds:impact:hard"
+   ],
    "components": {
       "render_info": {
          "animation_table": "/stonehearth/data/rigs/entities/monster/ogre",
@@ -49,6 +49,9 @@
       "stonehearth:carry_block": {}
    },
    "entity_data": {
+      "stonehearth:target_type": {
+         "hit_effect": "stonehearth_ace:effects:hit_sparks:hit_effect:bone"
+      },
       "stonehearth:species": {
          "id": "skeleton",
          "display_name": "i18n(stonehearth_ace:entities.peoples.skeleton.species)"

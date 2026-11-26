@@ -476,6 +476,13 @@
                }
             },
             "ambient_threats": {
+               "loot_spawns": {
+                  "sighted_bulletin": {
+                     "mining": "A creature emerges while mining!",
+                     "harvesting": "A creature reveals itself!",
+                     "splitting": "A creature breaks into smaller foes!"
+                  }
+               },
                "bear_attack": {
                   "mission": {
                      "sighted_bulletin": {
@@ -2227,8 +2234,8 @@
                         "choice_002": "❌ It's all good. [skip unlock]"
                      },
                      "msg_denial": {
-                        "choice_000": "❌ Nah, no need! [skip tutorial]",
-                        "choice_001": "❌ Nah, no need! [skip quest]"
+                        "choice_000": "❌ No need! [skip tutorial]",
+                        "choice_001": "❌ No need! [skip quest]"
                      },
                      "msg_met_again": {
                         "choice_002": "❌ We met before! [skip]"
@@ -2238,7 +2245,7 @@
                         "choice_000": "Thank you very much!"
                      },
                      "msg_be_quick": {
-                        "choice_001": "📝 Share your notes? [summary]",
+                        "choice_001": "📝 Share notes? [summary]",
                         "choice_002": "✔️ Understood!",
                         "choice_003": "💬 Actually, tell us everything..."
                      }
@@ -2448,7 +2455,7 @@
                            "bulletin_message": {
                               "00": "A grizzled warrior approaches wearing old and dented platemail beneath a beautiful cloth tabard. \"I extend to you my greetings, fellows.\" He bows his head with a hand to his heart. \"I am Sir Edmund, acclaimed battle-cleric of the old Order of the Knights of Cid, and I've come to offer my services to your growing settlement.\"<p>He looks around with peaceful eyes, but his face and hair suggest a far more eventful past.<br>\"Oh, do I arouse suspicion? I apologize.\" He carries no more than a healing staff. \"I wield no arms anymore and have sworn an oath to wander the lands, offering my services to all who need them, regardless of kin or faith.\""
                            },
-                           "choice_000": "💬 Most welcome!"
+                           "choice_000": "💬 Welcome!"
                         },
                         "msg2": {
                            "bulletin_message": {
@@ -7759,7 +7766,7 @@
                }
             },
             "pumpkin_roots_trapped": {
-               "display_name": "Rooted!",
+               "display_name": "Pumpkin Rooted!",
                "description": "This hearthling is trapped by evil pumpkin roots! Order the roots to be attacked to release them... Or wait!"
             }
          },
@@ -8837,6 +8844,10 @@
          "pollinated_crop_buff": {
             "display_name": "Pollinated (Crop)",
             "description": "Busy little bees have visited this crop and made it a little better!"
+         },
+         "toxin_resist_consumption": {
+            "display_name": "Contaminant Resistance (Consumption)",
+            "description": "This hearthling is protected against all poisons, minor infections and weak or moderate toxins while it lasts."
          }
       },
       "loadouts": {
@@ -13736,6 +13747,11 @@
                "description": "Pour milk on top of delicious baked flakes of corn.",
                "flavor": "'Cereal first, milk afterwards. It is the natural order.' - Sir Edwin Butterfingers"
             },
+            "antpasto_recipe": {
+               "recipe_name": "Platter of Ant-pasto",
+               "description": "Crunchy and flavorful appetizers typically served before a main course, but quite filling on their own!",
+               "flavor": "Was it 'pesto' or 'pest' sauce? It is possible that some confusion occurred as this recipe traveled the world..."
+            },
             "nutty_poultry_recipe": {
                "recipe_name": "Stirred Poultry & Nuts",
                "description": "Stirred and fried large poultry slices with spices and nuts.",
@@ -13953,8 +13969,8 @@
             },
             "cooking_oil_recipe": {
                "recipe_name": "Cooking Oil (x2)",
-               "description": "Extract the oil from any oleaginous grains or herbs to be used as an ingredient or condiment base.",
-               "flavor": "Pumpkin seeds, Sunflowers, Corn or even Paddy are examples of oil sources"
+               "description": "Extract the oil from any oleaginous grains, herbs and algae to be used as an ingredient or condiment base.",
+               "flavor": "Pumpkin seeds, Sunflowers, Corn, Paddy and any algae are examples of oil sources"
             },
             "cooked_rice_recipe": {
                "recipe_name": "Cooked Rice",
@@ -14033,8 +14049,11 @@
             },
             "poyo_nuggets_recipe": {
                "recipe_name": "Poyo Nuggets",
-               "description": "Slice, bread and fry tasty bits of poyo meat.",
+               "description": "Slice, bread and fry tasty bits of poyo meat, or any other plump fowl meat available.",
                "flavor": "NUGGETS!"
+            },
+            "poyo_pot_pie_recipe": {
+               "description": "A tasty meat and veggie pie. While originally made with poyo meat, any plump fowl meat will do!"
             },
             "cheesecake_recipe": {
                "recipe_name": "Cheesecake",
@@ -23221,6 +23240,10 @@
             "cozy_inn": {
                "display_name": "Painting (The Cozy Inn)",
                "description": "A very nice and comfortable establishment at the edge of the Royal Road."
+            },
+            "flamehair": {
+               "display_name": "Painting (Portrait of Flamehair)",
+               "description": "Folk hero said to have evaded capture by dressing like a cat. Everyone in the town joined them."
             }
          },
          "candledark": {
@@ -24486,7 +24509,7 @@
          },
          "cooking_oil": {
             "display_name": "Jug of Cooking Oil",
-            "description": "Extracted from vegetables. Usable as cooking grease or condiment base."
+            "description": "Extracted from vegetable or plant material. Usable as cooking grease or condiment base."
          },
          "fish_fingers": {
             "fish_fingers": {
@@ -25467,6 +25490,14 @@
                   "description": "Yummy!"
                }
             }
+         },
+         "antpasto_serving": {
+            "display_name": "Serving of Ant-pasto",
+            "description": "Suspiciously crunchy!"
+         },
+         "antpasto": {
+            "display_name": "Platter of Ant-pasto",
+            "description": "Who knew bug meat could be this good?! Oh, you were not aware..."
          }
       },
       "terrain": {
@@ -25548,7 +25579,7 @@
             },
             "colony": {
                "chanterelle_colony": {
-                  "display_name": "Colony of Chanterelles",
+                  "display_name": "Chanterelle Colony",
                   "description": "Can be placed to grow into larger, edible mushrooms"
                }
             },
@@ -25572,7 +25603,7 @@
             },
             "colony": {
                "desert_truffle_colony": {
-                  "display_name": "Colony of Desert Truffles",
+                  "display_name": "Desert Truffle Colony",
                   "description": "Can be placed to grow into larger, edible mushrooms"
                }
             },
@@ -25596,7 +25627,7 @@
             },
             "colony": {
                "bolete_colony": {
-                  "display_name": "Colony of Boletes",
+                  "display_name": "Bolete Colony",
                   "description": "Can be placed to grow into larger, edible mushrooms"
                }
             },
@@ -25620,7 +25651,7 @@
             },
             "colony": {
                "winter_morel_colony": {
-                  "display_name": "Colony of Winter Morels",
+                  "display_name": "Winter Morel Colony",
                   "description": "Can be placed to grow into larger, edible mushrooms"
                }
             },
@@ -25644,7 +25675,7 @@
             },
             "colony": {
                "parasol_colony": {
-                  "display_name": "Colony of Parasols",
+                  "display_name": "Parasol Colony",
                   "description": "Can be placed to grow into larger, edible mushrooms"
                }
             },
@@ -25668,7 +25699,7 @@
             },
             "colony": {
                "sweet_tooth_colony": {
-                  "display_name": "Colony of Sweet Teeth",
+                  "display_name": "Sweet Tooth Colony",
                   "description": "Can be placed to grow into larger, edible mushrooms"
                }
             },
@@ -31696,6 +31727,7 @@
             "egg_small_resource_name": "Any Small Egg",
             "stuffing_resource_name": "Any Feathers, Wool or Cotton",
             "raw_meat_piece_resource_name": "Any Whole Meat Piece",
+            "raw_fowl_piece_resource_name": "Any Whole Fowl Meat Piece",
             "seasoning_resource_name": "Any Seasoning",
             "prepared_food_festival_resource_name": "Festive Food & Drinks",
             "refined_serving_pitcher_resource_name": "Any Serving Pitcher",
@@ -31797,7 +31829,8 @@
             "stone_bedrock_resource_name": "Bedrock",
             "teapots_resource_name": "Any Teapot",
             "coffee_pots_resource_name": "Any Coffee Pot",
-            "gear_refined_name": "Any Gear"
+            "gear_refined_name": "Any Gear",
+            "bone_or_bug_meat_name": "Any Animal Bone or Raw Bug Meat"
          }
       }
    },

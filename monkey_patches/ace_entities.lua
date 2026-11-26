@@ -6,6 +6,7 @@ local entity_forms = require 'stonehearth.lib.entity_forms.entity_forms_lib'
 local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_lib'
 local item_io_lib = require 'stonehearth_ace.lib.item_io.item_io_lib'
 local healing_lib = require 'stonehearth_ace.ai.lib.healing_lib'
+local game_master_lib = require 'stonehearth.lib.game_master.game_master_lib'
 local WeightedSet = require 'stonehearth.lib.algorithms.weighted_set'
 local rng = _radiant.math.get_default_rng()
 
@@ -23,12 +24,12 @@ function ace_entities.remove_child(parent, child)
       local rcs = child:get_component('region_collision_shape')
       if rcs and rcs:get_region_collision_type() == _radiant.om.RegionCollisionShape.SOLID and rcs:get_region() then
          stonehearth.hydrology:auto_fill_water_region(radiant.entities.local_to_world(rcs:get_region():get(), child), function(waters, num_waters)
-               if num_waters == 1 then
-                  log:debug('removing entity %s and filling in water', child)
-               end
-               component:remove_child(child:get_id())
-               return true
-            end)
+            if num_waters == 1 then
+               log:debug('removing entity %s and filling in water', child)
+            end
+            component:remove_child(child:get_id())
+            return true
+         end)
       else
          component:remove_child(child:get_id())
       end
@@ -44,12 +45,12 @@ function ace_entities.destroy_entity(entity)
       local rcs = entity:get_component('region_collision_shape')
       if rcs and rcs:get_region_collision_type() == _radiant.om.RegionCollisionShape.SOLID and rcs:get_region() then
          stonehearth.hydrology:auto_fill_water_region(radiant.entities.local_to_world(rcs:get_region():get(), entity), function(waters, num_waters)
-               if num_waters == 1 then
-                  log:debug('destroying entity %s and filling in water', entity)
-               end
-               _radiant.sim.destroy_entity(entity)
-               return true
-            end)
+            if num_waters == 1 then
+               log:debug('destroying entity %s and filling in water', entity)
+            end
+            _radiant.sim.destroy_entity(entity)
+            return true
+         end)
       else
          _radiant.sim.destroy_entity(entity)
       end
@@ -88,7 +89,9 @@ function ace_entities.consume_stack(item, num_stacks)
       -- we don't know who's consuming it, but assume it's the same player id as the item itself
       -- (generally this sort of interaction is limited to items the player owns)
       -- this will avoid consideration by the town of queuing up requests to craft this item (e.g., food)
-      radiant.entities.kill_entity(item, { source_id = radiant.entities.get_player_id(item) })
+      radiant.entities.kill_entity(item, {
+         source_id = radiant.entities.get_player_id(item)
+      })
    end
 
    return success
@@ -221,8 +224,7 @@ function ace_entities.create_entity(ref, options)
 
          local add_loot_command = create_entity_data.add_loot_command
          if add_loot_command then
-            if (add_loot_command == 'no_player' and entity:get_player_id() == '') or
-                  (add_loot_command == 'any_npc_player' and stonehearth.player:is_npc(entity)) then
+            if (add_loot_command == 'no_player' and entity:get_player_id() == '') or (add_loot_command == 'any_npc_player' and stonehearth.player:is_npc(entity)) then
                entity:add_component('stonehearth:commands'):add_command('stonehearth:commands:loot_item')
             end
          end
@@ -336,7 +338,7 @@ function ace_entities.kill_entity(entity, kill_data)
          end
       end
 
-      --Trigger an event synchronously, so we don't delete the item till all listeners have done their thing
+      -- Trigger an event synchronously, so we don't delete the item till all listeners have done their thing
       radiant.events.trigger(entity, 'stonehearth:kill_event', {
          entity = entity,
          id = entity:get_id(),
@@ -345,7 +347,7 @@ function ace_entities.kill_entity(entity, kill_data)
 
       radiant.entities._run_kill_effect(entity)
 
-      --Trigger a more general event, for non-affiliated components
+      -- Trigger a more general event, for non-affiliated components
       radiant.events.trigger_async(radiant.entities, 'stonehearth:entity_killed', {
          sentient = sentient,
          id = entity:get_id(),
@@ -357,12 +359,12 @@ function ace_entities.kill_entity(entity, kill_data)
          kill_data = kill_data
       })
 
-      --For now, just call regular destroy on the entity
-      --Review Question: Will it ever be the case that calling destroy is insufficient?
-      --for example, if we also need to recursively kill child entities? Are we ever
-      --going to apply this to marsupials? If you kill an oiliphant, the dudes on its
-      --back aren't immediately killed too, they just fall to the ground, right?
-      --"It still only counts as one!" --ChrisGimli
+      -- For now, just call regular destroy on the entity
+      -- Review Question: Will it ever be the case that calling destroy is insufficient?
+      -- for example, if we also need to recursively kill child entities? Are we ever
+      -- going to apply this to marsupials? If you kill an oiliphant, the dudes on its
+      -- back aren't immediately killed too, they just fall to the ground, right?
+      -- "It still only counts as one!" --ChrisGimli
       radiant.entities.destroy_entity(entity)
    end
 end
@@ -428,7 +430,7 @@ function ace_entities.set_property_value(entity, property, value, replace)
    return pv_comp:set_property(property, value, replace)
 end
 
-function ace_entities.get_renown(entity) --, include_equipment)
+function ace_entities.get_renown(entity) -- , include_equipment)
    if not entity or not entity:is_valid() then
       return
    end
@@ -468,7 +470,9 @@ function ace_entities.spawn_items(uris, origin, min_radius, max_radius, options,
    local owner_id = options.owner
    owner_id = owner_id and type(owner_id) ~= 'string' and owner_id:get_player_id() or owner_id
    local quality = options.quality
-   local quality_options = quality and {max_quality = owner_id and item_quality_lib.get_max_random_quality(owner_id) or nil}
+   local quality_options = quality and {
+      max_quality = owner_id and item_quality_lib.get_max_random_quality(owner_id) or nil
+   }
    local inventory
    if owner_id and options.add_spilled_to_inventory then
       inventory = stonehearth.inventory:get_inventory(owner_id)
@@ -477,7 +481,9 @@ function ace_entities.spawn_items(uris, origin, min_radius, max_radius, options,
    for uri, detail in pairs(uris) do
       local qualities
       if type(detail) == 'number' then
-         qualities = {[1] = detail}
+         qualities = {
+            [1] = detail
+         }
       else
          qualities = detail
       end
@@ -510,7 +516,7 @@ function ace_entities.spawn_items(uris, origin, min_radius, max_radius, options,
 end
 
 -- if no valid output is specified
-function ace_entities.output_items(uris, origin, min_radius, max_radius, options) --, output, inputs, spill_fail_items, quality)
+function ace_entities.output_items(uris, origin, min_radius, max_radius, options) -- , output, inputs, spill_fail_items, quality)
    options = options or {}
    local inputs = options.inputs
    local output = options.output
@@ -519,13 +525,23 @@ function ace_entities.output_items(uris, origin, min_radius, max_radius, options
    if inputs and type(inputs) ~= 'table' then
       -- if it's not a single entity, it's wrong and should post an error message
       if radiant.entities.is_entity(inputs) and inputs:is_valid() then
-         inputs = {[inputs:get_id()] = inputs}
+         inputs = {
+            [inputs:get_id()] = inputs
+         }
       else
          log:error('trying to output items with invalid input/source: %s', tostring(inputs))
          inputs = nil
       end
       options.inputs = inputs
    end
+
+   -- Has to run this here because of spilled outputs
+   if options.spawns and next(options.spawns) then
+      radiant.on_game_loop_once('handling spawns', function()
+            ace_entities._output_loot_table_spawns(options.spawns, origin, options.owner)
+         end)
+   end
+
    if not output_comp and (not inputs or not next(inputs)) then
       if options.spill_fail_items then
          local result = radiant.entities.get_empty_output_table()
@@ -540,13 +556,117 @@ function ace_entities.output_items(uris, origin, min_radius, max_radius, options
    return ace_entities.output_spawned_items(items, origin, min_radius, max_radius, options)
 end
 
-function ace_entities.output_spawned_items(items, origin, min_radius, max_radius, options) --, output, inputs, spill_fail_items, delete_fail_items)
-   --local output_comp = output and output:is_valid() and output:get_component('stonehearth_ace:output')
+function ace_entities._output_loot_table_spawns(spawns, origin, owner)
+   local bulletin = nil
+   for _, spawn_data in ipairs(spawns) do
+      local spawn_options = spawn_data.options
+      local loot_spawns_chance_multiplier = spawn_options.override_spawn_chance_multiplier or 1
+
+      if spawn_options.hostile and not spawn_options.override_spawn_chance_multiplier then
+         loot_spawns_chance_multiplier = stonehearth.game_creation:get_game_mode_json() and stonehearth.game_creation:get_game_mode_json().loot_spawns_chance_multiplier or 1
+      end
+
+      if loot_spawns_chance_multiplier > 0 then
+         if spawn_options.depth_bias then
+            loot_spawns_chance_multiplier = loot_spawns_chance_multiplier * (1 / (1 + (origin.y / 40) ^ 3))
+         end
+
+         if rng:get_real(0, 1) <= loot_spawns_chance_multiplier then
+            local spawn = radiant.entities.create_entity(spawn_data.uri, {
+               owner = spawn_options.owner or nil
+            })
+            local location = radiant.terrain.find_placement_point(origin, 1, 3)
+
+            if spawn_options.tuning then
+               local tuning = radiant.resources.load_json(spawn_options.tuning)
+
+               if tuning and tuning.job then
+                  spawn:add_component('stonehearth:job'):promote_to(tuning.job)
+               end
+
+               if tuning and tuning.equipment then
+                  local ec = spawn:add_component('stonehearth:equipment')
+                  local scale = tuning.equipment_scale
+                  for _, piece in pairs(tuning.equipment) do
+                     -- piece is either the uri to the piece or an array of candidates
+                     if type(piece) == 'table' then
+                        piece = piece[rng:get_int(1, #piece)]
+                     end
+                     local old_piece, new_piece = ec:equip_item(piece)
+                     if scale then
+                        new_piece:add_component('render_info'):set_scale(scale)
+                     end
+                  end
+               end
+
+               local unit_info = tuning.unit_info
+               radiant.entities.set_entity_name(spawn, unit_info)
+
+               if tuning and tuning.loot_drops then
+                  spawn:add_component('stonehearth:loot_drops'):set_loot_table(tuning.loot_drops)
+               end
+
+               if tuning and tuning.scale then
+                  spawn:add_component('render_info'):set_scale(tuning.scale)
+               end
+
+               if tuning and tuning.render_info then
+                  local render_info = spawn:get_component('render_info')
+                  if tuning.render_info.color_map then
+                     render_info:set_color_map(tuning.render_info.color_map)
+                  end
+                  if tuning.render_info.material_maps then
+                     for _, material_map in ipairs(tuning.render_info.material_maps) do
+                        render_info:add_material_map(material_map)
+                     end
+                  end
+               end
+
+               if tuning and tuning.attributes then
+                  local attrib_component = spawn:add_component('stonehearth:attributes')
+
+                  for name, value in pairs(tuning.attributes) do
+                     if type(value) == 'table' then -- new way of specifying how to modify attributes
+                        value = game_master_lib.get_scaled_attribute(value, nil, attrib_component:get_attribute(name))
+                     else
+                        value = game_master_lib.evaluate_equation(value)
+                     end
+
+                     attrib_component:set_attribute(name, value)
+                  end
+               end
+            end
+
+            radiant.terrain.place_entity_at_exact_location(spawn, location)
+            if spawn_options.effect then
+               local proxy_entity = radiant.entities.create_entity('stonehearth:object:transient', {
+                  debug_text = 'spawn effect'
+               })
+               radiant.terrain.place_entity_at_exact_location(proxy_entity, location)
+
+               local spawn_effect = radiant.effects.run_effect(proxy_entity, spawn_options.effect)
+               spawn_effect:set_finished_cb(function()
+                  radiant.entities.destroy_entity(proxy_entity)
+               end)
+            end
+
+            if spawn_options.bulletin and not bulletin then
+               bulletin = game_master_lib.create_zoom_bulletin(spawn, owner, spawn_options.bulletin)
+            end
+         end
+      end
+   end
+end
+
+function ace_entities.output_spawned_items(items, origin, min_radius, max_radius, options) -- , output, inputs, spill_fail_items, delete_fail_items)
+   -- local output_comp = output and output:is_valid() and output:get_component('stonehearth_ace:output')
    options = options or {}
    local inputs = options.inputs
-   
+
    if inputs and type(inputs) ~= 'table' then
-      inputs = {[inputs:get_id()] = inputs}
+      inputs = {
+         [inputs:get_id()] = inputs
+      }
       options.inputs = inputs
    end
 
@@ -559,12 +679,14 @@ end
 
 function ace_entities.can_output_spawned_items(items, output, inputs, require_matching_filter_override)
    if inputs and type(inputs) ~= 'table' then
-      inputs = {[inputs:get_id()] = inputs}
+      inputs = {
+         [inputs:get_id()] = inputs
+      }
    end
 
    local options = {
       output = output,
-      require_matching_filter_override = require_matching_filter_override,
+      require_matching_filter_override = require_matching_filter_override
    }
 
    return item_io_lib.can_output(items, inputs, options)
@@ -583,7 +705,11 @@ function ace_entities.get_successfully_output_items(output_table)
 end
 
 function ace_entities.get_empty_output_table()
-   return {spilled = {}, succeeded = {}, failed = {}}
+   return {
+      spilled = {},
+      succeeded = {},
+      failed = {}
+   }
 end
 
 function ace_entities.combine_output_tables(t1, t2)
@@ -623,7 +749,7 @@ function ace_entities.get_destination_location(target, source)
       return
    end
    local offset = rgn:get_closest_point(source and (radiant.entities.get_world_grid_location(source) - origin) or Point3.zero)
-   
+
    return offset + origin
 end
 
@@ -701,7 +827,7 @@ end
 
 function ace_entities.set_entity_movement_modifier(entity, region, mm_data)
    local base_mm_data = mm_data or radiant.entities.get_entity_data(entity, 'movement_modifier_shape')
-   
+
    if not base_mm_data then
       return
    end
@@ -714,10 +840,10 @@ function ace_entities.set_entity_movement_modifier(entity, region, mm_data)
       mms:set_region(_radiant.sim.alloc_region3())
    end
    mms:get_region():modify(function(cursor)
-         cursor:copy_region(region)
-         cursor:optimize_by_defragmentation('entity movement modifier shape')
-      end)
-   
+      cursor:copy_region(region)
+      cursor:optimize_by_defragmentation('entity movement modifier shape')
+   end)
+
    if movement_modifier then
       mms:set_modifier(movement_modifier)
    end

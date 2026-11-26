@@ -72,6 +72,13 @@ function AceRenewableResourceNodeComponent:post_activate()
       self._loot_table_filter_args = self._json.loot_table_filter_args
    end
 
+   if not self._entity:get_component('stonehearth:attributes') then
+      local attributes = self._entity:add_component('stonehearth:attributes')
+      if attributes then
+         attributes:set_attribute('renewable_resource_rate_multiplier', 1)
+      end
+   end
+
    --log:debug('%s RRN:post_activate() current model: %s', self._entity, self._entity:get_component('render_info'):get_model_variant())
 end
 
@@ -481,7 +488,10 @@ function AceRenewableResourceNodeComponent:_place_spawned_items(json, harvester,
 
    if json.resource_loot_table then
       local filter_args = self._loot_table_filter_args or (self._loot_table_filter_script and util.get_current_conditions_loot_table_filter_args())
-      local uris = LootTable(json.resource_loot_table, quality, self._loot_table_filter_script, filter_args):roll_loot()
+      local uris, spawns = LootTable(json.resource_loot_table, quality, self._loot_table_filter_script, filter_args):roll_loot()
+      if spawns then
+         options.spawns = spawns
+      end
       if next(uris) then
          self:_modify_harvest_amounts(harvester, uris)
          local output_items = radiant.entities.output_items(uris, location, 1, 3, options)
