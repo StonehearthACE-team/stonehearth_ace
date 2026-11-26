@@ -1,0 +1,81 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:monster",
+   "components": {
+      "render_info": {
+         "animation_table": "/stonehearth/data/rigs/entities/monster/forest/entling",
+         "scale": 0.15
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(summon_tornado.qb)"
+            ]
+         }
+      },
+      "stonehearth:equipment": {
+         "items": [
+            "stonehearth_ace:monsters:forest:tornado:fist_weapon"
+         ]
+      },
+      "stonehearth:attributes": {
+         "max_health": {
+            "type": "basic",
+            "value": 999
+         },
+         "muscle": {
+            "type": "basic",
+            "value": 0
+         },
+         "menace": {
+            "type": "basic",
+            "value": 1
+         },
+         "courage": {
+            "type": "basic",
+            "value": 0
+         },
+         "speed": {
+            "type": "basic",
+            "value": 40
+         },
+         "exp_reward": {
+            "type": "basic",
+            "value": 0
+         }
+      },
+      "stonehearth_ace:summon": {
+         "despawn_timer": "40m+20m",
+         "despawn_effect": "stonehearth:effects:poof_effect"
+      },
+      "stonehearth:buffs": {
+         "buffs": {
+            "stonehearth_ace:buffs:tornado_aoe": true
+         }
+      },
+      "effect_list": {
+         "effects": [
+            "stonehearth_ace:effects:forest:tornado"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:healable": {
+         "healable_by_anyone": false,
+         "target_type": "summon"
+      },
+      "navgrid": {
+         "visible_to_sensors": false
+      },
+      "stonehearth:target_type": {
+         "target_type": "untargetable"
+      },
+      "stonehearth:entity_radius": 0.25,
+      "stonehearth:entity_reach": 1,
+      "stonehearth:combat:melee_defenses": [],
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.monsters.forest.summon_tornado.display_name)",
+         "description": "i18n(stonehearth_ace:entities.monsters.forest.summon_tornado.description)"
+      }
+   }
+}

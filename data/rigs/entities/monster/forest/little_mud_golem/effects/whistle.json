@@ -1,0 +1,40 @@
+{
+   "type" : "effect",
+   "tracks": {
+      "animation": {
+         "type": "animation_effect",
+         "start_time": 0,
+         "animation": "whistle.json",
+         "loop": false
+      },
+      "unit_status_effect": {
+         "type": "unit_status_effect",
+         "material": {
+            "name": "materials/billboard.material.json",
+            "samplers" : [
+               {
+                  "name" : "albedoMap",
+                  "map" : "materials/thoughts/music/music_.png",
+                  "numAnimationFrames" : 1,
+                  "frameRate" : 24
+               }
+            ]
+         },
+         "duration": 1500,
+         "width": 1,
+         "height": 1.7,
+         "xOffset": 0,
+         "yOffset": 0,
+         "bone": "ATTOVERCOG"
+     },
+      "sound": {
+         "type": "sound_effect",
+         "loop" : false,
+         "start_time" : 700,
+         "min_distance": 60,
+         "falloff" : 3.2,
+         "volume": 40,
+         "track" : "stonehearth:sounds:shepherd_whistle"
+      }     
+  }
+}

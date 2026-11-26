@@ -1,0 +1,60 @@
+{
+   "type": "effect",
+   "tracks": {
+      "animation": {
+         "type": "animation_effect",
+         "start_time": 0,
+         "speed": 0.3,
+         "animation": "combat_smash.json",
+         "loop": false
+      },
+      "Trail": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/young_ent/summon_cast.cubemitter.json",
+         "loop": true,
+         "start_time": 25,
+         "end_time": 2500,
+         "transforms": {
+            "x":0,
+            "y":-1,
+            "z":0,
+            "rx":0,
+            "ry":0,
+            "rz":0
+         },
+         "bone": "rightHand"
+      },
+      "sound1": {
+         "type": "sound_effect",
+         "start_time": 100,
+         "end_time": 2500,
+         "min_distance": 30,
+         "falloff": 7,
+         "volume": 100,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:young_ent_smash_01",
+               "stonehearth_ace:sounds:young_ent_smash_02",
+               "stonehearth_ace:sounds:young_ent_smash_03"
+            ]
+         }
+      },
+      "sound2": {
+         "type": "sound_effect",
+         "start_time": 25,
+         "end_time": 2500,
+         "min_distance": 30,
+         "falloff": 7,
+         "volume": 100,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:young_ent_attack_01",
+               "stonehearth_ace:sounds:young_ent_attack_02"
+            ]
+         }
+      }
+   }
+}
+

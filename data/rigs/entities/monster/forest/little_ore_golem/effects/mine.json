@@ -1,0 +1,55 @@
+   {
+   "type" : "effect",
+   "tracks": {
+      "animation": {
+            "type": "animation_effect",
+            "start_time": 0,
+            "speed" : 2.0,
+            "animation": "mine.json",
+            "loop": true
+      },
+      "hide_carrying" : {
+         "type": "hide_bone",
+         "start_time": 0,
+         "end_time": 0,
+         "bone": "carry"
+      },
+      "grab_hammer" : {
+         "type": "attach_item_effect",
+         "start_time": 0,
+         "end_time": 0,
+         "item": "stonehearth:mining_pick",
+         "bone": "mainHand"
+      },
+       "sound": {
+         "type": "sound_effect",
+         "duration": 0,
+         "start_time": 200,
+         "min_distance": 20,
+         "falloff" : 5.5,
+         "volume": 70,
+         "track" : {
+            "type": "one_of",
+            "items": [
+               "stonehearth:sounds:mine_01",
+               "stonehearth:sounds:mine_02",
+               "stonehearth:sounds:mine_03"
+            ]
+         }
+      },
+      "dust": {
+         "type": "cubemitter",
+         "start_time" : 150,
+         "end_time" : 170,
+         "cubemitter": "particles/dust_poof/dust_poof.cubemitter.json",
+         "transforms": {
+            "x":0,
+            "y":0.5,
+            "z":-1,
+            "rx":0,
+            "ry":0,
+            "rz":0
+         }
+      }      
+   }
+}

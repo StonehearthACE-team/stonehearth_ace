@@ -1,0 +1,50 @@
+{
+   "type": "monster_tuning",
+   "estimated_difficulty": 4,
+   "attributes": {
+      "max_health": 980,
+      "muscle": 85,
+      "menace": 100,
+      "courage": 110,
+      "speed": 30,
+      "additive_armor_modifier": 2
+   },
+   "equipment": {
+      "weapon": [
+         "stonehearth_ace:monsters:forest:mud_golem:fist_weapon"
+      ]
+   },
+   "loot_drops": {
+      "entries": {
+         "default": {
+            "num_rolls": {
+               "min": 6,
+               "max": 8
+            },
+            "items": {
+               "stone": {
+                  "uri": "stonehearth_ace:loot_bag:mud_golem",
+                  "type": "bag",
+                  "weight": 10
+               }
+            }
+         },
+         "currency": {
+            "num_rolls": {
+               "min": 1,
+               "max": 2
+            },
+            "items": {
+               "none": {
+                  "uri": "",
+                  "weight": 3
+               },
+               "currency": {
+                  "uri": "stonehearth_ace:loot:currency:forest",
+                  "weight": 1
+               }
+            }
+         }
+      }
+   }
+}

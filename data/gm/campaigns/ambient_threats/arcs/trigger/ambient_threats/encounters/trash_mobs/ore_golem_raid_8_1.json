@@ -1,0 +1,28 @@
+{
+   "type": "encounter",
+   "mixins": "stonehearth:mixins:encounter:golem_raid",
+   "encounter_type": "create_mission",
+   "in_edge": "ore_golem_raid_8_1",
+   "out_edge": "wait_to_destroy_raiding_party",
+   "create_mission_info": {
+      "mission": {
+         "ctx_entity_registration_path": "ore_golem_raid_8_1",
+         "members": {
+            "iron_golems": {
+               "from_population": {
+                  "min": 1,
+                  "max": 2
+               },
+               "tuning": "stonehearth_ace:monster_tuning:forest:hard_ore_golem"
+            },
+            "little_iron_golems": {
+               "from_population": {
+                  "min": 2,
+                  "max": 4
+               },
+               "tuning": "stonehearth_ace:monster_tuning:forest:hard_little_ore_golem"
+            }
+         }
+      }
+   }
+}

@@ -1,0 +1,48 @@
+{
+   "type": "encounter",
+   "mixins": "stonehearth:mixins:encounter:entling_raid",
+   "encounter_type": "create_mission",
+   "in_edge": "entling_raid_6",
+   "out_edge": "wait_to_destroy_raiding_party",
+   "create_mission_info": {
+      "mission": {
+         "ctx_entity_registration_path": "entling_raid_6",
+         "members": {
+            "entlings": {
+               "from_population": {
+                  "min": 4,
+                  "max": 6
+               },
+               "tuning": "stonehearth_ace:monster_tuning:forest:hard_entling"
+            },
+            "giant_entlings": {
+               "from_population": {
+                  "role": "entling",
+                  "location": { "x": 0, "z": 0 },
+                  "min": 2,
+                  "max": 3,
+                  "range": 20
+               },
+               "tuning": "stonehearth:monster_tuning:forest:giant_entling"
+            },
+            "young_ents": {
+               "from_population": {
+                  "min": 1,
+                  "max": 1
+               },
+               "tuning": "stonehearth_ace:monster_tuning:forest:young_ent"
+            },
+            "mage_entlings": {
+               "from_population": {
+                  "role": "entling_mage",
+                  "location": { "x": 0, "z": 0 },
+                  "min": 1,
+                  "max": 1,
+                  "range": 15
+               },
+               "tuning": "stonehearth:monster_tuning:forest:entling_mage"
+            }
+         }
+      }
+   }
+}

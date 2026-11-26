@@ -1,0 +1,47 @@
+{
+   "type": "effect",
+   "tracks": {
+      "animation": {
+         "type": "animation_effect",
+         "start_time": 0,
+         "animation": "run.json",
+         "loop": true
+      },
+      "right_step": {
+         "type": "sound_effect",
+         "start_time": 1200,
+         "min_distance": 30,
+         "falloff": 7,
+         "volume": 80,
+         "repeat": true,
+         "track": "stonehearth:sounds:golem_step_01"
+      },
+      "left_step": {
+         "type": "sound_effect",
+         "start_time": 2200,
+         "min_distance": 30,
+         "falloff": 7,
+         "volume": 100,
+         "repeat": true,
+         "track": "stonehearth:sounds:golem_step_02"
+      },
+      "growling": {
+         "type": "sound_effect",
+         "duration": 1000,
+         "start_time": 0,
+         "min_distance": 30,
+         "falloff": 7,
+         "volume": 100,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth:sounds:golem_growl_01",
+               "stonehearth:sounds:golem_growl_02",
+               "stonehearth:sounds:golem_growl_03",
+               "stonehearth:sounds:golem_growl_04",
+               "stonehearth:sounds:golem_growl_05"
+            ]
+         }
+      }
+   }
+}

@@ -17,7 +17,12 @@
       "out_edges": [
 			"mummy_raid_1",
          "undergrowth_raid_1",
-			"skip_raid"
+			"mud_golem_raid_1",
+			{
+            "out_edge": "skip_raid",
+            "type": "weighted_edge",
+            "weight": 1
+         }
       ]
    }
 }

@@ -1,0 +1,47 @@
+{
+   "type": "effect",
+   "tracks": {
+      "particles": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/gust/particles.cubemitter.json",
+         "start_time": 0,
+         "loop": true,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "particles_small": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/gust/particles_small.cubemitter.json",
+         "start_time": 0,
+         "loop": true,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "leaf_spiral": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/heal/nature/heal_leaves_spiral.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 45,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "sound": {
+         "type": "sound_effect",
+         "duration": 1000,
+         "start_time": 0,
+         "min_distance": 25,
+         "max_instances": 2,
+         "falloff": 3,
+         "volume": 55,
+         "track": "stonehearth_ace:sounds:entling_mage:gust"
+      }
+   }
+}

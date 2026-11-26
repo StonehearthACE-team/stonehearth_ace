@@ -1,0 +1,48 @@
+{
+   "type" : "effect",
+   "tracks": {
+      "animation": {
+         "type": "animation_effect",
+         "start_time": 0,
+         "animation": "combat_power_spike.json",
+         "loop": false
+      },
+      "sound": {
+         "type": "sound_effect",
+         "duration": 3000,
+         "start_time": 2500,
+         "min_distance": 30,
+         "falloff" : 3.6,
+         "volume": 30,
+         "track" : "stonehearth:sounds:woodsword_powerspike_01"
+      },
+      "jump": {
+         "type": "cubemitter",
+         "start_time" : 2500,
+         "end_time" : 2580,
+         "cubemitter": "particles/dust_poof/jump.cubemitter.json",
+         "transforms": {
+            "x":0,
+            "y":0,
+            "z":0,
+            "rx":0,
+            "ry":0,
+            "rz":0
+         }
+      },
+      "slam": {
+         "type": "cubemitter",
+         "start_time" : 3000,
+         "end_time" : 3080,
+         "cubemitter": "particles/combat/slam.cubemitter.json",
+         "transforms": {
+            "x":0,
+            "y":0,
+            "z":-3,
+            "rx":90,
+            "ry":0,
+            "rz":0
+         }
+      }                 
+   }
+}

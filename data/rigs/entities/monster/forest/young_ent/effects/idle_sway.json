@@ -1,0 +1,26 @@
+{
+   "type" : "effect",
+   "tracks": {
+      "animation": {
+         "type": "animation_effect",
+         "start_time": 0,
+         "animation": "idle_breathe.json",
+         "loop": true
+   },
+       "sound": {
+         "type": "sound_effect",
+         "duration": 1000,
+         "start_time": 0,
+         "min_distance": 30,
+         "falloff" : 7,
+         "volume": 100,
+         "track" : {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:young_ent_growl_01",
+               "stonehearth_ace:sounds:young_ent_growl_02"
+            ]    
+         }
+      }
+   }
+}

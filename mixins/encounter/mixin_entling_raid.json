@@ -1,5 +1,20 @@
 {
    "mixintypes": {
       "type": "remove"
+   },
+   "create_mission_info": {
+      "mission": {
+         "members": {           
+            "young_ents": {
+               "from_population": {
+                  "role": "young_ent",
+                  "location": { "x": 0, "z": 0 },
+                  "min": 0,
+                  "max": 0
+               },
+               "tuning": "stonehearth_ace:monster_tuning:forest:young_ent"
+            }
+         }
+      }
    }
 }

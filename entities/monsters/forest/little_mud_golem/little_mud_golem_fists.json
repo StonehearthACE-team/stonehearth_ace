@@ -1,0 +1,24 @@
+{
+   "type": "entity",
+   "components": {
+      "stonehearth:equipment_piece": {
+         "slot": "mainhand",
+         "render_type": "none"
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:weapon_data": {
+         "base_damage": 3,
+         "reach": 1.5
+      },
+      "stonehearth:combat:melee_attacks": [
+         {
+            "name": "combat_slam",
+            "effect": "combat_slam",
+            "active_frame": 17,
+            "cooldown": 0,
+            "priority": 0
+         }
+      ]
+   }
+}

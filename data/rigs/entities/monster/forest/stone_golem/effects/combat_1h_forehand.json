@@ -1,0 +1,43 @@
+{
+   "type": "effect",
+   "tracks": {
+      "animation": {
+         "type": "animation_effect",
+         "start_time": 0,
+         "animation": "combat_smash.json",
+         "loop": false
+      },
+      "sound1": {
+         "type": "sound_effect",
+         "duration": 1000,
+         "start_time": 300,
+         "min_distance": 30,
+         "falloff": 7,
+         "volume": 100,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth:sounds:golem_smash_01",
+               "stonehearth:sounds:golem_smash_02",
+               "stonehearth:sounds:golem_smash_03"
+            ]
+         }
+      },
+      "sound2": {
+         "type": "sound_effect",
+         "duration": 1000,
+         "start_time": 250,
+         "min_distance": 30,
+         "falloff": 7,
+         "volume": 100,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth:sounds:golem_attack_01",
+               "stonehearth:sounds:golem_attack_02"
+            ]
+         }
+      }
+   }
+}
+

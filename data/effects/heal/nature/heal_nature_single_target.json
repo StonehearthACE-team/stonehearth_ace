@@ -1,0 +1,99 @@
+{
+   "type": "effect",
+   "tracks": {
+      "upward_particles": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/heal/nature/single_target_heal.cubemitter.json",
+         "loop": true,
+         "start_time": 0,
+         "end_time": 1000,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "glow": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/heal/nature/single_target_heal_glow.cubemitter.json",
+         "loop": true,
+         "start_time": 400,
+         "end_time": 1200,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "base_1": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/heal/nature/single_target_heal_base.cubemitter.json",
+         "loop": true,
+         "start_time": 0,
+         "end_time": 500,
+         "transforms": { "x": 0, "y": 0.25, "z": 1,
+            "rx": 90,
+            "ry": 90,
+            "rz": 0
+         }
+      },
+      "base_2": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/heal/nature/single_target_heal_base.cubemitter.json",
+         "loop": true,
+         "start_time": 0,
+         "end_time": 500,
+         "transforms": { "x": 1, "y": 0.25, "z": 0,
+            "rx": 90,
+            "ry": 180,
+            "rz": 0
+         }
+      },
+      "base_3": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/heal/nature/single_target_heal_base.cubemitter.json",
+         "loop": true,
+         "start_time": 0,
+         "end_time": 500,
+         "transforms": { "x": 0, "y": 0.25, "z": -1,
+            "rx": 90,
+            "ry": 270,
+            "rz": 0
+         }
+      },
+      "base_4": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/heal/nature/single_target_heal_base.cubemitter.json",
+         "loop": true,
+         "start_time": 0,
+         "end_time": 500,
+         "transforms": { "x": -1, "y": 0.25, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "glow_large": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/heal/nature/single_target_heal_glow_large.cubemitter.json",
+         "loop": true,
+         "start_time": 0,
+         "end_time": 2000,
+         "transforms": { "x": 0, "y": 1.75, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "sound": {
+         "type": "sound_effect",
+         "duration": 1000,
+         "start_time": 10,
+         "min_distance": 17,
+         "max_instances": 2,
+         "falloff": 2.5,
+         "volume": 50,
+         "track": "stonehearth:sounds:cleric_heal_swirl"
+      }
+   }
+}

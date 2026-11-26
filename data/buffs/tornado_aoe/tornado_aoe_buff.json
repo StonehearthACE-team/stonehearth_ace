@@ -1,0 +1,22 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "invisible_to_player": true,
+   "script": "stonehearth:buff_scripts:aura",
+   "script_info": {
+      "pulse": "2m",
+      "aura_buff": [
+         "stonehearth_ace:buffs:tornado_aoe:damage"
+      ],
+      "radius": 5,
+      "pulse_immediately": true,
+      "target_enemies": true,
+      "affect_self": false,
+      "target_type": "mob",
+      "sensor_name": "sight"
+   },
+   "properties": [
+      "invulnerable",
+      "cannot_panic"
+   ]
+}

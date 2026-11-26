@@ -1,0 +1,17 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "duration": "40m",
+   "repeat_add_action": "renew_duration",
+   "effect": "stonehearth_ace:effects:heal:nature:in_progress",
+   "restore_effect": true,
+   "invisible_to_player": true,
+   "script": "stonehearth:buff_scripts:periodic_health_modification",
+   "script_info": {
+      "health_change": 0.1,
+      "pulse": "10m",
+      "pulse_immediately": false,
+      "pulse_on_destroy": true,
+      "is_percentage": true
+   }
+}

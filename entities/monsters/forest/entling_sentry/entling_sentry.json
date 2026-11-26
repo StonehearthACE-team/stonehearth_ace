@@ -1,0 +1,85 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth:mixins:placed_object",
+      "stonehearth:mixins:siege_turret"
+   ],
+   "components": {
+      "render_info": {
+         "animation_table": "/stonehearth/data/rigs/entities/monster/forest/entling_mage",
+         "color_map": "stonehearth:color_map:mob",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ]
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(entling_sentry.qb)"
+            ]
+         }
+      },
+      "stonehearth:attributes": {
+         "max_health": {
+            "type": "basic",
+            "value": 180
+         },
+         "menace": {
+            "type": "basic",
+            "value": 50
+         },
+         "muscle": {
+            "type": "basic",
+            "value": 25
+         }
+      },
+      "stonehearth:siege_weapon": {
+         "max_uses": 20,
+         "ignore_replacing": true,
+         "passive_refill": {
+            "amount": 1,
+            "interval": "10m"
+         }
+      },
+      "stonehearth:equipment": {
+         "items": [
+            "stonehearth_ace:monsters:forest:entling_sentry:weapon"
+         ]
+      },
+      "sensor_list": {
+         "sensors": {
+            "sight": {
+               "type": "sensor",
+               "radius": 32
+            }
+         }
+      },
+      "effect_list": {
+         "default": "/stonehearth/data/rigs/entities/monster/forest/entling_mage/effects/idle_breathe.json",
+         "initial_pose_animation": "idle_breathe.json"
+      },
+      "stonehearth:bone_transform": {
+         "bones": [
+            "foot",
+            "torso",
+            "head",
+            "hat",
+            "hair"
+         ]
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:target_type": {
+         "hit_effect": "stonehearth_ace:effects:hit_sparks:hit_effect:wood"
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.monsters.forest.entling_sentry.display_name)",
+         "description": "i18n(stonehearth_ace:entities.monsters.forest.entling_sentry.description)",
+         "icon": "file(entling_sentry.png)"
+      }
+   }
+}

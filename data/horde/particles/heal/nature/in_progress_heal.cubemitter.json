@@ -1,0 +1,92 @@
+{
+   "name": "fire",
+   "duration": 20000,
+   "material": "materials/cubemitter_bloom.material.json",
+   "loops": true,
+   "mesh": {
+      "file": "",
+      "matrix": "",
+      "offset": {
+         "x": 0,
+         "y": 0,
+         "z": 0
+      }
+   },
+   "emission": {
+      "rate": {
+         "kind": "CURVE",
+         "values": [
+            [0, 28.333333333333332],
+            [0.6177993774414062, 19.3033955891927],
+            [1, 0]
+         ]
+      },
+      "angle": {
+         "kind": "CONSTANT",
+         "values": [90]
+      },
+      "origin": {
+         "surface": "RECTANGLE",
+         "values": [2.5, 2.5, 1.5, 1.5]
+      }
+   },
+   "particle": {
+      "lifetime": {
+         "start": {
+            "kind": "RANDOM_BETWEEN",
+            "values": [800, 1200]
+         }
+      },
+      "speed": {
+         "start": {
+            "kind": "CONSTANT",
+            "values": [0.1]
+         },
+         "over_lifetime": {
+            "kind": "CURVE",
+            "values": [
+               [0, 1],
+               [0.5, 0.8],
+               [0.8, 0.4],
+               [1, 0]
+            ]
+         }
+      },
+      "acceleration": {
+         "over_lifetime_y": {
+            "kind": "CONSTANT",
+            "values": [0.015]
+         }
+      },
+      "scale": {
+         "start": {
+            "kind": "RANDOM_BETWEEN",
+            "values": [0.2, 0.3]
+         },
+         "over_lifetime": {
+            "kind": "CURVE",
+            "values": [
+               [0, 0.9933333333333333],
+               [1, 0.4933333333333333]
+            ]
+         }
+      },
+      "color": {
+         "start": {
+            "kind": "RANDOM_BETWEEN",
+            "values": [
+               [ 0.118, 0.89, 0.08, 0.1 ],
+               [ 0.549, 0.957, 0.185, 0.2 ]
+            ]
+         },
+         "over_lifetime_a": {
+            "kind": "CURVE",
+            "values": [
+               [ 0, 0 ],
+               [ 0.4074578857421875, 0.869198252360026 ],
+               [ 1, 0 ]
+            ]
+         }
+      }
+   }
+}

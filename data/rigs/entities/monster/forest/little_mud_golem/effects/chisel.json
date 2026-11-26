@@ -1,0 +1,41 @@
+{
+   "type" : "effect",
+   "tracks": {
+      "animation": {
+         "type": "animation_effect",
+         "start_time": 0,
+         "animation": "chisel.json",
+         "loop": true
+      },
+      "grab_chisel" : {
+         "type": "attach_item_effect",
+         "start_time": 0,
+         "end_time": 0,
+         "item": "stonehearth:mason:chisel",
+         "bone": "offHand"
+      },
+      "grab_hammer" : {
+         "type": "attach_item_effect",
+         "start_time": 0,
+         "end_time": 0,
+         "item": "stonehearth:mason:hammer",
+         "bone": "mainHand"
+      },
+      "sound": {
+         "type": "sound_effect",
+         "duration": 500,
+         "start_time": 0,
+         "min_distance": 25,
+         "falloff" : 7,
+         "volume": 70,
+         "track" : {
+            "type": "one_of",
+            "items": [
+               "stonehearth:sounds:saw_light_01_sound",
+               "stonehearth:sounds:saw_light_02_sound",
+               "stonehearth:sounds:saw_light_03_sound"
+            ]    
+         }
+      }
+   }
+}

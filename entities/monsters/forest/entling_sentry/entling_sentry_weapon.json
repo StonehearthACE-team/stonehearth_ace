@@ -1,0 +1,29 @@
+{
+   "type": "entity",
+   "components": {
+      "stonehearth:equipment_piece": {
+         "slot": "mainhand",
+         "render_type": "none"
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:weapon_data": {
+         "base_damage": 6,
+         "reach": 4.5,
+         "base_ranged_damage": 6,
+         "range": 32,
+         "projectile_speed": 17,
+         "projectile_uri": "stonehearth_ace:weapons:nature_burst:small",
+         "projectile_start_offset": { "x": 0, "y": 1.6, "z": 0 }
+      },
+      "stonehearth:combat:ranged_attacks": [
+         {
+            "name": "entling_burst",
+            "effect": "combat_1h_backhand",
+            "cooldown": 0,
+            "active_frame": 12,
+            "priority": 2
+         }
+      ]
+   }
+}

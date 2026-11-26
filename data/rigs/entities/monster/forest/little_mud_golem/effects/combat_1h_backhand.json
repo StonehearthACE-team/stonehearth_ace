@@ -1,0 +1,46 @@
+{
+   "type" : "effect",
+   "tracks": {
+      "animation": {
+         "type": "animation_effect",
+         "start_time": 0,
+         "animation": "combat_1h_backhand.json",
+         "loop": false
+      },
+      "sound": {
+         "type": "sound_effect",
+         "duration": 1000,
+         "start_time": 400,
+         "min_distance": 30,
+         "falloff" : 12,
+         "volume": 30,
+         "track" : {
+            "type": "one_of",
+            "items": [
+               "stonehearth:sounds:woodsword_backhand_01",
+               "stonehearth:sounds:woodsword_backhand_02"
+            ]
+         }
+      },
+          "sound": {
+         "type": "sound_effect",
+         "duration": 1000,
+         "start_time": 250,
+         "min_distance": 30,
+         "max_instances": 2,
+         "falloff" : 12,
+         "volume": 100,
+         "track" : {
+            "type": "one_of",
+            "items": [
+               "stonehearth:sounds:goblin_attack_01",
+               "stonehearth:sounds:goblin_attack_02",
+               "stonehearth:sounds:goblin_attack_03",
+               "stonehearth:sounds:goblin_attack_04",
+               "stonehearth:sounds:goblin_attack_05",
+               "stonehearth:sounds:goblin_attack_06"
+            ]    
+         }
+      }
+   }
+}

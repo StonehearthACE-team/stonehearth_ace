@@ -1,0 +1,23 @@
+{
+   "type": "monster_tuning",
+   "estimated_difficulty": "s4",
+   "attributes": {
+      "max_health": {
+         "base": 1600,
+         "net_worth_effect": {
+            "increase_by": 15,
+            "per": 1200
+         },
+         "max": 10000
+      },
+      "muscle": 95,
+      "menace": 120,
+      "courage": 160,
+      "additive_armor_modifier": 12
+   },
+   "equipment": {
+      "weapon": [
+         "stonehearth_ace:monsters:forest:ore_golem:fist_weapon_upgrade"
+      ]
+   }
+}
