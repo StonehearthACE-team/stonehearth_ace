@@ -1,8 +1,10 @@
+local rng = _radiant.math.get_default_rng()
 local Point2 = _radiant.csg.Point2
 local Point3 = _radiant.csg.Point3
 local validator = radiant.validator
 local constants = require 'stonehearth.constants'
 local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_lib'
+local PopulationFaction = require 'stonehearth.services.server.population.population_faction'
 local NUM_STARTING_CITIZENS = constants.game_creation.num_starting_citizens
 local MIN_STARTING_ITEM_RADIUS = 0
 local MIN_STARTING_ITEM_CONTAINER_RADIUS = 6
@@ -14,7 +16,17 @@ local AceGameCreationService = class()
 
 local log = radiant.log.create_logger('game_creation_service')
 
---If the kingdom is not yet selected, select it now
+-- Make sure existing games get living world data created on restoration
+AceGameCreationService._ace_old_restore = GameCreationService.restore
+function AceGameCreationService:restore()
+   --if not self._sv.living_world_data then
+      --self:_living_world_gc_setup()
+   --end
+
+   self:_ace_old_restore()
+end
+
+-- If the kingdom is not yet selected, select it now
 -- ACE: make sure we change the kingdom if it was set to something else
 -- (if player started creating game, then went back to main menu and started again)
 function AceGameCreationService:select_player_kingdom(session, response, kingdom)
@@ -38,7 +50,9 @@ end
 
 AceGameCreationService._ace_old_embark_command = GameCreationService.embark_command
 function AceGameCreationService:embark_command(session, response)
-   radiant.events.trigger(radiant, 'stonehearth_ace:player_embarked', {player_id = session.player_id})
+   radiant.events.trigger(radiant, 'stonehearth_ace:player_embarked', {
+      player_id = session.player_id
+   })
    return self:_ace_old_embark_command(session, response)
 end
 
@@ -70,8 +84,13 @@ function AceGameCreationService:create_camp_command(session, response, pt)
       standard = 'stonehearth:camp_standard'
    end
 
-   local banner_entity = radiant.entities.create_entity(standard, { owner = player_id })
-   radiant.terrain.place_entity(banner_entity, location, { facing = facing, force_iconic = false })
+   local banner_entity = radiant.entities.create_entity(standard, {
+      owner = player_id
+   })
+   radiant.terrain.place_entity(banner_entity, location, {
+      facing = facing,
+      force_iconic = false
+   })
    inventory:add_item(banner_entity)
    town:set_banner(banner_entity)
 
@@ -80,13 +99,28 @@ function AceGameCreationService:create_camp_command(session, response, pt)
    local camp_z = pt.z
 
    local citizen_locations = {
-      {x=camp_x-3, z=camp_z-3},
-      {x=camp_x+0, z=camp_z-3},
-      {x=camp_x+3, z=camp_z-3},
-      {x=camp_x-3, z=camp_z+3},
-      {x=camp_x+3, z=camp_z+3},
-      {x=camp_x-3, z=camp_z+0},
-      {x=camp_x+3, z=camp_z+0},
+      {
+         x = camp_x - 3,
+         z = camp_z - 3
+      }, {
+         x = camp_x + 0,
+         z = camp_z - 3
+      }, {
+         x = camp_x + 3,
+         z = camp_z - 3
+      }, {
+         x = camp_x - 3,
+         z = camp_z + 3
+      }, {
+         x = camp_x + 3,
+         z = camp_z + 3
+      }, {
+         x = camp_x - 3,
+         z = camp_z + 0
+      }, {
+         x = camp_x + 3,
+         z = camp_z + 0
+      }
    }
 
    if next(pop:get_generated_citizens()) == nil then
@@ -106,17 +140,24 @@ function AceGameCreationService:create_camp_command(session, response, pt)
       if not citizen_location then
          citizen_location = radiant.terrain.find_placement_point(location, min_radius, max_radius, citizen, 1, false)
       end
-      self:_place_citizen_embark(citizen, citizen_location.x, citizen_location.z, { facing = facing, min_y = min_y })
+      self:_place_citizen_embark(citizen, citizen_location.x, citizen_location.z, {
+         facing = facing,
+         min_y = min_y
+      })
       index = index + 1
    end
 
    pop:unset_generated_citizens()
 
-   local town =  stonehearth.town:get_town(player_id)
+   local town = stonehearth.town:get_town(player_id)
    town:check_for_combat_job_presence()
 
    local camp_hearth_uri = pop:get_hearth() or 'stonehearth:decoration:firepit_hearth'
-   local hearth = self:_place_item(pop, camp_hearth_uri, camp_x, camp_z+5, { facing = facing, force_iconic = false, min_y = min_y })
+   local hearth = self:_place_item(pop, camp_hearth_uri, camp_x, camp_z + 5, {
+      facing = facing,
+      force_iconic = false,
+      min_y = min_y
+   })
    inventory:add_item(hearth)
    town:set_hearth(hearth)
 
@@ -141,15 +182,19 @@ function AceGameCreationService:create_camp_command(session, response, pt)
 
    if game_options.starting_items_container then
       -- if a uri is being supplied, create the entity, otherwise assume it's already an entity
-      local starting_items_container = type(game_options.starting_items_container) == 'string' and
-            radiant.entities.create_entity(game_options.starting_items_container, {owner = player_id}) or game_options.starting_items_container
-      
+      local starting_items_container = type(game_options.starting_items_container) == 'string' and radiant.entities.create_entity(game_options.starting_items_container, {
+         owner = player_id
+      }) or game_options.starting_items_container
+
       -- if it hasn't already been placed, find a place for it
       if not radiant.entities.get_world_grid_location(starting_items_container) then
-			local placement_location = Point3(camp_x, pt.y, camp_z-6)
+         local placement_location = Point3(camp_x, pt.y, camp_z - 6)
          -- do a better job at finding a placement location in case of obstacles:
          placement_location = radiant.terrain.find_placement_point(placement_location, 0, 5, starting_items_container)
-			radiant.terrain.place_entity(starting_items_container, placement_location, { force_iconic = false, facing = 90 })
+         radiant.terrain.place_entity(starting_items_container, placement_location, {
+            force_iconic = false,
+            facing = 90
+         })
          inventory:add_item(starting_items_container)
       end
 
@@ -159,7 +204,7 @@ function AceGameCreationService:create_camp_command(session, response, pt)
    local default_storage = town:get_default_storage()
 
    -- Spawn initial items
-   local starting_item_uris = radiant.shallow_copy(game_options.starting_items)  -- probably don't need to actually copy this
+   local starting_item_uris = radiant.shallow_copy(game_options.starting_items) -- probably don't need to actually copy this
    local starting_resource = stonehearth.player:get_kingdom_starting_resource(player_id) or 'stonehearth:resources:wood:oak_log'
    starting_item_uris[starting_resource] = (starting_item_uris[starting_resource] or 0) + 2
 
@@ -168,10 +213,9 @@ function AceGameCreationService:create_camp_command(session, response, pt)
       inputs = default_storage,
       spill_fail_items = true,
       require_matching_filter_override = true,
-      add_spilled_to_inventory = true,
+      add_spilled_to_inventory = true
    }
-   local starting_items = radiant.entities.output_items(starting_item_uris, location,
-      MIN_STARTING_ITEM_RADIUS, MAX_STARTING_ITEM_RADIUS, output_options).spilled
+   local starting_items = radiant.entities.output_items(starting_item_uris, location, MIN_STARTING_ITEM_RADIUS, MAX_STARTING_ITEM_RADIUS, output_options).spilled
 
    -- add all the spawned items to the inventory, have citizens pick up any spilled items
    local i = 1
@@ -188,18 +232,22 @@ function AceGameCreationService:create_camp_command(session, response, pt)
    local pets = town:get_pets()
    for id, pet in pairs(pets) do
       if not radiant.entities.get_world_grid_location(pet) then
-         local placement_location = Point3(camp_x, pt.y, camp_z+6)
+         local placement_location = Point3(camp_x, pt.y, camp_z + 6)
          placement_location = radiant.terrain.find_placement_point(placement_location, 0, 5, pet)
-         self:try_place_entity_on_terrain(pet, placement_location.x, placement_location.z, {force_iconic = false})
+         self:try_place_entity_on_terrain(pet, placement_location.x, placement_location.z, {
+            force_iconic = false
+         })
       end
    end
 
    -- kickstarter pets
    if game_options.starting_pets then
-       for i, pet_uri in ipairs (game_options.starting_pets) do
-          local x_offset = -6 + i * 3;
-          self:_place_pet(pop, pet_uri, camp_x-x_offset, camp_z-6, { facing = facing })
-       end
+      for i, pet_uri in ipairs(game_options.starting_pets) do
+         local x_offset = -6 + i * 3;
+         self:_place_pet(pop, pet_uri, camp_x - x_offset, camp_z - 6, {
+            facing = facing
+         })
+      end
    end
 
    -- Add starting gold
@@ -235,11 +283,15 @@ function AceGameCreationService:create_camp_command(session, response, pt)
                if not made_amberstone_planter and (item_spec.uri == 'stonehearth:plants:earthbud' or item_spec.uri == 'stonehearth:plants:earthbud:seed') then
                   made_amberstone_planter = true
                   count = count - 1
-                  items['stonehearth_ace:planters:pot:amberstone:hearthbud'] = {[1] = 1 }
+                  items['stonehearth_ace:planters:pot:amberstone:hearthbud'] = {
+                     [1] = 1
+                  }
                end
 
                if count > 0 then
-                  items[item_spec.uri] = {[item_spec.item_quality or 1] = count }
+                  items[item_spec.uri] = {
+                     [item_spec.item_quality or 1] = count
+                  }
                end
 
                if next(items) then
@@ -252,7 +304,7 @@ function AceGameCreationService:create_camp_command(session, response, pt)
       -- Unlock recipes.
       for job_uri, recipe_keys in pairs(game_options.reembark_spec.recipes) do
          local job_info = stonehearth.job:get_job_info(player_id, job_uri)
-         if job_info then  -- In case it was from a mod.
+         if job_info then -- In case it was from a mod.
             for _, recipe_key in ipairs(recipe_keys) do
                if job_uri == 'stonehearth:jobs:farmer' then
                   job_info:manually_unlock_crop(recipe_key, true)
@@ -268,7 +320,12 @@ function AceGameCreationService:create_camp_command(session, response, pt)
 
    -- save that the camp has been placed
    pop:place_camp()
-   
+
+   -- ACE: Only the host should initialize the shared data needed for the Living World campaign; all players' (including themselves) game masters will then get the information from here 
+   --if validator.is_host_player(session) then
+      --self:_living_world_gc_setup()
+   --end
+
    -- ACE: just moved this down here so everything else (especially reembarkation stuff) happens first
    stonehearth.game_master:get_game_master(player_id):start()
 
@@ -276,8 +333,9 @@ function AceGameCreationService:create_camp_command(session, response, pt)
 
    -- clear out references to their reembarked pets
 
-
-   return {random_town_name = random_town_name}
+   return {
+      random_town_name = random_town_name
+   }
 end
 
 -- generate citizens and make a copy of each citizen for each gender
@@ -304,10 +362,14 @@ function AceGameCreationService:generate_citizens_for_reembark_command(session, 
 
    for index, citizen_spec in ipairs(reembark_spec.citizens) do
       local gender = citizen_spec.model_variant or stonehearth.constants.population.DEFAULT_GENDER
-      local role_data = { [gender] = { uri = { citizen_spec.uri } } }
+      local role_data = {
+         [gender] = {
+            uri = {citizen_spec.uri}
+         }
+      }
       local citizen = pop:create_new_citizen_from_role_data('default', role_data, gender, {
          suppress_traits = true,
-         embarking = true,
+         embarking = true
       })
 
       self:_apply_reembark_settings_to_citizen(session, kingdom, citizen, citizen_spec)
@@ -326,7 +388,10 @@ function AceGameCreationService:generate_citizens_for_reembark_command(session, 
 
    local final_citizens = self:_get_final_citizens(pop)
 
-   response:resolve({ citizens = final_citizens, num_reembarked = math.min(#reembark_spec.citizens, NUM_STARTING_CITIZENS) })
+   response:resolve({
+      citizens = final_citizens,
+      num_reembarked = math.min(#reembark_spec.citizens, NUM_STARTING_CITIZENS)
+   })
 end
 
 function AceGameCreationService:_apply_reembark_settings_to_citizen(session, kingdom, citizen, citizen_spec)
@@ -339,7 +404,7 @@ function AceGameCreationService:_apply_reembark_settings_to_citizen(session, kin
    attributes:set_attribute('spirit', citizen_spec.attributes.spirit)
    attributes:set_attribute('mind', citizen_spec.attributes.mind)
 
-	self:_set_customizable_entity_data(citizen, citizen_spec)
+   self:_set_customizable_entity_data(citizen, citizen_spec)
 
    -- create pets before traits so traits can access them
    local pets = self._reembark_pets[session.player_id]
@@ -348,7 +413,10 @@ function AceGameCreationService:_apply_reembark_settings_to_citizen(session, kin
       for _, pet_data in ipairs(citizen_spec.pets) do
          -- make sure the pet entity exists by querying catalog
          if stonehearth.catalog:get_catalog_data(pet_data.uri) then
-            local pet = radiant.entities.create_entity(pet_data.uri, {owner = player_id, model_variant = pet_data.model_variant})
+            local pet = radiant.entities.create_entity(pet_data.uri, {
+               owner = player_id,
+               model_variant = pet_data.model_variant
+            })
             if pet then
                local pet_component = pet:add_component('stonehearth:pet')
                pet_component:convert_to_pet(player_id)
@@ -394,7 +462,10 @@ function AceGameCreationService:_apply_reembark_settings_to_citizen(session, kin
    -- leave job_levels separate from jobs data for backwards compatibility
    if citizen_spec.job_levels then
       for job_uri, level in pairs(citizen_spec.job_levels) do
-         job:promote_to(job_uri, { skip_visual_effects = true, dont_drop_talisman = true })
+         job:promote_to(job_uri, {
+            skip_visual_effects = true,
+            dont_drop_talisman = true
+         })
          for _ = 1, level - 1 do
             job:level_up(true)
          end
@@ -410,7 +481,10 @@ function AceGameCreationService:_apply_reembark_settings_to_citizen(session, kin
    end
 
    if citizen_spec.current_job then
-      job:promote_to(citizen_spec.current_job, { skip_visual_effects = true, dont_drop_talisman = true })
+      job:promote_to(citizen_spec.current_job, {
+         skip_visual_effects = true,
+         dont_drop_talisman = true
+      })
    end
 
    -- Set customization.
@@ -433,7 +507,10 @@ function AceGameCreationService:_apply_reembark_settings_to_citizen(session, kin
       local intended_equipment = {}
 
       local add_equipment = function(data)
-         local equipment_entity = radiant.entities.create_entity(data.uri, { owner = session.player_id, model_variant = data.model_variant })
+         local equipment_entity = radiant.entities.create_entity(data.uri, {
+            owner = session.player_id,
+            model_variant = data.model_variant
+         })
          self:_set_customizable_entity_data(equipment_entity, data)
          if data.item_quality and data.item_quality > 1 then
             item_quality_lib.apply_quality(equipment_entity, data.item_quality, data)
@@ -443,7 +520,9 @@ function AceGameCreationService:_apply_reembark_settings_to_citizen(session, kin
       end
 
       for _, equipment_uri in ipairs(citizen_spec.equipment) do
-         local equipment_data = radiant.util.is_string(equipment_uri) and {uri = equipment_uri} or equipment_uri
+         local equipment_data = radiant.util.is_string(equipment_uri) and {
+            uri = equipment_uri
+         } or equipment_uri
          local slot = radiant.entities.get_component_data(equipment_data.uri, 'stonehearth:equipment_piece').slot
          -- only slot-based equipment can get removed due to equip order
          if slot then
@@ -486,6 +565,109 @@ function AceGameCreationService:_set_customizable_entity_data(entity, data)
          buffs:add_buff(buff_uri, options)
       end
    end
+end
+
+function AceGameCreationService:_living_world_gc_setup(reset_data)
+   if self._sv.living_world_data and not reset_data then
+      log:info('Living World GC Setup - Living world data already defined, how did this get called?! If manually calling, add true as a parameter to reset the data')
+      return
+   end
+
+   local fallback_kingdom_json = radiant.resources.load_json('stonehearth:kingdoms:ascendancy')
+   local biome_kingdoms = {}
+   local biome, biome_uri = stonehearth.world_generation:get_biome(), stonehearth.world_generation:get_biome_alias()
+   --log:debug('Living World GC Setup - Biome %s detected', biome_uri)
+
+   -- Figure out what kingdoms consider this biome their homeland (decided to do it as a table to account for the possibility of a modded kingdom reusing a biome)
+   local kingdoms = radiant.resources.load_json('stonehearth:playable_kingdom_index').kingdoms
+   for _, kingdom_uri in pairs(kingdoms) do
+      local kingdom = radiant.resources.load_json(kingdom_uri)
+      if kingdom.favored_biome == biome_uri then
+         table.insert(biome_kingdoms, kingdom_uri)
+      end
+   end
+   --log:debug('Living World GC Setup - Biome Kingdoms table formed: %s', table.concat(biome_kingdoms, ', '))
+
+   -- Define Neighbors data
+   local neighbors_data = {}
+   local directions = { "north", "south", "west", "east" }
+   for _, direction in ipairs(directions) do
+      local neighbor = nil
+      local neighbor_bias = biome.living_world and biome.living_world.neighbor_bias and biome.living_world.neighbor_bias[direction]
+      if neighbor_bias then
+         for biased_neighbor, chance in pairs(neighbor_bias) do
+            if rng:get_real(0, 1) <= chance then
+               neighbor = biased_neighbor
+               break
+            end
+         end
+      end
+
+      local neighbor_json
+      if not neighbor then
+         neighbor = biome_kingdoms[rng:get_int(1, #biome_kingdoms)]
+         neighbor_json = radiant.resources.load_json(neighbor)
+      elseif neighbor == 'random' then
+         neighbor = kingdoms[rng:get_int(1, #kingdoms)]
+         neighbor_json = radiant.resources.load_json(neighbor)
+      elseif neighbor ~= 'none' then
+         neighbor_json = radiant.resources.load_json(neighbor)
+      end
+
+      local neighbor_data = {}
+
+      neighbor_data = {
+         kingdom = neighbor,
+         town = neighbor_json and PopulationFaction.generate_town_name_from_pieces(neighbor_json.town_pieces or fallback_kingdom_json.town_pieces, nil, 75, 30) or nil
+      }
+
+      neighbors_data[direction] = neighbor_data
+   end
+   --log:debug('Living World GC Setup - Neighbors data collected: %s', radiant.util.table_tostring(neighbors_data, ', '))
+
+   -- Define Authority data
+   local authority_data = {}
+   local random_pick = biome_kingdoms[rng:get_int(1, #biome_kingdoms)]
+   --log:debug('Living World GC Setup - Random kingdom picked for Authority: %s', random_pick)
+   local random_pick_json = random_pick and radiant.resources.load_json(random_pick)
+
+   authority_data[random_pick] = {
+      garrison = random_pick_json and PopulationFaction.generate_town_name_from_pieces(random_pick_json.town_pieces or fallback_kingdom_json.town_pieces, 'garrison'),
+      representative = random_pick_json and PopulationFaction.generate_random_name_from_parts(PopulationFaction._pick_random_gender(), random_pick_json.roles['default'] or fallback_kingdom_json.roles['default'])
+   }
+   --log:debug('Living World GC Setup - Authority data collected: %s', radiant.util.table_tostring(authority_data, ', '))
+
+   -- Define Faith data
+   local faith_data = {}
+   for _, kingdom_uri in pairs(biome_kingdoms) do
+      local kingdom_uri_json = radiant.resources.load_json(kingdom_uri)
+      local kingdom_data = {
+         temple = PopulationFaction.generate_town_name_from_pieces(kingdom_uri_json.town_pieces or fallback_kingdom_json.town_pieces, 'temple'),
+         representative = PopulationFaction.generate_random_name_from_parts(PopulationFaction._pick_random_gender(), kingdom_uri_json.roles['default'] or fallback_kingdom_json.roles['default'])
+      }
+
+      faith_data[kingdom_uri] = kingdom_data
+   end
+   --log:debug('Living World GC Setup - Faith data collected: %s', radiant.util.table_tostring(faith_data, ', '))
+
+   -- Define nature data
+   local nature_data = {} -- nothing for now
+   --log:debug('Living World GC Setup - Nature data collected: %s', radiant.util.table_tostring(nature_data, ', '))
+
+   -- Organize and save the data
+   self._sv.living_world_data = {
+      neighbors_data = neighbors_data,
+      authority_data = authority_data,
+      faith_data = faith_data,
+      nature_data = nature_data
+   }
+   log:info('Living World GC Setup - Was it a reset? %s, finalized living world data setup: %s', reset_data, radiant.util.table_tostring(self._sv.living_world_data, ', '))
+
+   self.__saved_variables:mark_changed()
+end
+
+function AceGameCreationService:get_living_world_data()
+   return self._sv.living_world_data
 end
 
 return AceGameCreationService

@@ -28,7 +28,9 @@ end
 function AcePopulationFaction:_load_unlocked_abilities()
    if self._data then
       -- if none specified by the kingdom, load some default unlocked abilities
-      local abilities = self._data.unlocked_abilities or stonehearth.constants.population.default_unlocked_abilities or {field_type_farm = true}
+      local abilities = self._data.unlocked_abilities or stonehearth.constants.population.default_unlocked_abilities or {
+         field_type_farm = true
+      }
       for ability, unlocked in pairs(abilities) do
          if unlocked then
             self._sv.unlocked_abilities[ability] = true
@@ -56,9 +58,9 @@ function AcePopulationFaction:set_city_tier(city_tier)
       -- ACE: also trigger an event if it actually changed
       if do_event then
          radiant.events.trigger(self, 'stonehearth_ace:city_tier_changed', {
-               player_id = self._sv.player_id,
-               city_tier = city_tier,
-            })
+            player_id = self._sv.player_id,
+            city_tier = city_tier
+         })
       end
    end
 end
@@ -78,13 +80,13 @@ end
 
 AcePopulationFaction._ace_old_set_game_options = PopulationFaction.set_game_options
 function AcePopulationFaction:set_game_options(options)
-	self:_ace_old_set_game_options(options)
+   self:_ace_old_set_game_options(options)
 
    if not self._sv._game_options.starting_items_container then
       self._sv._game_options.starting_items_container = self._data.starting_items_container or 'stonehearth_ace:containers:embark_wagon'
-		if self._sv._game_options.starting_items_container == 'none' or self._sv._game_options.starting_items_container == '' then
-			self._sv._game_options.starting_items_container = nil
-		end
+      if self._sv._game_options.starting_items_container == 'none' or self._sv._game_options.starting_items_container == '' then
+         self._sv._game_options.starting_items_container = nil
+      end
    end
 end
 
@@ -106,18 +108,18 @@ function AcePopulationFaction:create_new_citizen_from_role_data(role, role_data,
    return citizen
 end
 
-function AcePopulationFaction.generate_town_name_from_pieces(town_pieces)
+function AcePopulationFaction.generate_town_name_from_pieces(town_pieces, town_type, prefix_override, suffix_override)
    local composite_name = 'Defaultville'
 
-   --If we do not yet have the town data, then return a default town name
+   -- If we do not yet have the town data, then return a default town name
    if town_pieces then
-      local prefix_chance = (town_pieces.prefix_chance == nil) and 40 or town_pieces.prefix_chance
-      local prefixes = town_pieces.optional_prefix
-      local base_names = town_pieces.town_name
-      local suffix_chance = (town_pieces.suffix_chance == nil) and 80 or town_pieces.suffix_chance
-      local suffix = town_pieces.suffix
+      local prefix_chance = prefix_override or (town_type and town_pieces[town_type] and town_pieces[town_type].prefix_chance) or town_pieces.prefix_chance or 40
+      local prefixes = (town_type and town_pieces[town_type] and town_pieces[town_type].optional_prefix) or town_pieces.optional_prefix
+      local base_names = (town_type and town_pieces[town_type] and town_pieces[town_type].town_name) or town_pieces.town_name
+      local suffix_chance = suffix_override or (town_type and town_pieces[town_type] and town_pieces[town_type].suffix_chance) or town_pieces.suffix_chance or 80
+      local suffix = (town_type and town_pieces[town_type] and town_pieces[town_type].suffix) or town_pieces.suffix
 
-      --make a composite
+      -- make a composite
       local target_prefix = prefixes[rng:get_int(1, #prefixes)]
       local target_base = base_names[rng:get_int(1, #base_names)]
       local target_suffix = suffix[rng:get_int(1, #suffix)]
@@ -165,7 +167,7 @@ function AcePopulationFaction:create_new_foreign_citizen(foreign_population_uri,
    end
    options = options or {}
    options.foreign_population_uri = foreign_population_uri
-   
+
    return self:create_new_citizen_from_role_data(role, role_data, gender, options)
 end
 
@@ -192,8 +194,13 @@ function AcePopulationFaction:generate_random_name(gender, role_data)
    end
 end
 
---Will show a simple notification that zooms to a citizen when clicked.
---will expire if the citizen isn't around anymore
+-- To not have to redefine every instance that calls the "generate_random_name" method to use . instead of : (and possibly break everything that ever used) I need to create this wrapper so it can be generically called as a function of this module and not as part of a running controller
+function AcePopulationFaction.generate_random_name_from_parts(gender, role_data)
+   return AcePopulationFaction.generate_random_name(nil, gender, role_data)
+end
+
+-- Will show a simple notification that zooms to a citizen when clicked.
+-- will expire if the citizen isn't around anymore
 -- override to add custom_data for current title
 function AcePopulationFaction:show_notification_for_citizen(citizen, title, options)
    local citizen_id = citizen:get_id()
@@ -203,7 +210,7 @@ function AcePopulationFaction:show_notification_for_citizen(citizen, title, opti
       if options.ignore_on_repeat_add then
          return
       end
-      --If a bulletin already exists for this citizen with this title, remove it to replace with the new one
+      -- If a bulletin already exists for this citizen with this title, remove it to replace with the new one
       local bulletin_id = self._sv.bulletins[citizen_id][title]:get_id()
       stonehearth.bulletin_board:remove_bulletin(bulletin_id)
    end
@@ -212,25 +219,19 @@ function AcePopulationFaction:show_notification_for_citizen(citizen, title, opti
    local notification_type = options and options.type or 'new_citizen'
    local message = options and options.message or ''
 
-   self._sv.bulletins[citizen_id][title] = stonehearth.bulletin_board:post_bulletin(self._sv.player_id)
-            :set_callback_instance(self)
-            :set_type(notification_type)
-            :set_data({
-               title = title,
-               message = message,
-               zoom_to_entity = citizen,
-            })
-            :add_i18n_data('citizen_custom_name', radiant.entities.get_custom_name(citizen))
-            :add_i18n_data('citizen_display_name', radiant.entities.get_display_name(citizen))
-            :add_i18n_data('citizen_custom_data', radiant.entities.get_custom_data(citizen))
-            :add_i18n_data('town_name', town_name)
+   self._sv.bulletins[citizen_id][title] = stonehearth.bulletin_board:post_bulletin(self._sv.player_id):set_callback_instance(self):set_type(notification_type):set_data({
+      title = title,
+      message = message,
+      zoom_to_entity = citizen
+   }):add_i18n_data('citizen_custom_name', radiant.entities.get_custom_name(citizen)):add_i18n_data('citizen_display_name', radiant.entities.get_display_name(citizen)):add_i18n_data('citizen_custom_data',
+      radiant.entities.get_custom_data(citizen)):add_i18n_data('town_name', town_name)
 
    self.__saved_variables:mark_changed()
 end
 
 function AcePopulationFaction:are_traits_valid(traits, population_override_uri)
    local check_traits = self:_get_flat_traits(population_override_uri)
-   
+
    for _, trait in ipairs(traits) do
       if not check_traits[trait] then
          return false
@@ -249,7 +250,7 @@ function AcePopulationFaction:_load_traits()
    if not self._traits then
       self._traits = radiant.resources.load_json('stonehearth:traits_index')
    end
-   
+
    self._flat_trait_index = self:_load_flat_trait_index(self._traits)
 end
 
@@ -263,7 +264,7 @@ function AcePopulationFaction:_load_kingdom_traits(kingdom_uri)
       self._foreign_traits = {}
       self._flat_foreign_traits = {}
    end
-   
+
    if not self._foreign_traits[kingdom_uri] then
       local traits
       local index = radiant.resources.load_json(kingdom_uri).traits_index
@@ -455,7 +456,7 @@ end
 function AcePopulationFaction:_load_titles_from_json(json_ref)
    local titles = {}
    local stats_titles = {}
-   
+
    local json = json_ref and radiant.resources.load_json(json_ref)
    if json then
       for title, data in pairs(json) do
@@ -531,7 +532,7 @@ end
 
 function AcePopulationFaction:get_title_rank_data(entity, title, rank)
    local titles = self:_get_titles_for_entity_type(entity)
-   
+
    return titles[title] and titles[title][rank]
 end
 
@@ -553,8 +554,7 @@ function AcePopulationFaction:get_titles_for_statistic(entity, stat_changed_args
       local title_ranks = {}
       for title, ranks in pairs(name_tbl) do
          for _, rank_data in ipairs(ranks) do
-            if (is_numerical and stat_changed_args.value >= rank_data.required_value) or 
-                  (not is_numerical and stat_changed_args.value == rank_data.required_value) then
+            if (is_numerical and stat_changed_args.value >= rank_data.required_value) or (not is_numerical and stat_changed_args.value == rank_data.required_value) then
                title_ranks[title] = rank_data.rank
                break
             end
@@ -633,9 +633,9 @@ function AcePopulationFaction:_on_combat_started(evt)
          self._combat_listener = nil
       end
       self._sv.threat_data:set_data({
-            threat_level = threat_d.threat_level,
-            in_combat = in_combat
-         })
+         threat_level = threat_d.threat_level,
+         in_combat = in_combat
+      })
    end
 end
 

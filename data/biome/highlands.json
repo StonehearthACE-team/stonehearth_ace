@@ -21,6 +21,12 @@
    "decay_multiplier": 0.9,
 	"foraging_spot_uri": "stonehearth_ace:terrain:foraging_spot:highlands",
 	"foraging_spot_frequency": 0.0014,
+   "living_world": {
+      "neighbor_bias": {
+         "south": { "random": 0.8 },
+         "north": { "northern_alliance:kingdoms:northern_alliance": 0.6 }
+      }
+   },
    "native_crops": {
       "poppy": true,
       "rose": true,

@@ -334,11 +334,46 @@
       ]
    },
    "town_pieces": {
+      "garrison": {
+         "prefix_chance": 25,
+         "suffix_chance": 100,
+         "suffix": [
+            " Forward Camp",
+            " Overwatch",
+            " Watchpost",
+            " Watch",
+            " Outpost",
+            " Battle Halls",
+            " Horn",
+            " Hold",
+            " Fortress"
+         ]
+      },
+      "temple": {
+         "prefix_chance": 100,
+         "suffix_chance": 40,
+         "optional_prefix": [
+            "Carved Hall of",
+            "Spiral Stairs of",
+            "Shrine of"
+         ],
+         "suffix": [
+            "-dum",
+            "-zam",
+            "-ost",
+            "-ond",
+            " Loch",
+            " Mountain",
+            " Hill",
+            " Spire",
+            " Sanctuary"
+         ]
+      },
       "optional_prefix": [
          "Kaz",
          "Bhar",
-         "Num",
-         "Vigh",
+         "Tum",
+         "Iv",
          "Vorn",
          "Thar",
          "Ham",
@@ -361,7 +396,7 @@
          "Bhirgarum",
          "Throburim",
          "Vugotidir",
-         "Nigdora",
+         "Vigdora",
          "Valunir",
          "Melgrom",
          "Himdorul",
@@ -373,15 +408,17 @@
       ],
       "suffix": [
          "-dum",
-         "-dam",
+         "-zam",
          "-ost",
          "-ond",
          " Halls",
-         " Fortress",
+         " Underpaths",
          " Mountains",
+         " Crags",
          " Hills",
          " Caves",
-         " Holds"
+         " Spire",
+         " Tunnels"
       ]
    },
    "task_groups": "stonehearth:data:player_task_groups"
