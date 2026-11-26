@@ -24,25 +24,10 @@ $.widget( "stonehearth.stonehearthItemPalette", {
    _create: function() {
       var self = this;
 
-      self.element.addClass('itemPaletteWidget');
-
+      self.palette = $('<div>').addClass('itemPalette');
       self._selectedElement = null;
       self._itemElements = {};
       self._categoryElements = {};
-
-      self.searchContainer = $('<div>')
-         .addClass('itemPaletteSearchContainer');
-
-      self.scrollContainer = $('<div>')
-         .addClass('itemPaletteScrollContainer');
-
-      self.palette = $('<div>')
-         .addClass('itemPalette');
-
-      self.scrollContainer.append(self.palette);
-
-      self.element.append(self.searchContainer);
-      self.element.append(self.scrollContainer);
 
       function handleClick(itemSelected, e, callback) {
          radiant.call('radiant:play_sound', { 'track': 'stonehearth:sounds:ui:start_menu:popup' });
@@ -60,6 +45,8 @@ $.widget( "stonehearth.stonehearthItemPalette", {
 
       self.palette.on('click', '.item', function (e) { return handleClick($(this), e, self.options.click); });
       self.palette.on('contextmenu', '.item', function (e) { return handleClick($(this), e, self.options.rightClick); });
+
+      self.element.append(this.palette);
    },
 
    _destroy: function() {
@@ -120,7 +107,7 @@ $.widget( "stonehearth.stonehearthItemPalette", {
       });
 
       self.searchBox.append(self.searchInput);
-      self.searchContainer.append(self.searchBox);
+      self.palette.append(self.searchBox);
    },
 
    // ACE: handle "wanted items" functionality for shop dialogs
