@@ -25,14 +25,100 @@
             "title": "i18n(stonehearth_ace:data.gm.campaigns.ambient_threats.undergrowth_raid.mission.sighted_bulletin.title)"
          },
          "members": {
-            "drones": {
+            "workers": {
                "from_population": {
-                  "role": "drone",
+                  "role": "worker",
+                  "gender": "female",
                   "location": { "x": 0, "z": 0 },
                   "range": 10,
                   "min": 0,
                   "max": 0
-               }
+               },
+               "tuning": "stonehearth_ace:monster_tuning:undergrowth:worker"
+            },
+            "drones": {
+               "from_population": {
+                  "role": "drone",
+                  "location": { "x": 0, "z": 0 },
+                  "range": 25,
+                  "min": 0,
+                  "max": 0
+               },
+               "tuning": "stonehearth_ace:monster_tuning:undergrowth:drone"
+            },
+            "soldiers": {
+               "from_population": {
+                  "role": "soldier",
+                  "gender": "female",
+                  "location": { "x": 0, "z": 0 },
+                  "range": 15,
+                  "min": 0,
+                  "max": 0
+               },
+               "tuning": "stonehearth_ace:monster_tuning:undergrowth:soldier"
+            },
+            "fire_soldiers": {
+               "from_population": {
+                  "role": "soldier_fire",
+                  "gender": "female",
+                  "location": { "x": 0, "z": 0 },
+                  "range": 15,
+                  "min": 0,
+                  "max": 0
+               },
+               "tuning": "stonehearth_ace:monster_tuning:undergrowth:soldier_fire"
+            },
+            "hunters": {
+               "from_population": {
+                  "role": "hunter",
+                  "location": { "x": 0, "z": 0 },
+                  "range": 35,
+                  "min": 0,
+                  "max": 0
+               },
+               "tuning": "stonehearth_ace:monster_tuning:undergrowth:hunter"
+            },
+            "spinners": {
+               "from_population": {
+                  "role": "spinner",
+                  "gender": "female",
+                  "location": { "x": 0, "z": 0 },
+                  "range": 15,
+                  "min": 0,
+                  "max": 0
+               },
+               "tuning": "stonehearth_ace:monster_tuning:undergrowth:spinner"
+            },
+            "weavers": {
+               "from_population": {
+                  "role": "weaver",
+                  "location": { "x": 0, "z": 0 },
+                  "range": 10,
+                  "min": 0,
+                  "max": 0
+               },
+               "tuning": "stonehearth_ace:monster_tuning:undergrowth:weaver"
+            },
+            "broodmothers": {
+               "from_population": {
+                  "role": "broodmother",
+                  "gender": "female",
+                  "location": { "x": 0, "z": 0 },
+                  "range": 10,
+                  "min": 0,
+                  "max": 0
+               },
+               "tuning": "stonehearth_ace:monster_tuning:undergrowth:broodmother"
+            },
+            "hulks": {
+               "from_population": {
+                  "role": "hulk",
+                  "location": { "x": 0, "z": 0 },
+                  "range": 15,
+                  "min": 0,
+                  "max": 0
+               },
+               "tuning": "stonehearth_ace:monster_tuning:undergrowth:hulk"
             }
          }
       }

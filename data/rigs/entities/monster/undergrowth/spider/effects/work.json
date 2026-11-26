@@ -1,0 +1,44 @@
+{
+   "type" : "effect",
+   "tracks": {
+      "animation": {
+            "type": "animation_effect",
+            "start_time": 0,
+            "animation": "combat_bite.json",
+            "loop": false
+      },
+      "attack_trigger" : {
+            "type": "trigger_effect",
+            "start_frame": 22,
+            "end_time": 23
+      },
+      "sound": {
+         "type": "sound_effect",
+         "start_time": 150,
+         "min_distance": 27,
+         "falloff" : 5,
+         "volume": 60,
+         "track" : {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:spider_idle_01",
+               "stonehearth_ace:sounds:spider_idle_02"
+            ]
+         }
+      },
+      "dust": {
+         "type": "cubemitter",
+         "start_time" : 150,
+         "end_time" : 250,
+         "cubemitter": "particles/dust_poof/dust_poof.cubemitter.json",
+         "transforms": {
+            "x":0,
+            "y":0.5,
+            "z":-1,
+            "rx":0,
+            "ry":0,
+            "rz":0
+         }
+      }          
+   }
+}      

@@ -1,0 +1,57 @@
+{
+   "type" : "effect",
+   "tracks": {
+      "animation": {
+            "type": "animation_effect",
+            "start_time": 0,
+            "animation": "idle_goto_sleep.json",
+            "loop": true
+      },
+      "bits": {
+         "type": "cubemitter",
+         "cubemitter": "particles/dirt_poof/beetle_idle_goto_sleep/beetle_idle_goto_sleep_bits.cubemitter.json",
+         "start_time": 500,
+         "end_time": 2000,
+         "transforms": {
+            "x": 0.5,
+            "y": 0.0,
+            "z": -1.0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         },
+         "bone": "root"
+      },
+      "chunks": {
+         "type": "cubemitter",
+         "cubemitter": "particles/dirt_poof/beetle_idle_goto_sleep/beetle_idle_goto_sleep_chunks.cubemitter.json",
+         "start_time": 500,
+         "end_time": 2000,
+         "transforms": {
+            "x": 0.5,
+            "y": 0.0,
+            "z": -1.0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         },
+         "bone": "root"
+      },
+      "cloud": {
+         "type": "cubemitter",
+         "cubemitter": "particles/dirt_poof/beetle_idle_goto_sleep/beetle_idle_goto_sleep_cloud.cubemitter.json",
+         "start_time": 500,
+         "end_time": 1667,
+         "loop": false,
+         "transforms": {
+            "x": 0.5,
+            "y": 0.0,
+            "z": -1.0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         },
+         "bone": "root"
+      }
+   }
+}

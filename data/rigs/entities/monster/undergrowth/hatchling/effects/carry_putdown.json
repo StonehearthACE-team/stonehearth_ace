@@ -1,0 +1,27 @@
+{
+   "type" : "effect",
+   "tracks": {
+      "animation": {
+         "type": "animation_effect",
+         "start_time": 0,
+         "animation": "carry_putdown.json",
+         "loop": false,
+         "blend_time": 0
+      },
+      "sound": {
+         "type": "sound_effect",
+         "start_time": 600,
+         "min_distance": 20,
+         "falloff" : 3.15,
+         "volume": 60,
+         "track" : {
+            "type": "one_of",
+            "items": [
+               "stonehearth:sounds:drop_wood_sound_01",
+               "stonehearth:sounds:drop_wood_sound_02",
+               "stonehearth:sounds:drop_wood_sound_03"
+            ]
+         }
+      }
+   }      
+}

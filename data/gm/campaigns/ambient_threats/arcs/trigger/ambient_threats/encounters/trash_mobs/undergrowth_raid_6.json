@@ -1,0 +1,68 @@
+{
+   "type": "encounter",
+   "mixins": "stonehearth_ace:mixins:encounter:undergrowth_raid",
+   "encounter_type": "create_mission",
+   "in_edge": "undergrowth_raid_6",
+   "out_edge": "wait_to_destroy_raiding_party",
+   "create_mission_info": {
+      "mission": {
+         "ctx_entity_registration_path": "undergrowth_raid_6",
+         "members": {
+            "workers": {
+               "from_population": {
+                  "min": 4,
+                  "max": 8
+               }
+            },
+            "drones": {
+               "from_population": {
+                  "min": 2,
+                  "max": 3
+               }
+            },
+            "soldiers": {
+               "from_population": {
+                  "min": 4,
+                  "max": 6
+               }
+            },
+            "fire_soldiers": {
+               "from_population": {
+                  "min": 2,
+                  "max": 4
+               }
+            },
+            "hunters": {
+               "from_population": {
+                  "min": 2,
+                  "max": 4
+               }
+            },
+            "spinners": {
+               "from_population": {
+                  "min": 2,
+                  "max": 4
+               }
+            },
+            "weavers": {
+               "from_population": {
+                  "min": 2,
+                  "max": 4
+               }
+            },
+            "broodmothers": {
+               "from_population": {
+                  "min": 0,
+                  "max": 0
+               }
+            },
+            "hulks": {
+               "from_population": {
+                  "min": 1,
+                  "max": 2
+               }
+            }
+         }
+      }
+   }
+}

@@ -1,0 +1,73 @@
+{
+   "type": "monster_tuning",
+   "equipment": {
+      "basic_siege": "stonehearth_ace:abilities:basic_door_breaker_abilities",
+      "weapon": "stonehearth_ace:weapons:undergrowth:drone_teeth",
+      "pierce": "stonehearth_ace:weapons:inflicted_wounds:pierce:easy"
+   },
+   "attributes": {
+      "max_health": 270,
+      "muscle": 8,
+      "menace": 50,
+      "courage": 300,
+      "speed": 50,
+      "additive_armor_modifier": 1
+   },
+   "loot_drops": {
+      "entries": {
+         "meat": {
+            "num_rolls": {
+               "min": 0,
+               "max": 1
+            },
+            "items": {
+               "meat": {
+                  "uri": "stonehearth:bitsy_ant_bug_meat",
+                  "weight": 1
+               }
+            }
+         },
+         "chitin": {
+            "num_rolls": {
+               "min": 0,
+               "max": 2
+            },
+            "items": {
+               "pelt": {
+                  "uri": "stonehearth:resources:bitsy_ant_chitin",
+                  "weight": 1
+               }
+            }
+         },
+         "loot_bag": {
+            "num_rolls": {
+               "min": 1,
+               "max": 2
+            },
+            "items": {
+               "loot": {
+                  "uri": "stonehearth_ace:loot_bag:undergrowth:ant",
+                  "type": "bag",
+                  "weight": 1
+               }
+            }
+         },
+         "currency": {
+            "num_rolls": {
+               "min": 0,
+               "max": 1
+            },
+            "items": {
+               "none": {
+                  "uri": "",
+                  "weight": 6
+               },
+               "undergrowth_currency": {
+                  "uri": "stonehearth_ace:loot:currency:undergrowth",
+                  "weight": 1
+               }
+            }
+         }
+      }
+   }
+}

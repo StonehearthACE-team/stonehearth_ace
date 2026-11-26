@@ -1,0 +1,84 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth_ace:mixins:summon",
+   "components": {
+      "render_info": {
+         "animation_table": "/stonehearth_ace/data/rigs/entities/monster/undergrowth/hatchling",
+         "scale": 0.055,
+         "color_map": "stonehearth_ace:color_map:ace",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ]
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(spiderling.qb)"
+            ]
+         }
+      },
+      "stonehearth:equipment": {
+         "items": [
+            "stonehearth_ace:weapons:undergrowth:weak_spider_teeth"
+         ]
+      },
+      "stonehearth:attributes": {
+         "max_health": {
+            "type": "basic",
+            "value": 45
+         },
+         "muscle": {
+            "type": "basic",
+            "value": 2
+         },
+         "menace": {
+            "type": "basic",
+            "value": 10
+         },
+         "courage": {
+            "type": "basic",
+            "value": 25
+         },
+         "speed": {
+            "type": "basic",
+            "value": 72
+         }
+      },
+      "stonehearth_ace:summon": {
+         "despawn_effect": "stonehearth_ace:effects:hit_sparks:hit_effect:web"
+      }
+   },
+   "entity_data": {
+      "stonehearth:species": {
+         "id": "spider",
+         "display_name": "i18n(stonehearth_ace:entities.monsters.undergrowth.spider.species)"
+      },
+      "stonehearth:entity_radius": 0.3,
+      "stonehearth:entity_reach": 0.5,
+      "stonehearth:portrait": {
+         "portrait_types": {
+            "headshot": {
+               "camera": {
+                  "pos": [
+                     17,
+                     11,
+                     -27
+                  ],
+                  "look_at": [
+                     0.2,
+                     0.6,
+                     0
+                  ],
+                  "fov": 35
+               }
+            }
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.monsters.undergrowth.spiderling.display_name)",
+         "description": "i18n(stonehearth_ace:entities.monsters.undergrowth.spiderling.description)",
+         "category": "undergrowth",
+         "icon": "file(spiderling.png)"
+      }
+   }
+}

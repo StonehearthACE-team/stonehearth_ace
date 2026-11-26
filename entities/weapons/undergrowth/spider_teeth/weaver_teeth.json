@@ -1,0 +1,44 @@
+{
+   "type": "entity",
+   "components": {
+      "stonehearth:equipment_piece": {
+         "slot": "mainhand",
+         "render_type": "none"
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:weapon_data": {
+         "base_damage": 11,
+         "reach": 1.8
+      },
+      "stonehearth:combat:melee_attacks": [
+         {
+            "name": "combat_1h_backhand",
+            "effect": "combat_1h_backhand",
+            "active_frame": 17,
+            "cooldown": 0,
+            "priority": 0
+         },
+         {
+            "name": "combat_1h_forehand",
+            "effect": "combat_1h_forehand",
+            "active_frame": 16,
+            "cooldown": 0,
+            "priority": 0
+         },
+         {
+            "name": "web_bite",
+            "effect": "combat_bite",
+            "active_frame": 15,
+            "cooldown": 200,
+            "priority": 1,
+            "inflictable_debuffs": {
+               "infection": {
+                  "uri": "stonehearth_ace:buffs:webbed",
+                  "chance": 0.15
+               }
+            }
+         }
+      ]
+   }
+}

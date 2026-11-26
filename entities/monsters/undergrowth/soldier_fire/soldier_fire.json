@@ -1,0 +1,90 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:monster",
+   "components": {
+      "render_info": {
+         "animation_table": "/stonehearth_ace/data/rigs/entities/monster/undergrowth/ant",
+         "scale": 0.145,
+         "color_map": "stonehearth_ace:color_map:ace",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ]
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(soldier_fire.qb)"
+            ]
+         }
+      },
+      "stonehearth:attributes": {
+         "max_health": {
+            "type": "basic",
+            "value": 80
+         },
+         "muscle": {
+            "type": "basic",
+            "value": 4
+         },
+         "menace": {
+            "type": "basic",
+            "value": 3
+         },
+         "courage": {
+            "type": "basic",
+            "value": 15
+         },
+         "speed": {
+            "type": "basic",
+            "value": 60
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:species": {
+         "id": "ant",
+         "display_name": "i18n(stonehearth_ace:entities.monsters.undergrowth.ant.species)"
+      },
+      "stonehearth:entity_radius": 0.7,
+      "stonehearth:entity_reach": 1.1,
+      "stonehearth:combat:melee_attacks": [
+         {
+            "name": "combat_1h_forehand",
+            "effect": "combat_1h_forehand",
+            "active_frame": 16,
+            "cooldown": 0,
+            "priority": 0
+         }
+      ],
+      "stonehearth:ai_packs": {
+         "packs": [
+            "stonehearth:ai_pack:ranged_combat"
+         ]
+      },
+      "stonehearth:portrait": {
+         "portrait_types": {
+            "headshot": {
+               "camera": {
+                  "pos": [
+                     17,
+                     11,
+                     -27
+                  ],
+                  "look_at": [
+                     0.2,
+                     0.6,
+                     0
+                  ],
+                  "fov": 42
+               }
+            }
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.monsters.undergrowth.soldier_fire.display_name)",
+         "description": "i18n(stonehearth_ace:entities.monsters.undergrowth.soldier_fire.description)",
+         "category": "undergrowth",
+         "icon": "file(soldier_fire.png)"
+      }
+   }
+}
