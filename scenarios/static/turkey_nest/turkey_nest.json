@@ -1,0 +1,30 @@
+{
+   "mixins": "/stonehearth/scenarios/static/critter_nest/critter_nest.json",
+   "name": "turkey_nest",
+   "habitat_types": [
+      "forest",
+      "foothills"
+   ],
+   "weight": 3,
+   "biomes": [
+      "stonehearth_ace:biome:highlands",
+      "stonehearth:biome:temperate",
+      "stonehearth:biome:desert",
+      "stonehearth:biome:arctic"
+   ],
+   "data": {
+      "num_critters": {
+         "min": 3,
+         "max": 8
+      },
+      "critter_type": [
+         "stonehearth_ace:turkey:wild",
+         "stonehearth_ace:turkey:wild",
+         "stonehearth_ace:turkey:wild",
+         "stonehearth_ace:turkey:wild",
+         "stonehearth_ace:turkey:wild",
+         "stonehearth_ace:turkey:wild:young",
+         "stonehearth_ace:turkey:wild:young"
+      ]
+   }
+}

@@ -1,0 +1,31 @@
+{
+   "type" : "effect",
+   "tracks": {
+      "animation": {
+            "type": "animation_effect",
+            "start_time": 0,
+            "animation": "idle_look_around.json",
+            "loop": false
+      },
+      "sound": {
+         "type": "sound_effect",
+         "duration": 1000,
+         "start_time": 200,
+         "min_distance": 13,
+         "max_instances": 2,
+         "falloff" : 5,
+         "volume": 76,
+         "track" : {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:turkey_01",
+               "stonehearth_ace:sounds:turkey_02",
+               "stonehearth_ace:sounds:turkey_03",
+               "stonehearth_ace:sounds:turkey_04",
+               "stonehearth_ace:sounds:turkey_05",
+               "stonehearth_ace:sounds:turkey_06"
+            ]    
+         }
+      }
+   }
+}

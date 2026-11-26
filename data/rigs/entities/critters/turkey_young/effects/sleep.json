@@ -1,0 +1,30 @@
+{
+   "type" : "effect",
+   "tracks": {
+      "animation": {
+            "type": "animation_effect",
+            "start_time": 0,
+            "animation": "sleep.json",
+            "loop": true
+      },
+      "unit_status_effect": {
+         "type": "unit_status_effect",
+         "material": {
+            "name": "/stonehearth/data/horde/materials/billboard.material.json",
+            "samplers" : [
+               {
+                  "name" : "albedoMap",
+                  "map" : "/stonehearth/data/horde/materials/thoughts/sleeping/sleeping_.png",
+                  "numAnimationFrames" : 46,
+                  "frameRate" : 24
+               }
+            ]
+         },
+         "width": 1.5,
+         "height": 2.55,
+		 "xOffset": 0,
+         "yOffset": -1.5,
+         "bone": "ATTOVERCOG"
+      }
+   }
+}

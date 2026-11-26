@@ -70,20 +70,23 @@
                "stonehearth:monsters:forest:boar": 60,
 					"stonehearth:deer": 100,
                "stonehearth_ace:deer:young": 60,
-					"stonehearth_ace:sheep:wild": 50
+					"stonehearth_ace:sheep:wild": 50,
+					"stonehearth_ace:turkey:wild": 15
             },
             "big_game": {
                "stonehearth:deer": 20,
                "stonehearth_ace:deer:young": 40,
                "stonehearth:deer_horned": 75, 
 					"stonehearth_ace:moomoo:wild": 50,
+					"stonehearth_ace:turkey:wild": 15,
 					"stonehearth:monsters:forest:boar": 75,					
                "stonehearth_ace:monsters:forest:bear": 10,
                "stonehearth_ace:monsters:forest:bear_cub": 20
             },
             "exotic": {
-               "stonehearth:monsters:avian:duckduck": 75,
-					"stonehearth:monsters:avian:ostrich": 75,
+               "stonehearth:monsters:avian:duckduck": 35,
+					"stonehearth:monsters:avian:ostrich": 40,
+					"stonehearth_ace:turkey:wild": 20,
 					"stonehearth_ace:monsters:forest:alligator:young": 25
             }
          },
@@ -104,6 +107,15 @@
 				"autumn": {
 					"bugs": {
                   "stonehearth:doodles": 25
+               },
+					"medium": {
+                  "stonehearth_ace:turkey:wild": 50
+               },
+					"big_game": {
+                  "stonehearth_ace:turkey:wild": 40
+               },
+					"exotic": {
+                  "stonehearth_ace:turkey:wild": 55
                }
             },
             "winter": {
@@ -167,7 +179,7 @@
    },
    "entity_data": {
       "movement_modifier_shape": {
-         "nav_preference_modifier": -0.5
+         "nav_preference_modifier": -0.1
       },
       "stonehearth:designation": {
          "allow_placed_items": true

@@ -1,0 +1,27 @@
+{
+   "type" : "effect",
+   "tracks": {
+      "animation": {
+            "type": "animation_effect",
+            "start_time": 0,
+            "animation": "idle_look_around.json",
+            "loop": false
+      },
+      "sound": {
+         "type": "sound_effect",
+         "start_time": 0,
+         "min_distance": 11,
+         "falloff" : 5,
+         "volume": 40,
+         "track" : {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:turkey_young_01",
+               "stonehearth_ace:sounds:turkey_young_02",
+               "stonehearth_ace:sounds:turkey_young_03",
+               "stonehearth_ace:sounds:turkey_young_04"
+            ]    
+         }
+      }
+   }
+}
