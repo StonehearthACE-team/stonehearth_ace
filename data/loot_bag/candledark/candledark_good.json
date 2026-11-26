@@ -110,26 +110,29 @@
                "uri": "stonehearth:refined:steel_ingot",
                "weight": 1
             }
+         }
+      },
+      "medicine": {
+         "roll_type": "some_of",
+         "num_rolls": {
+            "min": 0,
+            "max": 2
          },
-         "medicine": {
-            "roll_type": "some_of",
-            "num_rolls": {
-               "min": 0,
-               "max": 2
+         "items": {
+            "none": {
+               "weight": 2
             },
-            "items": {
-               "bog_butter": {
-                  "uri": "stonehearth_ace:food:dairy:bog_butter",
-                  "weight": 1
-               },
-               "nightshade": {
-                  "uri": "stonehearth_ace:resources:herb:nightshade",
-                  "weight": 1
-               },
-               "garlic": {
-                  "uri": "stonehearth_ace:food:garlic:garlic_basket",
-                  "weight": 1
-               }
+            "bog_butter": {
+               "uri": "stonehearth_ace:food:dairy:bog_butter",
+               "weight": 1
+            },
+            "nightshade": {
+               "uri": "stonehearth_ace:resources:herb:nightshade",
+               "weight": 1
+            },
+            "garlic": {
+               "uri": "stonehearth_ace:food:garlic:garlic_basket",
+               "weight": 1
             }
          }
       }

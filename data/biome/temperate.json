@@ -10,6 +10,12 @@
 	},
 	"foraging_spot_uri": "stonehearth_ace:terrain:foraging_spot:temperate",
 	"foraging_spot_frequency": 0.0015,
+   "living_world": {
+      "neighbor_bias": {
+         "east": { "rayyas_children:kingdoms:rayyas_children": 0.25 },
+         "north": { "northern_alliance:kingdoms:northern_alliance": 0.25, "stonehearth_ace:kingdoms:mountain_folk": 0.45 }
+      }
+   },
    "native_crops": {
       "brightbell": true,
       "daylily": true,

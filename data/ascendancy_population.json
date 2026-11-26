@@ -93,8 +93,65 @@
 
    },
    "town_pieces": {
+      "garrison": {
+         "prefix_chance": 100,
+         "suffix_chance": 70,
+         "optional_prefix": [
+            "Castle",
+            "Fort",
+            "Great",
+            "Grand",
+            "Forward",
+            "Stone",
+            "Iron",
+            "Fist of",
+            "Hammer of",
+            "Lawful"
+         ],
+         "suffix": [
+            " Point",
+            " Keep",
+            " Stronghold",
+            " Stockade",
+            " Barracks",
+            " Bastion",
+            " Citadel",
+            " Fast"
+         ]
+      },
+      "temple": {
+         "prefix_chance": 60,
+         "suffix_chance": 100,
+         "suffix": [
+            " Monastery",
+            " Abbey",
+            " Cloister",
+            "'s Cathedral",
+            "'s Plentiful Church",
+            "'s Chapel of Abundance",
+            " Priory",
+            " Friary",
+            "'s Hermitage"
+         ],      
+         "optional_prefix": [
+            "New",
+            "Fair",
+            "Great",
+            "Mont",
+            "Outer",
+            "Old",
+            "Saint",
+            "Sacred",
+            "Retreat of",
+            "White-gold",
+            "Bright",
+            "Sparkling",
+            "Humble",
+            "Quaint"
+         ]
+      },
       "optional_prefix": [
-         "St.",
+         "Saint",
          "Mont",
          "Cozy",
          "Warm",

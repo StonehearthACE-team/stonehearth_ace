@@ -11,6 +11,12 @@
    ],
 	"foraging_spot_uri": "stonehearth_ace:terrain:foraging_spot:arctic",
 	"foraging_spot_frequency": 0.0016,
+   "living_world": {
+      "neighbor_bias": {
+         "south": { "random": 0.6 },
+         "north": { "none": 0.25 }
+      }
+   },
    "native_crops": {
       "snow_poppy": true,
       "violet": true,

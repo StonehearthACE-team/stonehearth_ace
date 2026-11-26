@@ -86,10 +86,41 @@
       ]
    }, 
    "town_pieces": {
+      "garrison": {
+         "prefix_chance": 90,
+         "suffix_chance": 100,
+         "suffix": [
+            " Fortress",
+            " Sandstone Fort",
+            " Stronghold",
+            " Crown Fort",
+            " Holdfast",
+            " Desert Camp",
+            " Encampment",
+            " Trench",
+            " Fortified Ruins",
+            " Mirage Castle"
+         ]
+      },
+      "temple": {
+         "prefix_chance": 80,
+         "suffix_chance": 100,
+         "suffix": [
+            " Sanctuary",
+            " Temple",
+            " Altar",
+            " Ritual Site",
+            " of Monkey",
+            " of Her Mystery",
+            " Mazar",
+            " Mausoleum"
+         ]
+      },
       "optional_prefix": [
          "Ost",
          "Milor",
-         "Jewel"
+         "Jewel",
+         "Gem"
       ],
       "town_name": [
          "Morkat",
@@ -100,9 +131,10 @@
          "Palum"
       ],
       "suffix": [
-         " of the East",
+         " of the Orient",
          " upon the Oasis",
-         " of the West"
+         " by the Riverbed",
+         " of the Desert's End"
       ]
    }
 }

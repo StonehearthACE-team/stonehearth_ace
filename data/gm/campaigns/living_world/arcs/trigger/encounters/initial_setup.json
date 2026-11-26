@@ -1,0 +1,14 @@
+{
+   "type": "encounter",
+   "encounter_type": "script",
+   "in_edge": "initial_setup",
+   "out_edge": {
+      "type": "trigger_many",
+      "out_edges": [
+         "wait_for_day_three"
+      ]
+   },
+   "script_info": {
+      "script": "stonehearth_ace:game_master:script:living_world_setup"
+   }
+}
