@@ -1,0 +1,81 @@
+{
+   "type": "effect",
+   "tracks": {
+      "animation": {
+         "type": "animation_effect",
+         "start_time": 0,
+         "animation": "combat_1h_forehand_spin.json",
+         "loop": false
+      },
+      "sound1": {
+         "type": "sound_effect",
+         "duration": 1000,
+         "start_time": 400,
+         "min_distance": 30,
+         "falloff": 12,
+         "volume": 30,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth:sounds:woodsword_spin_01",
+               "stonehearth:sounds:woodsword_spin_02"
+            ]
+         }
+      },
+      "sound2": {
+         "type": "sound_effect",
+         "duration": 1000,
+         "start_time": 600,
+         "min_distance": 30,
+         "falloff": 12,
+         "volume": 70,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:small_ore_stomp_01",
+               "stonehearth_ace:sounds:small_ore_stomp_02",
+               "stonehearth_ace:sounds:small_ore_stomp_03",
+               "stonehearth_ace:sounds:small_ore_stomp_04",
+               "stonehearth_ace:sounds:small_ore_stomp_05",
+               "stonehearth_ace:sounds:small_ore_stomp_06",
+               "stonehearth:sounds:small_stone_stomp_07",
+               "stonehearth:sounds:small_stone_stomp_08",
+               "stonehearth:sounds:small_stone_stomp_09"
+            ]
+         }
+      },
+      "sound3": {
+         "type": "sound_effect",
+         "duration": 1000,
+         "start_time": 0,
+         "min_distance": 30,
+         "max_instances": 2,
+         "falloff": 12,
+         "volume": 40,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:little_stone_golem_attack_01",
+               "stonehearth_ace:sounds:little_stone_golem_attack_02",
+               "stonehearth_ace:sounds:little_stone_golem_attack_03",
+               "stonehearth_ace:sounds:little_stone_golem_attack_04",
+               "stonehearth_ace:sounds:little_stone_golem_attack_05"
+            ]
+         }
+      },
+      "jump": {
+         "type": "cubemitter",
+         "start_time": 500,
+         "end_time": 580,
+         "cubemitter": "particles/dust_poof/jump.cubemitter.json",
+         "transforms": {
+            "x": 0,
+            "y": 0,
+            "z": 0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         }
+      }
+   }
+}

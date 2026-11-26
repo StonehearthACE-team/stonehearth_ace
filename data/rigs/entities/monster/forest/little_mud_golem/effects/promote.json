@@ -1,0 +1,60 @@
+{
+   "type" : "effect",
+   "tracks": {
+      "grab_talisman": {
+         "type": "attach_item_effect",
+         "start_time": 0,
+         "end_time": 0,
+         "item": "{{talisman}}",
+         "bone": "talisman"
+      },
+      "animation" : {
+            "type": "animation_effect",
+            "start_time": 0,
+            "animation": "promote.json",
+            "loop": false
+      },
+      "harp_loop": {
+         "type": "sound_effect",
+         "loop" : true,
+         "start_time": 275,
+         "end_time": 4950,
+         "min_distance": 20,
+         "falloff" : 3.15,
+         "volume" : 100,
+         "track" : "stonehearth:sounds:harp_loop"
+      },
+      "twinkle": {
+         "type": "sound_effect",
+         "loop" : true,
+         "start_time": 275,
+         "end_time": 4950,
+         "min_distance": 20,
+         "falloff" : 3.15,
+         "volume" : 100,
+         "track" : "stonehearth:sounds:twinkle"         
+      },
+      "promote_trigger" : {
+            "type": "trigger_effect",
+            "start_frame": 145,
+            "info": {
+               "event": "change_outfit",
+               "talisman": "{{talisman}}"
+            }
+      },
+      "grab_saw_trigger" : {
+         "type": "attach_item_effect",
+         "start_frame": 145,
+         "item": "{{talisman}}",
+         "bone": "mainHand"
+      },
+      "cleanup_trigger" : {
+         "type": "trigger_effect",
+         "start_frame": 200,
+         "info": {
+            "event": "remove_talisman",
+            "talisman": "{{talisman}}"
+         }
+      }
+   }
+}

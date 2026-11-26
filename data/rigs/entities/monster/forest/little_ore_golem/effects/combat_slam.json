@@ -1,0 +1,74 @@
+{
+   "type": "effect",
+   "tracks": {
+      "animation": {
+         "type": "animation_effect",
+         "start_time": 0,
+         "animation": "combat_slam.json",
+         "loop": false
+      },
+      "sound1": {
+         "type": "sound_effect",
+         "duration": 1000,
+         "start_time": 300,
+         "min_distance": 30,
+         "falloff": 12,
+         "volume": 70,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:small_ore_stomp_01",
+               "stonehearth_ace:sounds:small_ore_stomp_02",
+               "stonehearth_ace:sounds:small_ore_stomp_03",
+               "stonehearth_ace:sounds:small_ore_stomp_04",
+               "stonehearth_ace:sounds:small_ore_stomp_05",
+               "stonehearth_ace:sounds:small_ore_stomp_06",
+               "stonehearth:sounds:small_stone_stomp_07",
+               "stonehearth:sounds:small_stone_stomp_08",
+               "stonehearth:sounds:small_stone_stomp_09"
+            ]
+         }
+      },
+      "sound2": {
+         "type": "sound_effect",
+         "duration": 1000,
+         "start_time": 500,
+         "min_distance": 30,
+         "falloff": 12,
+         "volume": 100,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:small_ore_stomp_01",
+               "stonehearth_ace:sounds:small_ore_stomp_02",
+               "stonehearth_ace:sounds:small_ore_stomp_03",
+               "stonehearth_ace:sounds:small_ore_stomp_04",
+               "stonehearth_ace:sounds:small_ore_stomp_05",
+               "stonehearth_ace:sounds:small_ore_stomp_06",
+               "stonehearth:sounds:small_stone_stomp_07",
+               "stonehearth:sounds:small_stone_stomp_08",
+               "stonehearth:sounds:small_stone_stomp_09"
+            ]
+         }
+      },
+      "sound3": {
+         "type": "sound_effect",
+         "duration": 1000,
+         "start_time": 0,
+         "min_distance": 30,
+         "max_instances": 2,
+         "falloff": 12,
+         "volume": 40,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:little_stone_golem_attack_01",
+               "stonehearth_ace:sounds:little_stone_golem_attack_02",
+               "stonehearth_ace:sounds:little_stone_golem_attack_03",
+               "stonehearth_ace:sounds:little_stone_golem_attack_04",
+               "stonehearth_ace:sounds:little_stone_golem_attack_05"
+            ]
+         }
+      }
+   }
+}

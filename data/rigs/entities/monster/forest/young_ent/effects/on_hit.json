@@ -1,0 +1,24 @@
+{
+   "type" : "effect"
+   ,
+   "tracks": {
+      "animation": {
+         "type": "animation_effect",
+         "start_time": 0,
+         "animation": "idle_breathe.json",
+         "loop": true
+      },
+      "cubemitter": {
+         "type": "cubemitter",
+         "cubemitter": "particles/sparks/hit_spark.json",
+         "transforms": {
+            "x":0,
+            "y":2,
+            "z":0,
+            "rx":90,
+            "ry":0,
+            "rz":0
+         }
+     }      
+   }
+}

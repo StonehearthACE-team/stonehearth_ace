@@ -1,0 +1,31 @@
+{
+   "type": "effect",
+   "tracks": {
+      "animation": {
+         "type": "animation_effect",
+         "start_time": 0,
+         "animation": "run.json",
+         "loop": true
+      },
+      "sound": {
+         "type": "sound_effect",
+         "loop": true,
+         "start_time": 0,
+         "min_distance": 20,
+         "falloff": 5,
+         "volume": 60,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:small_ore_footstep_01",
+               "stonehearth_ace:sounds:small_ore_footstep_02",
+               "stonehearth_ace:sounds:small_ore_footstep_03",
+               "stonehearth_ace:sounds:small_ore_footstep_04",
+               "stonehearth:sounds:small_stone_footstep_05",
+               "stonehearth:sounds:small_stone_footstep_06",
+               "stonehearth:sounds:small_stone_footstep_07"
+            ]
+         }
+      }
+   }
+}

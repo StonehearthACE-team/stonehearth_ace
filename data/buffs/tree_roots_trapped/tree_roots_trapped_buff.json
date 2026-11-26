@@ -1,0 +1,32 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.tree_roots_trapped.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.tree_roots_trapped.description)",
+   "icon": "file(tree_roots_trapped.png)",
+   "duration": "1h",
+   "persistent": true,
+   "effect": "stonehearth_ace:effects:heal:nature:single_target",
+   "script": "stonehearth_ace:buff_scripts:trap",
+   "script_info": {
+      "trap_uri": "stonehearth_ace:gizmos:traps:tree_roots",
+      "trap_owner": "forest",
+      "scale_with_target": false
+   },
+   "injected_ai": {
+      "actions": [
+         "stonehearth:actions:compelled_behaviors:struggle"
+      ]
+   },
+   "modifiers": {
+      "speed": {
+         "max": 0
+      },
+      "menace": {
+         "max": 1
+      },
+      "muscle": {
+         "max": 0
+      }
+   }
+}

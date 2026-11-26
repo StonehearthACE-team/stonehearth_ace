@@ -1,0 +1,50 @@
+{
+   "type": "monster_tuning",
+   "estimated_difficulty": 2,
+   "attributes": {
+      "max_health": 320,
+      "muscle": 40,
+      "menace": 55,
+      "courage": 60,
+      "speed": 30,
+      "additive_armor_modifier": 1
+   },
+   "equipment": {
+      "weapon": [
+         "stonehearth_ace:monsters:forest:little_mud_golem:fist_weapon"
+      ]
+   },
+   "scale": 0.15,
+   "loot_drops": {
+      "entries": {
+         "default": {
+            "num_rolls": {
+               "min": 1,
+               "max": 2
+            },
+            "items": {
+               "clay": {
+                  "uri": "stonehearth:resources:clay:clay_mound",
+                  "weight": 10
+               }
+            }
+         },
+         "currency": {
+            "num_rolls": {
+               "min": 0,
+               "max": 2
+            },
+            "items": {
+               "none": {
+                  "uri": "",
+                  "weight": 8
+               },
+               "currency": {
+                  "uri": "stonehearth_ace:loot:currency:forest",
+                  "weight": 1
+               }
+            }
+         }
+      }
+   }
+}

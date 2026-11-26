@@ -1,0 +1,23 @@
+{
+   "tracks": {
+      "mixintypes": {
+         "sound": "override"
+      },
+      "sound": {
+         "type": "sound_effect",
+         "duration": 1000,
+         "start_time": 0,
+         "min_distance": 30,
+         "falloff": 7,
+         "volume": 100,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth:sounds:golem_growl_01",
+               "stonehearth:sounds:golem_growl_02"
+            ]
+         }
+      }
+   }
+}
+

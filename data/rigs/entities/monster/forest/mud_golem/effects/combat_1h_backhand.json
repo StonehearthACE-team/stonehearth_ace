@@ -1,0 +1,43 @@
+{
+   "type": "effect",
+   "tracks": {
+      "animation": {
+         "type": "animation_effect",
+         "start_time": 0,
+         "animation": "combat_swing.json",
+         "loop": false
+      },
+      "sound1": {
+         "type": "sound_effect",
+         "duration": 1000,
+         "start_time": 300,
+         "min_distance": 30,
+         "falloff": 7,
+         "volume": 100,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth:sounds:golem_stomp_01",
+               "stonehearth:sounds:golem_stomp_02",
+               "stonehearth:sounds:golem_stomp_03"
+            ]
+         }
+      },
+      "sound2": {
+         "type": "sound_effect",
+         "duration": 1000,
+         "start_time": 250,
+         "min_distance": 30,
+         "falloff": 7,
+         "volume": 100,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:mud_golem_attack_01",
+               "stonehearth_ace:sounds:mud_golem_attack_02"
+            ]
+         }
+      }
+   }
+}
+

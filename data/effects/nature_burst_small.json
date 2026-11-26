@@ -1,0 +1,38 @@
+{
+   "type": "effect",
+   "tracks": {
+      "cubemitter_sparkles": {
+         "type": "cubemitter",
+         "start_time": 80,
+         "loop": true,
+         "cubemitter": "/stonehearth_ace/data/horde/particles/young_ent/nature_burst_small_sparkles.cubemitter.json",
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 180,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "cubemitter_core": {
+         "type": "cubemitter",
+         "start_time": 120,
+         "loop": true,
+         "cubemitter": "/stonehearth_ace/data/horde/particles/young_ent/nature_burst_small_core.cubemitter.json",
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 180,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "cubemitter_smoke": {
+         "type": "cubemitter",
+         "start_time": 0,
+         "loop": true,
+         "cubemitter": "/stonehearth_ace/data/horde/particles/young_ent/nature_burst_small_smoke.cubemitter.json",
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 180,
+            "ry": 0,
+            "rz": 0
+         }
+      }
+   }
+}

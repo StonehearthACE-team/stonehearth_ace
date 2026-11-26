@@ -8,25 +8,34 @@
    "mixintos" :  {
       "stonehearth:trapper:trapping_grounds": "file(highlands_trapping_grounds.json)",
 	  	  
-		"/stonehearth/entities/rabbit/rabbit_statue/rabbit_statue.json": "file(rabbit/rabbit_statue/rabbit_statue.json)",
+	  "/stonehearth/entities/rabbit/rabbit_statue/rabbit_statue.json": "file(rabbit/rabbit_statue/rabbit_statue.json)",
 
-	    "/stonehearth/entities/critters/deer_horned/deer_horned.json": "file(critters/deer_horned/deer_horned.json)",
-	    "/stonehearth/entities/critters/deer/deer.json": "file(critters/deer/deer.json)",
+	  "/stonehearth/entities/critters/deer_horned/deer_horned.json": "file(critters/deer_horned/deer_horned.json)",
+	  "/stonehearth/entities/critters/deer/deer.json": "file(critters/deer/deer.json)",
 	  
-		"/stonehearth/entities/monsters/forest/entling/entling.json": "file(monsters/forest/entling/monster_log_replacer.json)",
-		"/stonehearth/data/monster_tuning/forest/easy_entling.json": "file(monsters/forest/entling/monster_tuning_log_replacer.json)",
+	  "/stonehearth/entities/monsters/forest/entling/entling.json": "file(monsters/forest/entling/monster_log_replacer.json)",
+	  "/stonehearth/data/monster_tuning/forest/easy_entling.json": "file(monsters/forest/entling/monster_tuning_log_replacer.json)",
       "/stonehearth/data/monster_tuning/forest/giant_entling.json": "file(monsters/forest/entling/monster_tuning_giant_log_replacer.json)",
+
+      "/stonehearth_ace/entities/monsters/forest/entling_mage/entling_mage.json": "file(monsters/forest/entling_mage/entling_mage.json)",
+      "/stonehearth_ace/entities/monsters/forest/young_ent/young_ent.json": "file(monsters/forest/young_ent/young_ent.json)",
 	  
-		"/stonehearth/entities/monsters/forest/little_stone_golem/little_stone_golem.json": "file(monsters/forest/stone_golem/monster_stone_replacer.json)",
-		"/stonehearth/data/monster_tuning/forest/little_stone_golem.json": "file(monsters/forest/stone_golem/monster_tuning_stone_replacer.json)",
-		"/stonehearth/data/monster_tuning/forest/easy_stone_golem.json": "file(monsters/forest/stone_golem/monster_tuning_stone_replacer_2.json)",
-		"/stonehearth/data/loot_bag/random_stone_ore.json": "file(monsters/forest/stone_golem/loot_bag_stone_replacer.json)",
+      "/stonehearth/entities/monsters/forest/little_stone_golem/little_stone_golem.json": "file(monsters/forest/stone_golem/monster_stone_replacer.json)",
+      "/stonehearth/data/monster_tuning/forest/little_stone_golem.json": "file(monsters/forest/stone_golem/monster_tuning_stone_replacer.json)",
+      "/stonehearth/data/monster_tuning/forest/easy_stone_golem.json": "file(monsters/forest/stone_golem/monster_tuning_stone_replacer_2.json)",
+      "/stonehearth/data/loot_bag/random_stone_ore.json": "file(monsters/forest/stone_golem/loot_bag_stone_replacer.json)",
+      
+      "/stonehearth_ace/entities/monsters/forest/copper_golem/copper_golem.json": "file(monsters/forest/ore_golem/ore_golem_stone_replacer.json)",
+      "/stonehearth_ace/entities/monsters/forest/tin_golem/tin_golem.json": "file(monsters/forest/ore_golem/ore_golem_stone_replacer.json)",
+      "/stonehearth_ace/entities/monsters/forest/iron_golem/iron_golem.json": "file(monsters/forest/ore_golem/ore_golem_stone_replacer.json)",
+      "/stonehearth_ace/entities/monsters/forest/silver_golem/silver_golem.json": "file(monsters/forest/ore_golem/ore_golem_stone_replacer.json)",
+      "/stonehearth_ace/entities/monsters/forest/gold_golem/gold_golem.json": "file(monsters/forest/ore_golem/ore_golem_stone_replacer.json)",
 		
-		"/stonehearth/entities/decoration/firepit_hearth/firepit_hearth_ghost.json": "file(decoration/firepit_hearth/firepit_hearth_ghost.json)", 
+	  "/stonehearth/entities/decoration/firepit_hearth/firepit_hearth_ghost.json": "file(decoration/firepit_hearth/firepit_hearth_ghost.json)", 
 	  
-		"/stonehearth_ace/locales/en.json": "file(locales/en.json)",
-		"/stonehearth_ace/locales/de-DE.json": "file(locales/en.json)",
-		"/stonehearth_ace/locales/zh-CN.json": "file(locales/en.json)"
+	  "/stonehearth_ace/locales/en.json": "file(locales/en.json)",
+	  "/stonehearth_ace/locales/de-DE.json": "file(locales/en.json)",
+	  "/stonehearth_ace/locales/zh-CN.json": "file(locales/en.json)"
    },
    "overrides" : {
       "/stonehearth/entities/rabbit/rabbit_statue/rabbit_statue_01.qb": "file(rabbit/rabbit_statue/rabbit_statue_01.qb)",
@@ -100,6 +109,15 @@
 	  "/stonehearth/entities/monsters/forest/entling/entling_2.qb": "file(monsters/forest/entling/entling_2.qb)",
 	  "/stonehearth/entities/monsters/forest/entling/entling_3.qb": "file(monsters/forest/entling/entling_3.qb)",
 	  "/stonehearth/entities/monsters/forest/entling/entling.png": "file(monsters/forest/entling/entling.png)",
+
+      "/stonehearth_ace/entities/monsters/forest/entling_mage/entling_mage.qb": "file(monsters/forest/entling_mage/entling_mage.qb)",
+      "/stonehearth_ace/entities/monsters/forest/entling_mage/entling_mage.png": "file(monsters/forest/entling_mage/entling_mage.png)",
+
+      "/stonehearth_ace/entities/monsters/forest/entling_sentry/entling_sentry.qb": "file(monsters/forest/entling_sentry/entling_sentry.qb)",
+      "/stonehearth_ace/entities/monsters/forest/entling_sentry/entling_sentry.png": "file(monsters/forest/entling_sentry/entling_sentry.png)",
+
+      "/stonehearth_ace/entities/monsters/forest/young_ent/young_ent.qb": "file(monsters/forest/young_ent/young_ent.qb)",
+      "/stonehearth_ace/entities/monsters/forest/young_ent/young_ent.png": "file(monsters/forest/young_ent/young_ent.png)",
 	  
 	  "/stonehearth/entities/monsters/forest/wolf/wolf.qb": "file(monsters/forest/wolf/wolf.qb)",
       "/stonehearth/entities/monsters/forest/wolf/wolf.png": "file(monsters/forest/wolf/wolf.png)",
@@ -107,15 +125,50 @@
 	  "/stonehearth/entities/monsters/forest/cougar/cougar.qb": "file(monsters/forest/cougar/cougar.qb)",
       "/stonehearth/entities/monsters/forest/cougar/cougar.png": "file(monsters/forest/cougar/cougar.png)",
 	  
-	  "/stonehearth/entities/monsters/forest/little_stone_golem/little_stone_golem.qb": "file(monsters/forest/little_stone_golem/little_stone_golem.qb)",
-	  "/stonehearth/entities/monsters/forest/little_stone_golem/little_stone_golem_2.qb": "file(monsters/forest/little_stone_golem/little_stone_golem_2.qb)",
-	  "/stonehearth/entities/monsters/forest/little_stone_golem/little_stone_golem_3.qb": "file(monsters/forest/little_stone_golem/little_stone_golem_3.qb)",
-	  "/stonehearth/entities/monsters/forest/little_stone_golem/little_stone_golem.png": "file(monsters/forest/little_stone_golem/little_stone_golem.png)",
-	  
-	  "/stonehearth/entities/monsters/forest/stone_golem/stone_golem.qb": "file(monsters/forest/stone_golem/stone_golem.qb)",
-	  "/stonehearth/entities/monsters/forest/stone_golem/stone_golem_2.qb": "file(monsters/forest/stone_golem/stone_golem_2.qb)",
-	  "/stonehearth/entities/monsters/forest/stone_golem/stone_golem_3.qb": "file(monsters/forest/stone_golem/stone_golem_3.qb)",
-	  "/stonehearth/entities/monsters/forest/stone_golem/stone_golem.png": "file(monsters/forest/stone_golem/stone_golem.png)",
+      "/stonehearth/entities/monsters/forest/little_stone_golem/little_stone_golem.qb": "file(monsters/forest/little_stone_golem/little_stone_golem.qb)",
+      "/stonehearth/entities/monsters/forest/little_stone_golem/little_stone_golem_2.qb": "file(monsters/forest/little_stone_golem/little_stone_golem_2.qb)",
+      "/stonehearth/entities/monsters/forest/little_stone_golem/little_stone_golem_3.qb": "file(monsters/forest/little_stone_golem/little_stone_golem_3.qb)",
+      "/stonehearth/entities/monsters/forest/little_stone_golem/little_stone_golem.png": "file(monsters/forest/little_stone_golem/little_stone_golem.png)",
+
+      "/stonehearth/entities/monsters/forest/stone_golem/stone_golem.qb": "file(monsters/forest/stone_golem/stone_golem.qb)",
+      "/stonehearth/entities/monsters/forest/stone_golem/stone_golem_2.qb": "file(monsters/forest/stone_golem/stone_golem_2.qb)",
+      "/stonehearth/entities/monsters/forest/stone_golem/stone_golem_3.qb": "file(monsters/forest/stone_golem/stone_golem_3.qb)",
+      "/stonehearth/entities/monsters/forest/stone_golem/stone_golem.png": "file(monsters/forest/stone_golem/stone_golem.png)",
+
+      "/stonehearth_ace/entities/monsters/forest/little_copper_golem/little_copper_golem.qb": "file(monsters/forest/ore_golem/little_copper_golem.qb)",
+      "/stonehearth_ace/entities/monsters/forest/little_copper_golem/little_copper_golem_2.qb": "file(monsters/forest/ore_golem/little_copper_golem_2.qb)",
+      "/stonehearth_ace/entities/monsters/forest/little_copper_golem/little_copper_golem.png": "file(monsters/forest/ore_golem/little_copper_golem.png)",
+
+      "/stonehearth_ace/entities/monsters/forest/copper_golem/copper_golem.qb": "file(monsters/forest/ore_golem/copper_golem.qb)",
+      "/stonehearth_ace/entities/monsters/forest/copper_golem/copper_golem.png": "file(monsters/forest/ore_golem/copper_golem.png)",
+
+      "/stonehearth_ace/entities/monsters/forest/little_tin_golem/little_tin_golem.qb": "file(monsters/forest/ore_golem/little_tin_golem.qb)",
+      "/stonehearth_ace/entities/monsters/forest/little_tin_golem/little_tin_golem_2.qb": "file(monsters/forest/ore_golem/little_tin_golem_2.qb)",
+      "/stonehearth_ace/entities/monsters/forest/little_tin_golem/little_tin_golem.png": "file(monsters/forest/ore_golem/little_tin_golem.png)",
+
+      "/stonehearth_ace/entities/monsters/forest/tin_golem/tin_golem.qb": "file(monsters/forest/ore_golem/tin_golem.qb)",
+      "/stonehearth_ace/entities/monsters/forest/tin_golem/tin_golem.png": "file(monsters/forest/ore_golem/tin_golem.png)",
+
+      "/stonehearth_ace/entities/monsters/forest/little_iron_golem/little_iron_golem.qb": "file(monsters/forest/ore_golem/little_iron_golem.qb)",
+      "/stonehearth_ace/entities/monsters/forest/little_iron_golem/little_iron_golem_2.qb": "file(monsters/forest/ore_golem/little_iron_golem_2.qb)",
+      "/stonehearth_ace/entities/monsters/forest/little_iron_golem/little_iron_golem.png": "file(monsters/forest/ore_golem/little_iron_golem.png)",
+
+      "/stonehearth_ace/entities/monsters/forest/iron_golem/iron_golem.qb": "file(monsters/forest/ore_golem/iron_golem.qb)",
+      "/stonehearth_ace/entities/monsters/forest/iron_golem/iron_golem.png": "file(monsters/forest/ore_golem/iron_golem.png)",
+
+      "/stonehearth_ace/entities/monsters/forest/little_silver_golem/little_silver_golem.qb": "file(monsters/forest/ore_golem/little_silver_golem.qb)",
+      "/stonehearth_ace/entities/monsters/forest/little_silver_golem/little_silver_golem_2.qb": "file(monsters/forest/ore_golem/little_silver_golem_2.qb)",
+      "/stonehearth_ace/entities/monsters/forest/little_silver_golem/little_silver_golem.png": "file(monsters/forest/ore_golem/little_silver_golem.png)",
+
+      "/stonehearth_ace/entities/monsters/forest/silver_golem/silver_golem.qb": "file(monsters/forest/ore_golem/silver_golem.qb)",
+      "/stonehearth_ace/entities/monsters/forest/silver_golem/silver_golem.png": "file(monsters/forest/ore_golem/silver_golem.png)",
+
+      "/stonehearth_ace/entities/monsters/forest/little_gold_golem/little_gold_golem.qb": "file(monsters/forest/ore_golem/little_gold_golem.qb)",
+      "/stonehearth_ace/entities/monsters/forest/little_gold_golem/little_gold_golem_2.qb": "file(monsters/forest/ore_golem/little_gold_golem_2.qb)",
+      "/stonehearth_ace/entities/monsters/forest/little_gold_golem/little_gold_golem.png": "file(monsters/forest/ore_golem/little_gold_golem.png)",
+
+      "/stonehearth_ace/entities/monsters/forest/gold_golem/gold_golem.qb": "file(monsters/forest/ore_golem/gold_golem.qb)",
+      "/stonehearth_ace/entities/monsters/forest/gold_golem/gold_golem.png": "file(monsters/forest/ore_golem/gold_golem.png)",
 
 	  "/stonehearth/entities/monsters/forest/alligator/alligator.qb": "file(monsters/forest/alligator/alligator.qb)",
 	  "/stonehearth/entities/monsters/forest/alligator/alligator.png": "file(monsters/forest/alligator/alligator.png)",

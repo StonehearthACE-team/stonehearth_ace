@@ -1,0 +1,42 @@
+{
+   "type": "encounter",
+   "mixins": "stonehearth:mixins:encounter:golem_raid",
+   "encounter_type": "create_mission",
+   "in_edge": "ore_golem_raid_9_1",
+   "out_edge": "wait_to_destroy_raiding_party",
+   "create_mission_info": {
+      "mission": {
+         "ctx_entity_registration_path": "ore_golem_raid_9_1",
+         "members": {
+            "iron_golems": {
+               "from_population": {
+                  "min": 1,
+                  "max": 1
+               },
+               "tuning": "stonehearth_ace:monster_tuning:forest:scaled_ore_golem"
+            },
+            "little_iron_golems": {
+               "from_population": {
+                  "min": 2,
+                  "max": 4
+               },
+               "tuning": "stonehearth_ace:monster_tuning:forest:scaled_little_ore_golem"
+            },
+            "silver_golems": {
+               "from_population": {
+                  "min": 0,
+                  "max": 2
+               },
+               "tuning": "stonehearth_ace:monster_tuning:forest:ore_golem"
+            },
+            "little_silver_golems": {
+               "from_population": {
+                  "min": 2,
+                  "max": 4
+               },
+               "tuning": "stonehearth_ace:monster_tuning:forest:little_ore_golem"
+            }
+         }
+      }
+   }
+}

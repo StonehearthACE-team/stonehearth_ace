@@ -1,0 +1,41 @@
+{
+   "skeleton" : {
+      "root": [15.5,15.5,0],
+      "leftFoot": [20.5,15,2],
+      "rightFoot": [11.5,15,2],
+      "head": [16,15,12.5],
+      "rightBrow": [13.5,10,14],
+      "leftBrow": [18.5,10,14],
+      "rightShoulder": [9.96811,14,14.6906],
+      "rightArm": [6.99149,13.5,14.0294],
+      "rightHand": [4.02734,14,6.97922],
+      "rightFinger31": [3.01445,16.5,5.98293],
+      "rightFinger32": [3.02438,16.5,3.00451],
+      "rightFinger21": [3.01445,13.5,5.98293],
+      "rightFinger22": [3.02438,13.5,3.00451],
+      "rightFinger11": [3.01445,10.5,5.97281],
+      "rightFinger12": [4.47534,10.5523,3.00451],
+      "rightTnumb1": [8.5,10.5,5.69936],
+      "rightThumb2": [8.5,8.84392,2.99236],
+      "leftShoulder": [21.5355,14,15.0452],
+      "leftArm": [24.5,13.5,14.0544],
+      "leftHand": [27.0018,14,7.00433],
+      "leftFinger31": [28.0184,16.5,6.00177],
+      "leftFinger32": [28.0176,16.5,3.00249],
+      "leftFinger21": [28.0184,13.5,6.00177],
+      "leftFinger22": [28.0176,13.5,3.00249],
+      "leftFinger11": [28.0184,10.5,6.00177],
+      "leftFinger12": [28.0176,10.5,3.00249],
+      "leftThumb1": [22.5,10.5,5.98012],
+      "leftThumb2": [22.5,8.94944,2.9996],
+      "jaw": [16,17.0249,10.0133]
+    },
+   "animation_root" : "file(../animations/female)",
+   "effects_root" : "file(../effects)",
+   "postures" : "file(../postures.json)",
+   "collision_shape" : {
+      "type" : "cylinder_collision_shape",
+      "radius" : 5,
+      "height" : 35
+   }
+}

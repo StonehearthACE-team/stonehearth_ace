@@ -1,0 +1,52 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:destructable_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(tree_roots.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.125
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -0.5, "y": 0, "z": -0.5 },
+               "max": { "x": 1.5, "y": 3, "z": 1.5 }
+            }
+         ]
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "stonehearth:attributes": {
+         "max_health": {
+            "value": 120
+         },
+         "menace": {
+            "type": "basic",
+            "value": 12
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:target_type": {
+         "hit_effect": "stonehearth_ace:effects:hit_sparks:hit_effect:wood"
+      },
+      "stonehearth:on_destroy": {
+         "effect": "stonehearth:effects:poof_effect"
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.gizmos.traps.tree_roots.display_name)",
+         "description": "i18n(stonehearth_ace:entities.gizmos.traps.tree_roots.description)"
+      },
+      "stonehearth:appeal": {
+         "appeal": -3
+      }
+   }
+}

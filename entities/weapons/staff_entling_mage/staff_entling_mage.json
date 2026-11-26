@@ -1,0 +1,149 @@
+{
+   "mixins": [
+      "stonehearth:mixins:item_properties"
+   ],
+   "type": "entity",
+   "components": {
+      "render_info": {
+         "color_map": "stonehearth:color_map:mob",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ]
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(staff_entling_mage_equipped.qb)"
+            ]
+         }
+      },
+      "stonehearth:equipment_piece": {
+         "slot": "mainhand",
+         "render_type": "attach_to_bone",
+         "equipment_types": [
+            "mainhand"
+         ],
+         "postures": [
+            "stonehearth:combat",
+            "stonehearth:patrol"
+         ],
+         "no_drop": true
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:weapon_data": {
+         "base_damage": 7,
+         "base_ranged_damage": 7,
+         "range": 20,
+         "reach": 1.5,
+         "muscle_multiplier": 0,
+         "projectile_speed": 12,
+         "projectile_uri": "stonehearth_ace:weapons:gust",
+         "projectile_start_offset": { "x": -0.2, "y": 0.5, "z": -1 },
+         "projectile_end_offset": { "x": 0, "y": 0.5, "z": 0 }
+      },
+      "stonehearth:combat:healing_data": {
+         "base_healing": 9
+      },
+      "stonehearth:combat:ranged_attacks": [
+         {
+            "name": "entling_mage_gust_attack",
+            "effect": "combat_1h_forehand",
+            "active_frame": 12,
+            "cooldown": 0,
+            "priority": 0
+         }
+      ],
+      "stonehearth:combat:healing_spells": [
+         {
+            "name": "combat_forest_heal_hot",
+            "effect": "combat_1h_heal",
+            "active_frame": 21,
+            "cooldown": 12000,
+            "shared_cooldown_name": "combat_heal_shared",
+            "shared_cooldown": 8000,
+            "bonus_healing_multiplier": 0.2,
+            "in_progress_heal_cast_effect": "stonehearth_ace:effects:heal:nature:in_progress_cast:quick",
+            "in_progress_heal_effect": "stonehearth_ace:effects:heal:nature:in_progress",
+            "target_effect": "stonehearth_ace:effects:heal:nature:single_target",
+            "appliable_target_buffs": {
+               "heal_over_time": {
+                  "uri": "stonehearth_ace:buffs:nature:healing_over_time",
+                  "chance": 1
+               }
+            },
+            "priority": 1
+         },
+         {
+            "name": "combat_forest_heal_strong",
+            "effect": "combat_1h_heal_long",
+            "active_frame": 210,
+            "cooldown": 45000,
+            "shared_cooldown_name": "combat_heal_shared",
+            "shared_cooldown": 8000,
+            "bonus_healing_multiplier": 4.5,
+            "in_progress_heal_cast_effect": "stonehearth_ace:effects:heal:nature:in_progress_cast:long",
+            "in_progress_heal_effect": "stonehearth_ace:effects:heal:nature:in_progress",
+            "target_effect": "stonehearth_ace:effects:combat_heal_nature_strong_effect",
+            "priority": 2
+         }
+      ],
+      "stonehearth_ace:combat:summon_attacks": [
+         {
+            "name": "summon_tree_roots",
+            "effect": "emote_reservation",
+            "script": "stonehearth_ace:summon_scripts:roots",
+            "script_info": {
+               "root_buff": "stonehearth_ace:buffs:tree_roots:trapped",
+               "num_targets": 1,
+               "max_health_based_duration": true
+            },
+            "active_frame": 40,
+            "cooldown": 25000,
+            "priority": 2.5
+         },
+         {
+            "name": "summon_tornado",
+            "effect": "combat_1h_forehand_spin",
+            "summon_effect": "stonehearth:effects:poof_effect:small",
+            "amount": {
+               "min": 1,
+               "max": 1
+            },
+            "distance": {
+               "min": 1,
+               "max": 3
+            },
+            "uris": {
+               "stonehearth_ace:monsters:forest:summon:tornado": true
+            },
+            "link_to_summoner": true,
+            "active_frame": 8,
+            "cooldown": 55000,
+            "priority": 3
+         }
+      ],
+      "stonehearth:combat:melee_attacks": [
+         {
+            "name": "combat_1h_backhand",
+            "effect": "combat_1h_backhand",
+            "active_frame": 17,
+            "cooldown": 0,
+            "priority": 0
+         },
+         {
+            "name": "combat_1h_forehand",
+            "effect": "combat_1h_forehand",
+            "active_frame": 16,
+            "cooldown": 0,
+            "priority": 0
+         }
+      ],
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.weapons.staff_entling_mage.display_name)",
+         "description": "i18n(stonehearth_ace:entities.weapons.staff_entling_mage.description)",
+         "icon": "file(staff_entling_mage.png)",
+         "category": "weapons"
+      }
+   }
+}

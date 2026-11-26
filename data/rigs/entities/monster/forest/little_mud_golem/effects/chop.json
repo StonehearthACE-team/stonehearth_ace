@@ -1,0 +1,48 @@
+{
+   "type" : "effect",
+   "tracks": {
+      "animation": {
+         "type": "animation_effect",
+         "start_time": 0,
+         "animation": "chop.json",
+         "loop": true
+      },
+      "grab_axe" : {
+         "type": "attach_item_effect",
+         "start_time": 0,
+         "end_time": 0,
+         "item": "stonehearth:worker_axe",
+         "bone": "mainHand"
+      },
+      "sound": {
+         "type": "sound_effect",
+         "duration": 1000,
+         "start_time": 200,
+         "min_distance": 20,
+         "falloff" : 7,
+         "volume": 65,
+         "track" : {
+            "type": "one_of",
+            "items": [
+               "stonehearth:sounds:axe_chopping_sound_01",
+               "stonehearth:sounds:axe_chopping_sound_02",
+               "stonehearth:sounds:axe_chopping_sound_03"
+            ]    
+         }
+      },
+      "scattering": {
+         "type": "cubemitter",
+         "start_time" : 200,
+         "end_time" : 300,
+         "cubemitter": "particles/leaves/leafsplosion.cubemitter.json",
+         "transforms": {
+            "x":0.0,
+            "y":6.0,
+            "z":-4.0,
+            "rx":90,
+            "ry":0,
+            "rz":0
+         }
+      }
+   }
+}

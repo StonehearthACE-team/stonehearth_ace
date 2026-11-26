@@ -1,0 +1,138 @@
+{
+   "type": "effect",
+   "tracks": {
+      "animation": {
+         "type": "animation_effect",
+         "start_time": 0,
+         "speed": 2.8,
+         "animation": "combat_smash.json",
+         "loop": true
+      },
+      "sound1": {
+         "type": "sound_effect",
+         "duration": 1000,
+         "start_time": 50,
+         "min_distance": 30,
+         "falloff": 7,
+         "volume": 95,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:ore_golem_smash_01",
+               "stonehearth_ace:sounds:ore_golem_smash_02",
+               "stonehearth_ace:sounds:ore_golem_smash_03"
+            ]
+         }
+      },
+      "dust1": {
+         "type": "cubemitter",
+         "start_time": 50,
+         "cubemitter": "/stonehearth/data/horde/particles/lightning/lightning_strike_smoke_small.cubemitter.json",
+         "transforms": { "x": 2.7, "y": 0, "z": -2.8,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "sound2": {
+         "type": "sound_effect",
+         "duration": 1000,
+         "start_time": 400,
+         "min_distance": 32,
+         "falloff": 7,
+         "volume": 100,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:ore_golem_smash_01",
+               "stonehearth_ace:sounds:ore_golem_smash_02",
+               "stonehearth_ace:sounds:ore_golem_smash_03"
+            ]
+         }
+      },
+      "sound3": {
+         "type": "sound_effect",
+         "duration": 900,
+         "start_time": 750,
+         "min_distance": 34,
+         "falloff": 7,
+         "volume": 105,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:ore_golem_smash_01",
+               "stonehearth_ace:sounds:ore_golem_smash_02",
+               "stonehearth_ace:sounds:ore_golem_smash_03"
+            ]
+         }
+      },
+      "dust3": {
+         "type": "cubemitter",
+         "start_time": 750,
+         "cubemitter": "/stonehearth/data/horde/particles/lightning/lightning_strike_smoke_small.cubemitter.json",
+         "transforms": { "x": 2.7, "y": 0, "z": -2.8,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "sound4": {
+         "type": "sound_effect",
+         "duration": 600,
+         "start_time": 1100,
+         "min_distance": 36,
+         "falloff": 7,
+         "volume": 110,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:ore_golem_smash_01",
+               "stonehearth_ace:sounds:ore_golem_smash_02",
+               "stonehearth_ace:sounds:ore_golem_smash_03"
+            ]
+         }
+      },
+      "sound5": {
+         "type": "sound_effect",
+         "duration": 300,
+         "start_time": 1450,
+         "min_distance": 38,
+         "falloff": 7,
+         "volume": 115,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:ore_golem_smash_01",
+               "stonehearth_ace:sounds:ore_golem_smash_02",
+               "stonehearth_ace:sounds:ore_golem_smash_03"
+            ]
+         }
+      },
+      "dust5": {
+         "type": "cubemitter",
+         "start_time": 1450,
+         "cubemitter": "/stonehearth/data/horde/particles/lightning/lightning_strike_smoke.cubemitter.json",
+         "transforms": { "x": 2.7, "y": 0, "z": -2.8,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "attack_sound": {
+         "type": "sound_effect",
+         "duration": 1000,
+         "start_time": 0,
+         "min_distance": 30,
+         "falloff": 7,
+         "volume": 100,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth:sounds:golem_attack_01",
+               "stonehearth:sounds:golem_attack_02"
+            ]
+         }
+      }
+   }
+}
+
