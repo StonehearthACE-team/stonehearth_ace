@@ -8,7 +8,8 @@
          <h2>{{i18n stonehearth:ui.game.zones_mode.farm.choose_crop}}:</h2>
 
          <div id="cropRotation">
-            <table id="cropPanel"><tr><td>
+            <table id="cropPanel">
+               <tr><td>
                   <a id="addCropLink" {{action "addCropButtonClicked" target="view"}}>
                      <div class="targetCrop downSection">
                         <img class="cropImage tooltip" {{bind-attr src="view.model.stonehearth:farmer_field.current_crop_details.icon" title="view.model.stonehearth:farmer_field.current_crop_details.name"}} />
@@ -19,7 +20,8 @@
                      <div class="name">{{i18n_key view.model.stonehearth:farmer_field.current_crop_details.name}}</div>
                      <p>{{i18n_key view.model.stonehearth:farmer_field.current_crop_details.description}}</p>
                   </div>
-            </td></tr></table>
+               </td></tr>         
+            </table>
 
             <div id="cropDetails" {{bind-attr class="view.isFallow:hidden"}}>
                <div id="cropProperties">
@@ -112,11 +114,15 @@
             <input id="enableHarvestCheckbox" type="checkbox" value="enableHarvest">
             <label for="enableHarvestCheckbox">{{i18n stonehearth_ace:ui.game.zones_mode.farm.enable_harvest}}</label>
          </div>
-
+         
+         <div id="enablePlanting" {{bind-attr class=view.allowDisablePlanting:setting:hidden}}>
+            <input id="enablePlantingCheckbox" type="checkbox" value="enablePlanting">
+            <label for="enablePlantingCheckbox">{{i18n stonehearth_ace:ui.game.zones_mode.farm.pause_planting}}</label>
+         </div>
          <p></p>
 
          <button class="warn">{{i18n stonehearth:ui.game.common.remove}}</button>
-         <button class="ok"></button>
+         <button class="ok okButton"></button>
 
       </div>
    </div>
