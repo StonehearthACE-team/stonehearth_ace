@@ -670,4 +670,15 @@ function AceGameCreationService:get_living_world_data()
    return self._sv.living_world_data
 end
 
+-- Please function do not react or you'll be shot mwahaha
+-- Dani: I'm having to hijack this command function because making new ones as part of a base game controller wasn't properly working and I didn't want to make a new service just for this, it's -probably- fine? It already retrieved essentially the same things so I'm sure it's not a problem to just add a couple of display names to it...
+function AceGameCreationService:get_game_world_options_commands(session, response)
+   response:resolve({
+      game_mode = self._sv.game_mode,
+      game_mode_name = self._game_mode_json.display_name,
+      biome = stonehearth.world_generation:get_biome_alias(),
+      biome_name = stonehearth.world_generation:get_biome().display_name
+   })
+end
+
 return AceGameCreationService
