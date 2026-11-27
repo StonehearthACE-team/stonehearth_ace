@@ -15,12 +15,20 @@ App.StonehearthTownView = App.View.extend({
 
    init: function () {
       var self = this;
+
       this.journalData.initialized = false;
       this._super();
+
       self.set('town_name', App.stonehearthClient.settlementName());
       self.set('kingdom', i18n.t(App.population.getPopulationData().kingdom.display_name));
-      self.set('biome', radiant.call_obj('stonehearth.world_generation', 'get_biome'));
-      self.set('game_mode', radiant.call_obj('stonehearth.game_creation', 'get_game_mode'));
+      radiant.call_obj('stonehearth.game_creation', 'get_game_world_options_commands')
+         .done(function(result) {
+            self.set('game_mode', i18n.t(result.game_mode_name));
+            self.set('biome', i18n.t(result.biome_name));
+         })
+         .fail(function(error) {
+            console.error('Oops, failed to retrieve game mode and biome info', error);
+         });
 
       console.dir(App.population.getPopulationData())
 
